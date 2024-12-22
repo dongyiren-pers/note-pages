@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>图 文 AT&amp;T汇编语法 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/104.ac33d7ce.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link router-link-active">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link router-link-active">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/assembly/" aria-current="page" class="sidebar-link">汇编语言</a></li><li><a href="/note-pages/assembly/at&amp;t-syntax.html" aria-current="page" class="active sidebar-link">图 文 AT&amp;T汇编语法</a><ul class="sidebar-sub-headers"></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="图-文-at-t汇编语法"><a href="#图-文-at-t汇编语法" class="header-anchor">#</a> 图 文 AT&amp;T汇编语法</h1> <h3 id="先看一段代码"><a href="#先看一段代码" class="header-anchor">#</a> 先看一段代码</h3> <p>首先我们有这样一段 C 语言代码：</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">char</span> msg<span class="token punctuation">[</span><span class="token number">14</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Hello,world!\n&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">puts</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>运行 <code>gcc -S -Os hello.c</code></p> <div class="language- extra-class"><pre class="language-text"><code>    .file   &quot;hello.c&quot;
+    .section    .text.startup,&quot;ax&quot;,@progbits
+    .globl  main
+    .type   main, @function
+main:
+.LFB0:
+    .cfi_startproc
+    pushq   %rax
+    .cfi_def_cfa_offset 16
+    movl    $msg, %edi
+    call    puts
+    xorl    %eax, %eax
+    popq    %rdx
+    .cfi_def_cfa_offset 8
+    ret
+    .cfi_endproc
+.LFE0:
+    .size   main, .-main
+    .globl  msg
+    .data
+    .align 8
+    .type   msg, @object
+    .size   msg, 14
+msg:
+    .string &quot;Hello,world!\n&quot;
+    .ident  &quot;GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-39)&quot;
+    .section    .note.GNU-stack,&quot;&quot;,@progbits
+</code></pre></div><p>接下来解释下AT&amp;T汇编语法。</p> <h3 id="指令"><a href="#指令" class="header-anchor">#</a> 指令</h3> <p>指令是直接由CPU负责处理的命令，不以 <code>.</code> 开头的行首缩进的行都是指令行。</p> <div class="language- extra-class"><pre class="language-text"><code>movl    $msg, %edi
+call    puts
+xorl    %eax, %eax
+</code></pre></div><p>指令由操作符和作为参数的操作数组成，以 <code>movl $msg, %edi</code> 为例，<code>movl</code> 为操作符， <code>$msg</code> 和 <code>%edi</code> 为操作数，操作数以逗号来间隔。</p> <h3 id="汇编伪操作"><a href="#汇编伪操作" class="header-anchor">#</a> 汇编伪操作</h3> <p>以 <code>.</code> 开头末尾没有<code>:</code>的行都是汇编伪操作。例如，<code>.file &quot;hello.c&quot;</code>，<code>.globl main</code>。汇编伪操作是由汇编器而非CPU处理的指令。一般用于在目标文件中记录元数据（meta data）或者设定指定的属性等。例如 <code>.string</code> 是用来定义字符串常量的汇编伪操作。</p> <h3 id="标签"><a href="#标签" class="header-anchor">#</a> 标签</h3> <p>以冒号<code>:</code> 结尾的行都是标签行，例如：<code>.LFB0:</code>，<code>main:</code>。 标签具有为汇编伪操作生成的数据或者指令命名（标上符号）的功能，这样就可以在其他地方调用通过标签定义的符号。 标签可以以 <code>.</code> 开头</p> <h3 id="注释"><a href="#注释" class="header-anchor">#</a> 注释</h3> <p>支持两种注释：</p> <div class="language- extra-class"><pre class="language-text"><code># xxx
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>/* xxx
+xxx */
+</code></pre></div><h3 id="操作符后缀"><a href="#操作符后缀" class="header-anchor">#</a> 操作符后缀</h3> <p>刚才提到的 <code>movl</code> 和 <code>subl</code> 为操作符，更准确的说 <code>mov</code> 和 <code>sub</code> 为操作符，末尾的 <code>l</code> 是后缀，<code>l</code> 是 <code>long</code> 的缩写，表示操作对象的数据大小。类似这样的后缀还有<code>b</code>、<code>w</code>、<code>l</code>。</p> <table><thead><tr><th>后缀</th> <th>操作对象的大小</th> <th>缩写</th></tr></thead> <tbody><tr><td>b</td> <td>8位</td> <td>byte</td></tr> <tr><td>w</td> <td>16位</td> <td>word</td></tr> <tr><td>l</td> <td>32位</td> <td>long</td></tr></tbody></table> <h3 id="操作数"><a href="#操作数" class="header-anchor">#</a> 操作数</h3> <p>操作数有四种： 1. 立即数 2. 寄存器 3. 直接内存引用 4. 间接内存引用</p> <p><strong>1. 立即数</strong></p> <p>立即数就是 C 语言中的字面量，机器语言中立即数以整数的形式出现，能高速访问。像 <code>$27</code> 这样，立即数用 <code>$</code> 来标识，如果没有 <code>$</code> 就成了直接内存引用。立即数有8位，16位，32位。</p> <p><strong>2. 寄存器</strong></p> <p>GUN汇编器规定寄存器以 <code>%</code> 开头，例如 eax 寄存器写作 <code>%eax</code>。</p> <p><strong>3. 直接内存引用</strong></p> <p>直接访问固定内存地址的方式。GNC汇编器会将任何整数解释为内存地址并访问。比起使用数字，更常用符号（symbol）直接访问内存。例如<code>.LFE0</code>就是访问符号<code>.LFE0</code>所指向的地址。符号在汇编和链接的过程中会被置换为实际内存地址。</p> <p><strong>4. 间接内存引用</strong></p> <p>是将寄存器的值作为内存地址访问的方式。间接内存引用中最通用的就是下方的形式：</p> <div class="language- extra-class"><pre class="language-text"><code>disp(base, index, scale)
+</code></pre></div><p>其中任何一者都可以省略。</p> <p>上述指令访问 disp + (base + index * scale)的地址。 下面详细讲解，首先最简单的间接引用的形式如下：</p> <div class="language- extra-class"><pre class="language-text"><code>(%eax)
+</code></pre></div><p>即只指定基地址（base）的形式。上述表达式将 eax 寄存器中的值作为内存地址访问。 接着带有 disp 的形式如下。disp 是displacement（偏移）的简称。</p> <div class="language- extra-class"><pre class="language-text"><code>4(%eax)
+</code></pre></div><p>上述就是访问 <code>4 + (eax寄存器中值)</code> 这个内存地址。在 C 语言中用来访问如下结构体中成员 y 的情况：</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">struct</span> <span class="token class-name">point</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">;</span>  <span class="token comment">// x 占 4 个字节，即 4 个内存地址</span>
+    <span class="token keyword">int</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>最后使用 index 和 scale 的情况如下所示：</p> <div class="language- extra-class"><pre class="language-text"><code>(%ebx, %eax, 4)
+</code></pre></div><p>示例访问的就是（ebx寄存器中的值 + eax寄存器中的值 * 4）内存地址。</p> <p>在 C 语言中用来访问数组，例如访问元素大小为 4 字节的数组中元素的第 %ebx 个元素时就可以用这种方式。当并非所有的数组访问都可以只靠间接内存引用来表示，因为 scale 只能是 1、2、4、8 之一。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/assembly/" class="prev router-link-active">
+        汇编语言
+      </a></span> <!----></p></div> </main> <aside items="[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#先看一段代码" class="right-sidebar-item-level3">
+          先看一段代码
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#指令" class="right-sidebar-item-level3">
+          指令
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#汇编伪操作" class="right-sidebar-item-level3">
+          汇编伪操作
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#标签" class="right-sidebar-item-level3">
+          标签
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#注释" class="right-sidebar-item-level3">
+          注释
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#操作符后缀" class="right-sidebar-item-level3">
+          操作符后缀
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#操作数" class="right-sidebar-item-level3">
+          操作数
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/104.ac33d7ce.js" defer></script>
+  </body>
+</html>

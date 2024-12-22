@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>场景题 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/43.1808aff8.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/interview/f05h67/" class="sidebar-link">基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/f05h67/#计算机网络" class="sidebar-link">计算机网络</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/f05h67/#操作系统" class="sidebar-link">操作系统</a></li></ul></li><li><a href="/note-pages/interview/Java.html" class="sidebar-link">Java</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#基础" class="sidebar-link">基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#java-集合" class="sidebar-link">Java 集合</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#java-并发" class="sidebar-link">Java 并发</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#jvm" class="sidebar-link">JVM</a></li></ul></li><li><a href="/note-pages/interview/数据库.html" class="sidebar-link">数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/数据库.html#mysql" class="sidebar-link">MySQL</a></li></ul></li><li><a href="/note-pages/interview/NoSQL.html" class="sidebar-link">NoSQL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/NoSQL.html#redis" class="sidebar-link">Redis</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/NoSQL.html#elasticsearch" class="sidebar-link">ElasticSearch</a></li></ul></li><li><a href="/note-pages/interview/2t6vir/" class="sidebar-link">Spring</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-core" class="sidebar-link">Spring Core</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-aop" class="sidebar-link">Spring AOP</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-dao" class="sidebar-link">Spring DAO</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-mvc" class="sidebar-link">Spring MVC</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#springboot" class="sidebar-link">SpringBoot</a></li></ul></li><li><a href="/note-pages/interview/消息队列.html" class="sidebar-link">消息队列</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/消息队列.html#基础" class="sidebar-link">基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/消息队列.html#rocketmq" class="sidebar-link">RocketMQ</a></li></ul></li><li><a href="/note-pages/interview/架构设计.html" class="sidebar-link">架构设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/架构设计.html#zookeeper" class="sidebar-link">Zookeeper</a></li></ul></li><li><a href="/note-pages/interview/数据结构与算法.html" class="sidebar-link">数据结构与算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/数据结构与算法.html#数据结构" class="sidebar-link">数据结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/数据结构与算法.html#算法模板" class="sidebar-link">算法模板</a></li></ul></li><li><a href="/note-pages/interview/场景题.html" class="active sidebar-link">场景题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/场景题.html#场景题-2" class="sidebar-link">场景题</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="场景题"><a href="#场景题" class="header-anchor">#</a> 场景题</h1> <h2 id="场景题-2"><a href="#场景题-2" class="header-anchor">#</a> 场景题</h2> <h3 id="商品超卖问题"><a href="#商品超卖问题" class="header-anchor">#</a> 商品超卖问题</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">百度TPG</span></div><p>// TODO</p> <h3 id="延时队列"><a href="#延时队列" class="header-anchor">#</a> 延时队列</h3> <h4 id="delayqueue-延时队列"><a href="#delayqueue-延时队列" class="header-anchor">#</a> DelayQueue 延时队列</h4> <p>JDK 中提供了一组实现延迟队列的 API，位于 Java.util.concurrent 包下 <strong>DelayQueue</strong>。</p> <p>DelayQueue 是一个 BlockingQueue（无界阻塞）队列，它本质就是封装了一个 PriorityQueue（优先队列），我们在向 DelayQueue 队列中添加元素时，会给元素一个 Delay（延迟时间）作为排序条件，队列中最小的元素会优先放在队首。队列中的元素只有到了 Delay 时间才允许从队列中取出。队列中可以放基本数据类型或自定义实体类，在存放基本数据类型时，优先队列中元素默认升序排列，自定义实体类就需要我们根据类属性值比较计算了。</p> <p>示例如下，添加三个 order 入队 DelayQueue，分别设置订单在当前时间的 5 秒、10 秒、15 秒后取消。</p> <p><img src="/note-pages/assets/img/image-20230904150627878.d89b2b98.png" alt="image-20230904150627878"></p> <p>队中元素要实现 Delayed 接口，这个接口里只有 getDelay 方法，设置延期时间。Order 类中 compareTo 方法负责对队列中的元素进行排序。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token keyword">implements</span> <span class="token class-name">Delayed</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@JsonFormat</span><span class="token punctuation">(</span>locale <span class="token operator">=</span> <span class="token string">&quot;zh&quot;</span><span class="token punctuation">,</span> timezone <span class="token operator">=</span> <span class="token string">&quot;GMT+8&quot;</span><span class="token punctuation">,</span> pattern <span class="token operator">=</span> <span class="token string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> time<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">long</span> time<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span> unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>time <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> unit<span class="token punctuation">.</span><span class="token function">toMillis</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getDelay</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span> unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> time <span class="token operator">-</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compareTo</span><span class="token punctuation">(</span><span class="token class-name">Delayed</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Order</span> <span class="token class-name">Order</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Order</span><span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">long</span> diff <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>time <span class="token operator">-</span> <span class="token class-name">Order</span><span class="token punctuation">.</span>time<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> diff <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>DelayQueue 的 put 方法是线程安全的，因为 put 方法内部使用了 ReentrantLock 锁进行线程同步。DelayQueue 还提供了两种出队的方法 poll() 和 take() ，<strong>poll() 为非阻塞获取</strong>，没有到期的元素直接返回 null；<strong>take() 阻塞方式获取</strong>，没有到期的元素线程将会等待。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DelayQueueDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Order</span> <span class="token class-name">Order1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token string">&quot;Order1&quot;</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Order</span> <span class="token class-name">Order2</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token string">&quot;Order2&quot;</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Order</span> <span class="token class-name">Order3</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Order</span><span class="token punctuation">(</span><span class="token string">&quot;Order3&quot;</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">DelayQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Order</span><span class="token punctuation">&gt;</span></span> delayQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DelayQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        delayQueue<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">Order1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        delayQueue<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">Order2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        delayQueue<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">Order3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">DateTimeFormatter</span> df <span class="token operator">=</span> <span class="token class-name">DateTimeFormatter</span><span class="token punctuation">.</span><span class="token function">ofPattern</span><span class="token punctuation">(</span><span class="token string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;订单延迟队列开始时间:&quot;</span> <span class="token operator">+</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>delayQueue<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Order</span> task <span class="token operator">=</span> delayQueue<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>task <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;订单:{%s}被取消, 取消时间:{%s}\n&quot;</span><span class="token punctuation">,</span> 
+                	task<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="quartz-定时任务"><a href="#quartz-定时任务" class="header-anchor">#</a> Quartz 定时任务</h4> <blockquote><p>发音：/kwɔːts/</p></blockquote> <p>引入 Quartz 框架依赖包</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-quartz<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>在启动类中使用 @EnableScheduling 注解开启定时任务功能。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@EnableScheduling</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DelayQueueApplication</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DelayQueueApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>编写一个定时任务，每 5 秒执行一次。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuartzDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 每隔五秒</span>
+    <span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>cron <span class="token operator">=</span> <span class="token string">&quot;0/5 * * * * ? &quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;我是定时任务！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="redis-zset"><a href="#redis-zset" class="header-anchor">#</a> Redis ZSet</h4> <p>Redis 的数据结构 ZSet，同样可以实现延迟队列的效果。ZSet 通过 score 来为集合中的成员进行从小到大的排序。</p> <p><img src="/note-pages/assets/img/image-20230904162026367.4fa363c6.png" alt="image-20230904162026367"></p> <p>通过 zadd 命令向队列 DelayQueue 中添加元素，并设置 score 值表示元素过期的时间；向 DelayQueue 添加三个 Order1、Order2、Order3，分别是 10 秒、20 秒、30 秒后过期。</p> <div class="language-sh extra-class"><pre class="language-sh"><code>zadd DelayQueue <span class="token number">3</span> order3
+</code></pre></div><p>消费端轮询队列 DelayQueue，将元素排序后取最小时间与当前时间比对，如小于当前时间代表已经过期移除 key。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 消费消息
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pollOrderQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple</span><span class="token punctuation">&gt;</span></span> set <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">zrangeWithScores</span><span class="token punctuation">(</span>DELAY_QUEUE<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">String</span> value <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Tuple</span><span class="token punctuation">)</span> set<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> score <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Tuple</span><span class="token punctuation">)</span> set<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getScore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Calendar</span> cal <span class="token operator">=</span> <span class="token class-name">Calendar</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> nowSecond <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>cal<span class="token punctuation">.</span><span class="token function">getTimeInMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nowSecond <span class="token operator">&gt;=</span> score<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            jedis<span class="token punctuation">.</span><span class="token function">zrem</span><span class="token punctuation">(</span>DELAY_QUEUE<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sdf<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; removed key:&quot;</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>jedis<span class="token punctuation">.</span><span class="token function">zcard</span><span class="token punctuation">(</span>DELAY_QUEUE<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sdf<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; zset empty &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="redis-过期回调"><a href="#redis-过期回调" class="header-anchor">#</a> Redis 过期回调</h4> <p>Redis 的 key 过期回调事件，能够达到延迟队列的效果，简单来说我们开启监听 key 是否过期的事件，一旦 key 过期会触发一个 callback 事件。</p> <p>修改 Redis.conf 文件开启 <code>notify-keyspace-events Ex</code>。</p> <p>Redis 监听配置，注入 Bean RedisMessageListenerContainer。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RedisListenerConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token class-name">RedisMessageListenerContainer</span> <span class="token function">container</span><span class="token punctuation">(</span><span class="token class-name">RedisConnectionFactory</span> connectionFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">RedisMessageListenerContainer</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisMessageListenerContainer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        container<span class="token punctuation">.</span><span class="token function">setConnectionFactory</span><span class="token punctuation">(</span>connectionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> container<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>编写Redis过期回调监听方法，必须继承KeyExpirationEventMessageListener。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RedisKeyExpirationListener</span> <span class="token keyword">extends</span> <span class="token class-name">KeyExpirationEventMessageListener</span> <span class="token punctuation">{</span>
+ 
+    <span class="token keyword">public</span> <span class="token class-name">RedisKeyExpirationListener</span><span class="token punctuation">(</span><span class="token class-name">RedisMessageListenerContainer</span> listenerContainer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>listenerContainer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onMessage</span><span class="token punctuation">(</span><span class="token class-name">Message</span> message<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> pattern<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> expiredKey <span class="token operator">=</span> message<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;监听到key：&quot;</span> <span class="token operator">+</span> expiredKey <span class="token operator">+</span> <span class="token string">&quot;已过期&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>接下来测试一下效果，在 Redis-cli 客户端添加一个 key 并给定 3s 的过期时间。</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">set</span> xiaofu <span class="token number">123</span> ex <span class="token number">3</span>
+</code></pre></div><h4 id="rabbitmq-延时队列"><a href="#rabbitmq-延时队列" class="header-anchor">#</a> RabbitMQ 延时队列</h4> <p>利用 RabbitMQ 做延时队列是比较常见的一种方式，而实际上RabbitMQ 自身并没有直接支持提供延迟队列功能，而是通过 RabbitMQ 消息队列的 <strong>TTL</strong> 和 <strong>DXL</strong> 这两个属性间接实现的。</p> <p>Time To Live（TTL） ：指的是消息的存活时间，RabbitMQ 可以通过 <code>x-message-tt</code> 参数来设置指定 Queue（队列）或 Message（消息）上消息的存活时间，它的值是一个非负整数，单位为微秒。</p> <p>队列中的消息存在队列中的时间，一旦超过 TTL 过期时间则成为 <strong>Dead Letter</strong>（死信）。</p> <p>Dead Letter Exchanges（DLX）：即死信交换机，绑定在死信交换机上的即死信队列。RabbitMQ 的 Queue（队列）可以配置两个参数 <code>x-dead-letter-exchange</code> 和 <code>x-dead-letter-routing-key</code>（可选），一旦队列内出现了 Dead Letter（死信），则按照这两个参数可以将消息重新路由到另一个 Exchange（交换机），让消息重新被消费。</p> <ul><li><code>x-dead-letter-exchange</code>：队列中出现 Dead Letter 后将 Dead Letter 重新路由转发到指定 exchange（交换机）。</li> <li><code>x-dead-letter-routing-key</code>：指定routing-key 发送，一般为要指定转发的队列。</li></ul> <p>示例如下：实现超 30 分钟未支付关单功能。我们将订单消息 A0001 发送到延迟队列 order.delay.queue，并设置 <code>x-message-tt</code> 消息存活时间为 30 分钟，当到达 30 分钟后订单消息 A0001 成为了 Dead Letter（死信），延迟队列检测到有死信，通过配置 <code>x-dead-letter-exchange</code>，将死信重新转发到能正常消费的关单队列，直接监听关单队列处理关单逻辑即可。</p> <p><img src="/note-pages/assets/img/image-20230904164150064.ff9018a7.png" alt="image-20230904164150064"></p> <p>发送消息时指定消息延迟的时间</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token class-name">String</span> delayTimes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    amqpTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">&quot;order.pay.exchange&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;order.pay.queue&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;大家好我是延迟数据&quot;</span><span class="token punctuation">,</span> message <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 设置延迟毫秒值</span>
+        message<span class="token punctuation">.</span><span class="token function">getMessageProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setExpiration</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>delayTimes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> message<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>设置延迟队列出现死信后的转发规则</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+     * 延时队列
+     */</span>
+<span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">&quot;order.delay.queue&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Queue</span> <span class="token function">getMessageQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">QueueBuilder</span>
+        <span class="token punctuation">.</span><span class="token function">durable</span><span class="token punctuation">(</span><span class="token class-name">RabbitConstant</span><span class="token punctuation">.</span>DEAD_LETTER_QUEUE<span class="token punctuation">)</span>
+        <span class="token comment">// 配置到期后转发的交换</span>
+        <span class="token punctuation">.</span><span class="token function">withArgument</span><span class="token punctuation">(</span><span class="token string">&quot;x-dead-letter-exchange&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;order.close.exchange&quot;</span><span class="token punctuation">)</span>
+        <span class="token comment">// 配置到期后转发的路由键</span>
+        <span class="token punctuation">.</span><span class="token function">withArgument</span><span class="token punctuation">(</span><span class="token string">&quot;x-dead-letter-routing-key&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;order.close.queue&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="时间轮"><a href="#时间轮" class="header-anchor">#</a> 时间轮</h4> <p>kafka、netty 都有基于时间轮算法实现延时队列，接下来主要结合 Netty 的延时队列讲一下时间轮是什么原理。</p> <p>先来看一张时间轮的原理图，解读一下时间轮的几个基本概念</p> <p><img src="/note-pages/assets/img/image-20230904165159262.1dad52a7.png" alt="image-20230904165159262"></p> <p><strong>wheel</strong> ：时间轮，图中的圆盘可以看作是钟表的刻度。比如一圈 round 长度为 24 秒，刻度数为 8，那么每一个刻度表示 3 秒。时间精度 = 时间长度 / 刻度数。</p> <p>当添加一个定时或延时任务 A，假设它将在 25 秒后执行，但时间轮一圈（round）的长度只有 24 秒，此时时间轮会计算任务 A 的位置信息，包括圈数（round）和格子位置（index）。在这种情况下，任务 A 的位置信息将指向 0 号格子。</p> <p>然后，时间轮会将任务 A 的信息记录在 0 号格子对应的链表中。当时间轮旋转到 0 号格子时，如果任务 A 的圈数（round）不等于 1，那么任务 A 不会被执行，因为任务 A 要求的圈数还没有达到。只有当任务 A 的圈数（round）等于 1 时，任务 A 才会被执行。</p> <p>因此，时间轮的每个格子代表一段时间，而任务则根据其执行时间的偏移量被放置在相应的格子对应的链表中。无论是 1 秒还是 25 秒的任务，都会指向 0 号格子，并在合适的时间轮位置被执行。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NettyDelayQueue</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">final</span> <span class="token class-name">Timer</span> timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashedWheelTimer</span><span class="token punctuation">(</span><span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">defaultThreadFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 定时任务</span>
+        <span class="token class-name">TimerTask</span> task1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimerTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Timeout</span> timeout<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;order1  5s 后执行 &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                timer<span class="token punctuation">.</span><span class="token function">newTimeout</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 结束时候再次注册</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        timer<span class="token punctuation">.</span><span class="token function">newTimeout</span><span class="token punctuation">(</span>task1<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 延迟任务</span>
+        <span class="token class-name">TimerTask</span> task2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimerTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Timeout</span> timeout<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;order2  10s 后执行&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        timer<span class="token punctuation">.</span><span class="token function">newTimeout</span><span class="token punctuation">(</span>task2<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">TimerTask</span> task3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimerTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Timeout</span> timeout<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;order3  15s 后执行&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        timer<span class="token punctuation">.</span><span class="token function">newTimeout</span><span class="token punctuation">(</span>task3<span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/interview/数据结构与算法.html" class="prev">
+        数据结构与算法
+      </a></span> <!----></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#场景题-2" class="right-sidebar-item-level2">
+          场景题
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#商品超卖问题" class="right-sidebar-item-level3">
+          商品超卖问题
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#延时队列" class="right-sidebar-item-level3">
+          延时队列
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#delayqueue-延时队列" class="right-sidebar-item-level4">
+          DelayQueue 延时队列
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#quartz-定时任务" class="right-sidebar-item-level4">
+          Quartz 定时任务
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#redis-zset" class="right-sidebar-item-level4">
+          Redis ZSet
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#redis-过期回调" class="right-sidebar-item-level4">
+          Redis 过期回调
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#rabbitmq-延时队列" class="right-sidebar-item-level4">
+          RabbitMQ 延时队列
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#时间轮" class="right-sidebar-item-level4">
+          时间轮
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/43.1808aff8.js" defer></script>
+  </body>
+</html>

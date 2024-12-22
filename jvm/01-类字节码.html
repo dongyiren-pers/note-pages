@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第1章 类字节码 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/81.ecb125f5.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link router-link-active">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link router-link-active">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/jvm/01-类字节码.html" class="active sidebar-link">第1章 类字节码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/01-类字节码.html#_1-1-字节码文件" class="sidebar-link">1.1 字节码文件</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/01-类字节码.html#_1-2-反编译字节码文件" class="sidebar-link">1.2 反编译字节码文件</a></li></ul></li><li><a href="/note-pages/jvm/02-类加载机制.html" class="sidebar-link">第2章 类加载机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/02-类加载机制.html#_2-1-类的生命周期" class="sidebar-link">2.1 类的生命周期</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/02-类加载机制.html#_2-2-类加载机制" class="sidebar-link">2.2 类加载机制</a></li></ul></li><li><a href="/note-pages/jvm/b0ouv4/" class="sidebar-link">第3章 内存结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-1-程序计数器" class="sidebar-link">3.1 程序计数器</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-2-虚拟机栈" class="sidebar-link">3.2 虚拟机栈</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-3-本地方法栈" class="sidebar-link">3.3 本地方法栈</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-4-堆" class="sidebar-link">3.4 堆</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-5-方法区" class="sidebar-link">3.5 方法区</a></li></ul></li><li><a href="/note-pages/jvm/184c59/" class="sidebar-link">第4章 垃圾回收</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-1-判断对象是否可被回收" class="sidebar-link">4.1 判断对象是否可被回收</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-2-垃圾回收算法" class="sidebar-link">4.2 垃圾回收算法</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-3-垃圾收集器" class="sidebar-link">4.3 垃圾收集器</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-4-内存分配与回收策略" class="sidebar-link">4.4 内存分配与回收策略</a></li></ul></li><li><a href="/note-pages/jvm/gsfjls/" class="sidebar-link">第5章 JVM 调优</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-1-调优概述" class="sidebar-link">5.1 调优概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-2-jvm-参数" class="sidebar-link">5.2 JVM 参数</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-3-性能监控工具" class="sidebar-link">5.3 性能监控工具</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-4-调优策略" class="sidebar-link">5.4 调优策略</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-5-oom-场景及解决方案" class="sidebar-link">5.5 OOM 场景及解决方案</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第1章-类字节码"><a href="#第1章-类字节码" class="header-anchor">#</a> 第1章 类字节码</h1> <h2 id="_1-1-字节码文件"><a href="#_1-1-字节码文件" class="header-anchor">#</a> 1.1 字节码文件</h2> <p>Java 字节码文件是 Java 程序编译后生成的中间代码，可以在 Java 虚拟机上跨平台运行。它实现了 Java 的 &quot;一次编写，到处运行&quot; 特性。</p> <h3 id="字节码文件的结构"><a href="#字节码文件的结构" class="header-anchor">#</a> 字节码文件的结构</h3> <div class="subtitle"><p>魔数与 class 文件的版本</p></div><p>每个 class 文件的头 4 个字节称为魔数，值为: 0XCAFEBABE，作用是确定这个文件是一个 class 文件。</p> <div class="subtitle"><p>常量池</p></div><p>常量池可以理解为 class 文件的资源仓库，是 class 文件结构中关联最多的数据类型，是占用 class 文件最大的数据项目之一。常量池存储的资源有：变量的属性、类型和名称，方法的属性、类型和名称等等。</p> <div class="subtitle"><p>访问标志</p></div><p>表示该 class 的属性和访问类型，比如该 class 是类还是接口、访问类型是否为 public、是否被标记为 final。</p> <div class="subtitle"><p>类索引、父类索引、接口索引</p></div><p>类索引、父类索引和接口索引可以简单的理解为一种描述的数据项目，class 文件根据类索引、父类索引和接口索引这三项数据来确定这个类的继承关系。</p> <div class="subtitle"><p>字段表属性</p></div><p>描述接口或类中声明的的变量。比如变量的作用域（public、private、 protected）、是否是静态变量（static） 、可变性（final） 、数据类型（基本类型、对象、数组）等等。</p> <div class="subtitle"><p>方法表属性</p></div><p>与字段表类似，不过方法表属性描述的是方法的类型、作用域等等。</p> <div class="subtitle"><p>属性表属性</p></div><p>描述某些场景专有的信息。比如字段表中特殊的属性、方法表中特殊的属性等等。</p> <h3 id="从一个例子开始"><a href="#从一个例子开始" class="header-anchor">#</a> 从一个例子开始</h3> <p>以一个简单的例子来逐步讲解字节码。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// Main.java</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> m<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">inc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>通过以下命令，可以在当前所在路径下生成一个 Main.class 文件。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>javac Main.java
+</code></pre></div><p>以文本的形式打开生成的 class 文件，内容如下:</p> <div class="language- extra-class"><pre class="language-text"><code>cafe babe 0000 0034 0013 0a00 0400 0f09
+0003 0010 0700 1107 0012 0100 016d 0100
+0149 0100 063c 696e 6974 3e01 0003 2829
+5601 0004 436f 6465 0100 0f4c 696e 654e
+756d 6265 7254 6162 6c65 0100 0369 6e63
+0100 0328 2949 0100 0a53 6f75 7263 6546
+696c 6501 0009 4d61 696e 2e6a 6176 610c
+0007 0008 0c00 0500 0601 0010 636f 6d2f
+7268 7974 686d 372f 4d61 696e 0100 106a
+6176 612f 6c61 6e67 2f4f 626a 6563 7400
+2100 0300 0400 0000 0100 0200 0500 0600
+0000 0200 0100 0700 0800 0100 0900 0000
+1d00 0100 0100 0000 052a b700 01b1 0000
+0001 000a 0000 0006 0001 0000 0003 0001
+000b 000c 0001 0009 0000 001f 0002 0001
+0000 0007 2ab4 0002 0460 ac00 0000 0100
+0a00 0000 0600 0100 0000 0800 0100 0d00
+0000 0200 0e
+</code></pre></div><p>文件开头的 4 个字节（“cafe babe”）称之为 魔数，唯有以 “cafe babe” 开头的 class 文件方可被虚拟机所接受，这 4 个字节就是字节码文件的身份识别。</p> <p>0000 是编译器 jdk 版本的次版本号 0，0034 是主版本号 52，java 的版本号从 45 开始，除 1.0 和 1.1 都是使用 45.x 外，以后每升一个大版本，版本号加 1。编译生成该 class 文件的 jdk 版本为 1.8.0。</p> <p>通过分析 ClassFile 的内容，我们便可以知道 class 文件的组成：</p> <p><img src="/note-pages/assets/img/image-20230127163654916.4a3aecfc.png" alt="image-20230127163654916"></p> <h2 id="_1-2-反编译字节码文件"><a href="#_1-2-反编译字节码文件" class="header-anchor">#</a> 1.2 反编译字节码文件</h2> <p>使用到 java 内置的反编译工具 javap 可以反编译字节码文件</p> <div class="language-shell extra-class"><pre class="language-shell"><code>javap <span class="token operator">&lt;</span>options<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>classes<span class="token operator">&gt;</span>
+</code></pre></div><p>输入命令 <code>javap -verbose -p Main.class</code> 查看输出内容：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Classfile</span> <span class="token operator">/</span><span class="token class-name">E</span><span class="token operator">:</span><span class="token operator">/</span><span class="token class-name">JavaCode</span><span class="token operator">/</span><span class="token class-name">TestProj</span><span class="token operator">/</span>out<span class="token operator">/</span>production<span class="token operator">/</span><span class="token class-name">TestProj</span><span class="token operator">/</span>com<span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">.</span><span class="token keyword">class</span>
+  <span class="token class-name">Last</span> modified <span class="token number">2018</span><span class="token operator">-</span><span class="token number">4</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">;</span> size <span class="token number">362</span> bytes
+  MD5 checksum <span class="token number">4</span>aed8540b098992663b7ba08c65312de
+  <span class="token class-name">Compiled</span> from <span class="token string">&quot;Main.java&quot;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>rhythm7<span class="token punctuation">.</span></span>Main</span>
+  minor version<span class="token operator">:</span> <span class="token number">0</span>
+  major version<span class="token operator">:</span> <span class="token number">52</span>
+  flags<span class="token operator">:</span> ACC_PUBLIC<span class="token punctuation">,</span> ACC_SUPER
+<span class="token class-name">Constant</span> pool<span class="token operator">:</span>
+   #<span class="token number">1</span> <span class="token operator">=</span> <span class="token class-name">Methodref</span>          #<span class="token number">4.</span>#<span class="token number">18</span>         <span class="token comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span>
+   #<span class="token number">2</span> <span class="token operator">=</span> <span class="token class-name">Fieldref</span>           #<span class="token number">3.</span>#<span class="token number">19</span>         <span class="token comment">// com/rhythm7/Main.m:I</span>
+   #<span class="token number">3</span> <span class="token operator">=</span> <span class="token class-name">Class</span>              #<span class="token number">20</span>            <span class="token comment">// com/rhythm7/Main</span>
+   #<span class="token number">4</span> <span class="token operator">=</span> <span class="token class-name">Class</span>              #<span class="token number">21</span>            <span class="token comment">// java/lang/Object</span>
+   #<span class="token number">5</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               m
+   #<span class="token number">6</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">I</span>
+   #<span class="token number">7</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token generics"><span class="token punctuation">&lt;</span>init<span class="token punctuation">&gt;</span></span>
+   #<span class="token number">8</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+   #<span class="token number">9</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">Code</span>
+  #<span class="token number">10</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">LineNumberTable</span>
+  #<span class="token number">11</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">LocalVariableTable</span>
+  #<span class="token number">12</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token keyword">this</span>
+  #<span class="token number">13</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">Lcom</span><span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">;</span>
+  #<span class="token number">14</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               inc
+  #<span class="token number">15</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">I</span>
+  #<span class="token number">16</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">SourceFile</span>
+  #<span class="token number">17</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">Main</span><span class="token punctuation">.</span>java
+  #<span class="token number">18</span> <span class="token operator">=</span> <span class="token class-name">NameAndType</span>        #<span class="token number">7</span><span class="token operator">:</span>#<span class="token number">8</span>          <span class="token comment">// &quot;&lt;init&gt;&quot;:()V</span>
+  #<span class="token number">19</span> <span class="token operator">=</span> <span class="token class-name">NameAndType</span>        #<span class="token number">5</span><span class="token operator">:</span>#<span class="token number">6</span>          <span class="token comment">// m:I</span>
+  #<span class="token number">20</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               com<span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span>
+  #<span class="token number">21</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               java<span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">Object</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token keyword">int</span> m<span class="token punctuation">;</span>
+    descriptor<span class="token operator">:</span> <span class="token class-name">I</span>
+    flags<span class="token operator">:</span> ACC_PRIVATE
+
+  <span class="token keyword">public</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>rhythm7<span class="token punctuation">.</span></span>Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+    flags<span class="token operator">:</span> ACC_PUBLIC
+    <span class="token class-name">Code</span><span class="token operator">:</span>
+      stack<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+         <span class="token number">0</span><span class="token operator">:</span> aload_0
+         <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span>
+         <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
+      <span class="token class-name">LineNumberTable</span><span class="token operator">:</span>
+        line <span class="token number">3</span><span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token class-name">LocalVariableTable</span><span class="token operator">:</span>
+        <span class="token class-name">Start</span>  <span class="token class-name">Length</span>  <span class="token class-name">Slot</span>  <span class="token class-name">Name</span>   <span class="token class-name">Signature</span>
+            <span class="token number">0</span>       <span class="token number">5</span>     <span class="token number">0</span>  <span class="token keyword">this</span>   <span class="token class-name">Lcom</span><span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">inc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">I</span>
+    flags<span class="token operator">:</span> ACC_PUBLIC
+    <span class="token class-name">Code</span><span class="token operator">:</span>
+      stack<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+         <span class="token number">0</span><span class="token operator">:</span> aload_0
+         <span class="token number">1</span><span class="token operator">:</span> getfield      #<span class="token number">2</span>                  <span class="token comment">// Field m:I</span>
+         <span class="token number">4</span><span class="token operator">:</span> iconst_1
+         <span class="token number">5</span><span class="token operator">:</span> iadd
+         <span class="token number">6</span><span class="token operator">:</span> ireturn
+      <span class="token class-name">LineNumberTable</span><span class="token operator">:</span>
+        line <span class="token number">8</span><span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token class-name">LocalVariableTable</span><span class="token operator">:</span>
+        <span class="token class-name">Start</span>  <span class="token class-name">Length</span>  <span class="token class-name">Slot</span>  <span class="token class-name">Name</span>   <span class="token class-name">Signature</span>
+            <span class="token number">0</span>       <span class="token number">7</span>     <span class="token number">0</span>  <span class="token keyword">this</span>   <span class="token class-name">Lcom</span><span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">SourceFile</span><span class="token operator">:</span> <span class="token string">&quot;Main.java&quot;</span>
+</code></pre></div><h3 id="文件信息"><a href="#文件信息" class="header-anchor">#</a> 文件信息</h3> <p>开头的 7 行信息包括：Class 文件当前所在位置、最后修改时间、文件大小、MD5 值、编译自哪个文件、类的全限定名、jdk 次版本号、主版本号。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Classfile</span> <span class="token operator">/</span><span class="token class-name">E</span><span class="token operator">:</span><span class="token operator">/</span><span class="token class-name">JavaCode</span><span class="token operator">/</span><span class="token class-name">TestProj</span><span class="token operator">/</span>out<span class="token operator">/</span>production<span class="token operator">/</span><span class="token class-name">TestProj</span><span class="token operator">/</span>com<span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">.</span><span class="token keyword">class</span>
+  <span class="token class-name">Last</span> modified <span class="token number">2018</span><span class="token operator">-</span><span class="token number">4</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">;</span> size <span class="token number">362</span> bytes
+  MD5 checksum <span class="token number">4</span>aed8540b098992663b7ba08c65312de
+  <span class="token class-name">Compiled</span> from <span class="token string">&quot;Main.java&quot;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>rhythm7<span class="token punctuation">.</span></span>Main</span>
+  minor version<span class="token operator">:</span> <span class="token number">0</span>
+  major version<span class="token operator">:</span> <span class="token number">52</span>
+</code></pre></div><h3 id="访问标志"><a href="#访问标志" class="header-anchor">#</a> 访问标志</h3> <p>紧接着的是该类的访问标志：</p> <div class="language-java extra-class"><pre class="language-java"><code>  flags<span class="token operator">:</span> ACC_PUBLIC<span class="token punctuation">,</span> ACC_SUPER
+</code></pre></div><p>访问标志的含义如下：</p> <table><thead><tr><th>标志名称</th> <th>标志值</th> <th>含义</th></tr></thead> <tbody><tr><td>ACC_PUBLIC</td> <td>0x0001</td> <td>是否为 Public 类型</td></tr> <tr><td>ACC_FINAL</td> <td>0x0010</td> <td>是否被声明为 final，只有类可以设置</td></tr> <tr><td>ACC_SUPER</td> <td>0x0020</td> <td>是否允许使用 invokespecial 字节码指令的新语义</td></tr> <tr><td>ACC_INTERFACE</td> <td>0x0200</td> <td>标志这是一个接口</td></tr> <tr><td>ACC_ABSTRACT</td> <td>0x0400</td> <td>是否为 abstract 类型，对于接口或者抽象类来说，此标志值为真</td></tr> <tr><td>ACC_SYNTHETIC</td> <td>0x1000</td> <td>标志这个类并非由用户代码产生</td></tr> <tr><td>ACC_ANNOTATION</td> <td>0x2000</td> <td>标志这是一个注解</td></tr> <tr><td>ACC_ENUM</td> <td>0x4000</td> <td>标志这是一个枚举</td></tr></tbody></table> <h3 id="常量池"><a href="#常量池" class="header-anchor">#</a> 常量池</h3> <p>常量池可以理解成 Class 文件中的资源仓库。主要存放的是两大类常量：<strong>字面量（Literal）</strong> 和 <strong>符号引用（Symbolic References）</strong>。字面量类似于 Java 中的常量概念，如文本字符串、final 常量等。符号引用则属于编译原理方面的概念，包括以下三种：</p> <ul><li>类和接口的全限定名</li> <li>字段的名称和描述符</li> <li>方法的名称和描述符</li></ul> <p>不同于 C/C++，JVM 是在加载 Class 文件的时候才进行的动态链接，字段和方法符号引用只有在运行期转换后才能获得真正的内存入口地址。当虚拟机运行时，需要从常量池获得对应的符号引用，再在类创建或运行时解析并翻译到具体的内存地址中。</p> <p>直接通过反编译文件来查看字节码内容：</p> <div class="language-java extra-class"><pre class="language-java"><code>#<span class="token number">1</span> 	<span class="token operator">=</span> <span class="token class-name">Methodref</span>          #<span class="token number">4.</span>#<span class="token number">18</span>         <span class="token comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span>
+#<span class="token number">4</span> 	<span class="token operator">=</span> <span class="token class-name">Class</span>              #<span class="token number">21</span>            <span class="token comment">// java/lang/Object</span>
+#<span class="token number">7</span> 	<span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token generics"><span class="token punctuation">&lt;</span>init<span class="token punctuation">&gt;</span></span>
+#<span class="token number">8</span> 	<span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+#<span class="token number">18</span> <span class="token operator">=</span> <span class="token class-name">NameAndType</span>       #<span class="token number">7</span><span class="token operator">:</span>#<span class="token number">8</span>          	<span class="token comment">// &quot;&lt;init&gt;&quot;:()V</span>
+#<span class="token number">21</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>              java<span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">Object</span>
+</code></pre></div><p><strong>第一个常量</strong> 是一个方法定义，指向了第 4 和第 18 个常量。以此类推查看第 4 和第 18 个常量。最后可以拼接成第一个常量右侧的注释内容：<code>java/lang/Object.&quot;&lt;init&gt;&quot;:()V</code></p> <p>这段可以理解为该类的实例构造器的声明，由于 Main 类没有重写构造方法，所以调用的是父类 Object 的构造方法。该方法默认返回值类型是 V，即是 void 类型。</p> <p><strong>第二个常量</strong> 同理可得：</p> <div class="language-java extra-class"><pre class="language-java"><code>#<span class="token number">2</span> 	<span class="token operator">=</span> <span class="token class-name">Fieldref</span>           #<span class="token number">3.</span>#<span class="token number">19</span>         <span class="token comment">// com/rhythm7/Main.m:I</span>
+#<span class="token number">3</span> 	<span class="token operator">=</span> <span class="token class-name">Class</span>              #<span class="token number">20</span>            <span class="token comment">// com/rhythm7/Main</span>
+#<span class="token number">5</span> 	<span class="token operator">=</span> <span class="token class-name">Utf8</span>               m
+#<span class="token number">6</span> 	<span class="token operator">=</span> <span class="token class-name">Utf8</span>               <span class="token class-name">I</span>
+#<span class="token number">19</span> <span class="token operator">=</span> <span class="token class-name">NameAndType</span>        #<span class="token number">5</span><span class="token operator">:</span>#<span class="token number">6</span>          <span class="token comment">// m:I</span>
+#<span class="token number">20</span> <span class="token operator">=</span> <span class="token class-name">Utf8</span>               com<span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span>
+</code></pre></div><p>此处声明了一个字段 m，类型为 I，即 int 类型。关于字节码的类型对应如下：</p> <table><thead><tr><th>标识字符</th> <th>含义</th></tr></thead> <tbody><tr><td>B</td> <td>基本类型 byte</td></tr> <tr><td>C</td> <td>基本类型 char</td></tr> <tr><td>D</td> <td>基本类型 double</td></tr> <tr><td>F</td> <td>基本类型 float</td></tr> <tr><td>I</td> <td>基本类型 int</td></tr> <tr><td>J</td> <td>基本类型 long</td></tr> <tr><td>S</td> <td>基本类型 short</td></tr> <tr><td>Z</td> <td>基本类型 boolean</td></tr> <tr><td>V</td> <td>特殊类型 void</td></tr> <tr><td>L</td> <td>对象类型，以分号结尾，如 Ljava/lang/Object;</td></tr></tbody></table> <h3 id="字段表和方法表"><a href="#字段表和方法表" class="header-anchor">#</a> 字段表和方法表</h3> <p>常量池之后的是对类内部的方法描述，在字节码中以表的集合形式表现。暂且不管字节码文件的 16 进制文件内容如何，我们直接看反编译后的内容。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">int</span> m<span class="token punctuation">;</span>
+  descriptor<span class="token operator">:</span> <span class="token class-name">I</span>
+  flags<span class="token operator">:</span> ACC_PRIVATE
+</code></pre></div><p>此处声明了一个私有变量 m，类型为 int。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>rhythm7<span class="token punctuation">.</span></span>Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">V</span>
+   flags<span class="token operator">:</span> ACC_PUBLIC
+   <span class="token class-name">Code</span><span class="token operator">:</span>
+     stack<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+        <span class="token number">0</span><span class="token operator">:</span> aload_0
+        <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span>
+        <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
+     <span class="token class-name">LineNumberTable</span><span class="token operator">:</span>
+       line <span class="token number">3</span><span class="token operator">:</span> <span class="token number">0</span>
+     <span class="token class-name">LocalVariableTable</span><span class="token operator">:</span>
+       <span class="token class-name">Start</span>  <span class="token class-name">Length</span>  <span class="token class-name">Slot</span>  <span class="token class-name">Name</span>   <span class="token class-name">Signature</span>
+           <span class="token number">0</span>       <span class="token number">5</span>     <span class="token number">0</span>  <span class="token keyword">this</span>   <span class="token class-name">Lcom</span><span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">;</span>
+</code></pre></div><p>这里是构造方法：Main()，返回值为 void，公开方法。</p> <p>Code 内的主要属性为：</p> <ul><li>stack：最大操作数栈，JVM 运行时会根据这个值来分配栈帧（Frame）中的操作栈深度，此处为1。</li> <li>locals：局部变量所需的存储空间，单位为 Slot，Slot 是虚拟机为局部变量分配内存时所使用的最小单位，为 4 个字节大小。方法参数（包括实例方法中的隐藏参数 this）、显式异常处理器的参数（try catch 中的 catch 块所定义的异常）和方法体中定义的局部变量都需要使用局部变量表来存放。值得一提的是，locals 的大小并不一定等于所有局部变量所占的 Slot 之和，因为局部变量中的 Slot 是可以重用的。</li> <li>args_size：方法参数的个数，这里是 1，因为每个实例方法都会有一个隐藏参数 this。</li> <li>attribute_info：方法体内容，0、1、4 为字节码&quot;行号&quot;，该段代码的意思是将第一个引用类型本地变量推送至栈顶，然后执行该类型的实例方法，即常量池存放的第一个变量 <code>java/lang/Object.&quot;&lt;init&gt;&quot;:()V</code>，然后执行返回语句，结束方法。</li> <li>LineNumberTable：该属性的作用是描述源码行号与字节码行号（字节码偏移量）之间的对应关系。可以使用 <code>-g:none</code> 或 <code>-g:lines</code> 选项来取消或要求生成这项信息，如果选择不生成 LineNumberTable，当程序运行异常时将无法获取到发生异常的源码行号，无法按照源码的行数来调试程序。</li> <li>LocalVariableTable：该属性的作用是描述帧栈中局部变量与源码中定义的变量之间的关系。可以使用 <code>-g:none</code> 或 <code>-g:vars</code> 来取消或生成这项信息，如果没有生成这项信息，当别人引用这个方法时，将无法获取到参数名称，取而代之的是 arg0、arg1 这样的占位符。start 表示该局部变量在哪一行开始可见，length 表示可见行数，Slot 代表所在帧栈位置，Name 是变量名称，然后是类型签名。</li></ul> <p>同理可以分析 Main 类中的另一个方法 inc()：将 this 入栈，获取字段 #2 并置于栈顶，将 int 类型的 1 入栈，将栈内顶部的两个数值相加，返回一个 int 类型的值。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">inc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token class-name">I</span>
+   flags<span class="token operator">:</span> ACC_PUBLIC
+   <span class="token class-name">Code</span><span class="token operator">:</span>
+     stack<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+        <span class="token number">0</span><span class="token operator">:</span> aload_0
+        <span class="token number">1</span><span class="token operator">:</span> getfield      #<span class="token number">2</span>                  <span class="token comment">// Field m:I</span>
+        <span class="token number">4</span><span class="token operator">:</span> iconst_1
+        <span class="token number">5</span><span class="token operator">:</span> iadd
+        <span class="token number">6</span><span class="token operator">:</span> ireturn
+     <span class="token class-name">LineNumberTable</span><span class="token operator">:</span>
+       line <span class="token number">8</span><span class="token operator">:</span> <span class="token number">0</span>
+     <span class="token class-name">LocalVariableTable</span><span class="token operator">:</span>
+       <span class="token class-name">Start</span>  <span class="token class-name">Length</span>  <span class="token class-name">Slot</span>  <span class="token class-name">Name</span>   <span class="token class-name">Signature</span>
+           <span class="token number">0</span>       <span class="token number">7</span>     <span class="token number">0</span>  <span class="token keyword">this</span>   <span class="token class-name">Lcom</span><span class="token operator">/</span>rhythm7<span class="token operator">/</span><span class="token class-name">Main</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note-pages/jvm/02-类加载机制.html">
+        第2章 类加载机制
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_1-1-字节码文件" class="right-sidebar-item-level2">
+          1.1 字节码文件
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#字节码文件的结构" class="right-sidebar-item-level3">
+          字节码文件的结构
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#从一个例子开始" class="right-sidebar-item-level3">
+          从一个例子开始
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#_1-2-反编译字节码文件" class="right-sidebar-item-level2">
+          1.2 反编译字节码文件
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#文件信息" class="right-sidebar-item-level3">
+          文件信息
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#访问标志" class="right-sidebar-item-level3">
+          访问标志
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#常量池" class="right-sidebar-item-level3">
+          常量池
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#字段表和方法表" class="right-sidebar-item-level3">
+          字段表和方法表
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/81.ecb125f5.js" defer></script>
+  </body>
+</html>

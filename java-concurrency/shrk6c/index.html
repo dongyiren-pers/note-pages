@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第6章 synchronized 与 volatile | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/7.e3626849.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link router-link-active">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link router-link-active">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/java-concurrency/5e7bf11/" class="sidebar-link">第1章 理论基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5e7bf11/#_1-1-进程和线程产生的背景" class="sidebar-link">1.1 进程和线程产生的背景</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5e7bf11/#_1-2-上下文切换" class="sidebar-link">1.2 上下文切换</a></li></ul></li><li><a href="/note-pages/java-concurrency/6dbd27/" class="sidebar-link">第2章 多线程入门类和接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/6dbd27/#_2-1-thread-类和-runnable-接口" class="sidebar-link">2.1 Thread 类和 Runnable 接口</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/6dbd27/#_2-2-callable、future-与-futuretask" class="sidebar-link">2.2 Callable、Future 与 FutureTask</a></li></ul></li><li><a href="/note-pages/java-concurrency/09gu4m/" class="sidebar-link">第3章 线程状态</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09gu4m/#_3-1-线程的-6-个状态" class="sidebar-link">3.1 线程的 6 个状态</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09gu4m/#_3-2-线程状态的迁移" class="sidebar-link">3.2 线程状态的迁移</a></li></ul></li><li><a href="/note-pages/java-concurrency/5gmke5/" class="sidebar-link">第4章 线程间的通信</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5gmke5/#_4-1-锁与同步" class="sidebar-link">4.1 锁与同步</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5gmke5/#_4-2-等待-通知机制" class="sidebar-link">4.2 等待/通知机制</a></li></ul></li><li><a href="/note-pages/java-concurrency/vt6hbk/" class="sidebar-link">第5章 并发问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-1-可见性" class="sidebar-link">5.1 可见性</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-2-重排序" class="sidebar-link">5.2 重排序</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-3-顺序一致性" class="sidebar-link">5.3 顺序一致性</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-4-补充" class="sidebar-link">5.4 补充</a></li></ul></li><li><a href="/note-pages/java-concurrency/shrk6c/" aria-current="page" class="active sidebar-link">第6章 synchronized 与 volatile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-1-关键字-synchronized" class="sidebar-link">6.1 关键字 synchronized</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-2-对象内存布局与锁升级" class="sidebar-link">6.2 对象内存布局与锁升级</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-3-关键字-volatile" class="sidebar-link">6.3 关键字 volatile</a></li></ul></li><li><a href="/note-pages/java-concurrency/g56kek/" class="sidebar-link">第7章 J.U.C</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-1-lock-框架" class="sidebar-link">7.1 Lock 框架</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-2-同步器" class="sidebar-link">7.2 同步器</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-3-并发集合" class="sidebar-link">7.3 并发集合</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-4-原子类" class="sidebar-link">7.4 原子类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-5-线程池" class="sidebar-link">7.5 线程池</a></li></ul></li><li><a href="/note-pages/java-concurrency/b8s9yb/" class="sidebar-link">第8章 J.U.C 源码分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-1-abstractqueuedsynchronizer" class="sidebar-link">8.1 AbstractQueuedSynchronizer</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-2-reentrantlock" class="sidebar-link">8.2 ReentrantLock</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-3-concurrenthashmap-jdk-1-7" class="sidebar-link">8.3 ConcurrentHashMap（JDK 1.7）</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-4-concurrenthashmap-jdk-1-8" class="sidebar-link">8.4 ConcurrentHashMap（JDK 1.8）</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-4-threadpoolexecutor" class="sidebar-link">8.4 ThreadPoolExecutor</a></li></ul></li><li><a href="/note-pages/java-concurrency/09-ThreadLocal.html" class="sidebar-link">第9章 ThreadLocal</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-1-认识-threadlocal-线程局部存储" class="sidebar-link">9.1 认识 ThreadLocal 线程局部存储</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-2-threadlocal-源码分析" class="sidebar-link">9.2 ThreadLocal 源码分析</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-3-threadlocalmap-源码分析" class="sidebar-link">9.3 ThreadLocalMap 源码分析</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第6章-synchronized-与-volatile"><a href="#第6章-synchronized-与-volatile" class="header-anchor">#</a> 第6章 synchronized 与 volatile</h1> <h2 id="_6-1-关键字-synchronized"><a href="#_6-1-关键字-synchronized" class="header-anchor">#</a> 6.1 关键字 synchronized</h2> <p>synchronized 是 Java 并发模块非常重要的关键字，它是 Java 内建的一种同步机制，代表了某种内在锁定的概念，当一个线程对某个共享资源加锁后，其他想要获取共享资源的线程必须进行等待，synchronized 具有互斥和排他的语义。</p> <p>synchronized 是一种独占的关键字，但是它这种独占的语义更多的是为了增加线程安全性，通过独占某个资源以达到互斥、排他的目的。</p> <h3 id="如何使用"><a href="#如何使用" class="header-anchor">#</a> 如何使用</h3> <h4 id="修饰实例方法"><a href="#修饰实例方法" class="header-anchor">#</a> 修饰实例方法</h4> <p>给当前对象实例加锁，进入同步代码前要获得 <strong>当前对象实例的锁</strong> 。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="修饰静态方法"><a href="#修饰静态方法" class="header-anchor">#</a> 修饰静态方法</h4> <p>给当前类加锁，会作用于类的所有对象实例 ，进入同步代码前要获得 <strong>当前 Class 的锁</strong>。</p> <p>因为静态成员不属于任何一个实例对象，归整个类所有，不依赖于类的特定实例，被类的所有实例共享。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">synchronized</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="修饰代码块-锁指定对象-类"><a href="#修饰代码块-锁指定对象-类" class="header-anchor">#</a> 修饰代码块（锁指定对象 / 类）</h4> <p>对括号里指定的对象 / 类加锁：</p> <ul><li><code>synchronized(object)</code> 表示进入同步代码库前要获得 <strong>给定对象的锁</strong>。</li> <li><code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>给定 Class 的锁</strong>。</li></ul> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">synchronized</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="并发性质"><a href="#并发性质" class="header-anchor">#</a> 并发性质</h3> <h4 id="保证可见性"><a href="#保证可见性" class="header-anchor">#</a> 保证可见性</h4> <p>被 synchronized 修饰的代码，会在开始执行的时候调用字节码指令 monitorenter 加锁，执行完成后，会调用字节码指令 monitorexit 解锁。</p> <p>为了保证可见性，有一条规则是这样的：“对一个监视器锁的解锁，happens-before 于随后对这个监视器锁的加锁”，<strong>在对一个变量解锁之前，必须先把该变量同步回主存中</strong>，此外，后续线程 <strong>在对这个变量加锁之后，必须先从主存中读取该变量</strong>，从而保证了可见性。</p> <h4 id="不禁止重排序"><a href="#不禁止重排序" class="header-anchor">#</a> 不禁止重排序</h4> <p>由于处理器优化和指令重排等，CPU 有可能对代码进行乱序执行。需要注意的是，synchronized 是无法禁止指令重排和处理器优化的。如果要禁止重排序，则需要使用到 volatile。</p> <h4 id="保证原子性"><a href="#保证原子性" class="header-anchor">#</a> 保证原子性</h4> <p>同一时间只有一个线程执行临界区代码，这个操作不能被其它线程打断，因此天然就具有原子性。</p> <h3 id="实现原理"><a href="#实现原理" class="header-anchor">#</a> 实现原理</h3> <h4 id="同步语句块的实现原理"><a href="#同步语句块的实现原理" class="header-anchor">#</a> 同步语句块的实现原理</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SynchronizedDemo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;synchronized 代码块&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>通过 JDK 自带的 <code>javap</code> 命令查看 <code>SynchronizedDemo</code> 类的相关字节码信息：首先切换到类的对应目录执行 <code>javac SynchronizedDemo.java</code> 命令生成编译后的 .class 文件，然后执行 <code>javap -c -s -v -l SynchronizedDemo.class</code>。</p> <p><img src="/note-pages/assets/img/image-20230122213546969.0b4d7385.png" alt="image-20230122213546969"></p> <p>我们可以看出：<strong><code>synchronized</code> 同步语句块的实现使用的是 <code>monitorenter</code> 和 <code>monitorexit</code> 指令，其中 <code>monitorenter</code> 指令指向同步代码块的开始位置，<code>monitorexit</code> 指令则指明同步代码块的结束位置。</strong></p> <p>当执行 <code>monitorenter</code> 指令时，线程试图获取锁（即 <strong>对象监视器 <code>monitor</code></strong>）的持有权。</p> <blockquote><p>在 Java 虚拟机（HotSpot）中，Monitor 是基于 C++ 实现的，由 ObjectMonitor 实现的。每个对象中都内置了一个 ObjectMonitor 对象。另外，wait/notify 等方法同样依赖于 monitor 对象，这就是为什么只有在同步的块或者方法中才能调用 wait/notify 等方法，否则会抛出 java.lang.IllegalMonitorStateException 的异常的原因。</p></blockquote> <p>在执行 <code>monitorenter</code> 时，会尝试获取对象的锁，如果锁的计数器为 0 则表示锁可以被获取，获取后将锁计数器加 1。</p> <p>对象锁的的拥有者线程才可以执行 <code>monitorexit</code> 指令来释放锁。在执行 <code>monitorexit</code> 指令后，将锁计数器设为 0，表明锁被释放，其他线程可以尝试获取锁。</p> <p>如果获取对象锁失败，那当前线程就要阻塞等待，直到锁被另外一个线程释放为止。</p> <h4 id="同步方法的实现原理"><a href="#同步方法的实现原理" class="header-anchor">#</a> 同步方法的实现原理</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SynchronizedDemo2</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;synchronized 方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="/note-pages/assets/img/image-20230122220418888.8efd14d1.png" alt="image-20230122220418888"></p> <p><code>synchronized</code> 修饰的方法并没有 <code>monitorenter</code> 指令和 <code>monitorexit</code> 指令，取而代之的是 <code>ACC_SYNCHRONIZED</code> 标识，该标识指明了该方法是一个同步方法。JVM 通过该 <code>ACC_SYNCHRONIZED</code> 访问标志来辨别一个方法是否声明为同步方法，从而执行相应的同步调用。</p> <p>如果是实例方法，JVM 会尝试获取实例对象的锁。如果是静态方法，JVM 会尝试获取当前 Class 的锁。</p> <h2 id="_6-2-对象内存布局与锁升级"><a href="#_6-2-对象内存布局与锁升级" class="header-anchor">#</a> 6.2 对象内存布局与锁升级</h2> <h3 id="对象内存布局"><a href="#对象内存布局" class="header-anchor">#</a> 对象内存布局</h3> <p>对象在实例化之后，是被存放在堆内存中的。这里的对象由三部分组成：</p> <ul><li><strong>对象头</strong>：普通对象的对象头包含 <strong>MarkWord</strong> 和类型指针。而数组对象的对象头还多包含了数组长度。</li> <li><strong>成员变量</strong>：存储的是对象的真正的有效数据，即各个成员变量属性字段的值，如果拥有父类，还会包含父类的成员变量。</li> <li><strong>对齐填充</strong>：具体对齐填充的规则与 JVM 有关。在 Hotspot 中，对象的大小要求向 8 Byte 对齐，当对象长度不足 8 字节的整数倍时，需要再对象中进行填充操作。</li></ul> <h4 id="markword"><a href="#markword" class="header-anchor">#</a> MarkWord</h4> <p>在对象头中，MarkWord 一共有 64 个 bit，用于存储对象自身的运行时数据，标记对象处于一下状态中的某一种：</p> <p><img src="/note-pages/assets/img/image-20230810113339755.drawio.f93fe618.png" alt="image-20230810113339755.drawio"></p> <ul><li><strong>hashcode</strong>：代表对象的内存地址值，只有当 hashcode 被使用到的时候，才会填充入该对象的 MarkWord 内，在此之前值为 0。</li> <li><strong>分代年龄</strong>：代表对象的分代情况，用于 GC 的分代垃圾清理。</li> <li><strong>线程指针</strong>：指向拥有偏向锁的线程</li> <li><strong>epoch</strong>： 偏向锁的时间戳，用于偏向锁的 <strong>重偏向</strong> 与 <strong>批量撤销</strong>。</li></ul> <blockquote><p>Integer 包装类比 int 基本类型内存占得更多：Integer 实例作为一个对象，对象头（64bit）加上存的整形数据（32bit）以及其他部分，远远超过 int 所需的内存（32 bit）。</p></blockquote> <h3 id="锁升级"><a href="#锁升级" class="header-anchor">#</a> 锁升级</h3> <p>JDK 6 之前，通过 synchronized 关键字加锁时，无差别地使用重量级锁，重量级锁会使 CPU 在用户态和内核态之间频繁切换，有很大的系统消耗。后来随着 synchronized 的不断优化，提出了 <strong>锁升级</strong> 的概念，在 MarkWord 中，通过锁的标志位来表示当前对象的锁状态。</p> <p>synchronized 不断优化中，引入了偏向锁、轻量级锁、重量级锁的概念，在不同的情况逐步进行锁膨胀。过程如下图：</p> <p><img src="/note-pages/assets/img/image-20230810120517337.drawio.0857cfb4.png" alt="image-20230810120517337.drawio"></p> <h3 id="偏向锁"><a href="#偏向锁" class="header-anchor">#</a> 偏向锁</h3> <p><strong>有的对象可能大多使用的场合都只在一个线程中运行，只有少数情况会遇到多线程的竞争</strong>。此时，不需要直接设置竞争机制，或者直接使用消耗资源的锁。我们可以通过偏向锁，<strong>只在 MarkWord 上加一个线程 ID 标记</strong> 的低消耗的方式，来标志对象正在被使用。当遇到争抢的时候，再依情况进行锁升级。例如 StringBuffer 中很多方法都被 synchronized 修饰，但是它的使用场景经常只在一个线程中执行。</p> <h4 id="虚拟机开启偏向锁"><a href="#虚拟机开启偏向锁" class="header-anchor">#</a> 虚拟机开启偏向锁</h4> <p>Hotspot JVM 中，偏向锁默认是开启的，而且是从程序开始计时起，延迟 4s 开启。</p> <p>JVM 参数可以开启或者关闭偏向锁：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启：</span>
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span><span class="token class-name">UseBiasedLocking</span>
+<span class="token comment">// 关闭：</span>
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">-</span><span class="token class-name">UseBiasedLocking</span>
+</code></pre></div><p>默认偏向锁在程序启动 4s 后开启。在 JVM 还没开启偏向锁的时候，如果执行 synchronized 代码，将会直接升级为轻量级锁。</p> <blockquote><p>JVM 启动过程中会有很多线程争抢，所以默认启动时不打开偏向锁，而是等待 4s 过后才打开偏向锁。</p></blockquote> <p>修改偏向锁延迟时间的 JVM 操作为：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token operator">-</span>XX<span class="token operator">:</span><span class="token class-name">BiasedLockingStartupDelay</span><span class="token operator">=</span><span class="token number">0</span>
+</code></pre></div><p>开启偏向锁后，Java 对象被创建后将会是 <strong>匿名偏向态</strong>（可偏向态），未开启偏向锁，Java 对象被创建后将会是 <strong>普通对象</strong>（无锁态）。</p> <h4 id="普通对象与匿名偏向与偏向锁态"><a href="#普通对象与匿名偏向与偏向锁态" class="header-anchor">#</a> 普通对象与匿名偏向与偏向锁态</h4> <p>普通对象的 MarkWord 格式为：</p> <p><img src="/note-pages/assets/img/image-20230810140315956.drawio.056062fe.png" alt="image-20230810140315956.drawio"></p> <p>没有开启偏向锁时，当对象首次创建的时候，hashcode、分代年龄均以 0 作为初始值。其中 hashcode 只有被使用的时候，才会被赋予值，例如该对象调用了 hashcode() 方法。</p> <p>偏向锁态的 MarkWord 格式为：</p> <p><img src="/note-pages/assets/img/image-20230810140444106.drawio.e6dd1cf2.png" alt="image-20230810140444106.drawio"></p> <p>开启偏向锁后，对象实例化后，还没有线程对它上锁，<strong>线程ID</strong> 为初始值 0，即还没偏向任何一个线程。这个状态被称为 <strong>匿名偏向</strong>。</p> <p>此后，第一个对该对象上锁的线程，将会把 <strong>线程ID</strong> 记录到 MarkWord中。此时 MarkWord 的偏向锁位被置为 1，且锁标志位为 01。 此时这个对象就可以理解为偏向该线程，为 <strong>偏向锁态</strong>。</p> <h4 id="偏向锁的加锁过程"><a href="#偏向锁的加锁过程" class="header-anchor">#</a> 偏向锁的加锁过程</h4> <p>当 JVM 的偏向锁开启后，就可以对实例进行偏向锁的加锁。</p> <p>不需要特别的加锁语法，我们只需要使用 synchronized 修饰，虚拟机就会根据是否开启偏向锁等条件，自动帮助你实现加锁。如：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">synchronized</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//do something...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>假设 Thread-0 想要对 Object 对象上锁：</p> <p><strong>1. 加锁成功情况</strong></p> <p><strong>a. 首次加锁</strong></p> <ul><li>判断锁对象是否是 <strong>匿名偏向状态</strong>。</li> <li>如果是，Thread-0 使用 CAS（Compare and Swap）尝试将线程 ID 赋值给 Object 的 MarkWord。由于 Object 的 线程 ID 还未被使用，赋值成功。</li> <li>如果线程 ID 已被占用，而且不是不是 Thread-0 的线程 ID，说明该锁已经偏向别的线程，加锁失败。</li> <li>此时 Thread-0 线程首次给 Object 对象加了锁，Object 对象的 MarkWord 中的线程 ID 就会指向 Thread-0。</li></ul> <blockquote><p>需要注意的是这里所说的 <strong>线程ID</strong> 是操作系统赋予的唯一标识，并不是 Java 中 Thread.getId() 获取到的ID。</p></blockquote> <p><img src="/note-pages/assets/img/6337349361dd43d6b9fb48a047f6ae81.d2200b7f.png" alt=""></p> <p><strong>b. 再次加锁（锁重入）</strong></p> <p>synchronized 修饰的是可重入锁，如果在同一线程中，偏向锁对象是允许锁的重入的。不过偏向锁的重入很简单，<strong>只需要判断锁对象的 线程ID 是否是当前线程即可。</strong></p> <p>Thread-0 对 Object 首次加锁成功后，后续只需要判断线程 ID 是否还是自己即可，不需要重新 CAS 将线程 ID 更新到 Object 的 MarkWord 中。</p> <blockquote><p>偏向锁的重入没有计数器，只要线程 ID 还是自己，就认为可重入，即认为可以进入临界区。（同一线程中为顺序执行，不会有线程冲突）</p></blockquote> <p><strong>2. 加锁失败的情况</strong></p> <p>假设 Object 锁对象 已经被 Thread-0 占用，此时线程 Thread-1 来竞争锁对象，流程将如下：</p> <ul><li>判断是否为偏向锁；</li> <li>判断偏向锁指向的 Thread-0 是否还存在；</li> <li>如果线程 Thread-0 还存活，则暂停 Thread-0 ；</li> <li>将锁标志位设置为 00 （变为轻量级锁态）；【撤销偏向锁，并锁膨胀】</li> <li>从 Thread-0 栈帧中的 Lock Record 与 Object 对象的 MarkWord 做更新（细节见轻量级锁的加锁）；</li> <li>继续执行 Thread-0 的代码；</li> <li>线程 Thread-1 自旋来争取锁对象；</li></ul> <p>如果在第二步发现 Thread-0 已经不存在了，将会尝试进行 Object 偏向锁的重偏向。如果无法重偏向，将会进行锁升级，上述流程将会变为如下：</p> <ul><li>判断是否为偏向锁；</li> <li>判断偏向锁指向的 Thread-0 是否还存在;</li> <li>线程 Thread -0 不存在，且暂时无法进行重偏向；</li> <li>将锁标志位设置为 00（变为轻量级锁态）；【撤销偏向锁，并锁膨胀】</li> <li>Thread-1 对 Object 进行轻量级锁的加锁行为。（细节见轻量级锁的加锁）</li></ul> <p>如果成功重偏向，将与下述的重偏向一致。</p> <h4 id="偏向锁的解锁"><a href="#偏向锁的解锁" class="header-anchor">#</a> 偏向锁的解锁</h4> <div id="重偏向" class="anchor">重偏向</div><p>偏向锁没有实际意义上的解锁，离开 synchronized 代码块后，不会对偏向锁对象的 MarkWord 做修改，即偏向锁态的 MarkWord 中的 线程ID 仍然指向已经过时的线程。</p> <blockquote><p>偏向锁作为最 “轻” 的锁，这样设计的好处是：下次同一线程再次上锁，只需要判断自己是否曾经持有过锁，而不用再通过 CAS 去替换 MarkWord 中的 线程 ID 。如此减少了撤销偏向锁的资源消耗，同时减少了同一线程重入时候的 CAS 消耗。</p></blockquote> <p>如果对象虽然被多个线程访问，但是没有竞争，此时偏向原线程（如上述例子的Thread-0） 的对象就有了重偏向其他线程（如上述例子的 Thread-1） 的机会。</p> <p><strong>重偏向条件</strong>：JVM 会记录撤销偏向锁的次数，一旦撤销次数超过 <strong>20</strong>，后续该类中的对象都可以重新偏向加锁线程（即将线程 ID 指向新的线程）。后续线程对重偏向的对象加锁，仍为偏向锁。</p> <p>升级为轻量级锁将会增加 CPU 的负担，如果没有竞争，可以通过重新偏向来进行锁复用的优化。</p> <div id="批量撤销" class="anchor">批量撤销</div><p>JVM 会记录撤销偏向锁的记录，与重偏向不同的是，撤销次数超过 <strong>40</strong> 的时候，整个类的所有对象均变为不可偏向（锁标志位都变为无锁态 001），包括该类中未来新建的对象也是不可偏向。</p> <p>无锁态的对象认为偏向锁未开启，未来只会升级为轻量级锁，或者重量级锁，而不会再变为偏向锁。</p> <blockquote><p>开启偏向功能的对象，在初始化之后，MarkWord 锁标志位是 <strong>101</strong>，是可偏向状态。</p> <p>没开启偏向功能的对象，在初始化之后，MarkWord 锁标志位是 <strong>001</strong>，是不可偏向状态。</p></blockquote> <h3 id="轻量级锁"><a href="#轻量级锁" class="header-anchor">#</a> 轻量级锁</h3> <h4 id="偏向锁-→-轻量级锁"><a href="#偏向锁-→-轻量级锁" class="header-anchor">#</a> 偏向锁 → 轻量级锁</h4> <p>当只有一个线程访问偏向锁的时候，仅仅把线程 ID 记录到 MarkWord 中，没有额外的系统消耗。但是，当有新的线程也需要对该对象上锁，发现该对象已经被别的线程持有偏向锁（观察到 MarkWord 中有别的线程 ID），此时的竞争升级。</p> <p>系统将会 <strong>撤销偏向锁</strong>，并将锁升级为 <strong>轻量级锁（自旋锁）</strong>。</p> <p>设置轻量级锁，首先需要在当前线程的 <strong>栈帧</strong> 中创建一个 <strong>Lock Record</strong>，通过使用 CAS 尝试将 Lock Record 与 Object 的 MarkWord 互换，从而进行锁的争抢。</p> <h4 id="轻量级锁的加锁过程"><a href="#轻量级锁的加锁过程" class="header-anchor">#</a> 轻量级锁的加锁过程</h4> <p><strong>1. 加锁成功的情况</strong></p> <p><strong>a. 从无锁态加锁为轻量级锁</strong></p> <p>假设 Thread-0 要对 Object 上锁，且为轻量级锁的加锁</p> <ul><li>【判断锁标志位】判断 MarkWord 是否为无锁态（锁标志位为 001）；</li> <li>【创建 Lock Record】Thread-0 在自己的线程栈的栈帧中创建一个 Lock Record；</li> <li>【配置 Lock Record】新建的 Lock Record 中的记录内容为当前 Lock Record 的地址，锁对象的引用（Object reference） 为锁对象的内存地址；</li> <li>【CAS 交换 LR 与 MarkWord】通过 CAS 尝试交换 Lock Record 的内容与锁对象的 MarkWord。</li></ul> <p>如下图：</p> <p><img src="/note-pages/assets/img/2b6ccde607d9487cb44649d8d2d4a26c.268741fb.png" alt=""></p> <ul><li>交换成功即上锁成功，上锁后的情况如下图：</li></ul> <p><img src="/note-pages/assets/img/b9335376ef8a4e13b7f2796fe21d54f3.b8a71b73.png" alt=""></p> <p><strong>b. 从偏向锁升级为轻量级锁（锁对象不在重偏向状态）</strong></p> <p>假设 Thread-1 要对 Object 上锁，Object 当前状态为偏向锁态（MarkWord 锁标志位为 <strong>101</strong>）</p> <ul><li>【判断锁标志位】将 MarkWord 中的锁标志位更改为 00；</li> <li>【找到原线程】如果持有偏向锁的线程还在运行；</li> <li>【添加 Lock Record】在自己和持有锁的线程的栈帧中添加 Lock Record；</li> <li>【CAS 交换 LR 与 MarkWord】 持有锁的线程通过 CAS 尝试交换 Lock Record 与 锁对象的 MarkWord；</li> <li>【CAS 交换 LR 与 MarkWord】如果没有持有锁的线程 ，则自己通过 CAS 尝试交换 Lock Record 与 锁对象的 MarkWord；</li> <li>交换成功即上锁成功。</li></ul> <blockquote><p>如果锁对象在 重偏向状态，第二个线程将会对偏向锁态的对象 进行重偏向 到自己线程 ID 的行为，而不会升级为轻量级锁。</p></blockquote> <p><strong>c. 锁的重入</strong></p> <p>假设 Thread-0 已经持有 Object 的轻量级锁，此时在本线程内又要对其上锁，即锁重入，流程如下：</p> <ul><li>【判断锁标志位】判断 MarkWord 的锁标志位。</li> <li>【判断是否重入】如果是轻量级锁态，通过 MarkWord 的 ptr_to_lock_record 判断是否本线程持有锁；</li> <li>【非重入则锁膨胀】如果不是锁重入的情况，说明竞争冲突，膨胀为重量级锁；（见重量级锁的加锁）</li> <li>【是重入则加空 Lock Record】如果是锁重入，将在自己的栈帧中加一个 Lock Record，与初次上锁不同的是，记录内容为空（null），锁对象的引用仍然也指向 Object 锁对象。</li></ul> <p>需要注意的是，轻量级锁的重入无需计数器，在解锁过程中，遇到 LockRecord 的记录为空，说明是重入的锁，遇到记录不为空，才算真正解锁。</p> <p>锁重入的流程图如下：</p> <p><img src="/note-pages/assets/img/81a836d56c68426db7087821c89505d2.3cb8751a.png" alt="请添加图片描述"></p> <p><strong>2. 加锁失败的情况</strong></p> <p>如果遇到锁对象的 MarkWord 的 <strong>锁标志位为 00</strong>，说明该锁对象正在被一个线程持有，且为轻量级锁态。</p> <p>如果持有锁的线程不是自己，则加锁失败，进入锁升级流程（见重量级锁）。示意图如下：</p> <p><img src="/note-pages/assets/img/cf9bc797273a4c529cbd4d33ac88531f.2d3edb4d.png" alt=""></p> <p>当自旋到一定轮数，或者自旋线程数到达一定数量，该锁对象将会升级为重量级锁态，具体见后面探讨的重量级锁。</p> <h4 id="轻量级锁的解锁过程"><a href="#轻量级锁的解锁过程" class="header-anchor">#</a> 轻量级锁的解锁过程</h4> <p>退出栈帧的时候，如果 <strong>Lock Record 的记录为 null</strong>，说明是重入锁，仅仅是弹出栈帧。</p> <p>如果 <strong>Lock Record 的记录有值</strong>，说明本次解锁是真正解锁（解除的不是重入的锁）。</p> <p>解锁的过程为：</p> <ul><li>【判断锁标志位】如果 MarkWord 的锁标志位为 <strong>00</strong>（如果锁标志位为 <strong>10</strong>，说明在持有过程中，该锁对象升级为了重量级锁）</li> <li>【如果锁对象是重量级锁】如果  MarkWord 的锁标志位为 <strong>10</strong>，根据 MarkWord 的 ptr_to_monitor 找到 ObjectMonitor ，并将 owner 置为 null，同时唤醒 EntryList，由操作系统调度唤醒等待队列中的线程；</li> <li>【如果锁对象仍然是轻量级锁】如果 MarkWord 的锁标志位为 <strong>00</strong> ，通过 CAS 尝试 将 Lock Record 的 record 的值与 Object 锁对象的 MarkWord 交换；</li> <li>【解锁结果】交换完成后锁对象的 MarkWord 的锁标志位变为 <strong>001</strong>（上锁前为无锁态），或 <strong>101</strong>（上锁前为偏向锁态）；</li> <li>【退出栈帧，并删除 Lock Record】删除线程栈中对应的 Lock Record。</li></ul> <blockquote><p>偏向锁在撤销的时候会消耗系统资源，在争抢激烈的时候，效率没有轻量级锁高。</p></blockquote> <h3 id="重量级锁"><a href="#重量级锁" class="header-anchor">#</a> 重量级锁</h3> <h4 id="轻量级锁-→-重量级锁"><a href="#轻量级锁-→-重量级锁" class="header-anchor">#</a> 轻量级锁 → 重量级锁</h4> <p>重量级锁 <strong>需要内核态的参与</strong>，JVM 向操作系统申请 <strong>ObjectMonitor</strong>，这是一个 C++ 对象，需要内核态才能访问。锁对象的 MarkWord 指向 ObjectMonitor 的地址。</p> <p>ObjectMonitor 的主要结构如下图：</p> <p><img src="/note-pages/assets/img/743b7e6763ca4b74b157c2edad1b44aa.1c44e6ee.png" alt=""></p> <ul><li><strong>Owner</strong>：指向持有该 ObjectMonitor 的线程。</li> <li><strong>EntryList</strong>：等待队列，队列中的线程都为 <strong>BLOCKED</strong> 状态（Java 的六种线程状态之一），等待锁。</li> <li><strong>WaitSet</strong>：存放处于 <strong>WAITING</strong> 状态（Java 的六种线程状态之一）的线程。</li> <li><strong>Recursions</strong>：持有该 ObjectMonitor 的线程的重入次数。</li></ul> <p>重量级锁有等待队列，没有争抢到锁的线程经过自适应自旋后，进入等待队列，变为 <strong>BLOCKED</strong> 状态，等待被唤醒。再次启动去争取锁的过程将比较耗时。</p> <h4 id="重量级锁的加锁过程"><a href="#重量级锁的加锁过程" class="header-anchor">#</a> 重量级锁的加锁过程</h4> <p>当线程 <strong>获取轻量级锁失败</strong> 或 <strong>遇到 wait() 或 notify() 方法</strong>，将进入重量级锁升级状态。</p> <p>重量级加锁流程如下：</p> <ul><li>【申请 ObjectMonitor】让操作系统为 Obj 申请 ObjectMonitor 锁；</li> <li>【配置 ObjectMonitor 的 owner】如果 Obj 原先是轻量级锁，让 ObjectMonitor 的 owner 指向持有轻量级锁的线程（通过轻量级锁对象 MarkWord 的 ptr_to_lock_record）；</li> <li>【配置 ObjectMonitor 的 owner】如果 Obj 原先是偏向锁，让 ObjectMonitor 的 owner 指向持有偏向锁的线程（通过偏向锁对象 MarkWord 的 线程 ID）；</li> <li>【配置 ObjectMonitor 的 owner】如果 Obj 原先是无锁态，让 ObjectMonitor 的 owner 标空；</li> <li>【更新 Obj 锁标志位】并将 MarkWord 锁标志位改为 <strong>10</strong> （重量级锁态）；</li> <li>【将 Obj 与 Monitor 关联起来】让 Obj 的 MarkWord 指向 ObjectMonitor 地址;</li> <li>【线程自适应自旋】线程进行自适应自旋，如果在最大自旋次数内争抢成功，使得 ObjectMonitor 的 owner 指向自己，则加锁成功。</li> <li>【进入等待队列】如果在最大自选次数内没有争抢成功，则进入 ObjectMonitor 的 EntryList 等待队列中等待，并进入 BLOCKED 状态（Java 线程的六个状态之一）。</li></ul> <p>第二步，从轻量级锁升级为重量级的图示如下：</p> <p><img src="/note-pages/assets/img/be4414eccc5c4902b21d32172cbf6421.3dcb3cb9.png" alt=""></p> <p>第三步，从偏向锁升级为重量级锁的图示如下：</p> <p><img src="/note-pages/assets/img/28c3737f43af4b50857f4d8e04609cf5.5036630d.png" alt="请添加图片描述"></p> <blockquote><p>自适应自旋：根据情况，增加或减少最大次数的自旋。</p> <p>JDK6 之后使用了自适应自旋，如果线程通过自旋获得重量级锁，则下一次再有线程进行自适应自旋来争取该 ObjectMonitor ，可以提高几次的最大自旋次数。</p> <p>如果线程在最大次数自旋内没有获得重量级锁（没有争抢到 ObjectMonitor 的owner），则下次再有线程通过自适应自旋来争取该 ObjectMonitor，则减少最大自旋，甚至不进行自旋，直接进入 EntryList 而进入 <strong>BLOCKED</strong> 状态。</p></blockquote> <h4 id="重量级锁的解锁过程"><a href="#重量级锁的解锁过程" class="header-anchor">#</a> 重量级锁的解锁过程</h4> <ul><li>将 recursion 重入次数减 1。</li> <li>如果 recursion 为 0，表示本次是真正的解锁，将 owner 置空，并唤醒 EntryList 中的线程。</li></ul> <blockquote><p>唤醒：只是将线程变为就绪态，可以被 CPU 分配时间片，并不代表立即运行。</p></blockquote> <p>线程自旋占 CPU 资源，重度竞争的时候，自旋的时间很长，或者自旋的线程很多，CPU 花了更多时间在线程切换上。重量级锁通过内核态，将没有争抢到锁的线程阻塞，排队等待，减轻了系统资源的消耗。</p> <h2 id="_6-3-关键字-volatile"><a href="#_6-3-关键字-volatile" class="header-anchor">#</a> 6.3 关键字 volatile</h2> <h3 id="如何使用-2"><a href="#如何使用-2" class="header-anchor">#</a> 如何使用</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+</code></pre></div><h3 id="并发性质-2"><a href="#并发性质-2" class="header-anchor">#</a> 并发性质</h3> <h4 id="保证可见性-2"><a href="#保证可见性-2" class="header-anchor">#</a> 保证可见性</h4> <p>可见性问题主要指一个线程修改了共享变量值，而另一个线程却看不到。</p> <p>引起可见性问题的主要原因是每个线程拥有自己的一个高速缓存区——线程工作内存。volatile 关键字能有效的解决这个问题。看看下面的例子：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestVolatile</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> stop <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Thread-A</span>
+        <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token string">&quot;Thread A&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stop<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">}</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; stopped&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Thread-main</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; after 1 seconds&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        stop <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>执行输出如下：</p> <div class="language- extra-class"><pre class="language-text"><code>Thread[main,5,main] after 1 seconds
+</code></pre></div><p>可以看到 Thread-main 休眠 1 秒之后，设置 stop = ture，但是 Thread A 根本没停下来，这就是可见性问题。如果通过在 stop 变量前面加上 volatile 关键字则会真正 stop：</p> <div class="language- extra-class"><pre class="language-text"><code>Thread[main,5,main] after 1 seconds
+Thread[Thread A,5,main] stopped
+
+Process finished with exit code 0
+</code></pre></div><h4 id="禁止重排序"><a href="#禁止重排序" class="header-anchor">#</a> 禁止重排序</h4> <p>我们从一个最经典的例子来分析重排序问题。大家应该都很熟悉单例模式的实现，而在并发环境下的单例实现方式，我们通常可以采用 <strong>双重检查加锁（DCL）</strong> 的方式来实现。其源码如下：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token class-name">Singleton</span> singleton<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 构造函数私有，禁止外部实例化</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>singleton<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>现在我们分析一下为什么要在变量 singleton 之前加上volatile关键字。要理解这个问题，先要了解对象的构造过程，实例化一个对象其实可以分为三个步骤：</p> <ul><li>分配内存空间。</li> <li>初始化对象。</li> <li>将内存空间的地址赋值给对应的引用。</li></ul> <p>但是由于操作系统可以对指令进行重排序，所以上面的过程可能会变成如下过程：</p> <ul><li>分配内存空间。</li> <li>将内存空间的地址赋值给对应的引用。</li> <li>初始化对象</li></ul> <p>多线程环境下就可能将一个未初始化的对象引用暴露出来，从而导致不可预料的结果。因此，为了防止这个过程的重排序，我们需要将变量设置为 volatile 类型的变量。</p> <h4 id="不保证原子性"><a href="#不保证原子性" class="header-anchor">#</a> 不保证原子性</h4> <p>volatile 不能保证完全的原子性，只能保证单次的读 / 写操作具有原子性。</p> <h3 id="实现原理-2"><a href="#实现原理-2" class="header-anchor">#</a> 实现原理</h3> <h4 id="保证可见性的实现"><a href="#保证可见性的实现" class="header-anchor">#</a> 保证可见性的实现</h4> <p>写一段简单的 Java 代码，声明一个 volatile 变量，并赋值。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Test</span> test <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        test<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>通过 hsdis 和 jitwatch 工具可以得到编译后的汇编代码：</p> <div class="language- extra-class"><pre class="language-text"><code>......
+  0x0000000002951563: and    $0xffffffffffffff87,%rdi
+  0x0000000002951567: je     0x00000000029515f8
+  0x000000000295156d: test   $0x7,%rdi
+  0x0000000002951574: jne    0x00000000029515bd
+  0x0000000002951576: test   $0x300,%rdi
+  0x000000000295157d: jne    0x000000000295159c
+  0x000000000295157f: and    $0x37f,%rax
+  0x0000000002951586: mov    %rax,%rdi
+  0x0000000002951589: or     %r15,%rdi
+  0x000000000295158c: lock	 cmpxchg %rdi,(%rdx) 
+  0x0000000002951591: jne    0x0000000002951a15
+  0x0000000002951597: jmpq   0x00000000029515f8
+  0x000000000295159c: mov    0x8(%rdx),%edi
+  0x000000000295159f: shl    $0x3,%rdi
+  0x00000000029515a3: mov    0xa8(%rdi),%rdi
+  0x00000000029515aa: or     %r15,%rdi
+......
+</code></pre></div><p>volatile 修饰的共享变量进行写操作时会加上 lock 前缀指令。lock 前缀指令会引发两件事情：</p> <ul><li>将当前处理器缓存行的数据写回到系统内存。</li> <li>当前处理器的缓存回写到内存会导致其他处理器的缓存失效。</li></ul> <p>volatile 变量通过这样的机制就使得每个线程都能获得该变量的最新值。</p> <div id="缓存一致性协议" class="anchor">缓存一致性协议</div><p>IA-32 CPU 和 Intel 64 CPU 使用 <strong>缓存一致性协议（MESI）</strong> 去维护内部缓存和其他处理器缓存的一致性，避免在总线加 lock 锁。CPU 使用嗅探技术保证它的内部缓存、系统内存和其他处理器的缓存的数据在总线上保持一致。具体解决思路为：<strong>当 CPU 写数据时，如果发现操作的变量是共享变量，即在其他 CPU 中存在该变量的副本，那么会发出信号通知其他 CPU 将该变量的缓存行设置为无效状态。当其他 CPU 使用这个变量时，首先会去嗅探是否有对该变量更改的信号，当发现这个变量的缓存行已经无效时，会重新从内存中读取这个变量。</strong></p> <p>MESI 代表四种缓存状态：<strong>M</strong>odified（修改）、<strong>E</strong>xclusive（独占）、<strong>S</strong>hared（共享）和 <strong>I</strong>nvalid（无效）。这些状态代表了缓存中数据的不同情况和处理器对数据的访问权限。</p> <style>
+                        .table-column-x-x-container-1rq8vy3e table th:nth-of-type(1) {
+                            width: 30%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-1rq8vy3e table th:nth-of-type(2) {
+                            width: 70%;
+                            word-wrap: break-word;
+                        }
+                    </style><div class="table-column-x-x-container-1rq8vy3e"><table><thead><tr><th>状态</th> <th>描述</th></tr></thead> <tbody><tr><td><strong>M</strong>odified（修改）</td> <td>表示缓存中的数据已被修改，并且该数据是唯一有效的副本。其他缓存中的该数据副本无效。</td></tr> <tr><td><strong>E</strong>xclusive（独占）</td> <td>表示缓存中的数据是有效的，但没有被修改。其他缓存中没有该数据的副本。</td></tr> <tr><td><strong>S</strong>hared（共享）</td> <td>表示缓存中的数据是有效的，且可以在其他缓存中共享。多个缓存可以拥有相同的数据副本。</td></tr> <tr><td><strong>I</strong>nvalid（无效）</td> <td>表示缓存中的数据无效，可能是因为其他处理器修改了数据，或者本处理器修改了数据但还没有通知其他处理器。</td></tr></tbody></table></div><p><img src="/note-pages/assets/img/image-20230829150054376.ad1f08b1.png" alt="image-20230829150054376"></p> <h4 id="禁止重排序的实现"><a href="#禁止重排序的实现" class="header-anchor">#</a> 禁止重排序的实现</h4> <p>happens-before 规则中有一条 volatile 变量规则：<strong>对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。</strong></p> <p>假设线程 A 执行 writer 方法，线程 B 执行 reader 方法：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">class</span> <span class="token class-name">VolatileExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">volatile</span> <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">writer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>              <span class="token comment">// 1 线程 A 修改共享变量</span>
+        flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token comment">// 2 线程 A 写 volatile 变量</span>
+    <span class="token punctuation">}</span> 
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">reader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>         <span class="token comment">// 3 线程 B 读同一个 volatile 变量</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> a<span class="token punctuation">;</span>      <span class="token comment">// 4 线程 B 读共享变量</span>
+           	<span class="token comment">// ...</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>根据 happens-before 规则，上面过程会建立 3 类 happens-before 关系。</p> <ul><li>根据程序次序规则：1 happens-before 2 且 3 happens-before 4。</li> <li>根据 volatile 规则：2 happens-before 3。</li> <li>根据 happens-before 的传递性规则：1 happens-before 4。</li></ul> <p><img src="/note-pages/assets/img/java-thread-x-key-volatile-1.9d28a280.png" alt="img"></p> <p>当线程 A 将 volatile 变量 flag 更改为 true 后，线程 B 能够迅速感知。</p> <div id="内存屏障" class="anchor">内存屏障</div><p>为了性能优化，JMM 在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序。JMM 提供了 <strong>内存屏障（Memory Barrier）</strong> 阻止这种重排序。</p> <p>内存屏障，又称内存栅栏，是一个 CPU 指令。在程序运行时，为了提高执行性能，编译器和处理器会对指令进行重排序，JMM 为了保证在不同的编译器和 CPU 上有相同的结果，通过插入特定类型的内存屏障来禁止特定类型的编译器重排序和处理器重排序，<strong>插入一条内存屏障会告诉编译器和 CPU：任何指令都不能和这条 Memory Barrier 指令重排序。</strong></p> <p>Java 编译器会在生成指令系列时在适当的位置会插入内存屏障指令来禁止特定类型的处理器重排序。</p> <p>JMM 针对编译器制定 volatile 重排序规则表。</p> <table><thead><tr><th style="text-align:center;">第一个操作 \ 第二个操作</th> <th style="text-align:center;">普通读 / 写</th> <th style="text-align:center;">volatile 读</th> <th style="text-align:center;">volatile 写</th></tr></thead> <tbody><tr><td style="text-align:center;">普通读 / 写</td> <td style="text-align:center;"></td> <td style="text-align:center;"></td> <td style="text-align:center;">NO</td></tr> <tr><td style="text-align:center;">volatile 读</td> <td style="text-align:center;">NO</td> <td style="text-align:center;">NO</td> <td style="text-align:center;">NO</td></tr> <tr><td style="text-align:center;">volatile 写</td> <td style="text-align:center;"></td> <td style="text-align:center;">NO</td> <td style="text-align:center;">NO</td></tr></tbody></table> <p>&quot; NO &quot; 表示禁止重排序。</p> <p>编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM 采取了保守的策略。</p> <p>volatile 写是在前面和后面分别插入内存屏障，而 volatile 读操作是在后面插入两个内存屏障：</p> <ul><li>在每个 volatile 写操作的前面插入一个 StoreStore 屏障，后面插入一个 StoreLoad 屏障。</li> <li>在每个 volatile 读操作的后面插入一个 LoadLoad 屏障和一个 LoadStore 屏障。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/java-concurrency/vt6hbk/" class="prev">
+        第5章 并发问题
+      </a></span> <span class="next"><a href="/note-pages/java-concurrency/g56kek/">
+        第7章 J.U.C
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_6-1-关键字-synchronized" class="right-sidebar-item-level2">
+          6.1 关键字 synchronized
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#如何使用" class="right-sidebar-item-level3">
+          如何使用
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#修饰实例方法" class="right-sidebar-item-level4">
+          修饰实例方法
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#修饰静态方法" class="right-sidebar-item-level4">
+          修饰静态方法
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#修饰代码块-锁指定对象-类" class="right-sidebar-item-level4">
+          修饰代码块（锁指定对象 / 类）
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#并发性质" class="right-sidebar-item-level3">
+          并发性质
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#保证可见性" class="right-sidebar-item-level4">
+          保证可见性
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#不禁止重排序" class="right-sidebar-item-level4">
+          不禁止重排序
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#保证原子性" class="right-sidebar-item-level4">
+          保证原子性
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#实现原理" class="right-sidebar-item-level3">
+          实现原理
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#同步语句块的实现原理" class="right-sidebar-item-level4">
+          同步语句块的实现原理
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#同步方法的实现原理" class="right-sidebar-item-level4">
+          同步方法的实现原理
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#_6-2-对象内存布局与锁升级" class="right-sidebar-item-level2">
+          6.2 对象内存布局与锁升级
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#对象内存布局" class="right-sidebar-item-level3">
+          对象内存布局
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#markword" class="right-sidebar-item-level4">
+          MarkWord
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#锁升级" class="right-sidebar-item-level3">
+          锁升级
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#偏向锁" class="right-sidebar-item-level3">
+          偏向锁
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#虚拟机开启偏向锁" class="right-sidebar-item-level4">
+          虚拟机开启偏向锁
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#普通对象与匿名偏向与偏向锁态" class="right-sidebar-item-level4">
+          普通对象与匿名偏向与偏向锁态
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#偏向锁的加锁过程" class="right-sidebar-item-level4">
+          偏向锁的加锁过程
+        </a></li><li id="tab-item20" class="right-sidebar-item"><a href="#偏向锁的解锁" class="right-sidebar-item-level4">
+          偏向锁的解锁
+        </a></li><li id="tab-item21" class="right-sidebar-item"><a href="#轻量级锁" class="right-sidebar-item-level3">
+          轻量级锁
+        </a></li><li id="tab-item22" class="right-sidebar-item"><a href="#偏向锁-→-轻量级锁" class="right-sidebar-item-level4">
+          偏向锁 → 轻量级锁
+        </a></li><li id="tab-item23" class="right-sidebar-item"><a href="#轻量级锁的加锁过程" class="right-sidebar-item-level4">
+          轻量级锁的加锁过程
+        </a></li><li id="tab-item24" class="right-sidebar-item"><a href="#轻量级锁的解锁过程" class="right-sidebar-item-level4">
+          轻量级锁的解锁过程
+        </a></li><li id="tab-item25" class="right-sidebar-item"><a href="#重量级锁" class="right-sidebar-item-level3">
+          重量级锁
+        </a></li><li id="tab-item26" class="right-sidebar-item"><a href="#轻量级锁-→-重量级锁" class="right-sidebar-item-level4">
+          轻量级锁 → 重量级锁
+        </a></li><li id="tab-item27" class="right-sidebar-item"><a href="#重量级锁的加锁过程" class="right-sidebar-item-level4">
+          重量级锁的加锁过程
+        </a></li><li id="tab-item28" class="right-sidebar-item"><a href="#重量级锁的解锁过程" class="right-sidebar-item-level4">
+          重量级锁的解锁过程
+        </a></li><li id="tab-item29" class="right-sidebar-item"><a href="#_6-3-关键字-volatile" class="right-sidebar-item-level2">
+          6.3 关键字 volatile
+        </a></li><li id="tab-item30" class="right-sidebar-item"><a href="#如何使用-2" class="right-sidebar-item-level3">
+          如何使用
+        </a></li><li id="tab-item31" class="right-sidebar-item"><a href="#并发性质-2" class="right-sidebar-item-level3">
+          并发性质
+        </a></li><li id="tab-item32" class="right-sidebar-item"><a href="#保证可见性-2" class="right-sidebar-item-level4">
+          保证可见性
+        </a></li><li id="tab-item33" class="right-sidebar-item"><a href="#禁止重排序" class="right-sidebar-item-level4">
+          禁止重排序
+        </a></li><li id="tab-item34" class="right-sidebar-item"><a href="#不保证原子性" class="right-sidebar-item-level4">
+          不保证原子性
+        </a></li><li id="tab-item35" class="right-sidebar-item"><a href="#实现原理-2" class="right-sidebar-item-level3">
+          实现原理
+        </a></li><li id="tab-item36" class="right-sidebar-item"><a href="#保证可见性的实现" class="right-sidebar-item-level4">
+          保证可见性的实现
+        </a></li><li id="tab-item37" class="right-sidebar-item"><a href="#禁止重排序的实现" class="right-sidebar-item-level4">
+          禁止重排序的实现
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/7.e3626849.js" defer></script>
+  </body>
+</html>

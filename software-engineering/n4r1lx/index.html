@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第1章 软件工程概述 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/40.9c05b0ae.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/software-engineering/n4r1lx/" aria-current="page" class="active sidebar-link">第1章 软件工程概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-1-软件危机" class="sidebar-link">1.1 软件危机</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-2-软件" class="sidebar-link">1.2 软件</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-3-软件工程" class="sidebar-link">1.3 软件工程</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-4-软件生命周期" class="sidebar-link">1.4 软件生命周期</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-5-软件生命周期模型" class="sidebar-link">1.5 软件生命周期模型</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-6-新型软件生命周期模型" class="sidebar-link">1.6 新型软件生命周期模型</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/n4r1lx/#_1-7-软件质量与生产率" class="sidebar-link">1.7 软件质量与生产率</a></li></ul></li><li><a href="/note-pages/software-engineering/02-可行性研究.html" class="sidebar-link">第2章 可行性研究</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/02-可行性研究.html#_2-1-可行性研究的任务" class="sidebar-link">2.1 可行性研究的任务</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/02-可行性研究.html#_2-2-可行性研究的过程" class="sidebar-link">2.2 可行性研究的过程</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/02-可行性研究.html#_2-3-系统流程图" class="sidebar-link">2.3 系统流程图</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/02-可行性研究.html#_2-4-数据流图" class="sidebar-link">2.4 数据流图</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/02-可行性研究.html#_2-5-数据字典" class="sidebar-link">2.5 数据字典</a></li></ul></li><li><a href="/note-pages/software-engineering/03-需求分析.html" class="sidebar-link">第3章 需求分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/03-需求分析.html#_3-1-需求分析的任务" class="sidebar-link">3.1 需求分析的任务</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/03-需求分析.html#_3-2-与用户沟通获取需求的方法" class="sidebar-link">3.2 与用户沟通获取需求的方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/03-需求分析.html#_3-3-分析建模" class="sidebar-link">3.3 分析建模</a></li></ul></li><li><a href="/note-pages/software-engineering/04-总体设计.html" class="sidebar-link">第4章 总体设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/04-总体设计.html#_4-1-设计过程" class="sidebar-link">4.1 设计过程</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/04-总体设计.html#_4-2-设计原理" class="sidebar-link">4.2 设计原理</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/04-总体设计.html#_5-3-启发规则" class="sidebar-link">5.3 启发规则</a></li></ul></li><li><a href="/note-pages/software-engineering/05-详细设计.html" class="sidebar-link">第5章 详细设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/05-详细设计.html#_5-1-结构化程序设计" class="sidebar-link">5.1 结构化程序设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/05-详细设计.html#_5-2-人机界面设计" class="sidebar-link">5.2 人机界面设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/05-详细设计.html#_5-3-过程设计的工具" class="sidebar-link">5.3 过程设计的工具</a></li></ul></li><li><a href="/note-pages/software-engineering/06-实现.html" class="sidebar-link">第6章 实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-1-编码" class="sidebar-link">6.1 编码</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-2-软件测试基础" class="sidebar-link">6.2 软件测试基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-3-软件测试方法" class="sidebar-link">6.3 软件测试方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-4-软件测试过程" class="sidebar-link">6.4 软件测试过程</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-5-白盒测试技术" class="sidebar-link">6.5 白盒测试技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-6-黑盒测试技术" class="sidebar-link">6.6 黑盒测试技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/06-实现.html#_6-7-调试" class="sidebar-link">6.7 调试</a></li></ul></li><li><a href="/note-pages/software-engineering/07-维护.html" class="sidebar-link">第7章 维护</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/07-维护.html#_7-1-软件维护的定义" class="sidebar-link">7.1 软件维护的定义</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/07-维护.html#_7-2-软件维护的特点" class="sidebar-link">7.2 软件维护的特点</a></li><li class="sidebar-sub-header"><a href="/note-pages/software-engineering/07-维护.html#_7-3-软件的可维护性" class="sidebar-link">7.3 软件的可维护性</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第1章-软件工程概述"><a href="#第1章-软件工程概述" class="header-anchor">#</a> 第1章 软件工程概述</h1> <h2 id="_1-1-软件危机"><a href="#_1-1-软件危机" class="header-anchor">#</a> 1.1 软件危机</h2> <p><strong>软件危机：软件开发和维护中出现的一系列问题</strong>。软件工程的出现主要是由于软件危机的出现。</p> <p>软件危机的表现：</p> <ul><li>成本和进度难以掌握（时间和金钱）</li> <li>对用户需求了解模糊，用户对软件不满意（用户要求）</li> <li>质量不可靠（可靠性）</li> <li>不可维护（维护性）</li></ul> <p>造成软件危机的原因：管理和控制软件开发过程相当困难；开发和维护方法不准确。</p> <h2 id="_1-2-软件"><a href="#_1-2-软件" class="header-anchor">#</a> 1.2 软件</h2> <div style="color:red;"><p><strong>软件 = 程序 + 数据 + 文档</strong></p></div><p>按软件的 <strong>功能</strong> 进行划分，软件可以划分为 <strong>系统软件、支撑软件、应用软件</strong>。</p> <p><strong>软件的复杂性是固有的</strong>，它引起人员通信困难、开发费用超支、开发时间超时等问题。</p> <h2 id="_1-3-软件工程"><a href="#_1-3-软件工程" class="header-anchor">#</a> 1.3 软件工程</h2> <p><strong>软件工程</strong>：开发、运行、维护和修复软件的系统方法；是研究软件生产的一门学科。</p> <p><strong>软件工程方法学</strong>：把软件在生命周期全过程中使用的一整套技术的集合，称为软件工程方法学（范型）。</p> <p>软件工程方法学的基本要素包括：<strong>方法、工具和过程</strong>。</p> <p><strong>传统方法学和面向对象方法学</strong> 是目前适用的最广泛的两种软件工程方法学。</p> <p>软件工程方法学的目的是：使软件生产规范化和工程化。<strong>软件工程方法得以实施的主要保证是软件开发工具和软件开发的环境</strong>。</p> <p>面向对象方法学与传统方法学的对比：传统方法学强调 <strong>自顶向下、逐层分解、顺序开发</strong>；面向对象方法学强调 <strong>主动地多次反复迭代地开发</strong>，保证了在各项开发活动之间的平滑过渡。</p> <p>面向对象方法学的优点：降低了软件产品的复杂性；提高了软件的可理解性；简化了软件的开发和维护工作；提高了软件的可重用性。</p> <h2 id="_1-4-软件生命周期"><a href="#_1-4-软件生命周期" class="header-anchor">#</a> 1.4 软件生命周期</h2> <p>软件生命周期：软件产品或系统从设计、投入使用到被淘汰的全过程。</p> <p><strong>软件生命周期由软件定义、软件开发和软件维护三个时期组成</strong>，每个时期又可进一步划分成若干阶段。</p> <ul><li><strong>软件定义</strong>：软件定义时期通常进一步划分成 3 个阶段，即 <strong>问题定义</strong>、<strong>可行性研究</strong> 和 <strong>需求分析</strong>。需求分析中开发人员要从用户那里了解软件 “做什么”，需求分析是软件开发工作的基础。</li> <li><strong>软件开发</strong>：<strong>总体设计、详细设计、编码和单元测试、综合测试</strong>。其中前两个阶段又称为系统设计，后两个阶段又称为系统实现。</li> <li><strong>运行和维护（软件维护）</strong></li></ul> <h2 id="_1-5-软件生命周期模型"><a href="#_1-5-软件生命周期模型" class="header-anchor">#</a> 1.5 软件生命周期模型</h2> <h3 id="瀑布模型"><a href="#瀑布模型" class="header-anchor">#</a> 瀑布模型</h3> <p>将软件生存周期的各项活动规定为 <strong>依照固定顺序连接</strong> 的若干阶段性工作，形如瀑布流水，最终得到软件产品。传统的瀑布模型没有反馈环。</p> <p><img src="/note-pages/assets/img/image-20240120223941731.7f839218.png" alt="image-20240120223941731"></p> <p><strong>特点</strong>：阶段间具有具有顺序性和依赖性；推迟实现；质量保证。</p> <p><strong>适用于</strong>：需求是预知的；软件实现方法是成熟的；项目周期较短。</p> <h3 id="快速原型模型"><a href="#快速原型模型" class="header-anchor">#</a> 快速原型模型</h3> <p><strong>快速原型</strong> 是 <strong>快速</strong> 建立起来的可以在计算机上运行的程序，它所能完成的功能往往是最终产品能完成的功能的一个子集。</p> <p><img src="/note-pages/assets/img/image-20240120224128167.842c416f.png" alt="image-20240120224128167"></p> <p><strong>特点</strong>：快速原型模型 <strong>不带反馈环</strong>，软件产品的开发基本上是 <strong>线性顺序</strong> 进行的。</p> <h3 id="增量模型"><a href="#增量模型" class="header-anchor">#</a> 增量模型</h3> <p>增量模型将项目划分为多个小的 <strong>增量</strong> 部分，每个增量都是一个可交付的、完整的功能子集。</p> <p><img src="/note-pages/assets/img/image-20240121130143133.42047fd8.png" alt="image-20240121130143133"></p> <p><strong>特点</strong>：在每个增量中，团队可以按照优先级完成必要的功能和特性。这种方法可以让团队 <strong>快速交付部分功能</strong>，并在后续增量中逐步完善和改进。</p> <p><strong>适用于</strong>：对于 <strong>紧迫的项目交付需求</strong> 和 <strong>并行开发</strong> 的情况，增量模型可以帮助团队以迅速且可控的方式进行开发，并及时满足客户的要求。</p> <h3 id="螺旋模型"><a href="#螺旋模型" class="header-anchor">#</a> 螺旋模型</h3> <p>螺旋模型的基本思想是 <strong>使用原型及其他方法</strong> 来尽量 <strong>降低风险</strong>。把它看作 <strong>在每个阶段之前都增加了风险分析过程</strong> 的 <strong>快速原型模型</strong>。</p> <p><img src="/note-pages/assets/img/image-20240120224358847.efb4317e.png" alt="image-20240120224358847"></p> <h3 id="喷泉模型"><a href="#喷泉模型" class="header-anchor">#</a> 喷泉模型</h3> <p>喷泉模型是典型的 <strong>面向对象</strong> 生命周期模型。 “喷泉”这个词体现了面向对象软件开发过程 <strong>迭代</strong> 和 <strong>无缝</strong> 的特性。</p> <ul><li>迭代性指系统某个部分常常重复工作多次，相关功能在每次迭代中随之加入演化的系统，即求精的一个过程。</li> <li>无间隙是指在分析、设计和实现等开发活动之间不存在明显的边界。</li></ul> <p><img src="/note-pages/assets/img/image-20240126223646540.4ab9406d.png" alt="image-20240126223646540"></p> <p><strong>适用于</strong>：面向对象的软件开发过程。</p> <h2 id="_1-6-新型软件生命周期模型"><a href="#_1-6-新型软件生命周期模型" class="header-anchor">#</a> 1.6 新型软件生命周期模型</h2> <h3 id="敏捷开发"><a href="#敏捷开发" class="header-anchor">#</a> 敏捷开发</h3> <p><strong>定义</strong>：敏捷方法的主要特点就是具有快速及灵活的响应变更的能力。</p> <p>敏捷开发是一种 <strong>以人为核心、迭代、循序渐进</strong> 的开发方法。在敏捷开发中，软件项目的构建被切分成多个子项目，各个子项目的成果都经过测试，具备集成和可运行的特征。换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直处于可使用状态。</p> <p>敏捷方法很多，包括极限编程（XP）、Scrum、功能驱动开发（FDD）、水晶、净室开发等多种方法，这些方法本质实际上是一样的，都遵循“敏捷宣言”原则。</p> <div id="极限编程" class="anchor">极限编程</div><p>极限编程（eXtreme Programming）是一种轻量级的软件开发方法，是一种以实践为基础的软件工程过程和思想。</p> <p>极限编程注重高度灵活性和快速响应变化的能力。它通过迭代开发、持续交付和频繁反馈的方式，使团队能够适应需求变化，并在项目进展中及时调整。</p> <h2 id="_1-7-软件质量与生产率"><a href="#_1-7-软件质量与生产率" class="header-anchor">#</a> 1.7 软件质量与生产率</h2> <p>质量第一，生产率第二。高质量对所有用户都有价值，而高生产率只对开发方有意义；软件的质量因素一般倾向于：可维护性、可靠性、可理解性和效率。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note-pages/software-engineering/02-可行性研究.html">
+        第2章 可行性研究
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_1-1-软件危机" class="right-sidebar-item-level2">
+          1.1 软件危机
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#_1-2-软件" class="right-sidebar-item-level2">
+          1.2 软件
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#_1-3-软件工程" class="right-sidebar-item-level2">
+          1.3 软件工程
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#_1-4-软件生命周期" class="right-sidebar-item-level2">
+          1.4 软件生命周期
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_1-5-软件生命周期模型" class="right-sidebar-item-level2">
+          1.5 软件生命周期模型
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#瀑布模型" class="right-sidebar-item-level3">
+          瀑布模型
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#快速原型模型" class="right-sidebar-item-level3">
+          快速原型模型
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#增量模型" class="right-sidebar-item-level3">
+          增量模型
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#螺旋模型" class="right-sidebar-item-level3">
+          螺旋模型
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#喷泉模型" class="right-sidebar-item-level3">
+          喷泉模型
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#_1-6-新型软件生命周期模型" class="right-sidebar-item-level2">
+          1.6 新型软件生命周期模型
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#敏捷开发" class="right-sidebar-item-level3">
+          敏捷开发
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#_1-7-软件质量与生产率" class="right-sidebar-item-level2">
+          1.7 软件质量与生产率
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/40.9c05b0ae.js" defer></script>
+  </body>
+</html>

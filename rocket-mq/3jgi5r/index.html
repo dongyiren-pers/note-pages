@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第2章 RocketMQ 架构 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/84.c584da75.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link router-link-active">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link router-link-active">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/rocket-mq/m0u1wt/" class="sidebar-link">第1章 RocketMQ 概念和特性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/m0u1wt/#_1-1-mq-的三大特性" class="sidebar-link">1.1 MQ 的三大特性</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/m0u1wt/#_1-2-rocketmq-的特点" class="sidebar-link">1.2 RocketMQ 的特点</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/m0u1wt/#_1-3-rocketmq-的专业术语" class="sidebar-link">1.3 RocketMQ 的专业术语</a></li></ul></li><li><a href="/note-pages/rocket-mq/3jgi5r/" aria-current="page" class="active sidebar-link">第2章 RocketMQ 架构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/3jgi5r/#_2-1-名称服务器-nameserver" class="sidebar-link">2.1 名称服务器 NameServer</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/3jgi5r/#_2-2-消息服务器-broker" class="sidebar-link">2.2 消息服务器 Broker</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/3jgi5r/#_2-3-生产者-producer" class="sidebar-link">2.3 生产者 Producer</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/3jgi5r/#_2-4-消费者-consumer" class="sidebar-link">2.4 消费者 Consumer</a></li></ul></li><li><a href="/note-pages/rocket-mq/03-RocketMQ设计.html" class="sidebar-link">第3章 RocketMQ 设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/03-RocketMQ设计.html#_3-1-消息存储" class="sidebar-link">3.1 消息存储</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/03-RocketMQ设计.html#_3-2-消息消费" class="sidebar-link">3.2 消息消费</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/03-RocketMQ设计.html#_3-3-负载均衡" class="sidebar-link">3.3 负载均衡</a></li></ul></li><li><a href="/note-pages/rocket-mq/nix7b8/" class="sidebar-link">第4章 RocketMQ 常见问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/nix7b8/#_4-1-消息丢失" class="sidebar-link">4.1 消息丢失</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/nix7b8/#_4-2-消息重复" class="sidebar-link">4.2 消息重复</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/nix7b8/#_4-3-消息堆积" class="sidebar-link">4.3 消息堆积</a></li></ul></li><li><a href="/note-pages/rocket-mq/e70sbg/" class="sidebar-link">第5章 RocketMQ 高级特性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/e70sbg/#_5-1-顺序消息" class="sidebar-link">5.1 顺序消息</a></li><li class="sidebar-sub-header"><a href="/note-pages/rocket-mq/e70sbg/#_5-2-消息事务" class="sidebar-link">5.2 消息事务</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第2章-rocketmq-架构"><a href="#第2章-rocketmq-架构" class="header-anchor">#</a> 第2章 RocketMQ 架构</h1> <p>RocketMQ 主要有四大核心组成部分：<strong>NameServer</strong>、<strong>Broker</strong>、<strong>Producer</strong> 以及 <strong>Consumer</strong> 四部分。</p> <p><img src="/note-pages/assets/img/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZkZlZS1vcHM=,size_20,color_FFFFFF,t_70,g_se,x_16.3575cd24.png" alt="在这里插入图片描述"></p> <h2 id="_2-1-名称服务器-nameserver"><a href="#_2-1-名称服务器-nameserver" class="header-anchor">#</a> 2.1 名称服务器 NameServer</h2> <p>NameServer 是整个 RocketMQ 的 “大脑” ，它是 RocketMQ 的服务注册中心，因此，RocketMQ 需要先启动 NameServer 再启动 Rocket 中的 Broker。</p> <blockquote><p>RocketMQ 的思想来自于 Kafka，而 Kafka 是依赖了 Zookeeper 的。所以，在 RocketMQ 的早期版本，即在 MetaQ v1.0 与 v2.0 版本中，也是依赖于 Zookeeper 的。从 MetaQ v3.0，使用自己的 NameServer。</p></blockquote> <h3 id="nameserver-功能"><a href="#nameserver-功能" class="header-anchor">#</a> NameServer 功能</h3> <p>名称服务器（NameServer）用来保存 Broker 相关元信息并为 Producer 和 Consumer 查找 Broker 信息。NameServer 被设计成几乎 <strong>无状态</strong> 的，可以横向扩展，节点之间相互之间无通信，通过部署多台机器来标记自己是一个伪集群。</p> <p>每个 Broker 在启动的时候会到 NameServer 注册，Producer 在发送消息前会根据 Topic 到 NameServer 获取到 Broker 的路由信息，进而和 Broker 取得连接。Consumer 同样会定时获取 Topic 的路由信息。</p> <h3 id="与-zookeeper-的区别"><a href="#与-zookeeper-的区别" class="header-anchor">#</a> 与 ZooKeeper 的区别</h3> <p>NameServer 和 ZooKeeper 的作用大致是相同的，从宏观上来看，NameServer 做的东西很少，就是保存一些运行数据，<strong>NameServer之间不互连，这就需要 Broker 端连接所有的 NameServer</strong>，运行数据的改动要发送到每一个 NameServer 来保证运行数据的一致性，这样就变成了 NameServer 很轻量级，但是 Broker 端就要做更多的东西了。</p> <p>而 ZooKeeper，Broker 只需要连接其中的一台机器，运行数据分发、一致性都交给 ZooKeeper 来完成。</p> <h3 id="工作流程"><a href="#工作流程" class="header-anchor">#</a> 工作流程</h3> <p><strong>路由注册</strong>：Broker 节点启动时，轮询 NameServer 列表，与每个 NameServer 节点建立长连接，发起注册请求。在 NameServer 内部维护着⼀个 Broker 列表，用来动态存储 Broker 的信息。</p> <p><strong>路由剔除</strong>：NameServer 中有⼀个定时任务，每隔 10 秒就会扫描⼀次 Broker 表，查看每一个 Broker 的最新心跳时间戳距离当前时间是否超过 120 秒，如果超过，则会判定 Broker 失效，然后将其从 Broker 列表中剔除。</p> <p><strong>路由发现</strong>：RocketMQ 的路由发现采用的是 Pull 模型。当 Topic 路由信息出现变化时，NameServer 不会主动推送给客户端，而是客户端定时拉取主题最新的路由。默认客户端每 30 秒会拉取一次最新的路由。</p> <h2 id="_2-2-消息服务器-broker"><a href="#_2-2-消息服务器-broker" class="header-anchor">#</a> 2.2 消息服务器 Broker</h2> <p>消息服务器（Broker）是消息存储中心，主要功能是接收来自 Producer 的消息并存储，Consumer 从这里取得消息。它还存储与消息相关的元数据，包括用户组、消费进度偏移量、队列信息等。</p> <p>从部署结构图中可以看出 Broker 有 Master 和 Slave 两种类型，<strong>Master 既可以写又可以读，Slave 不可以写只可以读</strong>。</p> <h3 id="主备集群"><a href="#主备集群" class="header-anchor">#</a> 主备集群</h3> <p>Broker 节点集群是一个 <strong>主备集群</strong>，即集群中具有 Master 与 Slave 两种角色。Master 负责处理读写操作请求，Slave 负责对 Master 中的数据进行备份。当 Master 挂掉了，Slave 则会自动切换为 Master 去工作。Master 和 Slave 是 1:N 的关系。</p> <p>Master 与 Slave 的对应关系 <strong>通过指定相同的 Broker Name，不同的 BrokerId 来定义</strong>，BrokerId 为 0 表 Master，非 0 表示 Slave。</p> <p>从物理结构上看 Broker 的集群部署方式有四种：单 Master 、多 Master 、多 Master 多 Slave（异步复制）、多 Master 多 Slave（同步双写）。</p> <div class="subtitle"><p>单 Master</p></div><p>一旦 Broker 重启或宕机会导致整个服务不可用，这种方式风险较大，所以显然不建议线上环境使用。</p> <div class="subtitle"><p>多 Master</p></div><p>所有消息服务器都是 Master ，没有 Slave 。这种方式优点是配置简单，单个 Master 宕机或重启维护对应用无影响。缺点是单台机器宕机期间，该机器上未被消费的消息在机器恢复之前不可订阅，消息实时性会受影响。</p> <div class="subtitle"><p>多 Master 多 Slave（异步复制）</p></div><p>每个 Master 配置一个 Slave，有多对 Master-Slave，消息采用 <strong>异步复制</strong> 方式，主备之间有毫秒级消息延迟。这种方式优点是消息丢失的非常少，且消息实时性不会受影响，Master 宕机后消费者可以继续从 Slave 消费，中间的过程对用户应用程序透明，不需要人工干预，性能同多 Master 方式几乎一样。缺点是 Master 宕机时在磁盘损坏情况下会丢失极少量消息。</p> <div class="subtitle"><p>多 Master 多 Slave（同步双写）</p></div><p>每个 Master 配置一个 Slave，有多对 Master-Slave ，消息采用 <strong>同步双写</strong> 方式，主备都写成功才返回。这种方式优点是数据与服务都没有单点问题，Master 宕机时消息无延迟，服务与数据的可用性非常高。缺点是性能相对异步复制方式略低，发送消息的延迟会略高。</p> <h3 id="工作流程-2"><a href="#工作流程-2" class="header-anchor">#</a> 工作流程</h3> <p>每个 Broker 与 NameServer 集群中的所有节点建立长连接，<strong>定时（每隔 30s）注册 Topic 信息到所有 NameServer</strong>。NameServer 定时（每隔 10s）扫描所有存活 Broker 的连接，如果 NameServer 超过 2 分钟没有收到心跳，则 NameServer 断开与 Broker 的连接。</p> <h3 id="刷盘策略"><a href="#刷盘策略" class="header-anchor">#</a> 刷盘策略</h3> <p><strong>同步刷盘</strong>：在消息达到 Broker 的内存之后，必须刷到 commitLog 日志文件中才算成功，然后返回 Producer 数据已经发送成功。</p> <p><strong>异步刷盘</strong>：异步刷盘是指消息达到 Broker 内存（PageCache）后就返回 Producer 数据已经发送成功，会唤醒一个线程去将数据持久化到 CommitLog 日志文件中。</p> <p>同步刷盘保证了消息不丢失，但是响应时间相对异步刷盘要多出 10%左右，适用于对消息可靠性要求比较高的场景。异步刷盘的吞吐量比较高，RT 小，但是如果 Broker 断电了内存中的部分数据会丢失，适用于对吞吐量要求比较高的场景。</p> <h2 id="_2-3-生产者-producer"><a href="#_2-3-生产者-producer" class="header-anchor">#</a> 2.3 生产者 Producer</h2> <p>消息生产者，负责生产消息。Producer 通过 MQ 的负载均衡模块选择相应的 Broker 集群队列进行消息投递，投递的过程支持快速失败并且低延迟。</p> <h3 id="发送范例"><a href="#发送范例" class="header-anchor">#</a> 发送范例</h3> <p>RocketMQ 提供了发送 <strong>同步、异步和单向（one-way）</strong> 的多种范例。</p> <div class="subtitle"><p>同步发送</p></div><p>同步发送指消息发送方发出数据后会在收到接收方发回响应之后才发下一个数据包。</p> <p>一般用于重要通知消息，例如重要通知邮件、营销短信。</p> <div class="subtitle"><p>异步发送</p></div><p>异步发送指发送方发出数据后，不等接收方发回响应，接着发送下个数据包。假如过一段时间检测到某个信息发送失败，可以选择重新发送。</p> <p>一般用于可能链路耗时较长而对响应时间敏感的业务场景，例如用户视频上传后通知启动转码服务。</p> <div class="subtitle"><p>单向发送</p></div><p>单向发送是指只负责发送消息而不等待服务器回应且没有回调函数触发。</p> <p>适用于某些耗时非常短但对可靠性要求并不高的场景，例如日志收集。</p> <h3 id="生产者组"><a href="#生产者组" class="header-anchor">#</a> 生产者组</h3> <p>RocketMQ 中的消息生产者都是以生产者组（Producer Group）的形式出现的。生产者组是同一类生产者的集合，这类 Producer 发送相同 Topic 类型的消息。一个生产者组可以同时发送多个主题的消息。</p> <h3 id="工作流程-3"><a href="#工作流程-3" class="header-anchor">#</a> 工作流程</h3> <p>Producer 与 NameServer 集群中的其中一个节点（随机选择）建立长连接，定期从 NameServer 取 Topic 路由信息，并向提供 Topic 服务的 Master 建立长连接，且定时向 Master 发送心跳。Producer 完全无状态，可集群部署。</p> <p><strong>Producer 每隔 30s（由 ClientConfig 的 pollNameServerInterval 决定）从 NameServer 获取所有 Topic 队列的最新情况</strong>，这意味着 Broker 不可用时，Producer 最多最需要 30s 才能感知，在此期间内发往 Broker 的所有消息都会失败。</p> <p><strong>Producer 每隔 30s（由 ClientConfig 中 heartbeatBrokerInterval 决定）向所有关联的 Broker 发送心跳</strong>，Broker 每隔 10s 中扫描所有存活的连接，如果 Broker 在 2 分钟内没有收到心跳数据，则关闭与 Producer 的连接。</p> <h2 id="_2-4-消费者-consumer"><a href="#_2-4-消费者-consumer" class="header-anchor">#</a> 2.4 消费者 Consumer</h2> <p>消息消费者，负责消费消息。一个消息消费者会从 Broker 服务器中获取到消息，并对消息进行相关业务处理。</p> <h3 id="消费者组"><a href="#消费者组" class="header-anchor">#</a> 消费者组</h3> <p>RocketMQ 中的消息消费者都是以消费者组（Consumer Group）的形式出现的。</p> <p>消费者组是同一类消费者的集合，这类 Consumer 消费的是同一个 Topic 类型的消息。消费者组使得在消息消费方面，实现负载均衡和容错的目标变得非常容易。</p> <p>RocketMQ 中的消息有个特点，<strong>同一条消息，只能被某一消费组其中的一台机器消费，但是可以同时被不同的消费组消费。</strong></p> <h3 id="工作流程-4"><a href="#工作流程-4" class="header-anchor">#</a> 工作流程</h3> <p>Consumer 与 NameServer 集群中的其中一个节点（随机选择）建立长连接，定期从 NameServer 取 Topic 路由信息，并向提供 Topic 服务的 Master、Slave 建立长连接，且定时向 Master、Slave 发送心跳。Consumer 既可以从 Master 订阅消息，也可以从 Slave 订阅消息，订阅规则由 Broker 配置决定。</p> <p><strong>Consumer 每隔 30s（由 ClientConfig 的 pollNameServerInterval 决定）从 NameServer 获取 Topic 的最新队列情况</strong>，这意味着 Broker 不可用时，Consumer 最多最需要 30s 才能感知。</p> <p><strong>Consumer 每隔 30s（由 ClientConfig 中 heartbeatBrokerInterval 决定）向所有关联的 Broker 发送心跳</strong>，Broker 每隔 10s 扫描所有存活的连接，若某个连接 2 分钟内没有发送心跳数据，则关闭连接；并向该 Consumer Group 的所有 Consumer 发出通知，Group 内的 Consumer 重新分配队列，继续消费。</p> <p>当 Consumer 得到 Master 宕机通知后，转向 Slave 消费，Slave不能保证 Master 的消息 100% 都同步过来了，因此会有少量的消息丢失。但是一旦 Master 恢复，未同步过去的消息会被最终消费掉。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/rocket-mq/m0u1wt/" class="prev">
+        第1章 RocketMQ 概念和特性
+      </a></span> <span class="next"><a href="/note-pages/rocket-mq/03-RocketMQ设计.html">
+        第3章 RocketMQ 设计
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_2-1-名称服务器-nameserver" class="right-sidebar-item-level2">
+          2.1 名称服务器 NameServer
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#nameserver-功能" class="right-sidebar-item-level3">
+          NameServer 功能
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#与-zookeeper-的区别" class="right-sidebar-item-level3">
+          与 ZooKeeper 的区别
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#工作流程" class="right-sidebar-item-level3">
+          工作流程
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_2-2-消息服务器-broker" class="right-sidebar-item-level2">
+          2.2 消息服务器 Broker
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#主备集群" class="right-sidebar-item-level3">
+          主备集群
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#工作流程-2" class="right-sidebar-item-level3">
+          工作流程
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#刷盘策略" class="right-sidebar-item-level3">
+          刷盘策略
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#_2-3-生产者-producer" class="right-sidebar-item-level2">
+          2.3 生产者 Producer
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#发送范例" class="right-sidebar-item-level3">
+          发送范例
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#生产者组" class="right-sidebar-item-level3">
+          生产者组
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#工作流程-3" class="right-sidebar-item-level3">
+          工作流程
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#_2-4-消费者-consumer" class="right-sidebar-item-level2">
+          2.4 消费者 Consumer
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#消费者组" class="right-sidebar-item-level3">
+          消费者组
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#工作流程-4" class="right-sidebar-item-level3">
+          工作流程
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/84.c584da75.js" defer></script>
+  </body>
+</html>

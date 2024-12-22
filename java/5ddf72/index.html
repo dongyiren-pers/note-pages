@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第1章 Java程序设计概述 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/138.0a25898e.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/java/5ddf72/" aria-current="page" class="active sidebar-link">第1章 Java程序设计概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf72/#_1-1-java-程序设计平台" class="sidebar-link">1.1 Java 程序设计平台</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf72/#_1-2-java-白皮书-的关键术语" class="sidebar-link">1.2 Java ”白皮书” 的关键术语</a></li></ul></li><li><a href="/note-pages/java/5ddf77/" class="sidebar-link">第2章 Java程序设计基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-1-简单示例" class="sidebar-link">2.1 简单示例</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-2-注释" class="sidebar-link">2.2 注释</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-3-数据类型" class="sidebar-link">2.3 数据类型</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-4-变量" class="sidebar-link">2.4 变量</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-5-运算符" class="sidebar-link">2.5 运算符</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-6-字符串" class="sidebar-link">2.6 字符串</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-7-输入输出" class="sidebar-link">2.7 输入输出</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-8-控制流程" class="sidebar-link">2.8 控制流程</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-9-大数值" class="sidebar-link">2.9 大数值</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf77/#_2-10-数组" class="sidebar-link">2.10 数组</a></li></ul></li><li><a href="/note-pages/java/5ddf78/" class="sidebar-link">第3章 对象与类</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-1-面向对象程序设计概述" class="sidebar-link">3.1 面向对象程序设计概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-2-使用预定义类" class="sidebar-link">3.2 使用预定义类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-3-用户自定义类" class="sidebar-link">3.3 用户自定义类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-4-静态域与静态方法" class="sidebar-link">3.4 静态域与静态方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-5-按值调用" class="sidebar-link">3.5 按值调用</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-6-对象构造" class="sidebar-link">3.6 对象构造</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-7-包" class="sidebar-link">3.7 包</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-8-类路径" class="sidebar-link">3.8 类路径</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf78/#_3-9-文档注释" class="sidebar-link">3.9 文档注释</a></li></ul></li><li><a href="/note-pages/java/5ddf79/" class="sidebar-link">第4章 继承与多态</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-1-类、超类和子类" class="sidebar-link">4.1 类、超类和子类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-2-object-所有类的超类" class="sidebar-link">4.2 Object：所有类的超类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-3-接口" class="sidebar-link">4.3 接口</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-4-lambda-表达式" class="sidebar-link">4.4 lambda  表达式</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-5-内部类" class="sidebar-link">4.5 内部类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-6-泛型数组列表" class="sidebar-link">4.6 泛型数组列表</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-7-对象包装器与自动装箱" class="sidebar-link">4.7 对象包装器与自动装箱</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-8-参数数量可变的方法" class="sidebar-link">4.8 参数数量可变的方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-9-枚举类" class="sidebar-link">4.9 枚举类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf79/#_4-10-继承的设计技巧" class="sidebar-link">4.10 继承的设计技巧</a></li></ul></li><li><a href="/note-pages/java/5ddf7a/" class="sidebar-link">第5章 反射机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-1-class-类" class="sidebar-link">5.1 Class 类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-2-利用反射分析类的能力" class="sidebar-link">5.2 利用反射分析类的能力</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-3-在运行时使用反射分析对象" class="sidebar-link">5.3 在运行时使用反射分析对象</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-4-使用反射编写泛型数组代码" class="sidebar-link">5.4 使用反射编写泛型数组代码</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-5-调用任意方法" class="sidebar-link">5.5 调用任意方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7a/#_5-6-代理" class="sidebar-link">5.6 代理</a></li></ul></li><li><a href="/note-pages/java/5ddf7b/" class="sidebar-link">第6章 异常处理和日志</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7b/#_6-1-异常" class="sidebar-link">6.1 异常</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7b/#_6-2-捕获异常" class="sidebar-link">6.2 捕获异常</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7b/#_6-3-断言" class="sidebar-link">6.3 断言</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddf7b/#_6-4-日志" class="sidebar-link">6.4 日志</a></li></ul></li><li><a href="/note-pages/java/5ddfa4/" class="sidebar-link">第7章 泛型程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-1-定义简单泛型类" class="sidebar-link">7.1 定义简单泛型类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-2-定义泛型方法" class="sidebar-link">7.2 定义泛型方法</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-3-类型变量的限定" class="sidebar-link">7.3 类型变量的限定</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-4-泛型代码和虚拟机" class="sidebar-link">7.4 泛型代码和虚拟机</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-5-约束与局限性" class="sidebar-link">7.5 约束与局限性</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-6-泛型类型的继承规则" class="sidebar-link">7.6 泛型类型的继承规则</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa4/#_7-7-通配符类型" class="sidebar-link">7.7 通配符类型</a></li></ul></li><li><a href="/note-pages/java/5ddfa5/" class="sidebar-link">第8章 集合和算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-1-集合框架" class="sidebar-link">8.1 集合框架</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-2-集合" class="sidebar-link">8.2 集合</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-3-映射" class="sidebar-link">8.3 映射</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-4-视图与包装器" class="sidebar-link">8.4 视图与包装器</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-5-算法" class="sidebar-link">8.5 算法</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa5/#_8-6-遗留的集合" class="sidebar-link">8.6 遗留的集合</a></li></ul></li><li><a href="/note-pages/java/8vnc6h/" class="sidebar-link">第9章 Java 8 的流库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-1-从迭代到流的操作" class="sidebar-link">9.1 从迭代到流的操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-2-流的操作" class="sidebar-link">9.2 流的操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-3-约简操作" class="sidebar-link">9.3 约简操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-4-optional-类型" class="sidebar-link">9.4 Optional 类型</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-5-收集结果" class="sidebar-link">9.5 收集结果</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-6-群组和分区" class="sidebar-link">9.6 群组和分区</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-7-基本类型流" class="sidebar-link">9.7 基本类型流</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/8vnc6h/#_9-8-并行流" class="sidebar-link">9.8 并行流</a></li></ul></li><li><a href="/note-pages/java/5ddfa7/" class="sidebar-link">第10章 Java类库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-1-基础类库" class="sidebar-link">10.1 基础类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-2-反射类库" class="sidebar-link">10.2 反射类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-3-工具类库" class="sidebar-link">10.3 工具类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-4-集合类库" class="sidebar-link">10.4 集合类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-5-数学类库" class="sidebar-link">10.5 数学类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-6-日志类库" class="sidebar-link">10.6 日志类库</a></li><li class="sidebar-sub-header"><a href="/note-pages/java/5ddfa7/#_10-7-文本类库" class="sidebar-link">10.7 文本类库</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第1章-java程序设计概述"><a href="#第1章-java程序设计概述" class="header-anchor">#</a> 第1章 Java程序设计概述</h1> <p>Java 是一门面向对象编程语言，不仅吸收了 C++ 语言的各种优点，还摒弃了 C++ 里难以理解的多继承、指针等概念。</p> <h2 id="_1-1-java-程序设计平台"><a href="#_1-1-java-程序设计平台" class="header-anchor">#</a> 1.1 Java 程序设计平台</h2> <p>作为一名程序设计人员，常常希望能够有一种语言，它具有令人赏心悦目的语法和易于理解的语义（C++不是这样的）。与许多其他的优秀语言一样，Java完全满足了这些要求。</p> <p>有些语言提供了可移植性、垃圾收集等，但是，没有提供一个大型的库。如果想要有奇特的绘图功能、网络连接功能和数据库存取功能就必须自己动手编写代码。Java具备所有这些特性，它是一种功能齐全的出色语言，是一个高质量的执行环境，还提供了一个庞大的库。</p> <p>正是因为它集多种优势于一身，所以对广大的程序设计人员有着不可抗拒的吸引力。</p> <h2 id="_1-2-java-白皮书-的关键术语"><a href="#_1-2-java-白皮书-的关键术语" class="header-anchor">#</a> 1.2 Java ”白皮书” 的关键术语</h2> <p>Java 的设计者已经编写了颇有影响力的 “白皮书”，用来解释设计的初衷以及完成的情况，并且发布了一个简短的摘要。</p> <h3 id="简单性"><a href="#简单性" class="header-anchor">#</a> 简单性</h3> <p>人们希望构建一个无须深奥的专业训练就可以进行编程的系统，并且要符合当今的标准惯例。因此，尽管人们发现 C++ 不太适用，但在设计 Java 的时候还是尽可能地接近 C++，以便系统更易于理解。Java 剔除了 C++ 中许多很少使用、难以理解、易混淆的特性。在目前看来，这些特性带来的麻烦远远多于其带来的好处。</p> <h3 id="面向对象"><a href="#面向对象" class="header-anchor">#</a> 面向对象</h3> <p>简单地讲，面向对象设计是一种程序设计技术。它将重点放在数据（即对象）和对象的接口上。Java 的面向对象特性与 C++ 旗鼓相当。Java 与 C++ 的主要不同点在于多重继承，在 Java 中，取而代之的是更简单的接口概念。与 C++ 相比，Java 提供了更丰富的运行时自省功能。</p> <h3 id="分布式"><a href="#分布式" class="header-anchor">#</a> 分布式</h3> <p>Java 有一个丰富的例程库，用于处理像 HTTP 和 FTP 之类的 TCP/IP 协议。Java 应用程序能够通过 URL 打开和访问网络上的对象，其便捷程度就好像访问本地文件一样。</p> <h3 id="健壮性"><a href="#健壮性" class="header-anchor">#</a> 健壮性</h3> <p>Java 的设计目标之一在于使得 Java 编写的程序具有多方面的可靠性。Java 投入了大量的精力进行早期的问题检测、后期动态的（运行时）检测，并消除了容易出错的情况。Java 和 C++ 最大的不同在于 Java 采用的指针模型可以消除重写内存和损坏数据的可能性。</p> <h3 id="安全性"><a href="#安全性" class="header-anchor">#</a> 安全性</h3> <p>Java 适用于网络/分布式环境。为了达到这个目标，在安全方面投入了很大精力。使用 Java 可以构建防病毒、防篡改的系统。</p> <h3 id="体系结构中立"><a href="#体系结构中立" class="header-anchor">#</a> 体系结构中立</h3> <p>编译器生成一个体系结构中立的目标文件格式，这是一种编译过的代码，只要有 Java 运行时系统，这些编译后的代码可以在许多处理器上运行。Java 编译器通过生成与特定的计算机体系结构无关的字节码指令来实现这一特性。精心设计的字节码不仅可以很容易地在任何机器上解释执行，而且还可以动态地翻译成本地机器代码。</p> <h3 id="可移植性"><a href="#可移植性" class="header-anchor">#</a> 可移植性</h3> <p>与 C 和 C++ 不同，Java 规范中没有 “依赖具体实现” 的地方。基本数据类型的大小以及有关运算都做了明确的说明。</p> <p>例如，Java 中的 int 永远为 32 位的整数，而在 C/C++ 中，int 可能是 16 位整数、32 位整数，也可能是编译器提供商指定的其他大小。唯一的限制只是 int 类型的大小不能低于 shot int，并且不能高于 long int。在 Java 中，数据类型具有固定的大小，这消除了代码移植时令人头痛的主要问题。二进制数据以固定的格式进行存储和传输，消除了字节顺序的困扰。字符串是用标准的 Unicode 格式存储的。</p> <p>Java 库能很好地支持平台独立性。你可以处理文件、正则表达式、XML、日期和时间、数据库、网络连接、线程等，而不用操心底层操作系统。不仅程序是可移植的，Java API 往往也比原生 API 质量更高。</p> <h3 id="解释型"><a href="#解释型" class="header-anchor">#</a> 解释型</h3> <p>Java 解释器可以在任何移植了解释器的机器上执行Java字节码。由于链接是一个增量式且轻量级的过程，所以，开发过程也变得更加快捷，更加具有探索性。</p> <h3 id="高性能"><a href="#高性能" class="header-anchor">#</a> 高性能</h3> <p>尽管对解释后的字节码性能已经比较满意，但在有些场合下还需要更加高效的性能。字节码可以（在运行时刻）动态地翻译成对应运行这个应用的特定 CPU 的机器码。</p> <h3 id="多钱程"><a href="#多钱程" class="header-anchor">#</a> 多钱程</h3> <p>多线程可以带来更好的交互响应和实时行为。</p> <h3 id="动态性"><a href="#动态性" class="header-anchor">#</a> 动态性</h3> <p>从各种角度看，Java 与 C 或 C++ 相比更加具有动态性。它能够适应不断发展的环境。库中可以自由地添加新方法和实例变量，而对客户端却没有任何影响。在 Java 中找出运行时类型信息十分简单。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note-pages/java/5ddf77/">
+        第2章 Java程序设计基础
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_1-1-java-程序设计平台" class="right-sidebar-item-level2">
+          1.1 Java 程序设计平台
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#_1-2-java-白皮书-的关键术语" class="right-sidebar-item-level2">
+          1.2 Java ”白皮书” 的关键术语
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#简单性" class="right-sidebar-item-level3">
+          简单性
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#面向对象" class="right-sidebar-item-level3">
+          面向对象
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#分布式" class="right-sidebar-item-level3">
+          分布式
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#健壮性" class="right-sidebar-item-level3">
+          健壮性
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#安全性" class="right-sidebar-item-level3">
+          安全性
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#体系结构中立" class="right-sidebar-item-level3">
+          体系结构中立
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#可移植性" class="right-sidebar-item-level3">
+          可移植性
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#解释型" class="right-sidebar-item-level3">
+          解释型
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#高性能" class="right-sidebar-item-level3">
+          高性能
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#多钱程" class="right-sidebar-item-level3">
+          多钱程
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#动态性" class="right-sidebar-item-level3">
+          动态性
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/138.0a25898e.js" defer></script>
+  </body>
+</html>

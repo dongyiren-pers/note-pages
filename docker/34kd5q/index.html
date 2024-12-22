@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第1章 Docker 基础 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/118.8f896dd0.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/docker/34kd5q/" aria-current="page" class="active sidebar-link">第1章 Docker 基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/docker/34kd5q/#_1-1-初识-docker-与容器" class="sidebar-link">1.1 初识 Docker 与容器</a></li><li class="sidebar-sub-header"><a href="/note-pages/docker/34kd5q/#_1-2-核心概念与安装引擎" class="sidebar-link">1.2 核心概念与安装引擎</a></li><li class="sidebar-sub-header"><a href="/note-pages/docker/34kd5q/#_1-3-使用-docker-镜像" class="sidebar-link">1.3 使用 Docker 镜像</a></li><li class="sidebar-sub-header"><a href="/note-pages/docker/34kd5q/#_1-4-操作-docker-容器" class="sidebar-link">1.4 操作 Docker 容器</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第1章-docker-基础"><a href="#第1章-docker-基础" class="header-anchor">#</a> 第1章 Docker 基础</h1> <h2 id="_1-1-初识-docker-与容器"><a href="#_1-1-初识-docker-与容器" class="header-anchor">#</a> 1.1 初识 Docker 与容器</h2> <h3 id="什么是-docker"><a href="#什么是-docker" class="header-anchor">#</a> 什么是 Docker</h3> <p>Docker 的构想是要实现 “Build，Ship and Run Any App，Anywhere”，即通过对应用的封装（Packaging）、分发（Distribution）、部署（Deployment）、运行（Runtime）生命周期进行管理，达到应用组件级别的 “一次封装，到处运行”。</p> <p>Docker 并非 “从石头缝里蹦出来的”，而是站在前人的肩膀上。其中最重要的就是 Linux 容器（Linux Containers, LXC）技术。IBM DeveloperWorks 网站关于容器技术的描述十分准确：“<strong>容器</strong> 有效地将由单个操作系统管理的资源划分到孤立的组中，以更好地在孤立的组之间平衡有冲突的资源使用需求。与虚拟化相比，这样既不需要指令级模拟，也不需要即时编译。容器可以在核心 CPU 本地运行指令，而不需要任何专门的解释机制。此外，也避免了准虚拟化（para-virtualization）和系统调用替换中的复杂性。”</p> <p>在 LXC 的基础上，Docker 进一步优化了容器的使用体验，让它进人寻常百姓家。首先，Docker 提供了各种 <strong>容器管理工具（如分发、版本、移植等）</strong>，让用户无须关注底层的操作，更加简单明了地管理和使用容器；其次，Docker 通过引入 <strong>分层文件系统</strong> 构建和 <strong>高效的镜像机制</strong>，降低了迁移难度，极大地改善了用户体验。用户操作 Docker 容器就像操作应用自身一样简单。</p> <p>简单地讲，我们可以将 Docker 容器理解为 <strong>一种轻量级的沙盒（sandbox）。每个容器内运行着一个应用，不同的容器相互隔离，容器之间也可以通过网络互相通信</strong>。</p> <h3 id="为什么要使用-docker"><a href="#为什么要使用-docker" class="header-anchor">#</a> 为什么要使用 Docker</h3> <p>在开发和运维过程中， Docker 具有如下几个方面的优势：</p> <ul><li><strong>更快速的交付和部署</strong>。使用 Docker，开发人员可以使用镜像来快速构建一套标准的开发环境；开发完成之后，测试和运维人员可以直接使用完全相同的环境来部署代码。只要是开发测试过的代码，就可以确保在生产环境无缝运行。Docker 可以快速创建和删除容器，实现快速迭代，节约开发、测试、部署的大量时间。并且，整个过程全程可见，使团队更容易理解应用的创建和工作过程。</li> <li><strong>更高效的资源利用</strong>。运行 Docker 容器不需要额外的虚拟化管理程序（Virtual Machine  Manager，VMM，以及 Hypervisor） 的支持，Docker 是内核级的虚拟化，可以实现更高的性能，同时对资源的额外需求很低。</li> <li><strong>更轻松的迁移和扩展</strong>。 Docker 容器几乎可以在任意的平台上运行，包括物理机、虚拟机、公有云、私有云、个人电脑、服务器等，同时支持主流的操作系统发行版本。 这种兼容性让用户可以在不同平台之间轻松地迁移应用。</li> <li><strong>更简单的更新管理</strong>。使用 Dockerfile, 只需要小小的配置修改，就可以替代以往大量 的更新工作。所有修改都以增量的方式被分发和更新，从而实现自动化并且高效的容器管理。</li></ul> <p>Docker 容器技术与传统虚拟机技术的比较：</p> <table><thead><tr><th>特性</th> <th>容器</th> <th>虚拟机</th></tr></thead> <tbody><tr><td>启动速度</td> <td>秒级</td> <td>分钟级</td></tr> <tr><td>性能</td> <td>接近原生</td> <td>较弱</td></tr> <tr><td>内存代价</td> <td>很小</td> <td>较多</td></tr> <tr><td>硬盘使用</td> <td>一般为 MB</td> <td>一般为 GB</td></tr> <tr><td>运行密度</td> <td>单机支持上千个容器</td> <td>一般几十个</td></tr> <tr><td>隔离性</td> <td>安全隔离</td> <td>完全隔离</td></tr> <tr><td>迁移性</td> <td>优秀</td> <td>一般</td></tr></tbody></table> <h3 id="docker-与虚拟化"><a href="#docker-与虚拟化" class="header-anchor">#</a> Docker 与虚拟化</h3> <p>在计算机技术中，<strong>虚拟化</strong> 是一种资源管理技术，是将计算机的各种实体资源，如服务器、网络、内存及存储等，予以抽象、转换后呈现出来，打破实体结构间的不可切割的障碍，使用户可以用比原本的组态更好的方式来应用这些资源。</p> <p>传统方式是在硬件层面实现虚拟化，需要有额外的虚拟机管理应用和虚拟机操作系统层。<strong>Docker 容器是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，因此更加轻量级。</strong></p> <h2 id="_1-2-核心概念与安装引擎"><a href="#_1-2-核心概念与安装引擎" class="header-anchor">#</a> 1.2 核心概念与安装引擎</h2> <h3 id="核心概念"><a href="#核心概念" class="header-anchor">#</a> 核心概念</h3> <div id="镜像" class="anchor">镜像</div><p>Docker 镜像类似于虚拟机镜像，可以将它理解为一个只读的模板。</p> <p>例如，一个镜像可以包含一个基本的操作系统环境，里面仅安装了 Apache 应用程序（或用户需要的其他软件）。可以把它称为一个 Apache 镜像。</p> <div id="容器" class="anchor">容器</div><p>Docker 容器类似千一个轻量级的沙箱， Docker 利用容器来运行和隔离应用。</p> <p><strong>容器是从镜像创建的应用运行实例</strong>。它可以启动、开始、停止、删除，而这些容器都是彼此 <strong>相互隔离、互不可见的。</strong></p> <blockquote><p>镜像自身是只读的。容器从镜像启动的时候，会在镜像的最上层创建一个可写层。</p></blockquote> <div id="仓库" class="anchor">仓库</div><p>Docker 仓库类似于代码仓库，是 Docker 集中存放镜像文件的场所。</p> <h3 id="安装-docker-引擎"><a href="#安装-docker-引擎" class="header-anchor">#</a> 安装 Docker 引擎</h3> <p>Docker 引擎是使用 Docker 容器的核心组件，可以在主流的操作系统和云平台上使用。</p> <p>我们可以访问 Docker 官网的 <a href="https://www.docker.com/get-docker" target="_blank" rel="noopener noreferrer">Get Docker<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 页面，查看获取 Docker 的方式，以及 Docker 支持的平台类型</p> <p>我们可以使用官方提供的 shell 脚本来在 Linux 系统上安装 Docker 的最新正式 版本，该脚本会自动检测系统信息并进行相应配置：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">curl</span> -fsSL https://get.docker.com/ <span class="token operator">|</span> <span class="token function">sh</span>
+</code></pre></div><p>或者：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">wget</span> -qO- https://get.docker.com/ <span class="token operator">|</span> <span class="token function">sh</span>
+</code></pre></div><h2 id="_1-3-使用-docker-镜像"><a href="#_1-3-使用-docker-镜像" class="header-anchor">#</a> 1.3 使用 Docker 镜像</h2> <h3 id="获取镜像"><a href="#获取镜像" class="header-anchor">#</a> 获取镜像</h3> <div id="pull-命令" class="anchor">pull 命令</div><p>镜像是运行容器的前提，官方的 Docker Hub 网站已经提供了数十万个镜像供我们开放下载。</p> <p>使用 docker [image] pull 命令从 Docker Hub 镜像源来下载镜像：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> <span class="token punctuation">[</span>image<span class="token punctuation">]</span> pull NAME <span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span>
+</code></pre></div><p>其中，NAME 是镜像仓库名称，TAG 是镜像的标签。</p> <p>例如，获取一个 Ubuntu 18.04 系统的基础镜像可以使用如下的命令：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> pull ubuntu:18.04 
+</code></pre></div><blockquote><p>严格地讲，镜像的仓库名称中还应该添加仓库地址（即 registry，注册服务器）作为前缀，只是默认使用的是官方 Docker Hub 服务，该前缀可以忽略。</p></blockquote> <h3 id="查看镜像信息"><a href="#查看镜像信息" class="header-anchor">#</a> 查看镜像信息</h3> <div id="images-命令" class="anchor">images 命令</div><p>使用 <code>docker images</code> 或 <code>docker image ls</code> 命令可以列出本地主机上已有镜像的基本信息：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> images
+</code></pre></div><div id="inspect-命令" class="anchor">inspect 命令</div><p>使用 <code>docker [image] inspect</code> 命令可以获取该镜像的详细信息，包括制作者、适应架构、各层的数字摘要等：</p> <div class="language- extra-class"><pre class="language-text"><code>docker inspect ubuntu:18.04 
+</code></pre></div><div id="history-命令" class="anchor">history 命令</div><p>使用 <code>docker history</code> 命令，列出镜像各层的创建信息：</p> <div class="language- extra-class"><pre class="language-text"><code>docker history ubuntu:18.04 
+</code></pre></div><h3 id="删除和清理镜像"><a href="#删除和清理镜像" class="header-anchor">#</a> 删除和清理镜像</h3> <div id="rmi-命令" class="anchor">rmi 命令</div><p>使用 <code>docker rmi</code> 或 <code>docker image rm</code> 命令可以删除镜像，命令格式为 <code>docker rmi IMAGE [IMAGE...]</code>，其中 IMAGE 可以为标签或 ID。</p> <p>支持选项：</p> <ul><li><code>-f, --force</code>: 强制删除镜像，即使有正在使用该镜像的容器。</li> <li><code>--no-prune</code>: 删除镜像时不移除与其相关的标签或镜像。</li></ul> <p>例如，要删除掉 ubuntu:latest 镜像，可以使用如下命令：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> rmi ubuntu:latest
+</code></pre></div><p>使用 Docker 一段时间后，系统中可能会遗留一些临时的镜像文件，以及一些没有被使 用的镜像，可以通过 <code>docker image prune</code> 命令来进行清理。</p> <h3 id="创建镜像"><a href="#创建镜像" class="header-anchor">#</a> 创建镜像</h3> <p>创建镜像的方法主要有三种：基于已有镜像的容器创建、基于本地模板导入、基于 Dockerfile 创建。</p> <div id="基于已有容器创建" class="anchor">基于已有容器创建</div><p>使用 <code>docker commit</code> 命令创建一个新的镜像，该镜像是从容器的当前状态创建的。</p> <p>命令格式为 <code>docker [container] commit [OPTIONS] CONTAINER [REPOSITORY [:TAG]]</code>。</p> <p>以下是该命令支持的选项：</p> <ul><li><code>-a, --author=&quot;&quot;</code>: 作者信息。</li> <li><code>-c, --change=[]</code>: 提交的时候执行 Dockerfile 指令。</li> <li><code>-m, --message=&quot;&quot;</code>: 提交消息。</li> <li><code>-p, --pause=true</code>: 在提交时暂停容器的运行，以确保容器处于一致的状态。</li></ul> <p>假设我们有一个名为 <code>my_container</code> 的容器正在运行，并且我们想要将其状态保存为一个新的镜像，同时指定作者信息和提交消息。</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> commit <span class="token punctuation">\</span>
+  --author <span class="token string">&quot;John Doe &lt;john.doe@example.com&gt;&quot;</span> <span class="token punctuation">\</span>
+  --message <span class="token string">&quot;Added custom configurations&quot;</span> <span class="token punctuation">\</span>
+  my_container <span class="token punctuation">\</span>
+  my_custom_image:latest
+</code></pre></div><p>这个命令将创建一个名为 my_custom_image 的新镜像，基于容器 my_container 的当前状态，并且指定了作者信息和提交消息。</p> <div id="基于本地模板导入" class="anchor">基于本地模板导入</div><p>使用 <code>docker import</code> 命令从本地文件系统导入一个文件或归档（如 <code>.tar</code> 文件）作为一个本地镜像。</p> <p>命令格式为 <code>docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]</code></p> <div id="基于-dockerfile-创建" class="anchor">基于 Dockerfile 创建</div><p>基于 Dockerfile 创建镜像是一种常见的方式，它允许我们根据自定义的配置和需求构建镜像。Dockerfile 是一个文本文件，其中包含一系列指令，描述了如何构建一个 Docker 镜像。我们可以使用 Dockerfile 中的指令来定义基础镜像、安装软件、复制文件、设置环境变量等操作。</p> <p>创建一个名为 <code>Dockerfile</code> 的文本文件，并在其中编写构建镜像所需的指令。例如：</p> <div class="language-dockerfile extra-class"><pre class="language-dockerfile"><code><span class="token comment"># 使用官方的 Ubuntu 20.04 作为基础镜像</span>
+<span class="token instruction"><span class="token keyword">FROM</span> ubuntu:20.04</span>
+
+<span class="token comment"># 安装必要的软件包</span>
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get update &amp;&amp; apt-get install -y <span class="token operator">\</span>
+    software-properties-common <span class="token operator">\</span>
+    &amp;&amp; rm -rf /var/lib/apt/lists/*</span>
+
+<span class="token comment"># 安装 Node.js</span>
+<span class="token instruction"><span class="token keyword">RUN</span> curl -sL https://deb.nodesource.com/setup_14.x | bash -</span>
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get install -y nodejs</span>
+
+<span class="token comment"># 设置工作目录</span>
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+
+<span class="token comment"># 拷贝应用程序文件到镜像中</span>
+<span class="token instruction"><span class="token keyword">COPY</span> . .</span>
+
+<span class="token comment"># 安装应用程序依赖</span>
+<span class="token instruction"><span class="token keyword">RUN</span> npm install</span>
+
+<span class="token comment"># 暴露端口</span>
+<span class="token instruction"><span class="token keyword">EXPOSE</span> 3000</span>
+
+<span class="token comment"># 启动应用程序</span>
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">&quot;npm&quot;</span>, <span class="token string">&quot;start&quot;</span>]</span>
+</code></pre></div><p>然后，在 Dockerfile 所在的目录中打开终端，然后运行以下命令来构建镜像：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> build -t my_custom_image <span class="token builtin class-name">.</span>
+</code></pre></div><h3 id="存出和载入镜像"><a href="#存出和载入镜像" class="header-anchor">#</a> 存出和载入镜像</h3> <div id="save-命令" class="anchor">save 命令</div><p>如果要导出镜像到本地文件，可以使用 <code>docker [image] save</code> 命令。该命令支持 <code>-o、-output</code> 参数，导出镜像到指定的文件中。</p> <p>例如，导出本地的 ubuntu:18.04 镜像为文件 ubuntu_18.04.tar，如下所示：</p> <div class="language- extra-class"><pre class="language-text"><code>docker save -o ubuntu_18.04.tar ubuntu:18.04
+</code></pre></div><div id="load-命令" class="anchor">load 命令</div><p>使用 <code>docker [image] load</code> 将导出的 tar 文件再导入到本地镜像库。支持 <code>-i、-input</code> 选项，从指定文件中读入镜像内容。</p> <p>例如，从文件 ubuntu_18.04.tar 导入镜像到本地镜像列表，如下所示：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> load -i ubuntu_18.04.tar
+</code></pre></div><h3 id="上传镜像"><a href="#上传镜像" class="header-anchor">#</a> 上传镜像</h3> <div id="push-命令" class="anchor">push 命令</div><p>使用 <code>docker [image] push</code> 命令上传镜像到仓库，默认上传到 Docker Hub 官方仓库（需要登录）。</p> <p>命令格式为 <code>docker [image] push NAME [:TAG] | [REGISTRY_HOST [REGISTRY_PORT]/]NAME [TAG]</code> 。</p> <p>我们在 Docker Hub 网站注册后可以上传自制的镜像。</p> <p>例如，上传本地的 <code>test:latest</code> 镜像，可以先添加新的标签 <code>user/test:latest</code>，然后用使用<code>docker [image] push</code> 命令上传镜像：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> tag test:latest user/test:latest
+<span class="token function">docker</span> push user/test:latest
+</code></pre></div><p>第一次上传时，会提示输入登录信息或进行注册，之后登录信息会记录到本地 ~/.docker 目录下。</p> <h2 id="_1-4-操作-docker-容器"><a href="#_1-4-操作-docker-容器" class="header-anchor">#</a> 1.4 操作 Docker 容器</h2> <p>容器是 Docker 的另一个核心概念。简单来说，容器是镜像的一个运行实例。不同的是，镜像是静态的只读文件，而容器带有运行时需要的可写文件层，同时，容器中的应用进程处于运行状态。</p> <p>如果认为虚拟机是模拟运行的一整套操作系统（包括内核、应用运行态环境和其他系统环境）和跑在上面的应用。那么 Docker 容器就是 <strong>独立运行的一个（或一组）应用，以及它们必需的运行环境。</strong></p> <h3 id="创建容器"><a href="#创建容器" class="header-anchor">#</a> 创建容器</h3> <div id="create-命令" class="anchor">create 命令</div><p>使用 <code>docker [container] create</code> 命令新建一个容器，例如：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">docker</span> create -it ubuntu:latest
+</code></pre></div><p>使用 <code>docker [container] create</code> 命令新建的容器处于停止状态，使用 <code>docker [container] start</code> 命令来启动它。</p> <p>由于容器是整个 Docker 技术栈的核心， create 命令和后续的 run 命令支持的选项都十分复杂，主要包括如下几大类：与容器运行模式相关、与容器环境配置相关、与容器资源限制和安全保护相关。</p> <p>与容器运行模式相关的选项：</p> <table><thead><tr><th>选项</th> <th>描述</th></tr></thead> <tbody><tr><td>--name</td> <td>为容器指定一个名称</td></tr> <tr><td>--detach, -d</td> <td>在后台模式下创建容器</td></tr> <tr><td>--interactive, -i</td> <td>创建交互式容器</td></tr> <tr><td>--tty, -t</td> <td>为容器分配一个虚拟终端</td></tr> <tr><td>--rm</td> <td>容器退出时自动删除容器</td></tr> <tr><td>--privileged</td> <td>给容器提供特权访问</td></tr> <tr><td>--net</td> <td>指定容器使用的网络模式（如 <code>bridge</code>, <code>host</code>, <code>none</code> 等）</td></tr> <tr><td>--user</td> <td>指定容器的用户名或UID</td></tr> <tr><td>--hostname</td> <td>设置容器的主机名</td></tr> <tr><td>--restart</td> <td>指定容器退出时的重启策略</td></tr></tbody></table> <p>与容器环境配置相关的选项：</p> <table><thead><tr><th>选项</th> <th>描述</th></tr></thead> <tbody><tr><td>-e, --env</td> <td>设置环境变量</td></tr> <tr><td>--env-file</td> <td>从文件中读取环境变量</td></tr> <tr><td>--workdir, -w</td> <td>设置容器的工作目录</td></tr> <tr><td>--volume, -v</td> <td>绑定挂载宿主机目录到容器</td></tr> <tr><td>--mount</td> <td>更为灵活的挂载方式，可以指定挂载类型和参数</td></tr> <tr><td>--add-host</td> <td>向容器的 <code>/etc/hosts</code> 文件中添加额外的主机信息</td></tr> <tr><td>--label</td> <td>为容器添加元数据标签</td></tr> <tr><td>--expose</td> <td>暴露容器的端口到宿主机</td></tr></tbody></table> <p>与容器资源限制和安全保护相关的选项：</p> <table><thead><tr><th>选项</th> <th>描述</th></tr></thead> <tbody><tr><td>--cpu-shares</td> <td>设置容器的CPU份额</td></tr> <tr><td>--cpu-period</td> <td>设置CPU周期</td></tr> <tr><td>--cpu-quota</td> <td>设置CPU配额</td></tr> <tr><td>--cpuset-cpus</td> <td>为容器指定CPU核心</td></tr> <tr><td>--memory, -m</td> <td>设置容器的内存限制</td></tr> <tr><td>--memory-swap</td> <td>设置容器的交换空间限制</td></tr> <tr><td>--memory-swappiness</td> <td>设置容器内存交换的倾向性</td></tr> <tr><td>--ulimit</td> <td>设置容器的资源限制（如文件描述符数、内存等）</td></tr> <tr><td>--security-opt</td> <td>设置容器的安全选项（如 apparmor, seccomp 等）</td></tr> <tr><td>--cap-add</td> <td>向容器添加特权</td></tr> <tr><td>--cap-drop</td> <td>从容器中删除特权</td></tr></tbody></table> <blockquote><p>更多的命令选项可以通过 man docker-run 命令来查看。</p></blockquote> <div id="start-命令" class="anchor">start 命令</div><p>使用 <code>docker [container] start</code> 命令来启动一个已经创建的容器。例如，启动刚创建的 ubuntu 容器：</p> <div class="language- extra-class"><pre class="language-text"><code>docker start af
+</code></pre></div><p>此时，通过 <code>docker ps</code> 命令，可以查看到一个运行中的容器。</p> <div id="run-命令" class="anchor">run 命令</div><p><code>docker [container] run</code> 等价于先执行  <code>docker [container] create</code> 命令，再执行 <code>docker [container] start</code> 命令。</p> <p>当使用 <code>docker [container] run</code> 来创建并启动容器时， Docker 在后台运行的标准操作如下：</p> <ul><li>检查本地是否存在指定的镜像，不存在就从公有仓库下载；</li> <li>利用镜像创建一个容器，并启动该容器；</li> <li>分配一个文件系统给容器，并在只读的镜像层外面挂载一层可读写层；</li> <li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去；</li> <li>从网桥的地址池配置一个 IP 地址给容器；</li> <li>执行用户指定的应用程序；</li> <li>执行完毕后容器被自动终止。</li></ul> <div id="logs-命令" class="anchor">logs 命令</div><p>要获取容器的输出信息，可以通过 <code>docker [container] :logs</code> 命令。</p> <h3 id="停止容器"><a href="#停止容器" class="header-anchor">#</a> 停止容器</h3> <div id="pause-命令" class="anchor">pause 命令</div><p>使用 <code>docker [container] pause CONTAINER [CONTAINER...]</code> 命令来暂停一个运行中的容器。</p> <p>处于 paused 状态的容器，可以使用<code>docker [container] unpause CONTAINER [CONTAINER...]</code>  命令来恢复到运行状态。</p> <div id="stop-命令" class="anchor">stop 命令</div><p>可以使用 <code>docker [container] stop</code> 来终止一个运行中的容器。</p> <p>命令格式为 <code>docker [container] stop [-t|--time[=10]] [CONTAINER...]</code>。</p> <p>该命令会首先向容器发送 SIGTERM 信号，等待一段超时时间后（默认为 10 秒），再发送 SIGKILL 信号来终止容器。</p> <div id="kill-命令" class="anchor">kill 命令</div><p>此外，还可以通过 <code>docker [container] kill</code> 直接发送 SIGKILL 信号来强行终止容器。</p> <div id="prune-命令" class="anchor">prune 命令</div><p>执行 <code>docker container prune</code> 命令，会自动清除掉所有处于停止状态的容器。</p> <div id="restart-命令" class="anchor">restart 命令</div><p><code>docker [container] restart</code>  命令会将一个运行态的容器先终止，然后再重新启动。</p> <h3 id="进入容器"><a href="#进入容器" class="header-anchor">#</a> 进入容器</h3> <p>在使用 <code>-d</code> 参数时，容器启动后会进入后台，用户无法看到容器中的信息，也无法进行操作。</p> <p>这个时候如果需要进人容器进行操作，推荐使用官方的 attach 或 exec 命令。</p> <div id="attach-命令" class="anchor">attach 命令</div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main> <aside items="[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_1-1-初识-docker-与容器" class="right-sidebar-item-level2">
+          1.1 初识 Docker 与容器
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#什么是-docker" class="right-sidebar-item-level3">
+          什么是 Docker
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#为什么要使用-docker" class="right-sidebar-item-level3">
+          为什么要使用 Docker
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#docker-与虚拟化" class="right-sidebar-item-level3">
+          Docker 与虚拟化
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_1-2-核心概念与安装引擎" class="right-sidebar-item-level2">
+          1.2 核心概念与安装引擎
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#核心概念" class="right-sidebar-item-level3">
+          核心概念
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#安装-docker-引擎" class="right-sidebar-item-level3">
+          安装 Docker 引擎
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#_1-3-使用-docker-镜像" class="right-sidebar-item-level2">
+          1.3 使用 Docker 镜像
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#获取镜像" class="right-sidebar-item-level3">
+          获取镜像
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#查看镜像信息" class="right-sidebar-item-level3">
+          查看镜像信息
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#删除和清理镜像" class="right-sidebar-item-level3">
+          删除和清理镜像
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#创建镜像" class="right-sidebar-item-level3">
+          创建镜像
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#存出和载入镜像" class="right-sidebar-item-level3">
+          存出和载入镜像
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#上传镜像" class="right-sidebar-item-level3">
+          上传镜像
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#_1-4-操作-docker-容器" class="right-sidebar-item-level2">
+          1.4 操作 Docker 容器
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#创建容器" class="right-sidebar-item-level3">
+          创建容器
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#停止容器" class="right-sidebar-item-level3">
+          停止容器
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#进入容器" class="right-sidebar-item-level3">
+          进入容器
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/118.8f896dd0.js" defer></script>
+  </body>
+</html>

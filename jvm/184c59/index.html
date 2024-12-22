@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第4章 垃圾回收 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/20.2e9ff004.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link router-link-active">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link router-link-active">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/jvm/01-类字节码.html" class="sidebar-link">第1章 类字节码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/01-类字节码.html#_1-1-字节码文件" class="sidebar-link">1.1 字节码文件</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/01-类字节码.html#_1-2-反编译字节码文件" class="sidebar-link">1.2 反编译字节码文件</a></li></ul></li><li><a href="/note-pages/jvm/02-类加载机制.html" class="sidebar-link">第2章 类加载机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/02-类加载机制.html#_2-1-类的生命周期" class="sidebar-link">2.1 类的生命周期</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/02-类加载机制.html#_2-2-类加载机制" class="sidebar-link">2.2 类加载机制</a></li></ul></li><li><a href="/note-pages/jvm/b0ouv4/" class="sidebar-link">第3章 内存结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-1-程序计数器" class="sidebar-link">3.1 程序计数器</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-2-虚拟机栈" class="sidebar-link">3.2 虚拟机栈</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-3-本地方法栈" class="sidebar-link">3.3 本地方法栈</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-4-堆" class="sidebar-link">3.4 堆</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/b0ouv4/#_3-5-方法区" class="sidebar-link">3.5 方法区</a></li></ul></li><li><a href="/note-pages/jvm/184c59/" aria-current="page" class="active sidebar-link">第4章 垃圾回收</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-1-判断对象是否可被回收" class="sidebar-link">4.1 判断对象是否可被回收</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-2-垃圾回收算法" class="sidebar-link">4.2 垃圾回收算法</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-3-垃圾收集器" class="sidebar-link">4.3 垃圾收集器</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/184c59/#_4-4-内存分配与回收策略" class="sidebar-link">4.4 内存分配与回收策略</a></li></ul></li><li><a href="/note-pages/jvm/gsfjls/" class="sidebar-link">第5章 JVM 调优</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-1-调优概述" class="sidebar-link">5.1 调优概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-2-jvm-参数" class="sidebar-link">5.2 JVM 参数</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-3-性能监控工具" class="sidebar-link">5.3 性能监控工具</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-4-调优策略" class="sidebar-link">5.4 调优策略</a></li><li class="sidebar-sub-header"><a href="/note-pages/jvm/gsfjls/#_5-5-oom-场景及解决方案" class="sidebar-link">5.5 OOM 场景及解决方案</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第4章-垃圾回收"><a href="#第4章-垃圾回收" class="header-anchor">#</a> 第4章 垃圾回收</h1> <h2 id="_4-1-判断对象是否可被回收"><a href="#_4-1-判断对象是否可被回收" class="header-anchor">#</a> 4.1 判断对象是否可被回收</h2> <h3 id="引用计数算法"><a href="#引用计数算法" class="header-anchor">#</a> 引用计数算法</h3> <p>给对象添加一个引用计数器，每当有一个其他对象引用它时，计数器加 1；引用失效时，计数器减 1。</p> <p>引用计数为 0 的对象可被回收。</p> <p>两个对象出现循环引用的情况下，引用计数器永远不为 0，导致无法对它们进行回收。正因为循环引用的存在，因此 Java 虚拟机不使用引用计数算法。</p> <h3 id="可达性分析算法"><a href="#可达性分析算法" class="header-anchor">#</a> 可达性分析算法</h3> <p>通过 GC Roots 作为起始点进行搜索，能够到达到的对象都是存活的，不可达的对象可被回收。</p> <p><img src="/note-pages/assets/img/image-20230128153430190.382b6f63.png" alt="image-20230128153430190"></p> <div id="gc-roots" class="anchor">GC Roots</div><p>Java 虚拟机使用该算法来判断对象是否可被回收，在 Java 中 <strong>GC Roots 一般包含以下内容：</strong></p> <ul><li><strong>本地方法栈</strong> 和 <strong>虚拟机栈</strong> 中引用的对象</li> <li>方法区中类的 <strong>静态属性</strong> 和 <strong>常量</strong> 引用的对象</li> <li>跨代引用对象</li> <li>被同步锁持有的对象</li></ul> <h3 id="引用类型"><a href="#引用类型" class="header-anchor">#</a> 引用类型</h3> <p>无论是通过引用计算算法判断对象的引用数量，还是通过可达性分析算法判断对象是否可达，判定对象是否可被回收都与引用有关。Java 具有四种强度不同的引用类型。</p> <div id="强引用" class="anchor">强引用</div><p>被强引用关联的对象不会被回收。</p> <p>使用 new 一个新对象的方式来创建强引用。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div id="软引用" class="anchor">软引用</div><p>被软引用关联的对象只有在内存不够的情况下才会被回收。</p> <p>使用 SoftReference 类来创建软引用。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">SoftReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> sf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SoftReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>  <span class="token comment">// 使对象只被软引用关联</span>
+</code></pre></div><div id="弱引用" class="anchor">弱引用</div><p>被弱引用关联的对象一定会被回收，它只能存活到下一次垃圾回收发生之前。</p> <p>使用 WeakReference 类来实现弱引用。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">WeakReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> wf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</code></pre></div><div id="虚引用" class="anchor">虚引用</div><p>又称为幽灵引用或者幻影引用。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用取得一个对象。</p> <p>为一个对象设置虚引用关联的唯一目的就是能在这个对象被回收时收到一个系统通知。</p> <p>使用 PhantomReference 来实现虚引用。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">PhantomReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> pf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhantomReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_4-2-垃圾回收算法"><a href="#_4-2-垃圾回收算法" class="header-anchor">#</a> 4.2 垃圾回收算法</h2> <h3 id="标记-清除"><a href="#标记-清除" class="header-anchor">#</a> 标记-清除</h3> <p><img src="/note-pages/assets/img/image-20230128172944421.1c5e8708.png" alt="image-20230128172944421"></p> <p>将存活的对象进行标记，然后清理掉未被标记的对象。</p> <p><strong>优点</strong>：实现简单，不需要对象进行移动。</p> <p><strong>缺点</strong>：</p> <ul><li>执行效率不稳定。如果 Java 堆中包含大量对象，而且其中大部分是需要被回收的，这时必须进行大量标记和清除的动作，导致标记和清除两个过程的执行效率都随对象数量增长而降低。</li> <li>内存空间的碎片化问题。标记、清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时无法找到足够的连续内存而不得不提前触发一次垃圾收集动作。</li></ul> <h3 id="标记-整理"><a href="#标记-整理" class="header-anchor">#</a> 标记-整理</h3> <p><img src="/note-pages/assets/img/image-20230128173217208.3ca27b17.png" alt="image-20230128173217208"></p> <p>将存活的对象进行标记，将存活的对象向一端移动，然后直接清理掉端边界以外的内存。</p> <p>根据老年代的特点提出的一种垃圾回收算法。</p> <p><strong>优点</strong>：解决了标记-清除算法存在的内存碎片问题。</p> <p><strong>缺点</strong>：需要进行局部对象移动，一定程度上降低了效率。</p> <h3 id="标记-复制"><a href="#标记-复制" class="header-anchor">#</a> 标记-复制</h3> <p><img src="/note-pages/assets/img/image-20230128173637121.e65fe605.png" alt="image-20230128173637121"></p> <p>将内存划分为大小相等的两块，每次只使用其中一块，当这一块内存用完就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。</p> <p><strong>主要缺点是只使用了内存的一半。</strong></p> <p>现在的商业虚拟机都采用这种收集算法来回收新生代，但是并不是将新生代划分为大小相等的两块，而是分为一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor 空间。在回收时，将 Eden 空间和 Survivor 空间中还存活着的对象一次性复制到另一块 Survivor 空间上，最后清理 Eden 空间和使用过的那一块 Survivor 空间。</p> <p>HotSpot 虚拟机的 Eden 空间和 Survivor 空间的大小比例默认为 8:1，保证了内存利用率达到 90%。如果每次回收有多于 10% 的对象存活，那么一块 Survivor 空间就不够用了，此时需要依赖于老年代进行分配担保（Handle Promotion），即借用老年代的空间存储放不下的对象。</p> <h3 id="分代收集"><a href="#分代收集" class="header-anchor">#</a> 分代收集</h3> <p>当前虚拟机的垃圾收集都采用分代收集算法，这种算法没有什么新的思想，只是根据对象存活周期的不同将内存分为几块。一般将 Java 堆分为新生代和老年代，这样我们就可以根据各个年代的特点选择合适的垃圾收集算法。</p> <p>新生代中，每次收集都会有大量对象死去，所以可以选择 “标记-复制” 算法，只需要付出少量对象的复制成本就可以完成每次垃圾收集。而老年代的对象存活几率是比较高的，而且没有额外的空间对它进行分配担保，所以我们必须选择 “标记-清除” 或 “标记-整理” 算法进行垃圾收集。</p> <div class="subtitle"><p>分代收集理论</p></div><p>当前商业虚拟机的垃圾收集器，大多数都遵循了 “分代收集”（GenerationalCollection）的理论进行设计，分代收集实质是一套符合大多数程序运行实际情况的经验法则，它建立在两个分代假说之上：</p> <ul><li>弱分代假说（Weak Generational Hypothesis）：绝大多数对象都是朝生夕灭的。</li> <li>强分代假说（Strong Generational Hypothesis）：熬过越多次垃圾收集过程的对象就越难以消亡。</li></ul> <p>这两个分代假说共同奠定了多款常用的垃圾收集器的一致的设计原则：收集器应该将 Java 堆划分出不同的区域，然后将回收对象依据其年龄（即对象熬过垃圾收集过程的次数）分配到不同的区域之中存储。</p> <p>显而易见，如果一个区域中大多数对象都是朝生夕灭，难以熬过垃圾收集过程的话，那么把它们集中放在一起，每次回收时只关注如何保留少量存活而不是去标记那些大量将要被回收的对象，就能以较低代价回收到大量的空间；如果剩下的都是难以消亡的对象，那把它们集中放在一块，虚拟机便可以使用较低的频率来回收这个区域，这就同时兼顾了垃圾收集的时间开销和内存的空间有效利用。</p> <h2 id="_4-3-垃圾收集器"><a href="#_4-3-垃圾收集器" class="header-anchor">#</a> 4.3 垃圾收集器</h2> <p>如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。</p> <h3 id="serial-收集器"><a href="#serial-收集器" class="header-anchor">#</a> Serial 收集器</h3> <p>Serial（串行）收集器是最基本、历史最悠久的垃圾收集器了。看名字就知道这个收集器是一个单线程收集器了。它的 <strong>“单线程”</strong> 的意义不仅仅意味着它只会使用一条垃圾收集线程去完成垃圾收集工作，更重要的是 <strong>它在进行垃圾收集工作时必须暂停其他所有的工作线程（“Stop The World”），直到它收集结束。</strong></p> <p>新生代采用 <strong>标记-复制</strong> 算法，老年代采用 <strong>标记-整理</strong> 算法。</p> <p><img src="/note-pages/assets/img/image-20230128180906800.25fb7154.png" alt="image-20230128180906800"></p> <p>虚拟机的设计者们当然知道 Stop The World 带来的不良用户体验，所以在后续的垃圾收集器设计中停顿时间在不断缩短（仍然还有停顿，寻找最优秀的垃圾收集器的过程仍然在继续）。</p> <p>Serial 收集器有优于其他垃圾收集器的地方：<strong>简单而高效（与其他收集器的单线程相比）</strong>。Serial 收集器由于没有线程交互的开销，自然可以获得很高的单线程收集效率。Serial 收集器对于运行在 Client 模式下的虚拟机来说是个不错的选择。</p> <h3 id="parnew-收集器"><a href="#parnew-收集器" class="header-anchor">#</a> ParNew 收集器</h3> <p>ParNew 收集器其实就是 <strong>Serial 收集器的多线程版本</strong>，除了使用多线程进行垃圾收集外，其余行为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全一样。</p> <p>新生代采用 <strong>标记-复制</strong> 算法，老年代采用 <strong>标记-整理</strong> 算法。</p> <p><img src="/note-pages/assets/img/image-20230128181217618.3913c405.png" alt="image-20230128181217618"></p> <p>ParNew 收集器是许多运行在 Server 模式下的虚拟机的首要选择，除了 Serial 收集器外，只有它能与 CMS 收集器（真正意义上的并发收集器）配合工作。</p> <h3 id="parallel-scavenge-收集器"><a href="#parallel-scavenge-收集器" class="header-anchor">#</a> Parallel Scavenge 收集器</h3> <p>Parallel Scavenge 与 ParNew 一样是多线程收集器。</p> <p><strong>Parallel Scavenge 收集器关注点是吞吐量（高效率的利用 CPU）。</strong> CMS 等垃圾收集器的关注点更多的是用户线程的停顿时间（提高用户体验）。Parallel Scavenge 收集器提供了很多参数供用户找到最合适的停顿时间或最大吞吐量，如果对于收集器运作不太了解，手工优化存在困难的时候，使用 Parallel Scavenge 收集器配合自适应调节策略，把内存管理优化交给虚拟机去完成也是一个不错的选择。</p> <blockquote><p>吞吐量是 CPU 中用于运行用户代码的时间与 CPU 总消耗时间的比值。</p></blockquote> <p>新生代采用 <strong>标记-复制</strong> 算法，老年代采用 <strong>标记-整理</strong> 算法。</p> <p><img src="/note-pages/assets/img/image-20230128182434898.26a8a9e0.png" alt="image-20230128182434898"></p> <p>停顿时间短适合需要与用户交互的程序，良好的响应速度能提升用户体验。高吞吐量则可以高效率地利用 CPU 时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。</p> <p><strong>缩短停顿时间是以牺牲吞吐量和新生代空间为代价的</strong>：新生代空间变小，停顿时间变短，但垃圾回收变得频繁，导致吞吐量下降。</p> <p>JDK1.8 默认使用的是 Parallel Scavenge 和 Parallel Old。</p> <h3 id="serial-old-收集器"><a href="#serial-old-收集器" class="header-anchor">#</a> Serial Old 收集器</h3> <p>Serial 收集器的 <strong>老年代版本</strong>，同样是一个单线程收集器。主要有两大用途：</p> <ul><li>在 JDK 1.5 以及之前版本（Parallel Old 诞生以前）中与 Parallel Scavenge 收集器搭配使用。</li> <li>作为 CMS 收集器的后备预案，在并发收集发生 Concurrent Mode Failure 时使用。</li></ul> <h3 id="parallel-old-收集器"><a href="#parallel-old-收集器" class="header-anchor">#</a> Parallel Old 收集器</h3> <p>Parallel Scavenge 收集器的 <strong>老年代版本</strong>。使用多线程和 “标记-整理” 算法。在注重吞吐量以及 CPU 资源的场合，都可以优先考虑 Parallel Scavenge 收集器和 Parallel Old 收集器。</p> <h3 id="cms-收集器"><a href="#cms-收集器" class="header-anchor">#</a> CMS 收集器</h3> <p>CMS（Concurrent Mark Sweep）收集器是 HotSpot 虚拟机第一款真正意义上的并发收集器，实现了垃圾收集线程与用户线程（基本上）的同时工作。</p> <p><strong>CMS 收集器是老年代收集器。</strong></p> <p>从名字中的 Mark Sweep 两个词可以看出，CMS 收集器是基于 <strong>“标记-清除”</strong> 算法实现的，它的运作过程相比于前面几种垃圾收集器来说更加复杂一些。整个过程分为四个步骤：</p> <ul><li><strong>初始标记：</strong> 暂停所有的其他线程，并记录下直接与 GC Roots 相连的对象，速度很快 ；</li> <li><strong>并发标记：</strong> 同时开启 GC 和用户线程，用一个闭包结构去记录可达对象。并发标记阶段结束时，闭包结构并不能保证包含当前所有的可达对象。因为用户线程可能会不断的更新引用域，GC 线程无法保证可达性分析的实时性。因此要跟踪记录这些发生引用更新的地方。</li> <li><strong>重新标记：</strong> 修正并发标记期间因用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段的时间稍长，但远比并发标记阶段时间短。</li> <li><strong>并发清除：</strong> 开启用户线程，同时 GC 线程开始对未标记的区域做清扫。</li></ul> <p><img src="/note-pages/assets/img/image-20230128191258792.b9004fcc.png" alt="image-20230128191258792"></p> <p><strong>优点</strong>：并发收集、低停顿。</p> <p><strong>缺点</strong>：</p> <ul><li>吞吐量低。低停顿时间是以牺牲吞吐量为代价的，导致 CPU 利用率不够高。</li> <li>无法处理浮动垃圾，可能出现 Concurrent Mode Failure。</li></ul> <blockquote><p>浮动垃圾是指并发清除阶段由于用户线程继续运行而产生的垃圾，这部分垃圾只能到下一次 GC 时才能进行回收。由于浮动垃圾的存在，因此需要预留出一部分内存，意味着 CMS 收集不能像其它收集器那样等待老年代快满的时候再回收。如果预留的内存不够存放浮动垃圾，就会出现 Concurrent Mode Failure，这时虚拟机将临时启用 Serial Old 来替代 CMS。</p></blockquote> <ul><li>“标记-清除” 算法导致的空间碎片，往往出现老年代空间剩余，但无法找到足够大连续空间来分配当前对象，不得不提前触发一次 Full GC。</li></ul> <h3 id="g1-收集器"><a href="#g1-收集器" class="header-anchor">#</a> G1 收集器</h3> <p>G1 （Garbage-First） 是一款面向服务器的垃圾收集器，主要针对配备多颗处理器及大容量内存的机器。以极高概率满足 GC 停顿时间要求的同时，还具备高吞吐量性能特征。</p> <p><strong>G1 是整堆收集器。</strong></p> <p>在 JDK1.7 版本正式启用，是 <strong>JDK 9 以后的默认垃圾收集器，取代了 CMS 收集器</strong>。</p> <p>开启 G1 收集器：<code>-XX:+UseG1GC</code></p> <p>设置 GC 的最大暂停时间为 XXms：<code>-XX:MaxGCPauseMillis=XX</code></p> <div class="subtitle"><p>G1 堆内存分配</p></div><p><img src="/note-pages/assets/img/image-20230207234914717.53ba7145.png" alt="image-20230207234914717"></p> <p>G1 把堆划分成多个大小相等的独立区域（Region），新生代和老年代不再物理隔离。</p> <p>区域 （Region） 的大小，可以通过 <code>-XX:G1HeapRegionSize</code> 参数指定，大小区间最小 1M 、最大 32M ，总之是 2 的幂次方。默认将堆内存按照 2048 份均分。</p> <p>每个 Region 被标记了 <strong>E、S、O</strong>，这些区域在逻辑上被映射为 <strong>Eden、Survivor 和老年代</strong>。</p> <p>存活的对象从一个区域转移（即复制或移动）到另一个区域。</p> <p>此外，还有第四种类型，被称为 <strong>巨型区域</strong>（Humongous Region）。Humongous 区域主要是为存储超过 50% 标准 Region 大小的对象而设计，它用来专门存放巨型对象。如果一个 H 区装不下一个巨型对象，G1 会寻找连续的 H 分区来存储。为了能找到连续的 H 区，有时候不得不启动 Full GC 。</p> <p>通过引入 Region 的概念，从而将原来的一整块内存空间划分成多个的小空间，使得每个小空间可以单独进行垃圾回收。这种划分方法带来了很大的灵活性，使得可预测的停顿时间模型成为可能。通过记录每个 Region 垃圾回收时间以及回收所获得的空间（这两个值是通过过去回收的经验获得），并维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的 Region。</p> <div class="subtitle"><p>Remembered Set</p></div><p>每个 Region 都有一个 Remembered Set，用来记录该 Region 对象的引用对象所在的 Region。通过使用 Remembered Set，在做可达性分析的时候就可以避免全堆扫描。</p> <div class="subtitle"><p>G1 回收流程</p></div><p>如果不计算维护 Remembered Set 的操作，G1 收集器的运作大致可划分为以下几个步骤：</p> <ul><li><strong>初始标记</strong>：这个阶段是 STW （Stop the World） 的，所有应用线程会被暂停，标记从 GC Root 开始直接可达的对象。</li> <li><strong>并发标记</strong>：从 GC Roots 开始，对堆中对象进行可达性分析，找出存活对象，耗时较长。</li> <li><strong>最终标记</strong>：标记在并发标记阶段发生变化的对象，将被回收。</li> <li><strong>筛选回收</strong>：对各个 Regin 根据回收价值和成本进行排序，根据用户所期待的 GC 停顿时间，指定回收计划，回收一部分 Region 。</li></ul> <div class="subtitle"><p>G1 特点</p></div><p>具备如下特点：</p> <ul><li>空间整合：整体上来看是基于 “标记-整理” 算法实现的收集器，从局部（两个 Region 之间）上来看是基于 “复制” 算法实现的，这意味着运行期间不会产生内存空间碎片。</li> <li>可预测的停顿：允许使用者指定在一个长度为 M 毫秒的时间片段内，GC 的时间不得超过 N 毫秒。</li></ul> <h2 id="_4-4-内存分配与回收策略"><a href="#_4-4-内存分配与回收策略" class="header-anchor">#</a> 4.4 内存分配与回收策略</h2> <h3 id="minor-gc、major-gc、full-gc"><a href="#minor-gc、major-gc、full-gc" class="header-anchor">#</a> Minor GC、Major GC、Full GC</h3> <p>JVM 进行 GC 时，并非每次都对堆内存（新生代、老年代、方法区）区域一起回收的，大部分时候回收的都是指新生代。</p> <p>针对 HotSpot VM 的实现，GC 按照回收区域又分为两大类：部分收集、整堆收集</p> <p><strong>部分收集（Partial GC）</strong>：不是完整收集整个 Java 堆的垃圾收集。其中又分为：</p> <ul><li>新生代收集（Minor GC / Young GC）：只是新生代的垃圾收集。</li> <li>老年代收集（Major GC / Old GC）：只是老年代的垃圾收集。很多时候 Major GC 会和 Full GC 混合使用，需要具体分辨是老年代回收还是整堆回收。目前，只有 CMS GC 会有单独收集老年代的行为。</li> <li>混合收集（Mixed GC）：整个新生代以及部分老年代的垃圾收集。目前只有 G1 GC 会有这种行为。</li></ul> <p><strong>整堆收集（Full GC）</strong>：收集整个 Java 堆和方法区的垃圾。</p> <h3 id="内存分配策略"><a href="#内存分配策略" class="header-anchor">#</a> 内存分配策略</h3> <div class="subtitle"><p>对象优先在 Eden 分配</p></div><p>大多数情况下，对象在新生代 Eden 区分配，当 Eden 区空间不够时，发起 Minor GC。</p> <div class="subtitle"><p>大对象直接进入老年代</p></div><p>大对象是指需要大量连续内存空间的对象，频繁出现大对象是致命的，会导致在内存还有不少空间的情况下提前触发 GC 以获取足够的连续空间来安置新对象。</p> <p>如果大对象直接在新生代分配就会导致 Eden 区和两个 Survivor 区之间发生大量的内存复制。因此对于大对象都会直接在老年代进行分配。</p> <div class="subtitle"><p>长期存活的对象进入老年代</p></div><p>对象在 Eden 出生并经过 Minor GC 依然存活，将移动到 Survivor 中，年龄就增加 1 岁，增加到一定年龄（默认情况下，阈值为15）则移动到老年代中。可通过 <code>-XX:MaxTenuringThreshold</code> 来定义年龄的阈值。</p> <div class="subtitle"><p>动态对象年龄判定</p></div><p>虚拟机并不是永远地要求对象的年龄必须达到 MaxTenuringThreshold 才能晋升老年代。如果在当前的 Survivor 区中，一批对象的总大小超过了该 Survivor 区内存大小的 50%，此时大于等于这批对象年龄的对象可以直接晋升到老年代。</p> <div class="subtitle"><p>空间分配担保</p></div><p>在发生 Minor GC 之前，虚拟机先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果条件成立， Minor GC 可以确认是安全的。如果不成立，虚拟机会查看 HandlePromotionFailure 设置值是否允许担保失败，如果允许那么就会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试着进行一次 Minor GC；如果小于，或者 HandlePromotionFailure 设置不允许冒险，那么就要进行一次 Full GC。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/jvm/b0ouv4/" class="prev">
+        第3章 内存结构
+      </a></span> <span class="next"><a href="/note-pages/jvm/gsfjls/">
+        第5章 JVM 调优
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_4-1-判断对象是否可被回收" class="right-sidebar-item-level2">
+          4.1 判断对象是否可被回收
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#引用计数算法" class="right-sidebar-item-level3">
+          引用计数算法
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#可达性分析算法" class="right-sidebar-item-level3">
+          可达性分析算法
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#引用类型" class="right-sidebar-item-level3">
+          引用类型
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_4-2-垃圾回收算法" class="right-sidebar-item-level2">
+          4.2 垃圾回收算法
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#标记-清除" class="right-sidebar-item-level3">
+          标记-清除
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#标记-整理" class="right-sidebar-item-level3">
+          标记-整理
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#标记-复制" class="right-sidebar-item-level3">
+          标记-复制
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#分代收集" class="right-sidebar-item-level3">
+          分代收集
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#_4-3-垃圾收集器" class="right-sidebar-item-level2">
+          4.3 垃圾收集器
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#serial-收集器" class="right-sidebar-item-level3">
+          Serial 收集器
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#parnew-收集器" class="right-sidebar-item-level3">
+          ParNew 收集器
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#parallel-scavenge-收集器" class="right-sidebar-item-level3">
+          Parallel Scavenge 收集器
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#serial-old-收集器" class="right-sidebar-item-level3">
+          Serial Old 收集器
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#parallel-old-收集器" class="right-sidebar-item-level3">
+          Parallel Old 收集器
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#cms-收集器" class="right-sidebar-item-level3">
+          CMS 收集器
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#g1-收集器" class="right-sidebar-item-level3">
+          G1 收集器
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#_4-4-内存分配与回收策略" class="right-sidebar-item-level2">
+          4.4 内存分配与回收策略
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#minor-gc、major-gc、full-gc" class="right-sidebar-item-level3">
+          Minor GC、Major GC、Full GC
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#内存分配策略" class="right-sidebar-item-level3">
+          内存分配策略
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/20.2e9ff004.js" defer></script>
+  </body>
+</html>

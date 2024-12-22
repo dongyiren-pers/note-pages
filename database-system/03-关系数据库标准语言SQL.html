@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第3章 关系数据库标准语言SQL | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/109.58f7297c.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/database-system/fyl5c1/" class="sidebar-link">第1章 绪论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-1-数据库系统概述" class="sidebar-link">1.1 数据库系统概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-2-数据模型" class="sidebar-link">1.2  数据模型</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-3-数据库系统的结构" class="sidebar-link">1.3  数据库系统的结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-4-数据库系统的组成" class="sidebar-link">1.4  数据库系统的组成</a></li></ul></li><li><a href="/note-pages/database-system/5lft8s/" class="sidebar-link">第2章 关系数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-1-关系数据结构及形式化定义" class="sidebar-link">2.1  关系数据结构及形式化定义</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-2-关系操作" class="sidebar-link">2.2  关系操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-3-关系的完整性" class="sidebar-link">2.3  关系的完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-4-关系代数" class="sidebar-link">2.4  关系代数</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-5-关系演算" class="sidebar-link">2.5  关系演算</a></li></ul></li><li><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html" class="active sidebar-link">第3章 关系数据库标准语言SQL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-1-sql概述" class="sidebar-link">3.1 SQL概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-2-学生-课程数据库" class="sidebar-link">3.2 学生-课程数据库</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-3-数据定义" class="sidebar-link">3.3 数据定义</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-4-数据查询" class="sidebar-link">3.4 数据查询</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-5-数据更新" class="sidebar-link">3.5 数据更新</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-6-空值的处理" class="sidebar-link">3.6 空值的处理</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-7-视图" class="sidebar-link">3.7 视图</a></li></ul></li><li><a href="/note-pages/database-system/04-数据库安全性.html" class="sidebar-link">第4章 数据库安全性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-1-数据库安全性概述" class="sidebar-link">4.1 数据库安全性概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-2-用户身份鉴别" class="sidebar-link">4.2 用户身份鉴别</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-3-多层存取控制" class="sidebar-link">4.3 多层存取控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-3-视图机制" class="sidebar-link">4.3 视图机制</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-4-审计" class="sidebar-link">4.4 审计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-5-数据加密" class="sidebar-link">4.5 数据加密</a></li></ul></li><li><a href="/note-pages/database-system/05-数据库完整性.html" class="sidebar-link">第5章 数据库完整性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-1-实体完整性" class="sidebar-link">5.1 实体完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-2-参照完整性" class="sidebar-link">5.2 参照完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-3-用户定义的完整性" class="sidebar-link">5.3 用户定义的完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-4-完整性约束命名子句" class="sidebar-link">5.4 完整性约束命名子句</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-5-断言" class="sidebar-link">5.5 断言</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-6-触发器" class="sidebar-link">5.6 触发器</a></li></ul></li><li><a href="/note-pages/database-system/06-关系数据理论.html" class="sidebar-link">第6章 关系数据理论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-1-问题的提出" class="sidebar-link">6.1 问题的提出</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-2-规范化" class="sidebar-link">6.2 规范化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-3-数据依赖的公理系统" class="sidebar-link">6.3 数据依赖的公理系统</a></li></ul></li><li><a href="/note-pages/database-system/07-数据库设计.html" class="sidebar-link">第7章 数据库设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-1-数据库设计概述" class="sidebar-link">7.1 数据库设计概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-2-需求分析" class="sidebar-link">7.2 需求分析</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-3-概念结构设计" class="sidebar-link">7.3 概念结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-4-逻辑结构设计" class="sidebar-link">7.4 逻辑结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-5-物理结构设计" class="sidebar-link">7.5 物理结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-6-数据库的实施和维护" class="sidebar-link">7.6 数据库的实施和维护</a></li></ul></li><li><a href="/note-pages/database-system/08-数据库编程.html" class="sidebar-link">第8章 数据库编程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-1-嵌入式sql" class="sidebar-link">8.1 嵌入式SQL</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-2-过程化sql" class="sidebar-link">8.2 过程化SQL</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-3-存储过程和函数" class="sidebar-link">8.3 存储过程和函数</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-4-odbc编程" class="sidebar-link">8.4 ODBC编程</a></li></ul></li><li><a href="/note-pages/database-system/09-关系查询处理和查询优化.html" class="sidebar-link">第9章 关系查询处理和查询优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-1-关系数据库系统的查询处理" class="sidebar-link">9.1 关系数据库系统的查询处理</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-2-关系数据库系统的查询优化" class="sidebar-link">9.2 关系数据库系统的查询优化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-3-代数优化" class="sidebar-link">9.3 代数优化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-4-物理优化" class="sidebar-link">9.4 物理优化</a></li></ul></li><li><a href="/note-pages/database-system/10-数据库恢复技术.html" class="sidebar-link">第10章 数据库恢复技术</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-1-事务的基本概念" class="sidebar-link">10.1 事务的基本概念</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-2-数据库恢复概述" class="sidebar-link">10.2 数据库恢复概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-3-故障的种类" class="sidebar-link">10.3 故障的种类</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-4-恢复的实现技术" class="sidebar-link">10.4 恢复的实现技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-5-恢复策略" class="sidebar-link">10.5 恢复策略</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-6-具有检查点的恢复技术" class="sidebar-link">10.6 具有检查点的恢复技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-7-数据库镜像" class="sidebar-link">10.7 数据库镜像</a></li></ul></li><li><a href="/note-pages/database-system/11-并发控制.html" class="sidebar-link">第11章 并发控制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/11-并发控制.html#_11-1-并发控制概述" class="sidebar-link">11.1 并发控制概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/11-并发控制.html#_11-2-封锁" class="sidebar-link">11.2 封锁</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第3章-关系数据库标准语言sql"><a href="#第3章-关系数据库标准语言sql" class="header-anchor">#</a> 第3章 关系数据库标准语言SQL</h1> <h2 id="_3-1-sql概述"><a href="#_3-1-sql概述" class="header-anchor">#</a> 3.1 SQL概述</h2> <p>SQL：结构化查询语言，是关系数据库的标准语言。</p> <h3 id="sql-的特点"><a href="#sql-的特点" class="header-anchor">#</a> SQL 的特点</h3> <ul><li>综合统一；</li> <li>高度非过程化；</li> <li>而向 <strong>集合</strong> 的操作方式；</li> <li>以同一种语法结构提供两种使用方式（独立语言、嵌入式语言）；</li> <li>语言简洁，易学易用。</li></ul> <h3 id="sql-的基本概念"><a href="#sql-的基本概念" class="header-anchor">#</a> SQL 的基本概念</h3> <p><strong>基本表</strong> 是本身独立存在的表，在SQL中一个关系就对应一个基本表。</p> <p><strong>视图</strong> 是从一个或几个<strong>基本表导出的表</strong>。视图本身不独立存储在数据库中，是一个<strong>虚表</strong>。即数据库中 <strong>只存放视图的定义</strong> 而不存放视图对应的数据，这些数据仍存放在导出视图的基本表中。视图在概念上与基本表等同，用户可以如同基本表那样使用视图，可以在视图上再定义视图。</p> <h2 id="_3-2-学生-课程数据库"><a href="#_3-2-学生-课程数据库" class="header-anchor">#</a> 3.2 学生-课程数据库</h2> <p>学生-课程模式 S-T：</p> <ul><li>学生表：Student(Sno,Sname,Ssex,Sage,Sdept)</li> <li>课程表：Course(Cno,Cname,Cpno,Ccredit)</li> <li>学生选课表：SC(Sno,Cno,Grade)</li></ul> <h2 id="_3-3-数据定义"><a href="#_3-3-数据定义" class="header-anchor">#</a> 3.3 数据定义</h2> <h3 id="模式的定义与删除"><a href="#模式的定义与删除" class="header-anchor">#</a> 模式的定义与删除</h3> <p>一个数据库中可以建立多个模式（Schema） 。</p> <p>定义模式实际上定义了一个 <strong>命名空间</strong>。在这个空间中可以定义该模式包含的数据库对象，例如基本表、视图、索引等。</p> <p>定义模式：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">SCHEMA</span> <span class="token operator">&lt;</span>模式名<span class="token operator">&gt;</span> <span class="token keyword">AUTHORIZATION</span> <span class="token operator">&lt;</span>用户名<span class="token operator">&gt;</span>
+</code></pre></div><p>删除模式：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">SCHEMA</span> <span class="token operator">&lt;</span>模式名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token keyword">CASCADE</span><span class="token operator">|</span><span class="token keyword">RESTRICT</span><span class="token operator">&gt;</span>
+</code></pre></div><ul><li>CASCADE（级联）：删除模式的同时把该模式中所有的数据库对象全部删除。</li> <li>RESTRICT（限制）：如果该模式中定义了下属的数据库对象（如表、视图等），则拒绝该删除语句的执行。仅当该模式中没有任何下属的对象时才能执行。</li></ul> <h3 id="基本表的定义、删除与修改"><a href="#基本表的定义、删除与修改" class="header-anchor">#</a> 基本表的定义、删除与修改</h3> <p>定义基本表：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span><span class="token punctuation">[</span> <span class="token operator">&lt;</span>列级完整性约束条件<span class="token operator">&gt;</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span><span class="token punctuation">[</span> <span class="token operator">&lt;</span>列级完整性约束条件<span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">]</span> 
+…
+<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>表级完整性约束条件<span class="token operator">&gt;</span> <span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>修改基本表：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span> <span class="token keyword">ADD</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>新列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span> 完整性约束 <span class="token punctuation">]</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">ADD</span> <span class="token operator">&lt;</span>表级完整性约束<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">DROP</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token keyword">CASCADE</span><span class="token operator">|</span> <span class="token keyword">RESTRICT</span><span class="token punctuation">]</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span><span class="token operator">&lt;</span>完整性约束名<span class="token operator">&gt;</span><span class="token punctuation">[</span> <span class="token keyword">RESTRICT</span> <span class="token operator">|</span> <span class="token keyword">CASCADE</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">ALTER</span> <span class="token keyword">COLUMN</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span>
+</code></pre></div><p>删除基本表：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>［<span class="token keyword">CASCADE</span><span class="token operator">|</span><span class="token keyword">RESTRICT</span>］<span class="token punctuation">;</span>
+</code></pre></div><ul><li>CASCADE：删除该表没有限制。在删除基本表的同时，相关的依赖对象一起删除。</li> <li>RESTRICT：删除表是有限制的。欲删除的基本表不能被其他表的约束所引用。如果存在依赖该表的对象，则此表不能被删除。</li></ul> <h3 id="索引的建立与删除"><a href="#索引的建立与删除" class="header-anchor">#</a> 索引的建立与删除</h3> <p>建立索引：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token keyword">UNIQUE</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CLUSTER<span class="token punctuation">]</span> <span class="token keyword">INDEX</span> <span class="token operator">&lt;</span>索引名<span class="token operator">&gt;</span> 
+<span class="token keyword">ON</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token operator">&lt;</span>次序<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token operator">&lt;</span>次序<span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">]</span>…<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>&lt;次序&gt;：指定索引值的排列次序，升序：ASC，降序：DESC。缺省值：ASC。</li> <li>UNIQUE：此索引的每一个索引值只对应 <strong>唯一</strong> 的数据记录。</li> <li>CLUSTER：表示要建立的索引是 <strong>聚簇索引</strong>。</li></ul> <p>修改索引：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">INDEX</span> <span class="token operator">&lt;</span>旧索引名<span class="token operator">&gt;</span> <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>新索引名<span class="token operator">&gt;</span>
+</code></pre></div><p>删除索引：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> <span class="token operator">&lt;</span>索引名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_3-4-数据查询"><a href="#_3-4-数据查询" class="header-anchor">#</a> 3.4 数据查询</h2> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token punctuation">[</span><span class="token keyword">ALL</span><span class="token operator">|</span><span class="token keyword">DISTINCT</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>目标列表达式<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>目标列表达式<span class="token operator">&gt;</span><span class="token punctuation">]</span> …
+<span class="token keyword">FROM</span> <span class="token operator">&lt;</span>表名或视图名<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>表名或视图名<span class="token operator">&gt;</span> <span class="token punctuation">]</span>…<span class="token operator">|</span><span class="token punctuation">(</span><span class="token keyword">SELECT</span> 语句<span class="token punctuation">)</span>
+	<span class="token punctuation">[</span><span class="token keyword">AS</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>别名<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span> <span class="token keyword">WHERE</span> <span class="token operator">&lt;</span>条件表达式<span class="token operator">&gt;</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span> <span class="token keyword">HAVING</span> <span class="token operator">&lt;</span>条件表达式<span class="token operator">&gt;</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span>
+<span class="token punctuation">[</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span>列名<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span> <span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="单表查询"><a href="#单表查询" class="header-anchor">#</a> 单表查询</h3> <h4 id="where-子句"><a href="#where-子句" class="header-anchor">#</a> WHERE 子句</h4> <table><thead><tr><th>查询条件</th> <th>谓词</th></tr></thead> <tbody><tr><td>比较</td> <td>=, &gt;, &lt;, &gt;=, &lt;=, !=, &lt;&gt;, !&gt;, !&lt;; NOT+上述比较运算符</td></tr> <tr><td>确定范围</td> <td>BETWEEN  AND,  NOT  BETWEEN AND</td></tr> <tr><td>确定集合</td> <td>IN, NOT  IN</td></tr> <tr><td>字符匹配</td> <td>LIKE, NOT  LIKE</td></tr> <tr><td>空  值</td> <td>IS  NULL,  IS  NOT NULL</td></tr> <tr><td>多重条件（逻辑运算）</td> <td>AND, OR, NOT</td></tr></tbody></table> <div id="字符匹配" class="anchor">字符匹配</div><p>谓词：[NOT] LIKE  '&lt;匹配串&gt;'  [ESCAPE  '&lt;换码字符&gt;']</p> <p>通配符：</p> <ul><li>% （百分号）：代表任意长度（长度可以为 0）的字符串</li> <li>_ （下横线） ：代表任意单个字符。</li></ul> <p>使用换码字符将通配符转义为普通字符：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Cno，Ccredit
+<span class="token keyword">FROM</span> Course
+<span class="token keyword">WHERE</span> Cname <span class="token operator">LIKE</span> <span class="token string">'DB\_Design'</span> <span class="token keyword">ESCAPE</span> '\'<span class="token punctuation">;</span>
+</code></pre></div><h4 id="order-by-子句"><a href="#order-by-子句" class="header-anchor">#</a> ORDER BY 子句</h4> <p>可以按一个或多个属性列排序。</p> <p>升序：ASC；降序：DESC；缺省值为升序。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span> Grade
+<span class="token keyword">FROM</span> SC
+<span class="token keyword">WHERE</span> Cno<span class="token operator">=</span> <span class="token string">'3'</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> Grade <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="聚集函数"><a href="#聚集函数" class="header-anchor">#</a> 聚集函数</h4> <table><thead><tr><th>聚合函数</th> <th>描述</th></tr></thead> <tbody><tr><td><code>COUNT(*)</code></td> <td>统计元组个数</td></tr> <tr><td><code>COUNT([DISTINCT|ALL] &lt;列名&gt;)</code></td> <td>统计一列中值的个数</td></tr> <tr><td><code>SUM([DISTINCT|ALL] &lt;列名&gt;)</code></td> <td>计算一列值的总和（此列必须为数值型）</td></tr> <tr><td><code>AVG([DISTINCT|ALL] &lt;列名&gt;)</code></td> <td>计算一列值的平均值（此列必须为数值型）</td></tr> <tr><td><code>MAX([DISTINCT|ALL] &lt;列名&gt;)</code></td> <td>求一列中的最大值</td></tr> <tr><td><code>MIN([DISTINCT|ALL] &lt;列名&gt;)</code></td> <td>求一列中的最小值</td></tr></tbody></table> <h4 id="group-by-子句"><a href="#group-by-子句" class="header-anchor">#</a> GROUP BY 子句</h4> <p>按指定的一列或多列值分组，值相等的为一组。</p> <p>细化聚集函数的作用对象： 对查询结果分组后，聚集函数将分别作用于每个组。</p> <p><strong>HAVING</strong> 短语与 WHERE 子句的区别：HAVING 短语作用于 <strong>组</strong>，从中选择满足条件的组；WHERE 子句作用于 <strong>基表或视图</strong>，从中选择满足条件的元组。</p> <h3 id="连接查询"><a href="#连接查询" class="header-anchor">#</a> 连接查询</h3> <h4 id="等值与非等值连接查询"><a href="#等值与非等值连接查询" class="header-anchor">#</a> 等值与非等值连接查询</h4> <div id="等值连接" class="anchor">等值连接</div><div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Student<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span> SC<span class="token punctuation">.</span><span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student<span class="token punctuation">,</span> SC
+<span class="token keyword">WHERE</span> Student<span class="token punctuation">.</span>Sno <span class="token operator">=</span> SC<span class="token punctuation">.</span>Sno<span class="token punctuation">;</span>
+</code></pre></div><div id="自然连接" class="anchor">自然连接</div><div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Student<span class="token punctuation">.</span>Sno<span class="token punctuation">,</span>Sname<span class="token punctuation">,</span>Ssex<span class="token punctuation">,</span>Sage<span class="token punctuation">,</span>Sdept<span class="token punctuation">,</span>Cno<span class="token punctuation">,</span>Grade
+<span class="token keyword">FROM</span> Student<span class="token punctuation">,</span> SC
+<span class="token keyword">WHERE</span> Student<span class="token punctuation">.</span>Sno <span class="token operator">=</span> SC<span class="token punctuation">.</span>Sno<span class="token punctuation">;</span>
+</code></pre></div><h4 id="自身连接"><a href="#自身连接" class="header-anchor">#</a> 自身连接</h4> <p>自身连接：一个表与其自己进行连接。</p> <blockquote><p>需要给表起别名以示区别。</p></blockquote> <p>示例：查询每一门课的间接先修课。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token keyword">FIRST</span><span class="token punctuation">.</span>Cno<span class="token punctuation">,</span> <span class="token keyword">SECOND</span><span class="token punctuation">.</span>Cpno
+<span class="token keyword">FROM</span> Course <span class="token keyword">FIRST</span><span class="token punctuation">,</span> Course <span class="token keyword">SECOND</span>
+<span class="token keyword">WHERE</span> <span class="token keyword">FIRST</span><span class="token punctuation">.</span>Cpno <span class="token operator">=</span> <span class="token keyword">SECOND</span><span class="token punctuation">.</span>Cno<span class="token punctuation">;</span>
+</code></pre></div><h4 id="外连接"><a href="#外连接" class="header-anchor">#</a> 外连接</h4> <p>外连接操作以指定表为连接主体，将主体表中不满足连接条件的元组一并输出。</p> <ul><li>左外连接：列出左边关系中所有的元组；</li> <li>右外连接：列出右边关系中所有的元组。</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Student<span class="token punctuation">.</span>Sno<span class="token punctuation">,</span>Sname<span class="token punctuation">,</span>Ssex<span class="token punctuation">,</span>Sage<span class="token punctuation">,</span>Sdept<span class="token punctuation">,</span>Cno<span class="token punctuation">,</span>Grade
+<span class="token keyword">FROM</span> Student <span class="token keyword">LEFT</span> <span class="token keyword">OUT</span> <span class="token keyword">JOIN</span> SC <span class="token keyword">ON</span> Student<span class="token punctuation">.</span>Sno <span class="token operator">=</span> SC<span class="token punctuation">.</span>Sno<span class="token punctuation">;</span> 
+</code></pre></div><h4 id="多表连接"><a href="#多表连接" class="header-anchor">#</a> 多表连接</h4> <p>两个以上的表进行连接。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Student<span class="token punctuation">.</span>Sno<span class="token punctuation">,</span> Sname<span class="token punctuation">,</span> Cname<span class="token punctuation">,</span> Grade
+<span class="token keyword">FROM</span> Student<span class="token punctuation">,</span> SC<span class="token punctuation">,</span> Course 
+<span class="token keyword">WHERE</span> Student<span class="token punctuation">.</span>Sno <span class="token operator">=</span> SC<span class="token punctuation">.</span>Sno <span class="token operator">AND</span> SC<span class="token punctuation">.</span>Cno <span class="token operator">=</span> Course<span class="token punctuation">.</span>Cno<span class="token punctuation">;</span>
+</code></pre></div><h3 id="嵌套查询"><a href="#嵌套查询" class="header-anchor">#</a> 嵌套查询</h3> <p>一个 SELECT-FROM-WHERE 语句称为一个 <strong>查询块</strong>。</p> <p>将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为 <strong>嵌套查询</strong>。</p> <p>子查询不能使用 ORDER BY 子句。</p> <div id="嵌套查询求解方法" class="anchor">嵌套查询求解方法</div><p><strong>不相关子查询</strong>：子查询的查询条件不依赖于父查询。</p> <ul><li>由里向外，逐层处理。即每个子查询在上一级查询处理之前求解，<strong>子查询的结果用于建立其父查询的查找条件</strong>。</li></ul> <p><strong>相关子查询</strong>：子查询的查询条件依赖于父查询。</p> <ul><li>首先取外层查询中表的第一个元组，根据它与内层查询相关的属性值处理内层查询，<strong>若 WHERE 子句返回值为真，则取此元组放入结果表。</strong></li> <li>然后再取外层表的下一个元组。重复这一过程，直至外层表全部检查完为止。</li></ul> <h4 id="带有-in-谓词的子查询"><a href="#带有-in-谓词的子查询" class="header-anchor">#</a> 带有 IN 谓词的子查询</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span> Sname<span class="token punctuation">,</span> Sdept
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sdept <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> Sdept
+                <span class="token keyword">FROM</span> Student
+                <span class="token keyword">WHERE</span> Sname<span class="token operator">=</span> <span class="token string">'刘晨'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="带有比较运算符的子查询"><a href="#带有比较运算符的子查询" class="header-anchor">#</a> 带有比较运算符的子查询</h4> <p>当能确切知道内层查询返回单值时，可用比较运算符。</p> <p>示例：由于一个学生只可能在一个系学习，则可以用 = 代替 IN：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span>Sname<span class="token punctuation">,</span>Sdept
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sdept <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> Sdept
+               <span class="token keyword">FROM</span> Student
+               <span class="token keyword">WHERE</span> Sname<span class="token operator">=</span> <span class="token string">'刘晨'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>示例：找出每个学生超过他选修课程平均成绩的课程号。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span> Cno
+<span class="token keyword">FROM</span> SC x
+<span class="token keyword">WHERE</span> Grade <span class="token operator">&gt;=</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>Grade<span class="token punctuation">)</span> 
+                <span class="token keyword">FROM</span> SC y
+                <span class="token keyword">WHERE</span> y<span class="token punctuation">.</span>Sno <span class="token operator">=</span> x<span class="token punctuation">.</span>Sno<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment"># 相关子查询 </span>
+</code></pre></div><h4 id="带有-any-或-all-谓词的子查询"><a href="#带有-any-或-all-谓词的子查询" class="header-anchor">#</a> 带有 ANY 或 ALL 谓词的子查询</h4> <p>使用 ANY 或 ALL 谓词时必须同时使用比较运算。</p> <p>示例：查询非计算机科学系中比计算机科学系任意一个学生年龄小的学生姓名和年龄。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sname<span class="token punctuation">,</span>Sage
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sage <span class="token operator">&lt;</span> <span class="token keyword">ANY</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> Sage
+                  <span class="token keyword">FROM</span> Student
+                  <span class="token keyword">WHERE</span> Sdept <span class="token operator">=</span> <span class="token string">'CS'</span><span class="token punctuation">)</span>
+      <span class="token operator">AND</span> Sdept <span class="token operator">&lt;&gt;</span> <span class="token string">'CS'</span> <span class="token punctuation">;</span>           
+</code></pre></div><h4 id="带有-exists-谓词的子查询"><a href="#带有-exists-谓词的子查询" class="header-anchor">#</a> 带有 EXISTS 谓词的子查询</h4> <p>带有 EXISTS 谓词的子查询不返回任何数据，<strong>只产生逻辑真值 “true” 或逻辑假值 “false”。</strong></p> <p>示例：查询所有选修了 1 号课程的学生姓名。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sname
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+              <span class="token keyword">FROM</span> SC
+              <span class="token keyword">WHERE</span> Sno <span class="token operator">=</span> Student<span class="token punctuation">.</span>Sno <span class="token operator">AND</span> Cno <span class="token operator">=</span> <span class="token string">'1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="集合查询"><a href="#集合查询" class="header-anchor">#</a> 集合查询</h3> <h4 id="并操作-union"><a href="#并操作-union" class="header-anchor">#</a> 并操作 UNION</h4> <p>示例：查询计算机科学系的学生及年龄不大于 19 岁的学生。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sdept<span class="token operator">=</span> <span class="token string">'CS'</span>
+<span class="token keyword">UNION</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sage <span class="token operator">&lt;=</span> <span class="token number">19</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="交操作-intersect"><a href="#交操作-intersect" class="header-anchor">#</a> 交操作 INTERSECT</h4> <p>示例：查询既选修了课程 1 又选修了课程 2 的学生。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno
+<span class="token keyword">FROM</span> SC
+<span class="token keyword">WHERE</span> Cno<span class="token operator">=</span><span class="token string">' 1 '</span> 
+<span class="token keyword">INTERSECT</span>
+<span class="token keyword">SELECT</span> Sno
+<span class="token keyword">FROM</span> SC
+<span class="token keyword">WHERE</span> Cno<span class="token operator">=</span><span class="token string">'2 '</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="差操作-except"><a href="#差操作-except" class="header-anchor">#</a> 差操作 EXCEPT</h4> <p>示例：查询计算机科学系的学生与年龄不大于 19 岁的学生的差集。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sdept<span class="token operator">=</span><span class="token string">'CS'</span>
+<span class="token keyword">EXCEPT</span>
+<span class="token keyword">SELECT</span>  <span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sage <span class="token operator">&lt;=</span><span class="token number">19</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="基于派生表的查询"><a href="#基于派生表的查询" class="header-anchor">#</a> 基于派生表的查询</h3> <p>子查询不仅可以出现在 WHERE 子句中，<strong>还可以出现在 FROM 子句中</strong>，这时子查询生成的 <strong>临时派生表</strong> 成为主查询的查询对象。</p> <p>示例：找出每个学生超过他自己选修课程平均成绩的课程号。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span> Cno
+<span class="token keyword">FROM</span> SC<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span> <span class="token function">Avg</span><span class="token punctuation">(</span>Grade<span class="token punctuation">)</span> 
+          <span class="token keyword">FROM</span> SC
+          <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> Sno<span class="token punctuation">)</span> <span class="token keyword">AS</span> Avg_sc<span class="token punctuation">(</span>avg_sno<span class="token punctuation">,</span> avg_grade<span class="token punctuation">)</span>
+<span class="token keyword">WHERE</span> SC<span class="token punctuation">.</span>Sno <span class="token operator">=</span> Avg_sc<span class="token punctuation">.</span>avg_sno <span class="token operator">AND</span> SC<span class="token punctuation">.</span>Grade <span class="token operator">&gt;=</span> Avg_sc<span class="token punctuation">.</span>avg_grade
+</code></pre></div><p>如果子查询中没有聚集函数，派生表可以不指定属性列，子查询 SELECT 子句后面的列名为其缺省属性。</p> <h2 id="_3-5-数据更新"><a href="#_3-5-数据更新" class="header-anchor">#</a> 3.5 数据更新</h2> <h3 id="插入数据"><a href="#插入数据" class="header-anchor">#</a> 插入数据</h3> <h4 id="插入元组"><a href="#插入元组" class="header-anchor">#</a> 插入元组</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">INSERT</span>
+<span class="token keyword">INTO</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>属性列<span class="token number">1</span><span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>属性列<span class="token number">2</span> <span class="token operator">&gt;</span>…<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>常量<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>常量<span class="token number">2</span><span class="token operator">&gt;</span><span class="token punctuation">]</span>… <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>INTO 子句：</p> <ul><li>指定要插入数据的表名及属性列；</li> <li>属性列的顺序可与表定义中的顺序不一致；</li> <li>没有指定属性列：表示要插入的是一条完整的元组，且属性列属性与表定义中的顺序一致；</li> <li>指定部分属性列：插入的元组在其余属性列上取空值。</li></ul> <p>VALUES 子句：提供的值必须与 INTO 子句匹配</p> <ul><li>值的个数</li> <li>值的类型</li></ul> <h4 id="插入子查询结果"><a href="#插入子查询结果" class="header-anchor">#</a> 插入子查询结果</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">INSERT</span> 
+<span class="token keyword">INTO</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>  <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>属性列<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>属性列<span class="token number">2</span><span class="token operator">&gt;</span>…  <span class="token punctuation">)</span><span class="token punctuation">]</span>
+子查询<span class="token punctuation">;</span>
+</code></pre></div><p>子查询：SELECT 子句目标列必须与 INTO 子句匹配</p> <ul><li>值的个数</li> <li>值的类型</li></ul> <p>示例：对每一个系，求学生的平均年龄，并把结果存入数据库。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">INSERT</span>
+<span class="token keyword">INTO</span> Dept_age<span class="token punctuation">(</span>Sdept<span class="token punctuation">,</span>Avg_age<span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> Sdept，<span class="token function">AVG</span><span class="token punctuation">(</span>Sage<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> Sdept<span class="token punctuation">;</span>
+</code></pre></div><p>关系数据库管理系统在执行插入语句时会检查所插元组是否破坏表上已定义的完整性规则。</p> <h3 id="修改数据"><a href="#修改数据" class="header-anchor">#</a> 修改数据</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">UPDATE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token keyword">SET</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;=</span><span class="token operator">&lt;</span>表达式<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;=</span><span class="token operator">&lt;</span>表达式<span class="token operator">&gt;</span><span class="token punctuation">]</span>…
+<span class="token punctuation">[</span><span class="token keyword">WHERE</span> <span class="token operator">&lt;</span>条件<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p>关系数据库管理系统在执行修改语句时会检查修改操作是否破坏表上已定义的完整性规则。</p> <h3 id="删除数据"><a href="#删除数据" class="header-anchor">#</a> 删除数据</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DELETE</span>
+<span class="token keyword">FROM</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span><span class="token keyword">WHERE</span> <span class="token operator">&lt;</span>条件<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p>缺省表示要删除表中的全部元组，表的定义仍在字典中。</p> <h2 id="_3-6-空值的处理"><a href="#_3-6-空值的处理" class="header-anchor">#</a> 3.6 空值的处理</h2> <p>使用 IS NULL 或 IS NOT NULL 判断一个属性的值是否为空值。</p> <p>示例：从 Student 表中找出漏填了数据的学生信息。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span>  <span class="token operator">*</span>
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sname <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> Ssex <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> Sage <span class="token operator">IS</span> <span class="token boolean">NULL</span> <span class="token operator">OR</span> Sdept <span class="token operator">IS</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
+</code></pre></div><p>属性定义（或者域定义）中：</p> <ul><li>有 NOT NULL 约束条件的不能取空值</li> <li>加了 UNIQUE 限制的属性不能取空值</li> <li>码属性不能取空值</li></ul> <h2 id="_3-7-视图"><a href="#_3-7-视图" class="header-anchor">#</a> 3.7 视图</h2> <p>视图是从一个或几个<strong>基本表导出的表</strong>。视图本身不独立存储在数据库中，是一个<strong>虚表</strong>。即数据库中<strong>只存放视图的定义</strong>而不存放视图对应的数据，这些数据仍存放在导出视图的基本表中。</p> <p>视图在概念上与基本表等同，用户可以如同基本表那样使用视图，可以在视图上再定义视图。</p> <h3 id="定义视图"><a href="#定义视图" class="header-anchor">#</a> 定义视图</h3> <h4 id="建立视图"><a href="#建立视图" class="header-anchor">#</a> 建立视图</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span> 
+<span class="token operator">&lt;</span>视图名<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span>  <span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token punctuation">]</span>…<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">AS</span> <span class="token operator">&lt;</span>子查询<span class="token operator">&gt;</span>
+<span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>WITH CHECK OPTION</strong>：对视图进行 UPDATE、INSERT 和 DELETE 操作时要保证更新、插入或删除的行满足视图定义中的谓词条件（即子查询中的条件表达式）。</p> <p>子查询可以是任意的 SELECT 语句，是否可以含有 ORDER BY 子句和 DISTINCT 短语，则决定具体系统的实现。</p> <p>关系数据库管理系统执行 CREATE VIEW 语句时 <strong>只是把视图定义存入数据字典</strong>，并不执行其中的 SELECT 语句。在对视图查询时，按视图的定义从基本表中将数据查出。</p> <p>示例：建立信息系学生的视图，并要求进行修改和插入操作时仍需保证该视图只有信息系的学生 。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span> IS_Student
+<span class="token keyword">AS</span> 
+<span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span>Sname<span class="token punctuation">,</span>Sage
+<span class="token keyword">FROM</span> Student
+<span class="token keyword">WHERE</span> Sdept<span class="token operator">=</span> <span class="token string">'IS'</span>
+<span class="token keyword">WITH</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span>
+</code></pre></div><p>若一个视图是 <strong>从单个基本表导出的</strong>，并且只是去掉了基本表的某些行和某些列，但保留了主码，我们称这类视图为 <strong>行列子集视图</strong>。</p> <h4 id="删除视图"><a href="#删除视图" class="header-anchor">#</a> 删除视图</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">VIEW</span> <span class="token operator">&lt;</span>视图名<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token keyword">CASCADE</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p>该语句从数据字典中删除指定的视图定义。</p> <p>如果该视图上还导出了其他视图，使用 CASCADE 级联删除语句，把该视图和由它导出的所有视图一起删除。</p> <p>删除基表时，由该基表导出的所有视图定义都必须显式地使用 DROP VIEW 语句删除。</p> <h3 id="查询视图"><a href="#查询视图" class="header-anchor">#</a> 查询视图</h3> <p>用户角度：查询视图与查询基本表相同。</p> <p>关系数据库管理系统实现视图查询的方法：视图消解法。</p> <ul><li>进行有效性检查</li> <li>转换成等价的对基本表的查询</li> <li>执行修正后的查询</li></ul> <p>示例：在信息系学生的视图中找出年龄小于 20 岁的学生。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span>Sage
+<span class="token keyword">FROM</span> IS_Student
+<span class="token keyword">WHERE</span> Sage <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</code></pre></div><p>视图消解转换后的查询语句为：</p> <div class="language-sql extra-class"><pre class="language-sql"><code> <span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span>Sage       
+ <span class="token keyword">FROM</span> Student
+ <span class="token keyword">WHERE</span> Sdept <span class="token operator">=</span> <span class="token string">'IS'</span> <span class="token operator">AND</span> Sage <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>视图消解法的局限</strong>：有些情况下，视图消解法不能生成正确的查询。</p> <h3 id="更新视图"><a href="#更新视图" class="header-anchor">#</a> 更新视图</h3> <p>示例：将信息系学生视图中学号 ”201215122” 的学生姓名改为 ”刘辰”。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">UPDATE</span> IS_Student
+<span class="token keyword">SET</span> Sname<span class="token operator">=</span> <span class="token string">'刘辰'</span>
+<span class="token keyword">WHERE</span> Sno<span class="token operator">=</span> <span class="token string">' 201215122 '</span><span class="token punctuation">;</span>
+</code></pre></div><p>视图消解转换后的更新语句为：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">UPDATE</span> Student
+<span class="token keyword">SET</span> Sname <span class="token operator">=</span> <span class="token string">'刘辰'</span>
+<span class="token keyword">WHERE</span> Sno <span class="token operator">=</span> <span class="token string">'201215122'</span> <span class="token operator">AND</span> Sdept<span class="token operator">=</span> <span class="token string">'IS'</span><span class="token punctuation">;</span>
+</code></pre></div><p>插入、删除记录类似。</p> <p><strong>更新视图的限制</strong>：一些视图是不可更新的，因为对这些视图的更新不能唯一地有意义地转换成对相应基本表的更新。</p> <p>示例：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span> S_G <span class="token punctuation">(</span>Sno<span class="token punctuation">,</span>Gavg<span class="token punctuation">)</span>
+<span class="token keyword">AS</span> 
+<span class="token keyword">SELECT</span> Sno<span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span>Grade<span class="token punctuation">)</span>
+<span class="token keyword">FROM</span> SC
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> Sno<span class="token punctuation">;</span>
+</code></pre></div><div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">UPDATE</span> S_G
+<span class="token keyword">SET</span> Gavg<span class="token operator">=</span><span class="token number">90</span>
+<span class="token keyword">WHERE</span> Sno <span class="token operator">=</span> <span class="token string">'201215121'</span><span class="token punctuation">;</span>
+</code></pre></div><blockquote><p>注意：</p> <p>基本表的 <strong>行列子集视图一般是可更新的</strong>。</p> <p>若视图的属性来自 <strong>聚集函数、表达式</strong>，则该视图肯定是不可以更新的。</p></blockquote> <h3 id="视图的优点"><a href="#视图的优点" class="header-anchor">#</a> 视图的优点</h3> <p>视图能够 <strong>简化用户的操作</strong>。</p> <p>视图使用户能 <strong>以多种角度看待同一数据</strong>。</p> <p>视图对重构数据库提供了一定程度的 <strong>逻辑独立性</strong>。</p> <p>视图能够对机密数据提供 <strong>安全保护</strong>。</p> <h3 id=""><a href="#" class="header-anchor">#</a></h3></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/database-system/5lft8s/" class="prev">
+        第2章 关系数据库
+      </a></span> <span class="next"><a href="/note-pages/database-system/04-数据库安全性.html">
+        第4章 数据库安全性
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_3-1-sql概述" class="right-sidebar-item-level2">
+          3.1 SQL概述
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#sql-的特点" class="right-sidebar-item-level3">
+          SQL 的特点
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#sql-的基本概念" class="right-sidebar-item-level3">
+          SQL 的基本概念
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#_3-2-学生-课程数据库" class="right-sidebar-item-level2">
+          3.2 学生-课程数据库
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_3-3-数据定义" class="right-sidebar-item-level2">
+          3.3 数据定义
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#模式的定义与删除" class="right-sidebar-item-level3">
+          模式的定义与删除
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#基本表的定义、删除与修改" class="right-sidebar-item-level3">
+          基本表的定义、删除与修改
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#索引的建立与删除" class="right-sidebar-item-level3">
+          索引的建立与删除
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#_3-4-数据查询" class="right-sidebar-item-level2">
+          3.4 数据查询
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#单表查询" class="right-sidebar-item-level3">
+          单表查询
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#where-子句" class="right-sidebar-item-level4">
+          WHERE 子句
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#order-by-子句" class="right-sidebar-item-level4">
+          ORDER BY 子句
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#聚集函数" class="right-sidebar-item-level4">
+          聚集函数
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#group-by-子句" class="right-sidebar-item-level4">
+          GROUP BY 子句
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#连接查询" class="right-sidebar-item-level3">
+          连接查询
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#等值与非等值连接查询" class="right-sidebar-item-level4">
+          等值与非等值连接查询
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#自身连接" class="right-sidebar-item-level4">
+          自身连接
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#外连接" class="right-sidebar-item-level4">
+          外连接
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#多表连接" class="right-sidebar-item-level4">
+          多表连接
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#嵌套查询" class="right-sidebar-item-level3">
+          嵌套查询
+        </a></li><li id="tab-item20" class="right-sidebar-item"><a href="#带有-in-谓词的子查询" class="right-sidebar-item-level4">
+          带有 IN 谓词的子查询
+        </a></li><li id="tab-item21" class="right-sidebar-item"><a href="#带有比较运算符的子查询" class="right-sidebar-item-level4">
+          带有比较运算符的子查询
+        </a></li><li id="tab-item22" class="right-sidebar-item"><a href="#带有-any-或-all-谓词的子查询" class="right-sidebar-item-level4">
+          带有 ANY 或 ALL 谓词的子查询
+        </a></li><li id="tab-item23" class="right-sidebar-item"><a href="#带有-exists-谓词的子查询" class="right-sidebar-item-level4">
+          带有 EXISTS 谓词的子查询
+        </a></li><li id="tab-item24" class="right-sidebar-item"><a href="#集合查询" class="right-sidebar-item-level3">
+          集合查询
+        </a></li><li id="tab-item25" class="right-sidebar-item"><a href="#并操作-union" class="right-sidebar-item-level4">
+          并操作 UNION
+        </a></li><li id="tab-item26" class="right-sidebar-item"><a href="#交操作-intersect" class="right-sidebar-item-level4">
+          交操作 INTERSECT
+        </a></li><li id="tab-item27" class="right-sidebar-item"><a href="#差操作-except" class="right-sidebar-item-level4">
+          差操作 EXCEPT
+        </a></li><li id="tab-item28" class="right-sidebar-item"><a href="#基于派生表的查询" class="right-sidebar-item-level3">
+          基于派生表的查询
+        </a></li><li id="tab-item29" class="right-sidebar-item"><a href="#_3-5-数据更新" class="right-sidebar-item-level2">
+          3.5 数据更新
+        </a></li><li id="tab-item30" class="right-sidebar-item"><a href="#插入数据" class="right-sidebar-item-level3">
+          插入数据
+        </a></li><li id="tab-item31" class="right-sidebar-item"><a href="#插入元组" class="right-sidebar-item-level4">
+          插入元组
+        </a></li><li id="tab-item32" class="right-sidebar-item"><a href="#插入子查询结果" class="right-sidebar-item-level4">
+          插入子查询结果
+        </a></li><li id="tab-item33" class="right-sidebar-item"><a href="#修改数据" class="right-sidebar-item-level3">
+          修改数据
+        </a></li><li id="tab-item34" class="right-sidebar-item"><a href="#删除数据" class="right-sidebar-item-level3">
+          删除数据
+        </a></li><li id="tab-item35" class="right-sidebar-item"><a href="#_3-6-空值的处理" class="right-sidebar-item-level2">
+          3.6 空值的处理
+        </a></li><li id="tab-item36" class="right-sidebar-item"><a href="#_3-7-视图" class="right-sidebar-item-level2">
+          3.7 视图
+        </a></li><li id="tab-item37" class="right-sidebar-item"><a href="#定义视图" class="right-sidebar-item-level3">
+          定义视图
+        </a></li><li id="tab-item38" class="right-sidebar-item"><a href="#建立视图" class="right-sidebar-item-level4">
+          建立视图
+        </a></li><li id="tab-item39" class="right-sidebar-item"><a href="#删除视图" class="right-sidebar-item-level4">
+          删除视图
+        </a></li><li id="tab-item40" class="right-sidebar-item"><a href="#查询视图" class="right-sidebar-item-level3">
+          查询视图
+        </a></li><li id="tab-item41" class="right-sidebar-item"><a href="#更新视图" class="right-sidebar-item-level3">
+          更新视图
+        </a></li><li id="tab-item42" class="right-sidebar-item"><a href="#视图的优点" class="right-sidebar-item-level3">
+          视图的优点
+        </a></li><li id="tab-item43" class="right-sidebar-item"><a href="#" class="right-sidebar-item-level3">
+          
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/109.58f7297c.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第2章 多线程入门类和接口 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/135.2a5a690d.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link router-link-active">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link router-link-active">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/java-concurrency/5e7bf11/" class="sidebar-link">第1章 理论基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5e7bf11/#_1-1-进程和线程产生的背景" class="sidebar-link">1.1 进程和线程产生的背景</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5e7bf11/#_1-2-上下文切换" class="sidebar-link">1.2 上下文切换</a></li></ul></li><li><a href="/note-pages/java-concurrency/6dbd27/" aria-current="page" class="active sidebar-link">第2章 多线程入门类和接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/6dbd27/#_2-1-thread-类和-runnable-接口" class="sidebar-link">2.1 Thread 类和 Runnable 接口</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/6dbd27/#_2-2-callable、future-与-futuretask" class="sidebar-link">2.2 Callable、Future 与 FutureTask</a></li></ul></li><li><a href="/note-pages/java-concurrency/09gu4m/" class="sidebar-link">第3章 线程状态</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09gu4m/#_3-1-线程的-6-个状态" class="sidebar-link">3.1 线程的 6 个状态</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09gu4m/#_3-2-线程状态的迁移" class="sidebar-link">3.2 线程状态的迁移</a></li></ul></li><li><a href="/note-pages/java-concurrency/5gmke5/" class="sidebar-link">第4章 线程间的通信</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5gmke5/#_4-1-锁与同步" class="sidebar-link">4.1 锁与同步</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/5gmke5/#_4-2-等待-通知机制" class="sidebar-link">4.2 等待/通知机制</a></li></ul></li><li><a href="/note-pages/java-concurrency/vt6hbk/" class="sidebar-link">第5章 并发问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-1-可见性" class="sidebar-link">5.1 可见性</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-2-重排序" class="sidebar-link">5.2 重排序</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-3-顺序一致性" class="sidebar-link">5.3 顺序一致性</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/vt6hbk/#_5-4-补充" class="sidebar-link">5.4 补充</a></li></ul></li><li><a href="/note-pages/java-concurrency/shrk6c/" class="sidebar-link">第6章 synchronized 与 volatile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-1-关键字-synchronized" class="sidebar-link">6.1 关键字 synchronized</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-2-对象内存布局与锁升级" class="sidebar-link">6.2 对象内存布局与锁升级</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/shrk6c/#_6-3-关键字-volatile" class="sidebar-link">6.3 关键字 volatile</a></li></ul></li><li><a href="/note-pages/java-concurrency/g56kek/" class="sidebar-link">第7章 J.U.C</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-1-lock-框架" class="sidebar-link">7.1 Lock 框架</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-2-同步器" class="sidebar-link">7.2 同步器</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-3-并发集合" class="sidebar-link">7.3 并发集合</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-4-原子类" class="sidebar-link">7.4 原子类</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/g56kek/#_7-5-线程池" class="sidebar-link">7.5 线程池</a></li></ul></li><li><a href="/note-pages/java-concurrency/b8s9yb/" class="sidebar-link">第8章 J.U.C 源码分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-1-abstractqueuedsynchronizer" class="sidebar-link">8.1 AbstractQueuedSynchronizer</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-2-reentrantlock" class="sidebar-link">8.2 ReentrantLock</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-3-concurrenthashmap-jdk-1-7" class="sidebar-link">8.3 ConcurrentHashMap（JDK 1.7）</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-4-concurrenthashmap-jdk-1-8" class="sidebar-link">8.4 ConcurrentHashMap（JDK 1.8）</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/b8s9yb/#_8-4-threadpoolexecutor" class="sidebar-link">8.4 ThreadPoolExecutor</a></li></ul></li><li><a href="/note-pages/java-concurrency/09-ThreadLocal.html" class="sidebar-link">第9章 ThreadLocal</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-1-认识-threadlocal-线程局部存储" class="sidebar-link">9.1 认识 ThreadLocal 线程局部存储</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-2-threadlocal-源码分析" class="sidebar-link">9.2 ThreadLocal 源码分析</a></li><li class="sidebar-sub-header"><a href="/note-pages/java-concurrency/09-ThreadLocal.html#_9-3-threadlocalmap-源码分析" class="sidebar-link">9.3 ThreadLocalMap 源码分析</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第2章-多线程入门类和接口"><a href="#第2章-多线程入门类和接口" class="header-anchor">#</a> 第2章 多线程入门类和接口</h1> <h2 id="_2-1-thread-类和-runnable-接口"><a href="#_2-1-thread-类和-runnable-接口" class="header-anchor">#</a> 2.1 Thread 类和 Runnable 接口</h2> <p>在 Java 中，我们是如何使用多线程的呢？</p> <p>首先，需要有一个 “线程” 类。JDK 提供了 Thread 类和 Runnalble 接口来让我们实现自己的 “线程” 类。</p> <ul><li>继承 Thread 类，并重写 run 方法；</li> <li>实现 Runnable 接口的 run 方法。</li></ul> <h3 id="继承-thread-类"><a href="#继承-thread-类" class="header-anchor">#</a> 继承 Thread 类</h3> <p>首先是继承 Thread 类：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">MyThread</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;MyThread&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Thread</span> myThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        myThread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>调用 start() 方法后，该线程才算启动。</p> <blockquote><p>我们在程序里面调用了 start() 方法后，虚拟机会先为我们创建一个线程，然后等到这个线程第一次得到时间片时再调用 run() 方法。</p></blockquote> <blockquote><p><strong>注意</strong>：不可多次调用 start() 方法。在第一次调用 start() 方法后，再次调用 start() 方法会抛出异常。</p></blockquote> <h3 id="实现-runnable-接口"><a href="#实现-runnable-接口" class="header-anchor">#</a> 实现 Runnable 接口</h3> <p>接着我们来看一下 Runnable 接口（JDK 1.8 +）</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@FunctionalInterface</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以看到 Runnable 是一个函数式接口，这意味着我们可以使用 <strong>Java 8 的函数式编程</strong>来简化代码。</p> <p>示例代码：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Java 8 函数式编程，可以省略 MyThread 类</span>
+        <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Java 8 匿名内部类&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="thread-类构造方法"><a href="#thread-类构造方法" class="header-anchor">#</a> Thread 类构造方法</h3> <p>Thread 类是一个 Runnable 接口的实现类，我们来看看 Thread 的源码。</p> <p>查看 Thread 类的构造，发现其实是简单调用一个私有的 init 方法来实现初始化。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token class-name">Runnable</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> target<span class="token punctuation">,</span> <span class="token string">&quot;Thread-&quot;</span> <span class="token operator">+</span> <span class="token function">nextThreadNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>init 的方法签名：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">ThreadGroup</span> g<span class="token punctuation">,</span> <span class="token class-name">Runnable</span> target<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span>
+                  <span class="token keyword">long</span> stackSize<span class="token punctuation">,</span> <span class="token class-name">AccessControlContext</span> acc<span class="token punctuation">,</span>
+                  <span class="token keyword">boolean</span> inheritThreadLocals<span class="token punctuation">)</span>
+</code></pre></div><p>参数：</p> <ul><li>g：线程组，指定这个线程是在哪个线程组下；</li> <li>target：指定要执行的任务；</li> <li>name：线程的名字，多个线程的名字是可以重复的；</li> <li>acc：初始化私有变量 inheritedAccessControlContext;</li> <li>inheritThreadLocals：可继承的 ThreadLocal，Thread 类里面有两个私有属性来支持 ThreadLocal。</li></ul> <p>实际情况下，我们大多是直接调用下面两个构造方法：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token class-name">Runnable</span> target<span class="token punctuation">)</span>
+<span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token class-name">Runnable</span> target<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">)</span>
+</code></pre></div><h3 id="thread-类的几个常用方法"><a href="#thread-类的几个常用方法" class="header-anchor">#</a> Thread 类的几个常用方法</h3> <p>这里介绍一下 Thread 类的几个常用的方法：</p> <div class="table-column-50-50-container"><table><thead><tr><th>方法</th> <th>描述</th></tr></thead> <tbody><tr><td>static native Thread <strong>currentThread</strong>()</td> <td>返回对当前正在执行的线程对象的引用。</td></tr> <tr><td>synchronized void <strong>start</strong>()</td> <td>开始执行线程的方法，java 虚拟机会调用线程内的 run() 方法。</td></tr> <tr><td>static native void <strong>yield</strong>()</td> <td>表示当前线程愿意让出对当前处理器的占用。<br>注意，就算当前线程调用了 yield() 方法，程序在调度的时候，仍有可能继续运行这个线程。</td></tr> <tr><td>static native void <strong>sleep</strong>(long millis)</td> <td>使当前线程睡眠一段时间。</td></tr> <tr><td>final void <strong>join</strong>()</td> <td>使当前线程等待另一个线程执行完毕之后再继续执行，是通过 Object 类的 wait 方法实现的。</td></tr></tbody></table></div><h3 id="thread-类与-runnable-接口的比较"><a href="#thread-类与-runnable-接口的比较" class="header-anchor">#</a> Thread 类与 Runnable 接口的比较</h3> <p>实现一个自定义的线程类，可以有继承 Thread 类或者实现 Runnable 接口这两种方式，它们之间有什么优劣呢？</p> <ul><li>由于 Java “单继承，多实现” 的特性，Runnable 接口使用起来比 Thread 更灵活。</li> <li>Runnable 接口出现更符合面向对象，将线程单独进行对象的封装。</li> <li>Runnable 接口出现，降低了线程对象和线程任务的耦合性。</li> <li>如果使用线程时不需要使用 Thread 类的诸多方法，显然使用 Runnable 接口更为轻量。</li></ul> <p>因此，我们通常优先使用 “实现 Runnable 接口” 这种方式来自定义线程类。</p> <h2 id="_2-2-callable、future-与-futuretask"><a href="#_2-2-callable、future-与-futuretask" class="header-anchor">#</a> 2.2 Callable、Future 与 FutureTask</h2> <p>通常来说，我们使用 Runnable 和 Thread 来创建一个新的线程。但是它们有一个弊端，就是 run 方法是没有返回值的。有时我们希望开启一个线程去执行一个任务，并且这个任务执行完成后有一个返回值。</p> <p>JDK 提供了 Callable 接口与 Future 类为我们解决这个问题，这也是所谓的 “异步” 模型。</p> <h3 id="callable-接口"><a href="#callable-接口" class="header-anchor">#</a> Callable 接口</h3> <p>Callable 与 Runnable 类似，同样是只有一个抽象方法的函数式接口。不同的是，Callable 提供的方法是 <strong>有返回值</strong> 的，而且支持泛型。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@FunctionalInterface</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Callable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token class-name">V</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Callable 一般配合线程池工具 ExecutorService 使用。使用 submit 方法来让一个 Callable 接口执行，它会返回一个 Future，后续的程序可以通过这个 Future 的 get 方法得到结果。</p> <p>这里可以看一个简单的使用 demo：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 自定义Callable</span>
+<span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token keyword">implements</span> <span class="token class-name">Callable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 模拟计算需要 1 秒</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 使用</span>
+        <span class="token class-name">ExecutorService</span> executor <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Task</span> task <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Future</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> result <span class="token operator">=</span> executor<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 注意调用 get 方法会阻塞当前线程，直到得到结果</span>
+        <span class="token comment">// 实际编码中建议使用可以设置超时时间的重载 get 方法</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="future-接口"><a href="#future-接口" class="header-anchor">#</a> Future 接口</h3> <p>Future 接口只有几个比较简单的方法：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">interface</span> <span class="token class-name">Future</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> paramBoolean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">isCancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">isDone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">V</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span><span class="token punctuation">,</span> <span class="token class-name">ExecutionException</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">V</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">long</span> paramLong<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span> paramTimeUnit<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span><span class="token punctuation">,</span> <span class="token class-name">ExecutionException</span><span class="token punctuation">,</span> <span class="token class-name">TimeoutException</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>cancel 方法是试图取消一个线程的执行。</p> <p>注意是试图取消，并不一定能取消成功。因为任务可能已完成、已取消、或者一些其它因素不能取消，存在取消失败的可能。boolean 类型的返回值是 “是否取消成功” 的意思。参数 paramBoolean 表示是否采用中断的方式取消线程执行。</p> <p>有时候，为了让任务有能够取消的功能，就使用 Callable 来代替 Runnable。如果为了可取消性而使用 Future 但又不提供可用的结果，则可以声明 Future&lt;?&gt; 形式类型、并返回 null 作为底层任务的结果。</p> <h3 id="futuretask-类"><a href="#futuretask-类" class="header-anchor">#</a> FutureTask 类</h3> <p>Future 接口有一个实现类叫 FutureTask。FutureTask 实现了 RunnableFuture 接口，而 RunnableFuture 接口同时继承了 Runnable 接口和 Future 接口：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RunnableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">extends</span> <span class="token class-name">Runnable</span><span class="token punctuation">,</span> <span class="token class-name">Future</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * Sets this Future to the result of its computation
+     * unless it has been cancelled.
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>前面说到 Future 只是一个接口，而它里面的 cancel, get, isDone 等方法要自己实现起来都是非常复杂的。因此 JDK 提供了一个 FutureTask 类来供我们使用。</p> <p>示例代码：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 自定义 Callable</span>
+<span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token keyword">implements</span> <span class="token class-name">Callable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 模拟计算需要 1 秒</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 使用</span>
+        <span class="token class-name">ExecutorService</span> executor <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newCachedThreadPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> futureTask <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span>futureTask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>futureTask<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>使用上与前一个 demo 有一点小的区别。首先，调用 submit 方法是没有返回值的。这里实际上是调用的 submit(Runnable task) 方法，而前面的 demo，调用的是 submit(Callable&lt;T&gt; task) 方法。然后，这里是使用 FutureTask 直接 get 取值，而上面的 demo 是通过 submit 方法返回的 Future 去取值。</p> <h3 id="futuretask-的几个状态"><a href="#futuretask-的几个状态" class="header-anchor">#</a> FutureTask 的几个状态</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+  * state 可能的状态转变路径如下：
+  * NEW -&gt; COMPLETING -&gt; NORMAL
+  * NEW -&gt; COMPLETING -&gt; EXCEPTIONAL
+  * NEW -&gt; CANCELLED
+  * NEW -&gt; INTERRUPTING -&gt; INTERRUPTED
+  */</span>
+<span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">int</span> state<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> NEW          <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> COMPLETING   <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> NORMAL       <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> EXCEPTIONAL  <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> CANCELLED    <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> INTERRUPTING <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> INTERRUPTED  <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+</code></pre></div><p>state 表示任务的运行状态，初始状态为 NEW。运行状态只会在 set、setException、cancel 方法中终止。COMPLETING、INTERRUPTING 是任务完成后的瞬时状态。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/java-concurrency/5e7bf11/" class="prev">
+        第1章 理论基础
+      </a></span> <span class="next"><a href="/note-pages/java-concurrency/09gu4m/">
+        第3章 线程状态
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_2-1-thread-类和-runnable-接口" class="right-sidebar-item-level2">
+          2.1 Thread 类和 Runnable 接口
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#继承-thread-类" class="right-sidebar-item-level3">
+          继承 Thread 类
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#实现-runnable-接口" class="right-sidebar-item-level3">
+          实现 Runnable 接口
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#thread-类构造方法" class="right-sidebar-item-level3">
+          Thread 类构造方法
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#thread-类的几个常用方法" class="right-sidebar-item-level3">
+          Thread 类的几个常用方法
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#thread-类与-runnable-接口的比较" class="right-sidebar-item-level3">
+          Thread 类与 Runnable 接口的比较
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#_2-2-callable、future-与-futuretask" class="right-sidebar-item-level2">
+          2.2 Callable、Future 与 FutureTask
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#callable-接口" class="right-sidebar-item-level3">
+          Callable 接口
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#future-接口" class="right-sidebar-item-level3">
+          Future 接口
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#futuretask-类" class="right-sidebar-item-level3">
+          FutureTask 类
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#futuretask-的几个状态" class="right-sidebar-item-level3">
+          FutureTask 的几个状态
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/135.2a5a690d.js" defer></script>
+  </body>
+</html>

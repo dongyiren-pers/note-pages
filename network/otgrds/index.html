@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第4章 网络层 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/46.703057c9.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/network/a918ca/" class="sidebar-link">第1章 计算机网络体系结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/a918ca/#_1-1-计算机网络概述" class="sidebar-link">1.1 计算机网络概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/a918ca/#_1-2-计算机网络体系结构与参考模型" class="sidebar-link">1.2 计算机网络体系结构与参考模型</a></li></ul></li><li><a href="/note-pages/network/02-物理层.html" class="sidebar-link">第2章 物理层</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/02-物理层.html#_2-1-通信基础" class="sidebar-link">2.1 通信基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/02-物理层.html#_2-2-传输介质" class="sidebar-link">2.2 传输介质</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/02-物理层.html#_2-3-物理层设备" class="sidebar-link">2.3 物理层设备</a></li></ul></li><li><a href="/note-pages/network/o99i5d/" class="sidebar-link">第3章 数据链路层</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-1-数据链路层功能概述" class="sidebar-link">3.1 数据链路层功能概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-2-封装成帧" class="sidebar-link">3.2 封装成帧</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-3-差错控制" class="sidebar-link">3.3 差错控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-4-流量控制与可靠传输机制" class="sidebar-link">3.4 流量控制与可靠传输机制</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-5-介质访问控制" class="sidebar-link">3.5 介质访问控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-6-局域网" class="sidebar-link">3.6 局域网</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-7-广域网" class="sidebar-link">3.7 广域网</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o99i5d/#_3-8-数据链路层设备" class="sidebar-link">3.8 数据链路层设备</a></li></ul></li><li><a href="/note-pages/network/otgrds/" aria-current="page" class="active sidebar-link">第4章 网络层</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-1-网络层的功能" class="sidebar-link">4.1 网络层的功能</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-2-路由算法" class="sidebar-link">4.2 路由算法</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-3-ipv4" class="sidebar-link">4.3 IPv4</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-4-ipv6" class="sidebar-link">4.4 IPv6</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-5-路由协议" class="sidebar-link">4.5 路由协议</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-6-ip-组播" class="sidebar-link">4.6 IP 组播</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-7-移动-ip" class="sidebar-link">4.7 移动 IP</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/otgrds/#_4-7-网络层设备" class="sidebar-link">4.7 网络层设备</a></li></ul></li><li><a href="/note-pages/network/o252om/" class="sidebar-link">第5章 传输层</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/o252om/#_5-1-传输层提供的服务" class="sidebar-link">5.1 传输层提供的服务</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o252om/#_5-2-udp-协议" class="sidebar-link">5.2 UDP 协议</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/o252om/#_5-3-tcp-协议" class="sidebar-link">5.3 TCP 协议</a></li></ul></li><li><a href="/note-pages/network/jn809u/" class="sidebar-link">第6章 应用层</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/network/jn809u/#_6-1-网络应用模型" class="sidebar-link">6.1 网络应用模型</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/jn809u/#_6-2-域名系统-dns" class="sidebar-link">6.2 域名系统（DNS）</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/jn809u/#_6-3-文件传输协议-ftp" class="sidebar-link">6.3 文件传输协议（FTP）</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/jn809u/#_6-4-电子邮件" class="sidebar-link">6.4 电子邮件</a></li><li class="sidebar-sub-header"><a href="/note-pages/network/jn809u/#_6-5-万维网-www" class="sidebar-link">6.5 万维网（WWW）</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第4章-网络层"><a href="#第4章-网络层" class="header-anchor">#</a> 第4章 网络层</h1> <h2 id="_4-1-网络层的功能"><a href="#_4-1-网络层的功能" class="header-anchor">#</a> 4.1 网络层的功能</h2> <h3 id="网络层功能概述"><a href="#网络层功能概述" class="header-anchor">#</a> 网络层功能概述</h3> <div id="异构网络互联" class="anchor">异构网络互联</div><p>网络互联是指将两个以上的计算机网络，通过一定的方法，用一些中间设备（又称中继系统）相互连接起来，以构成更大的网络系统。</p> <div id="路由与转发" class="anchor">路由与转发</div><p>路由器主要完成两个功能：</p> <ul><li><strong>路由选择</strong>。指按照复杂的分布式算法，根据从各相邻路由器所得到的关于整个网络拓扑的变化情况，动态地改变所选择的路由。</li> <li><strong>分组转发</strong>。指路由器根据转发表将用户的 IP 数据报从合适的端口转发出去。</li></ul> <div id="拥塞控制" class="anchor">拥塞控制</div><p>在通信子网中，因出现过量的分组而引起网络性能下降的现象称为拥塞。</p> <p>拥塞控制的作用是确保子网能够承载所达到的流这是一个全局性的过程，涉及各方面的行为：主机、路由器及路由器内部的转发处理过程等。单一地增加资源并不能解决拥塞。</p> <blockquote><p><strong>流量控制和拥塞控制的区别</strong>：</p> <p>流量控制往往是指在发送端和接收端之间的点对点通信量的控制。流量控制所要做的是抑制发送端发送数据的速率，以便使接收端来得及接收。而拥塞控制必须确保通信子网能够传送待传送的数据，是一个全局性的问题，涉及网络中所有的主机、路由器及导致网络传输能力下降的所有因素。</p></blockquote> <p>拥塞控制的方法有两种：</p> <ul><li>开环控制。在设计网络时事先将有关发生拥塞的因素考虑周到，力求网络在工作时不产生拥塞。这是一种静态的预防方法。一旦整个系统启动并运行，中途就不再需要修改。</li> <li>闭环控制。事先不考虑有关发生拥塞的各种因素，采用监测网络系统监视，及时检测哪里发生了拥塞，然后将拥塞信息传到合适的地方，以便调整网络系统的运行，并解决出现的问题。闭环控制是基于反馈环路的概念，是一种动态的方法。</li></ul> <h3 id="电路交换、报文交换与分组交换"><a href="#电路交换、报文交换与分组交换" class="header-anchor">#</a> 电路交换、报文交换与分组交换</h3> <div id="电路交换" class="anchor">电路交换</div><p>在进行数据传输前，两个结点之间必须先建立一条专用（双方独占）的物理通信路径（由通信双方之间的交换设备和链路逐段连接而成），该路径可能经过许多中间结点。这一路径在整个数据传输期间一直被独占，直到通信结束后才被释放。因此，电路交换技术分为三个阶段：连接建立、数据传输和连接释放。</p> <p>电路建立后，除源结点和目的结点外，电路上的任何结点都采取 “直通方式” 接收数据和发送数据，即不会存在存储转发所耗费的时间。</p> <div id="报文交换" class="anchor">报文交换</div><p>数据交换的单位是报文，报文携带有目标地址、源地址等信息。报文交换在交换结点采用的是存储转发的传输方式。</p> <div id="分组交换" class="anchor">分组交换</div><p>分组交换限制了每次传送的数据块大小的上限，把大的数据块划分为合理的小数据块，再加上一些必要的控制信息（如源地址、目的地址和编号信息等)，构成 <strong>分组（Packet）</strong>。网络结点根据控制信息把分组送到下一个结点，下一个结点接收到分组后，暂时保存并排队等待传输，然后根据分组控制信息选择它的下一个结点，直到到达目的结点。</p> <p><img src="/note-pages/assets/img/image-20221113154008765.b17fa217.png" alt="image-20221113154008765"></p> <h3 id="数据报与虚电路"><a href="#数据报与虚电路" class="header-anchor">#</a> 数据报与虚电路</h3> <p>分组交换根据其通信子网向端点系统提供的服务，还可进一步分为 <strong>面向连接</strong> 的 <strong>虚电路方式</strong> 和 <strong>无连接</strong> 的 <strong>数据报方式</strong>。这两种服务方式都由网络层提供。<strong>要注意数据报方式和虚电路方式是分组交换的两种方式</strong>。</p> <blockquote><ul><li><strong>无连接</strong>：不事先为分组的传输确定传输路径，每个分组独立确定传输路径，不同分组传输路径可能不同。</li> <li><strong>面向连接</strong>：首先为分组的传输确定传输路径（建立连接），然后沿该路径（连接）传输系列分组，系列分组传输路径相同，传输结束后拆除连接。</li></ul></blockquote> <div id="数据报" class="anchor">数据报</div><p>作为通信子网用户的端系统发送一个报文时，在端系统中实现的高层协议先把报文拆成若干带有序号的数据单元，并在网络层加上地址等控制信息后形成数据报分组。中间结点存储分组很短一段时间，找到最佳的路由后，尽快转发每个分组。不同的分组可以走不同的路径、可以按不同的顺序到达目的结点。</p> <div id="虚电路" class="anchor">虚电路</div><p>在分组发送之前，要求在发送方和接收方建立一条逻辑上相连的虚电路，并且连接一旦建立，就固定了虚电路所对应的物理路径。</p> <p>与电路交换类似，整个通信过程分为三个阶段：虚电路建立、数据传输与虚电路释放。</p> <h2 id="_4-2-路由算法"><a href="#_4-2-路由算法" class="header-anchor">#</a> 4.2 路由算法</h2> <h3 id="静态路由与动态路由"><a href="#静态路由与动态路由" class="header-anchor">#</a> 静态路由与动态路由</h3> <p>静态路由算法（又称非自适应路由算法）。指由网络管理员 <strong>手工配置</strong> 的路由信息。当网络的拓扑结构或链路的状态发生变化时，网络管理员需要手工去修改路由表中相关的静态路由信息。</p> <p>动态路由算法（又称自适应路由算法）。指路由器上的路由表项是通过相互连接的 <strong>路由器之间彼此交换信息</strong>，然后按照一定的算法优化出来的，而这些路由信息会在一定时间间隙里不断更新，以适应不断变化的网络，随时获得最优的寻路效果。</p> <h3 id="距离-向量路由算法"><a href="#距离-向量路由算法" class="header-anchor">#</a> 距离-向量路由算法</h3> <p>在距离-向量路由算法中，所有结点都定期地将它们的整个路由选择表传送给所有与之直接 <strong>相邻</strong> 的结点。这种路由选择表包含：每条路径的目的地、路径的代价。</p> <h3 id="链路状态路由算法"><a href="#链路状态路由算法" class="header-anchor">#</a> 链路状态路由算法</h3> <p>链路状态路由算法要求每个参与该算法的结点都具有 <strong>完全的网络拓扑信息</strong>。</p> <h3 id="层次路由"><a href="#层次路由" class="header-anchor">#</a> 层次路由</h3> <p>因特网将整个互联网划分为许多较小的自治系统（注意一个自治系统中包含很多局域网），每个自治系统有权自主地决定本系统内应采用何种路由选择协议。如果两个自治系统需要通信，那么就需要一种在两个自治系统之间的协议来屏蔽这些差异。据此，因特网把路由选择协议划分为两大类：</p> <ul><li>一个自治系统内部使用的路由选择协议称为 <strong>内部网关协议（IGP）</strong>，又称域内路由选择。例如 RIP 和 OSPF 等。</li> <li>自治系统之间使用的路由选择协议称为 <strong>外部网关协议（EGP）</strong>，又称域间路由选择，在不同自治系统的路由器之间交换路由信息，并负责为分组在不同自治系统之间选择最优的路径。例如 BGP。</li></ul> <h2 id="_4-3-ipv4"><a href="#_4-3-ipv4" class="header-anchor">#</a> 4.3 IPv4</h2> <h3 id="ipv4-分组"><a href="#ipv4-分组" class="header-anchor">#</a> IPv4 分组</h3> <p>IP 协议定义数据传送的基本单元——IP 分组及其确切的数据格式。</p> <div id="ipv4-分组的格式" class="anchor">IPv4 分组的格式</div><p>一个 IP 分组由 <strong>首部</strong> 和 <strong>数据部分</strong> 组成。首部前一部分的长度固定，共 20B，是所有 IP 分组必须具有的。在首部固定部分的后面是一些可选字段，其长度可变，用来提供错误检测及安全等机制。</p> <p><img src="/note-pages/assets/img/image-20221113171756317.ec2f4765.png" alt="image-20221113171756317"></p> <ul><li><strong>版本</strong>。 指 IP 协议的版本，目前广泛使用的版本号为 4。</li> <li><strong>片偏移</strong>：指出较长分组分片后，某片在原分组中的相对位置； <strong>以 8B 为单位</strong>。除了最后一个分片，每个分片数据部分长度一定是 8B 的整数倍。</li> <li><strong>生存时间（TTL）</strong>。占 8 位。数据报在网络中可通过的路由器数的最大值，标识分组在网络中的寿命，以确保分组不会永远在网络中循环。路由器在转发分组前，先把 TTL 减 1。若 TTL 被减为 0。则该分组必须丢弃。</li> <li><strong>协议</strong>。占 8 位。指出此分组携带的数据使用何种协议，即分组的数据部分应上交给哪个协议进行处理，如 TCP、 UDP 等。其中值为 6 表示 TCP，值为 17 表示 UDP。</li> <li><strong>首部校验和</strong>。占 16 位。首部校验和只校验分组的首部，而不校验数据部分。</li> <li><strong>源地址</strong>。占 4B。标识发送方的 IP 地址。</li> <li><strong>目的地址</strong>。占 4B。标识接收方的 IP 地址。</li></ul> <div id="ip-数据报分片" class="anchor">IP 数据报分片</div><p>一个链路层数据报能承载的最大数据量称为 <strong>最大传送单元（MTU）</strong>。IP 数据报被封装在链路层数据报中，因此链路层的 MTU 严格地限制着 IP 数据报的长度。当 IP 数据报的总长度大于链路 MTU 时，就需要将 IP 数据报中的数据分装在多个较小的 IP 数据报中，这些较小的数据报称为 <strong>片</strong>。</p> <p>源主机为 IP 数据报加上一个 <strong>标识号</strong>。当一个路由器需要将一个数据报分片时，形成的每个数据报（即片） 都具有原始数据报的标识号。</p> <p>IP 首部中的 <strong>标志位</strong> 有 3 比特，但只有后 2 比特有意义，分别是 <strong>DF 位（Don’t Fragment）</strong> 和 <strong>MF 位（More Fragment）</strong>。</p> <ul><li>只有当 DF = 0 时，该 IP 数据报才可以被分片。</li> <li>MF 则用来告知目的主机该 IP 数据报是否为原始数据报的最后一个片。当 MF = 1 时，表示相应的原始数据报还有后续的片：当 MF = 0 时，表示该数据报是相应原始数据报的最后一个片。</li></ul> <p>目的主机在对片进行重组时，使用 <strong>片偏移</strong> 字段来确定片应放在原始 IP 数据报的哪个位置。</p> <h3 id="ipv4-地址与-nat"><a href="#ipv4-地址与-nat" class="header-anchor">#</a> IPv4 地址与 NAT</h3> <div id="ipv4-地址" class="anchor">IPv4 地址</div><p>连接到因特网上的每台主机（或路由器）都分配一个 <strong>32 比特</strong> 的全球唯一标识符，即 <strong>IP 地址</strong>。IP 地址由互联网名字和数字地址分配机构 ICANN 进行分配。</p> <p>分类的 IP 地址：</p> <p><img src="/note-pages/assets/img/image-20221113175324491.3ae221a5.png" alt="image-20221113175324491"></p> <p>某些 IP 地址有着特殊用途，不能做主机 IP 地址。</p> <ul><li>主机号全为 0 表示本网络本身，如 202.98.174.<strong>0</strong>。</li> <li>主机号全为 1 表示本网络的广播地址，又称直接广播地址，如 202.98.174.<strong>255</strong>。</li> <li><strong>127.×.×.×</strong> 保留为环回自检（Loopback Test） 地址，此地址表示任意主机本身，目的地址为环回地址的 IP 数据报永远不会出现在任何网络上。</li> <li>32 位全为 0，即 <strong>0.0.0.0</strong> 表示本网络上的本主机。</li> <li>32 位全为 1，即 <strong>255.255.255.255</strong> 表示整个 TCP/IP 网络的广播地址，又称受限广播地址。实际使用时，由于路由器对广播域的隔离，255.255.255.255 等效为本网络的广播地址。</li></ul> <p>IP 地址有以下重要特点：</p> <ul><li>IP 地址由网络号和主机号两部分组成，因此是一种分等级的地址结构。分等级的好处是：IP 地址管理机构在分配 IP 地址时只分配网络号，而主机号则由得到该网络的单位自行分配，方便管理；路由器仅根据目的主机所连接的网络号来转发分组（而不考虑目标主机号)，减小了路由表所占的存储空间。</li> <li>同一个局域网上的主机或路由器的 IP 地址中的网络号必须是一样的。路由器总是具有两个或两个以上的 IP 地址，路由器的每个端口都有一个不同网络号的 IP 地址。</li> <li>转发器或桥接器（网桥等） 连接的若干 LAN 仍然是同一个网络（同一个广播域），因此该 LAN 中所有主机的 IP 地址的网络号必须相同，但主机号必须不同。</li></ul> <div id="网络地址转换（nat）" class="anchor">网络地址转换（NAT）</div><p>网络地址转换（NAT）是指通过 <strong>将专用网络地址转换为公用地址</strong>，从而对外隐藏内部管理的 IP 地址。</p> <p>NAT 使得整个专用网只需要一个 <strong>全球 IP 地址</strong> 就可以与因特网连通。由于专用网本地 IP 地址是可重用的，NAT 大大节省了 IP 地址的消耗。同时，它隐藏了内部网络结构，降低了内部网络受到攻击的风险。</p> <p>私有 IP 地址网段如下：</p> <ul><li>A 类：1 个 A 类网段，即 <strong>10</strong>.0.0.0 ~ <strong>10</strong>.255.255.255。</li> <li>B 类：16 个 B 类网段，即 <strong>172.16</strong>.0.0 ~ <strong>172.31</strong>.255.255。</li> <li>C 类：256 个 C 类网段，即 <strong>192.168</strong>.0.0 ~ <strong>192.168</strong>.255.255。</li></ul> <h3 id="子网划分与子网掩码、cidr"><a href="#子网划分与子网掩码、cidr" class="header-anchor">#</a> 子网划分与子网掩码、CIDR</h3> <div id="子网划分" class="anchor">子网划分</div><p>在 IP 地址中增加一个 “子网号字段”，使两级 IP 地址变成了三级 IP 地址。这种做法称为 <strong>子网划分</strong>。子网划分己成为因特网的正式标准协议。</p> <p>子网划分的基本思路如下：</p> <ul><li>子网划分纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的网络。</li> <li><strong>从主机号借用若干比特作为子网号</strong>。结构如下：{&lt;网络号&gt;，&lt;子网号&gt;，&lt;主机号&gt;}。</li></ul> <div id="子网掩码" class="anchor">子网掩码</div><p>为了告诉主机或路由器对一个 A 类、 B 类、 C 类网络进行了子网划分，使用 <strong>子网掩码</strong> 来表达对原网络中主机号的借位。</p> <p>子网掩码是一个与 IP 地址相对应的、 长 32bit 的二进制串，它由一串 1 和跟随的一串 0 组成。其中，<strong>1 对应于 IP 地址中的网络号及子网号，而 0 对应于主机号。</strong> 计算机只需将 IP 地址和其对应的子网掩码逐位 “与”， 就可得出相应子网的网络地址。</p> <p>在使用子网掩码的情况下：</p> <ul><li>—台主机在设置 IP 地址信息的同时，必须设置子网掩码。</li> <li>同属于一个子网的所有主机及路由器的相应端口，必须设置相同的子网掩码。</li> <li>路由器的路由表中，所包含信息的主要内容有目的网络地址、子网掩码、下一跳地址。</li></ul> <div id="无分类编址-cidr" class="anchor">无分类编址 CIDR</div><p>无分类域间路由选择 CIDR 是在变长子网掩码的基础上提出的一种消除传统 A、B、C 类网络划分，并且可以在软件的支持下实现超网构造的一种 IP 地址的划分方法。</p> <p>CIDR 使用 <strong>“网络前缀”</strong> 的概念代替子网络的概念，与传统分类 IP 地址最大的区别就是，网络前缀的位数不是固定的，可以任意选取。</p> <p>CIDR 的记法是：IP ::= {&lt;网络前缀&gt;, &lt;主机号&gt;}。</p> <p>CIDR 使用 “斜线记法”（或称 CIDR 记法），即 <strong>IP 地址 / 网络前缀所占比特数</strong>。网络前缀所占比特数对应于网络号的部分，等效于子网掩码中连续 1 的部分。</p> <p>将网络前缀都相同的连续 IP 地址组成 <strong>“CIDR 地址块”</strong>。一个 CIDR 地址块可以表示很多地址，这种地址的聚合称为 <strong>路由聚合</strong>，或称 <strong>构成超网</strong>。</p> <h3 id="arp、-dhcp-与-icmp"><a href="#arp、-dhcp-与-icmp" class="header-anchor">#</a> ARP、 DHCP 与 ICMP</h3> <div id="ip-地址与硬件地址" class="anchor">IP 地址与硬件地址</div><p>在网络层及网络层之上使用 IP 地址， IP 地址放在 IP 数据报的首部， 而 MAC 地址放在 MAC 帧的首部。通过数据封装，把 IP 数据报分组封装为 MAC 帧后，数据链路层看不见数据报分组中的 IP 地址。</p> <p>由于路由器的隔离， IP 网络中无法通过广播 MAC 地址来完成跨网络的寻址， 因此在网络层只使用 IP 地址来完成寻址。</p> <div id="地址解析协议（arp）" class="anchor">地址解析协议（ARP）</div><p>无论网络层使用什么协议， 在实际网络的链路上传送数据帧时， 最终必须使用硬件地址。 因此需要一种方法来完成 IP 地址到 MAC 地址的映射， 即 <strong>地址解析协议（Address Resolution Protocol, ARP）</strong>。</p> <p>ARP 工作在网络层， 其工作原理如下： 主机 A 欲向本局域网上的某台主机 B 发送 IP 数据报时，先在其 ARP 高速缓存中查看有无主机 B 的 IP 地址。</p> <ul><li>如果有， 就可查出其对应的硬件地址，再将此硬件地址写入 MAC 帧， 然后通过局域网将该 MAC 帧发往此硬件地址。</li> <li>如果没有，就通过使用目的 MAC 地址为 FF-FF-FF-FF-FF-FF 的帧来封装并广播 ARP 请求分组（广播发送），使同一个局域网里的所有主机都收到此 ARP 请求。 主机 B 收到该 ARP 请求后， 向主机 A 发出 ARP 响应分组（单播发送）， 分组中包含主机 B 的 IP 与 MAC 地址的映射关系， 主机 A 收到 ARP 响应分组后就将此映射写入 ARP 缓存， 然后按查询到的硬件地址发送 MAC 帧。</li></ul> <blockquote><p>ARP 由于 “看到了” IP 地址， 所以它工作在网络层， 而 NAT 路由器由于 “看到了” 端口，所以它工作在传输层。</p></blockquote> <div id="动态主机配置协议（dhcp）" class="anchor">动态主机配置协议（DHCP）</div><p>动态主机配置协议（Dynamic Host Configuration Protocol, DHCP）常用于给主机动态地分配 IP 地址， 它提供了即插即用的联网机制， 这种机制允许一台计算机加入新的网络和获取 IP 地址而不用手工参与。 DHCP 是应用层协议，它是基于 UDP 的。</p> <p>DHCP 的工作原理如下：使用客户/服务器模式。需要 IP 地址的主机在启动时就向 DHCP 服务器广播发送 <strong>发现报文</strong>，这时该主机就成为 DHCP 客户。DHCP 服务器先在其数据库中查找该计算机的配置信息。若找到，则返回找到的信息。若找不到，则从服务器的 IP 地址池中取一个地址分配给该计算机。DHCP 服务器的回答报文称为 <strong>提供报文</strong>。</p> <div id="网际控制报文协议（icmp）" class="anchor">网际控制报文协议（ICMP）</div><p>为了提高 IP 数据报交付成功的机会， 在网络层使用了 <strong>网际控制报文协议（Internet Control Message Protocol, ICMP）</strong> 来让主机或路由器 <strong>报告差错和异常情况</strong>。 ICMP 报文作为 IP 层数据报的数据，加上数据报的首部，组成 IP 数据报发送出去。ICMP 是 IP 层协议。</p> <h2 id="_4-4-ipv6"><a href="#_4-4-ipv6" class="header-anchor">#</a> 4.4 IPv6</h2> <h3 id="ipv6-的主要特点"><a href="#ipv6-的主要特点" class="header-anchor">#</a> IPv6 的主要特点</h3> <ul><li>IPv6 将地址从 32 位（4B）扩大到 <strong>128 位（16B）</strong>，更大的地址空间。</li> <li>IPv6 将 IPv4 的 <strong>校验和字段彻底移除</strong>，以减少每跳的处理时间。</li> <li>IPv6 将 IPv4 的可选字段移出首部，变成了 <strong>扩展首部</strong>，成为灵活的首部格式，路由器通常不对扩展首部进行检查，大大提高了路由器的处理效率。</li> <li>IPv6 支持 <strong>即插即用</strong>（即自动配置），不需要 DHCP 协议。</li> <li>IPv6 首部长度必须是 <strong>8B 的整数倍</strong>，IPv4 首部是 4B 的整数倍。</li> <li>lPv6 <strong>只能在主机处分片</strong>，IPv4 可以在路由器和主机处分片。</li></ul> <h3 id="ipv6-地址"><a href="#ipv6-地址" class="header-anchor">#</a> IPv6 地址</h3> <p>IPv6 数据报的目的地址可以是以下三种基本类型地址之一：</p> <ul><li><strong>单播</strong>。单播就是传统的点对点通信。</li> <li><strong>多播</strong>。多播是一点对多点的通信，分组被交付到一组计算机的每台计算机。</li> <li><strong>任播</strong>。这是 IPv6 增加的一种类型。任播的目的站是一组计算机，但数据报在交付时只交付其中的一台计算机，通常是距离最近的一台计算机。</li></ul> <p>IPv4 地址通常使用点分十进制表示法。在 IPv6 标准中指定了一种比较紧凑的表示法，即把地址中的每 4 位用一个十六进制数表示，并用冒号分隔每 16 位， 如 4BF5:AA12:0216:FEBC:BA5F:039A:BE9A:2170。</p> <p>通常可以把 IPv6 地址缩写成更紧凑的形式。当 16 位域的开头有一些 0 时，可以采用一种缩写表示法，但在域中必须至少有一个数字。 例如，可以把地址 4BF5:0000:0000:0000:BA5F:039A:000A:2176 缩写为 4BF5:0:0:0:BA5F:39A:A:2176。</p> <p>当有相继的 0 值域时， 还可以进一步缩写。 这些域可以用双冒号缩写。当然，双冒号表示法在一个地址中仅能出现一次，因为 0 值域的个数没有编码，需要从指定的总的域的个数来推算。 这样一来，前述地址可被更紧凑地书写成 4BF5::BA5F:39A:A:2176。</p> <p>IPv4 向 IPv6 过渡可以采用双协议栈和隧道技术两种策略：</p> <ul><li><strong>双协议栈技术</strong>是指在一台设备上同时装有 IPv4 和 IPv6 协议栈，那么这台设备既能和 IPv4 网络通信，又能和 IPv6 网络通信。如果这台设备是一个路由器，那么在路由器的不同接口上分别配置了 IPv4 地址和 IPv6 地址，并很可能分别连接了 IPv4 网络和 IPv6 网络； 如果这台设备是一台计算机，那么它将同时拥有 IPv4 地址和 IPv6 地址，并具备同时处理这两个协议地址的功能。</li> <li><strong>隧道技术</strong>是将整个 IPv6 数据报封装到 IPv4 数据报的数据部分，使得 IPv6 数据报可以在 IPv4 网络的隧道中传输。</li></ul> <h2 id="_4-5-路由协议"><a href="#_4-5-路由协议" class="header-anchor">#</a> 4.5 路由协议</h2> <h3 id="自治系统"><a href="#自治系统" class="header-anchor">#</a> 自治系统</h3> <p><strong>自治系统（Autonomous System, AS）</strong>：单一技术管理下的一组路由器，这些路由器使用一种 AS 内部的路由选择协议和共同的度量来确定分组在该 AS 内的路由，同时还使用一种 AS 之间的路由选择协议来确定分组在 AS 之间的路由。</p> <h3 id="域内路由与域间路由"><a href="#域内路由与域间路由" class="header-anchor">#</a> 域内路由与域间路由</h3> <p>自治系统内部的路由选择称为 <strong>域内路由选择</strong>，自治系统之间的路由选择称为 <strong>域间路由选择</strong>。因特网有两大类路由选择协议。</p> <ul><li><strong>内部网关协议（Interior Gateway Protocol , IGP）</strong>：内部网关协议即在一个自治系统内部使用的路由选择协议，它与互联网中其他自治系统选用什么路由选择协议无关。 目前这类路由选择协议使用得最多， 如 RIP 和 OSPF。</li> <li><strong>外部网关协议（External Gateway Protocol, EGP）</strong>：若源站和目的站处在不同的自治系统中，当数据报传到一个自治系统的边界时（两个自治系统可能使用不同的 IGP），就需要使用一种协议将路由选择信息传递到另一个自治系统中。这样的协议就是外部网关协议（EGP）。目前使用最多的外部网关协议是 BGP-4。</li></ul> <h3 id="路由信息协议-rip"><a href="#路由信息协议-rip" class="header-anchor">#</a> 路由信息协议（RIP）</h3> <p>路由信息协议（Routing Information Protocol, RIP）是一种分布式的基于 <strong>距离向量</strong> 的路由选择协议，其最大优点就是简单。</p> <p>RIP 要求网络中每一个路由器都维护 <strong>从它自己到其他每一个目的网络的唯一最佳距离记录</strong>。</p> <p><strong>距离</strong>：通常为 “跳数”，即从源端口到目的端口所经过的路由器个数。</p> <p><strong>RIP 的特点</strong>：</p> <ul><li>仅和 <strong>相邻路由器</strong> 交换信息。</li> <li>路由器交换的信息是当前路由器知道的全部信息，即自己的路由表。</li> <li>按固定的时间间隔交换路由信息，如每隔 30 秒。</li></ul> <p>经过若干 RIP 广播后，所有路由器都最终知道了整个 IP 网络的路由表，称为 RIP 最终是 <strong>收敛</strong> 的。</p> <p>通过 RIP 收敛后，每个路由器到每个目标网络的路由都是距离最短的（即跳数最少，最短路由)，哪怕还存在另一条高速（低时延）但路由器较多的路由。</p> <h3 id="开放最短路径优先-ospf-协议"><a href="#开放最短路径优先-ospf-协议" class="header-anchor">#</a> 开放最短路径优先（OSPF）协议</h3> <p>开放最短路径优先（Open Shortest Path First, OSPF）协议是使用分布式 <strong>链路状态路由算法</strong> 的典型代表，是内部网关协议（IGP）的一种。</p> <p><strong>OSPF 的特点</strong>：</p> <ul><li>OSPF 向本自治系统中的 <strong>所有路由器</strong> 发送信息，这里使用的方法是 <strong>洪泛法</strong>。 而 RIP 仅向自己相邻的几个路由器发送信息。</li> <li>发送的信息是与本路由器 <strong>相邻的所有路由器的链路状态</strong>，但这只是路由器所知道的部分信息。“链路状态” 说明本路由器和哪些路由器相邻及该链路的“度量”（或代价）。而在 RIP 中，发送的信息是本路由器所知道的全部信息，即整个路由表。</li> <li>只有 <strong>当链路状态发生变化时</strong>，路由器才用洪泛法向所有路由器发送此信息，并且更新过程收敛得快，不会出现 RIP “坏消息传得慢” 的问题。而在 RIP 中，不管网络拓扑是否发生变化，路由器之间都会定期交换路由表的信息。</li></ul> <h3 id="边界网关协议-bgp"><a href="#边界网关协议-bgp" class="header-anchor">#</a> 边界网关协议（BGP）</h3> <p>边界网关协议（Border Gateway Protocol, BGP）是不同自治系统的路由器之间交换路由信息的协议，是一种外部网关协议。</p> <p>BGP 只能力求寻找一条能够到达目的网络且比较好的路由（不能兜圈子），而并非寻找一条最佳路由。 BGP 采用的是 <strong>路径向量路由选择协议</strong>，它与距离向量协议和链路状态协议有很大的区别。</p> <p>BGP 是应用层协议，它是基于 TCP 的。</p> <h2 id="_4-6-ip-组播"><a href="#_4-6-ip-组播" class="header-anchor">#</a> 4.6 IP 组播</h2> <h3 id="组播的概念"><a href="#组播的概念" class="header-anchor">#</a> 组播的概念</h3> <p>使用组播的缘由是，有的应用程序要把一个分组发送给多个目的地主机。不是让源主机给每个目的地主机都发送一个单独的分组，而是让源主机把单个分组发送给一个组播地址，该组播地址标识一组地址。网络（如因特网）把这个分组的副本投递给该组中的每台主机。主机可以选择加入或离开一个组，因此一台主机可以同时属于多个组。</p> <p><strong>主机使用一个称为 IGMP（因特网组管理协议）的协议加入组播组</strong>。它们使用该协议通知本地网络上的路由器关于要接收发送给某个组播组的分组的愿望。通过扩展路由器的路由选择和转发功能，可以在许多路由器互联的支持硬件组播的网络上面实现因特网组播。</p> <p>需要注意的是，主机组播时仅发送一份数据，只有数据在传送路径出现分岔时才将分组复制后继续转发。因此，对发送者而言，数据只需发送一次就可发送到所有接收者，大大减轻了网络的负载和发送者的负担。组播需要路由器的支持才能实现，能够运行组播协议的路由器称为 <strong>组播路由器</strong>。</p> <p><img src="/note-pages/assets/img/image-20221116220913481.9ac868e3.png" alt="image-20221116220913481"></p> <h3 id="ip-组播地址"><a href="#ip-组播地址" class="header-anchor">#</a> IP 组播地址</h3> <p><strong>IP 组播使用 D 类地址格式</strong>。D 类地址的前四位是1110，因此 D 类地址范围是 224.0.0.0 ~ 239.255.255.255。每个 D 类 IP 地址标志一个组播组。</p> <h2 id="_4-7-移动-ip"><a href="#_4-7-移动-ip" class="header-anchor">#</a> 4.7 移动 IP</h2> <h3 id="移动-ip-的概念"><a href="#移动-ip-的概念" class="header-anchor">#</a> 移动 IP 的概念</h3> <p><strong>移动 IP 技术</strong> 是指移动结点以固定的网络 IP 地址实现跨越不同网段的漫游功能，并保证基于网络 IP 的网络权限在漫游过程中不发生任何改变。</p> <p>基于 IPv4 的移动 IP 定义三种功能实体：移动结点、 归属代理（本地代理）和外埠代理（外部代理）。归属代理和外埠代理又统称为移动代理。</p> <ul><li><strong>移动结点</strong>。具有永久 IP 地址的移动结点。</li> <li><strong>本地代理</strong>。在一个网络环境中，一个移动结点的永久 “居所” 被称为归属网络，在归属网络中代表移动结点执行移动管理功能的实体称为归属代理（本地代理)，它根据移动用户的转交地址，采用隧道技术转交移动结点的数据包。</li> <li><strong>外部代理</strong>。在外部网络中帮助移动结点完成移动管理功能的实体称为外部代理。</li></ul> <h3 id="移动-ip-通信过程"><a href="#移动-ip-通信过程" class="header-anchor">#</a> 移动 IP 通信过程</h3> <p>移动 IP 技术的基本通信流程如下：</p> <ul><li>移动结点在本地网时，按传统的 TCP/IP 方式进行通信（在本地网中有固有的地址）。</li> <li>移动结点漫游到一个外地网络时，仍然使用固定的 IP 地址进行通信。为了能够收到通信对端发给它的 IP 分组，移动结点需要向本地代理注册当前的位置地址，这个位置地址就是转交地址（它可以是外部代理的地址或动态配置的一个地址）。</li> <li>本地代理接收来自转交地址的注册后，会构建一条通向转交地址的隧道，将截获的发给移动结点的 IP 分组通过隧道送到转交地址处。</li> <li>在转交地址处解除隧道封装，恢复原始的 IP 分组，最后送到移动结点，这样移动结点在外网就能够收到这些发送给它的 IP 分组。</li> <li>移动结点在外网通过外网的路由器或外部代理向通信对端发送 IP 数据包。</li></ul> <p>移动 IP 为移动主机设置了两个IP地址，即主地址和辅地址（转交地址）。移动主机在本地网时，使用的是主地址。当移动到另一个网络时，需要获得一个临时的辅地址，但此时主地址仍然不变。从外网移回本地网时，辅地址改变或撤销，而主地址仍然保持不变。</p> <h2 id="_4-7-网络层设备"><a href="#_4-7-网络层设备" class="header-anchor">#</a> 4.7 网络层设备</h2> <h3 id="路由器"><a href="#路由器" class="header-anchor">#</a> 路由器</h3> <p>路由器是一种具有多个输入输出端口的专用计算机，其任务是 <strong>连接不同的网络（连接异构网络） 并完成路由转发</strong>。在多个逻辑网络（即多个广播域） 互连时必须使用路由器。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/network/o99i5d/" class="prev">
+        第3章 数据链路层
+      </a></span> <span class="next"><a href="/note-pages/network/o252om/">
+        第5章 传输层
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_4-1-网络层的功能" class="right-sidebar-item-level2">
+          4.1 网络层的功能
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#网络层功能概述" class="right-sidebar-item-level3">
+          网络层功能概述
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#电路交换、报文交换与分组交换" class="right-sidebar-item-level3">
+          电路交换、报文交换与分组交换
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#数据报与虚电路" class="right-sidebar-item-level3">
+          数据报与虚电路
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_4-2-路由算法" class="right-sidebar-item-level2">
+          4.2 路由算法
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#静态路由与动态路由" class="right-sidebar-item-level3">
+          静态路由与动态路由
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#距离-向量路由算法" class="right-sidebar-item-level3">
+          距离-向量路由算法
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#链路状态路由算法" class="right-sidebar-item-level3">
+          链路状态路由算法
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#层次路由" class="right-sidebar-item-level3">
+          层次路由
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#_4-3-ipv4" class="right-sidebar-item-level2">
+          4.3 IPv4
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#ipv4-分组" class="right-sidebar-item-level3">
+          IPv4 分组
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#ipv4-地址与-nat" class="right-sidebar-item-level3">
+          IPv4 地址与 NAT
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#子网划分与子网掩码、cidr" class="right-sidebar-item-level3">
+          子网划分与子网掩码、CIDR
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#arp、-dhcp-与-icmp" class="right-sidebar-item-level3">
+          ARP、 DHCP 与 ICMP
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#_4-4-ipv6" class="right-sidebar-item-level2">
+          4.4 IPv6
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#ipv6-的主要特点" class="right-sidebar-item-level3">
+          IPv6 的主要特点
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#ipv6-地址" class="right-sidebar-item-level3">
+          IPv6 地址
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#_4-5-路由协议" class="right-sidebar-item-level2">
+          4.5 路由协议
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#自治系统" class="right-sidebar-item-level3">
+          自治系统
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#域内路由与域间路由" class="right-sidebar-item-level3">
+          域内路由与域间路由
+        </a></li><li id="tab-item20" class="right-sidebar-item"><a href="#路由信息协议-rip" class="right-sidebar-item-level3">
+          路由信息协议（RIP）
+        </a></li><li id="tab-item21" class="right-sidebar-item"><a href="#开放最短路径优先-ospf-协议" class="right-sidebar-item-level3">
+          开放最短路径优先（OSPF）协议
+        </a></li><li id="tab-item22" class="right-sidebar-item"><a href="#边界网关协议-bgp" class="right-sidebar-item-level3">
+          边界网关协议（BGP）
+        </a></li><li id="tab-item23" class="right-sidebar-item"><a href="#_4-6-ip-组播" class="right-sidebar-item-level2">
+          4.6 IP 组播
+        </a></li><li id="tab-item24" class="right-sidebar-item"><a href="#组播的概念" class="right-sidebar-item-level3">
+          组播的概念
+        </a></li><li id="tab-item25" class="right-sidebar-item"><a href="#ip-组播地址" class="right-sidebar-item-level3">
+          IP 组播地址
+        </a></li><li id="tab-item26" class="right-sidebar-item"><a href="#_4-7-移动-ip" class="right-sidebar-item-level2">
+          4.7 移动 IP
+        </a></li><li id="tab-item27" class="right-sidebar-item"><a href="#移动-ip-的概念" class="right-sidebar-item-level3">
+          移动 IP 的概念
+        </a></li><li id="tab-item28" class="right-sidebar-item"><a href="#移动-ip-通信过程" class="right-sidebar-item-level3">
+          移动 IP 通信过程
+        </a></li><li id="tab-item29" class="right-sidebar-item"><a href="#_4-7-网络层设备" class="right-sidebar-item-level2">
+          4.7 网络层设备
+        </a></li><li id="tab-item30" class="right-sidebar-item"><a href="#路由器" class="right-sidebar-item-level3">
+          路由器
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/46.703057c9.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第1章 绪论 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/108.1d720289.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/database-system/fyl5c1/" aria-current="page" class="active sidebar-link">第1章 绪论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-1-数据库系统概述" class="sidebar-link">1.1 数据库系统概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-2-数据模型" class="sidebar-link">1.2  数据模型</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-3-数据库系统的结构" class="sidebar-link">1.3  数据库系统的结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/fyl5c1/#_1-4-数据库系统的组成" class="sidebar-link">1.4  数据库系统的组成</a></li></ul></li><li><a href="/note-pages/database-system/5lft8s/" class="sidebar-link">第2章 关系数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-1-关系数据结构及形式化定义" class="sidebar-link">2.1  关系数据结构及形式化定义</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-2-关系操作" class="sidebar-link">2.2  关系操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-3-关系的完整性" class="sidebar-link">2.3  关系的完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-4-关系代数" class="sidebar-link">2.4  关系代数</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/5lft8s/#_2-5-关系演算" class="sidebar-link">2.5  关系演算</a></li></ul></li><li><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html" class="sidebar-link">第3章 关系数据库标准语言SQL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-1-sql概述" class="sidebar-link">3.1 SQL概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-2-学生-课程数据库" class="sidebar-link">3.2 学生-课程数据库</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-3-数据定义" class="sidebar-link">3.3 数据定义</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-4-数据查询" class="sidebar-link">3.4 数据查询</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-5-数据更新" class="sidebar-link">3.5 数据更新</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-6-空值的处理" class="sidebar-link">3.6 空值的处理</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/03-关系数据库标准语言SQL.html#_3-7-视图" class="sidebar-link">3.7 视图</a></li></ul></li><li><a href="/note-pages/database-system/04-数据库安全性.html" class="sidebar-link">第4章 数据库安全性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-1-数据库安全性概述" class="sidebar-link">4.1 数据库安全性概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-2-用户身份鉴别" class="sidebar-link">4.2 用户身份鉴别</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-3-多层存取控制" class="sidebar-link">4.3 多层存取控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-3-视图机制" class="sidebar-link">4.3 视图机制</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-4-审计" class="sidebar-link">4.4 审计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/04-数据库安全性.html#_4-5-数据加密" class="sidebar-link">4.5 数据加密</a></li></ul></li><li><a href="/note-pages/database-system/05-数据库完整性.html" class="sidebar-link">第5章 数据库完整性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-1-实体完整性" class="sidebar-link">5.1 实体完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-2-参照完整性" class="sidebar-link">5.2 参照完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-3-用户定义的完整性" class="sidebar-link">5.3 用户定义的完整性</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-4-完整性约束命名子句" class="sidebar-link">5.4 完整性约束命名子句</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-5-断言" class="sidebar-link">5.5 断言</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/05-数据库完整性.html#_5-6-触发器" class="sidebar-link">5.6 触发器</a></li></ul></li><li><a href="/note-pages/database-system/06-关系数据理论.html" class="sidebar-link">第6章 关系数据理论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-1-问题的提出" class="sidebar-link">6.1 问题的提出</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-2-规范化" class="sidebar-link">6.2 规范化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/06-关系数据理论.html#_6-3-数据依赖的公理系统" class="sidebar-link">6.3 数据依赖的公理系统</a></li></ul></li><li><a href="/note-pages/database-system/07-数据库设计.html" class="sidebar-link">第7章 数据库设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-1-数据库设计概述" class="sidebar-link">7.1 数据库设计概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-2-需求分析" class="sidebar-link">7.2 需求分析</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-3-概念结构设计" class="sidebar-link">7.3 概念结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-4-逻辑结构设计" class="sidebar-link">7.4 逻辑结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-5-物理结构设计" class="sidebar-link">7.5 物理结构设计</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/07-数据库设计.html#_7-6-数据库的实施和维护" class="sidebar-link">7.6 数据库的实施和维护</a></li></ul></li><li><a href="/note-pages/database-system/08-数据库编程.html" class="sidebar-link">第8章 数据库编程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-1-嵌入式sql" class="sidebar-link">8.1 嵌入式SQL</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-2-过程化sql" class="sidebar-link">8.2 过程化SQL</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-3-存储过程和函数" class="sidebar-link">8.3 存储过程和函数</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/08-数据库编程.html#_8-4-odbc编程" class="sidebar-link">8.4 ODBC编程</a></li></ul></li><li><a href="/note-pages/database-system/09-关系查询处理和查询优化.html" class="sidebar-link">第9章 关系查询处理和查询优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-1-关系数据库系统的查询处理" class="sidebar-link">9.1 关系数据库系统的查询处理</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-2-关系数据库系统的查询优化" class="sidebar-link">9.2 关系数据库系统的查询优化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-3-代数优化" class="sidebar-link">9.3 代数优化</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/09-关系查询处理和查询优化.html#_9-4-物理优化" class="sidebar-link">9.4 物理优化</a></li></ul></li><li><a href="/note-pages/database-system/10-数据库恢复技术.html" class="sidebar-link">第10章 数据库恢复技术</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-1-事务的基本概念" class="sidebar-link">10.1 事务的基本概念</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-2-数据库恢复概述" class="sidebar-link">10.2 数据库恢复概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-3-故障的种类" class="sidebar-link">10.3 故障的种类</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-4-恢复的实现技术" class="sidebar-link">10.4 恢复的实现技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-5-恢复策略" class="sidebar-link">10.5 恢复策略</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-6-具有检查点的恢复技术" class="sidebar-link">10.6 具有检查点的恢复技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/10-数据库恢复技术.html#_10-7-数据库镜像" class="sidebar-link">10.7 数据库镜像</a></li></ul></li><li><a href="/note-pages/database-system/11-并发控制.html" class="sidebar-link">第11章 并发控制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/database-system/11-并发控制.html#_11-1-并发控制概述" class="sidebar-link">11.1 并发控制概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/database-system/11-并发控制.html#_11-2-封锁" class="sidebar-link">11.2 封锁</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第1章-绪论"><a href="#第1章-绪论" class="header-anchor">#</a> 第1章 绪论</h1> <h2 id="_1-1-数据库系统概述"><a href="#_1-1-数据库系统概述" class="header-anchor">#</a> 1.1 数据库系统概述</h2> <h3 id="数据库的-4-个基本概念"><a href="#数据库的-4-个基本概念" class="header-anchor">#</a> 数据库的 4 个基本概念</h3> <p><strong>数据</strong> 是荷载信息的物理符号/描述事物的符号记录。</p> <p><strong>数据库</strong> 是 <strong>长期储存</strong> 在计算机内，<strong>有组织、可共享</strong> 的 <strong>大量</strong> 数据的集合。</p> <p><strong>数据库管理系统</strong> 是对共享数据有效的组织、存储、管理和存取的 <strong>系统软件</strong>。</p> <p><strong>数据库系统</strong> 是由 <strong>数据库 DB</strong>、<strong>数据库管理系统 DBMS</strong>、<strong>应用程序</strong> 和 <strong>数据库管理员 DBA</strong> 组成的存储、管理、处理和维护数据的系统。</p> <h3 id="数据管理技术的产生和发展"><a href="#数据管理技术的产生和发展" class="header-anchor">#</a> 数据管理技术的产生和发展</h3> <ul><li>人工管理阶段：20 世纪 50 年代中之前</li> <li>文件系统阶段：20世纪50年代末 ~ 60年代中</li> <li>数据库系统阶段：20世纪60年代末 ~ 现在</li></ul> <p><strong>文件系统与数据库系统的区别：</strong></p> <ul><li>文件系统的数据是 <strong>面向某一应用的</strong>，文件的 <strong>共享性差、冗余度大，独立性差</strong>，文件的记录虽然是有结构的，但是整体无结构。所谓“数据面向某个应用”是指数据结构是针对某个应用设计的，只被这个应用程序或应用系统使用，数据是某个应用的“私有资源”。</li> <li>数据库系统中的数据是 <strong>面向整个组织或企业</strong>。数据的 <strong>共享性高、冗余度小，具有高度的物理独立性和一定的逻辑独立性</strong>，数据库中的数据用数据模型组织和描述，由数据库管理系统提供数据 <strong>安全性、完整性、并发控制和恢复能力</strong>。</li></ul> <p><strong>文件系统与数据库系统的联系：</strong></p> <ul><li>文件系统与数据库系统都是计算机系统中管理数据的软件。</li> <li>文件系统是操作系统的重要组成部分，而 DBMS 是独立于操作系统的软件。DBMS 是在操作系统的基础上实现的，数据库中数据的组织和存储是通过操作系统中文件系统来实现的。数据库实现的基础是文件，对数据库的任何操作最终要转化为对文件的操作。</li></ul> <h3 id="数据库系统的特点"><a href="#数据库系统的特点" class="header-anchor">#</a> 数据库系统的特点</h3> <ul><li>数据 <strong>结构化</strong>。</li> <li>数据的 <strong>共享性高，冗余度低</strong>，易扩充。</li> <li>数据 <strong>独立性高</strong>。数据独立性包括数据的物理独立性和数据的逻辑独立性。</li> <li>数据由 DBMS 统一管理和控制。由 DBMS 提供 <strong>数据安全性、完整性、并发控制和恢复能力</strong>。</li></ul> <h2 id="_1-2-数据模型"><a href="#_1-2-数据模型" class="header-anchor">#</a> 1.2  数据模型</h2> <p>数据模型是数据库中用来 <strong>对现实世界进行抽象的工具</strong>。</p> <p>数据模型通常由 <strong>数据结构</strong>、<strong>数据操作</strong> 和 <strong>完整性约束</strong> 三部分组成。</p> <h3 id="概念模型"><a href="#概念模型" class="header-anchor">#</a> 概念模型</h3> <p>概念模型是 <strong>现实世界到机器世界的一个中间层次</strong>。<strong>概念模型用于信息世界的建模</strong>，是数据库设计人员进行数据库设计的有力工具，也是数据库设计人员和用户之间进行交流的语言。</p> <p>概念模型的一种表示方法：<strong>实体-联系方法</strong>。</p> <div id="概念模型中术语" class="anchor">概念模型中术语</div><ul><li><strong>实体</strong>：客观存在并可以相互区分的事物叫实体。</li> <li><strong>实体型</strong>：用 <strong>实体名</strong> 及其 <strong>属性名</strong> 集合来抽象和刻画同类实体称为实体型。</li> <li><strong>实体集</strong>：同型实体的集合称为实体集。</li> <li><strong>联系</strong>：现实世界中事物内部以及事物之间的联系在信息世界中反映为实体（型）内部的联系和实体（型）之间的联系。</li></ul> <h3 id="数据模型的组成要素"><a href="#数据模型的组成要素" class="header-anchor">#</a> 数据模型的组成要素</h3> <p><strong>数据结构</strong>：描述数据库的组成对象，以及对象之间的联系。</p> <p><strong>数据操作</strong>：对数据库中各种对象（型）的实例（值）允许执行的 操作集合，包括操作及有关的操作规则。</p> <p><strong>数据的完整性约束</strong>：一组完整性规则的集合。</p> <h3 id="层次模型"><a href="#层次模型" class="header-anchor">#</a> 层次模型</h3> <p><strong>定义</strong>：满足下面两个条件的基本层次联系的集合为层次模型。</p> <ul><li>有且只有一个结点没有双亲结点，这个结点称为根结点；</li> <li>根以外的其他结点有且只有一个双亲结点。</li></ul> <p><strong>层次数据库的优点主要有：</strong></p> <ul><li>层次模型的数据结构比较简单清晰；</li> <li>层次数据库的查询效率高；</li> <li>层次数据模型提供了良好的完整性支持。</li></ul> <p><strong>层次数据库的缺点主要是：</strong></p> <ul><li>现实世界中很多联系是非层次性的，层次模型不能自然地表示这类联系；</li> <li>层次数据库中的查询必须按照层次结构从根结点开始，沿着路径进行，用户必须清楚数据库的层次结构。</li></ul> <h3 id="网状模型"><a href="#网状模型" class="header-anchor">#</a> 网状模型</h3> <p><strong>定义</strong>：满足下面两个条件的基本层次联系的集合为网状模型。</p> <ul><li>允许一个以上的结点无双亲结点；</li> <li>一个结点可以有多于一个的双亲结点。</li></ul> <p><strong>网状数据库的优点主要有：</strong></p> <ul><li>能够更为直接地描述现实世界，如一个结点可以有多个双亲。</li> <li>具有良好的性能，存取效率较高。</li></ul> <p><strong>网状数据库的缺点主要是：</strong></p> <ul><li>结构比较复杂，而且随着应用环境的扩大，数据库的结构就变得越来越复杂，不利于最终用户掌握。</li> <li>数据定义语言、数据操纵语言比较复杂，要求用户掌握数据库结构和存取路径，不容易使用。</li></ul> <h3 id="关系模型"><a href="#关系模型" class="header-anchor">#</a> 关系模型</h3> <p>关系模型由 <strong>关系数据结构、关系操作集合和关系完整性约束</strong> 三部分组成。在用户观点下，关系模型中数据的逻辑结构是一张 <strong>二维表</strong>，它由行和列组成。</p> <ul><li><strong>关系</strong>：一个关系对应通常说的一张表。</li> <li><strong>属性</strong>：表中的一列即为一个属性；</li> <li><strong>域</strong>：属性的取值范围；</li> <li><strong>元组</strong>：表中的一行即为一个元组；</li> <li><strong>码</strong>：表中的某个属性组，它可以唯一确定一个元组；</li> <li><strong>分量</strong>：元组中的一个属性值；</li> <li><strong>关系模式</strong>：对关系的描述，一般表示为：关系名 ( 属性1, 属性2, …, 属性n ) 。</li></ul> <div style="color:red;"><p><strong>关系的完整性约束条件：实体完整性、参照完整性、用户定义的完整性。</strong></p></div><p><strong>关系数据模型的优点：</strong></p> <ul><li>关系模型与非关系模型不同，它 <strong>具有严格的数学基础</strong>。</li> <li>关系模型的 <strong>概念单一</strong>。所以其数据结构简单、清晰，用户易懂易用。</li> <li>关系模型的 <strong>存取路径对用户透明</strong>，从而具有更高的数据独立性、更好的安全保密性，简化了程序员的工作和数据库开发建立的工作。</li></ul> <p><strong>关系数据模型的缺点：</strong></p> <ul><li>由于存取路径对用户透明，<strong>查询效率往往不如非关系数据模型</strong>。因此为了提高性能，必须对用户的查询请求进行优化，这就增加了开发关系数据库管理系统软件的难度。</li></ul> <h2 id="_1-3-数据库系统的结构"><a href="#_1-3-数据库系统的结构" class="header-anchor">#</a> 1.3  数据库系统的结构</h2> <p>从数据库应用开发人员角度看，数据库系统通常采用 <strong>三级模式</strong> 结构，是数据库系统内部的系统结构。</p> <h3 id="数据库系统模式的概念"><a href="#数据库系统模式的概念" class="header-anchor">#</a> 数据库系统模式的概念</h3> <div id="型---值" class="anchor">型 &amp; 值</div><p>型（Type）：对某一类数据的结构和属性的说明。</p> <p>值（Value）：是型的一个具体赋值。</p> <div id="模式---实例" class="anchor">模式 &amp; 实例</div><p>模式（Schema）：数据库逻辑结构和特征的描述；是型的描述，不涉及具体值；反映的是数据的结构及其联系；模式是相对稳定的。</p> <p>实例（Instance）：模式的一个具体值；反映数据库某一时刻的状态；同一个模式可以有很多实例
+；实例随数据库中的数据的更新而变动。</p> <h3 id="三级模式与两级映像"><a href="#三级模式与两级映像" class="header-anchor">#</a> 三级模式与两级映像</h3> <p>数据库系统的三级模式结构由 <strong>外模式、模式</strong> 和 <strong>内模式</strong> 组成。</p> <ul><li>外模式，亦称子模式或用户模式，是数据库用户能够看见和使用的 <strong>局部数据的逻辑结构和特征的描述</strong>，是数据库用户的数据视图。</li> <li>模式，亦称逻辑模式，是数据库中 <strong>全体数据的逻辑结构和特性的描述</strong>，是所有用户的公共数据视图。模式描述的是数据的全局逻辑结构。外模式通常是模式的子集。</li> <li>内模式，亦称存储模式，是数据在数据库系统内部的表示，即对 <strong>数据的物理结构和存储方式的描述</strong>。</li></ul> <p>数据库系统在这三级模式之间提供了两级映像：<strong>外模式/模式映像</strong> 和 <strong>模式/内模式映像</strong>。正是这两级映像保证了数据库系统中的数据能够具有较高的 <strong>逻辑独立性</strong> 和 <strong>物理独立性</strong>。</p> <ul><li>物理独立性：当数库的 <strong>存储结构改变时</strong>，由数据库管理员对 <strong>模式/内模式映像</strong> 作相应改变，可以使模式保持不变，从而应用程序也不必改变，这就是数据与程序的物理独立性。</li> <li>逻辑独立性：当数据的 <strong>逻辑结构即模式改变时</strong>，由数据库管理员对各个 <strong>外模式/模式映像</strong> 作相应改变，可以使外模式保持不变，从而应用程序不必修改，这就是数据与程序的逻辑独立性。</li></ul> <h2 id="_1-4-数据库系统的组成"><a href="#_1-4-数据库系统的组成" class="header-anchor">#</a> 1.4  数据库系统的组成</h2> <p><strong>数据库系统</strong> 是由 <strong>数据库 DB</strong>、<strong>数据库管理系统 DBMS</strong>、<strong>应用程序</strong> 和 <strong>数据库管理员 DBA</strong> 组成的存储、管理、处理和维护数据的系统。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note-pages/database-system/5lft8s/">
+        第2章 关系数据库
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_1-1-数据库系统概述" class="right-sidebar-item-level2">
+          1.1 数据库系统概述
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#数据库的-4-个基本概念" class="right-sidebar-item-level3">
+          数据库的 4 个基本概念
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#数据管理技术的产生和发展" class="right-sidebar-item-level3">
+          数据管理技术的产生和发展
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#数据库系统的特点" class="right-sidebar-item-level3">
+          数据库系统的特点
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_1-2-数据模型" class="right-sidebar-item-level2">
+          1.2  数据模型
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#概念模型" class="right-sidebar-item-level3">
+          概念模型
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#数据模型的组成要素" class="right-sidebar-item-level3">
+          数据模型的组成要素
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#层次模型" class="right-sidebar-item-level3">
+          层次模型
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#网状模型" class="right-sidebar-item-level3">
+          网状模型
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#关系模型" class="right-sidebar-item-level3">
+          关系模型
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#_1-3-数据库系统的结构" class="right-sidebar-item-level2">
+          1.3  数据库系统的结构
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#数据库系统模式的概念" class="right-sidebar-item-level3">
+          数据库系统模式的概念
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#三级模式与两级映像" class="right-sidebar-item-level3">
+          三级模式与两级映像
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#_1-4-数据库系统的组成" class="right-sidebar-item-level2">
+          1.4  数据库系统的组成
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/108.1d720289.js" defer></script>
+  </body>
+</html>

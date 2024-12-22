@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基础 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/67.22efede4.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/interview/f05h67/" aria-current="page" class="active sidebar-link">基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/f05h67/#计算机网络" class="sidebar-link">计算机网络</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/f05h67/#操作系统" class="sidebar-link">操作系统</a></li></ul></li><li><a href="/note-pages/interview/Java.html" class="sidebar-link">Java</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#基础" class="sidebar-link">基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#java-集合" class="sidebar-link">Java 集合</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#java-并发" class="sidebar-link">Java 并发</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/Java.html#jvm" class="sidebar-link">JVM</a></li></ul></li><li><a href="/note-pages/interview/数据库.html" class="sidebar-link">数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/数据库.html#mysql" class="sidebar-link">MySQL</a></li></ul></li><li><a href="/note-pages/interview/NoSQL.html" class="sidebar-link">NoSQL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/NoSQL.html#redis" class="sidebar-link">Redis</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/NoSQL.html#elasticsearch" class="sidebar-link">ElasticSearch</a></li></ul></li><li><a href="/note-pages/interview/2t6vir/" class="sidebar-link">Spring</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-core" class="sidebar-link">Spring Core</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-aop" class="sidebar-link">Spring AOP</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-dao" class="sidebar-link">Spring DAO</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#spring-mvc" class="sidebar-link">Spring MVC</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/2t6vir/#springboot" class="sidebar-link">SpringBoot</a></li></ul></li><li><a href="/note-pages/interview/消息队列.html" class="sidebar-link">消息队列</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/消息队列.html#基础" class="sidebar-link">基础</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/消息队列.html#rocketmq" class="sidebar-link">RocketMQ</a></li></ul></li><li><a href="/note-pages/interview/架构设计.html" class="sidebar-link">架构设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/架构设计.html#zookeeper" class="sidebar-link">Zookeeper</a></li></ul></li><li><a href="/note-pages/interview/数据结构与算法.html" class="sidebar-link">数据结构与算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/数据结构与算法.html#数据结构" class="sidebar-link">数据结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/interview/数据结构与算法.html#算法模板" class="sidebar-link">算法模板</a></li></ul></li><li><a href="/note-pages/interview/场景题.html" class="sidebar-link">场景题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/interview/场景题.html#场景题-2" class="sidebar-link">场景题</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="基础"><a href="#基础" class="header-anchor">#</a> 基础</h1> <p></p><div class="table-of-contents"><ul><li><a href="#计算机网络">计算机网络</a><ul><li><a href="#网络分层结构">网络分层结构</a></li><li><a href="#在浏览器输入-url-回车之后发生了什么">在浏览器输入 URL 回车之后发生了什么</a></li><li><a href="#arp-协议的工作过程">ARP 协议的工作过程</a></li><li><a href="#tcp-和-udp-的区别">TCP 和 UDP 的区别</a></li><li><a href="#tcp-三次握手">TCP 三次握手</a></li><li><a href="#两次握手为什么不行">两次握手为什么不行</a></li><li><a href="#tcp-四次挥手">TCP 四次挥手</a></li><li><a href="#第四次挥手为什么要等待-2msl">第四次挥手为什么要等待 2MSL</a></li><li><a href="#tcp-如何实现可靠传输">TCP 如何实现可靠传输</a></li><li><a href="#tcp-流量控制">TCP 流量控制</a></li><li><a href="#tcp-拥塞控制">TCP 拥塞控制</a></li><li><a href="#http-报文格式">HTTP 报文格式</a></li><li><a href="#get-和-post-的区别">GET 和 POST 的区别</a></li><li><a href="#http-状态码">HTTP 状态码</a></li><li><a href="#http-短连接和长连接">HTTP 短连接和长连接</a></li><li><a href="#http-协议版本">HTTP 协议版本</a></li><li><a href="#https-与-http-的区别">HTTPS 与 HTTP 的区别</a></li><li><a href="#什么是数字证书">什么是数字证书</a></li><li><a href="#tls-握手协议">TLS 握手协议</a></li><li><a href="#dns-域名解析过程">DNS 域名解析过程</a></li></ul></li><li><a href="#操作系统">操作系统</a><ul><li><a href="#进程间的通信方式">进程间的通信方式</a></li><li><a href="#进程、线程与协程的区别">进程、线程与协程的区别</a></li><li><a href="#进程的调度策略">进程的调度策略</a></li><li><a href="#select、poll-和-epoll-的区别">select、poll 和 epoll 的区别</a></li></ul></li></ul></div><p></p> <h2 id="计算机网络"><a href="#计算机网络" class="header-anchor">#</a> 计算机网络</h2> <h3 id="网络分层结构"><a href="#网络分层结构" class="header-anchor">#</a> 网络分层结构</h3> <p><strong>五层模型</strong> 自下而上为物理层、数据链路层、网络层、传输层、应用层。</p> <ul><li>物理层：传输单位是 <strong>比特</strong>，任务是 <strong>透明地传输比特流</strong>。</li> <li>数据链路层：数据链路层的传输单位是 <strong>帧</strong>，任务是将网络层传来的 IP 数据报 <strong>组装成帧</strong>。</li> <li>网络层：网络层的传输单位是 <strong>数据报</strong>，任务是把网络层的 <strong>协议数据单元（分组）</strong> 从源端传到目的端。</li> <li>传输层：负责主机中 <strong>两个进程</strong> 的通信。传输单位是报文段（TCP）或用户数据报（UDP）。</li> <li>应用层：为特定类型的网络应用提供交互服务。</li></ul> <p><a href="/note-pages/network/a918ca/#osi-参考模型"><strong>OSI 参考模型</strong></a> 有 7 层，自下而上为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p> <p><a href="/note-pages/network/a918ca/#tcp-ip-参考模型"><strong>TCP/IP 参考模型</strong></a> 有 4 层，自下而上为网络接口层、网络层、传输层、应用层。</p> <h3 id="在浏览器输入-url-回车之后发生了什么"><a href="#在浏览器输入-url-回车之后发生了什么" class="header-anchor">#</a> 在浏览器输入 URL 回车之后发生了什么</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">哔哩哔哩</span></div><p><strong>URL 解析</strong></p> <ul><li>地址解析：首先判断输入的是一个合法的 URL 还是一个待搜索的关键词，并且根据你输入的内容进行自动完成、字符编码等操作。</li> <li><strong><a href="/note-pages/http/3djudn/#hsts">HSTS</a></strong>：由于安全隐患，会使用 HSTS 强制客户端使用 HTTPS 访问页面。</li> <li>其他操作：浏览器还会进行一些额外的操作，比如安全检查、访问限制。</li> <li>检查缓存：浏览器检查缓存，判断本地是否已经缓存了请求的资源。如果缓存中已经有该资源并且缓存未过期，浏览器将从缓存中获取资源，否则就需要向服务器发送请求以获取最新的资源。</li></ul> <p><strong>DNS 查询</strong></p> <ul><li>检查缓存：浏览器缓存 → 操作系统缓存 → 路由器缓存 → ISP DNS 缓存（首选 DNS 服务器）。</li> <li>域名解析：本地 DNS 服务器将请求转发到互联网上的根域（详见 <a href="/note-pages/network/jn809u/#域名解析过程"><strong>域名解析过程</strong></a>）。</li></ul> <p><strong>建立 TCP 连接</strong></p> <ul><li>TCP 三次握手建立连接。详见 <a href="/note-pages/network/o252om/#tcp-连接的建立"><strong>TCP 连接的建立</strong></a>。</li></ul> <p><strong>发送 HTTP 请求</strong></p> <ul><li>发送 HTTP 请求报文。</li></ul> <p><strong>服务器处理请求</strong></p> <ul><li>以 Spring MVC 为例，详见 <a href="/note-pages/interview/Spring.html#springmvc-请求处理流程"><strong>SpringMVC 请求处理流程</strong></a>。</li></ul> <p><strong>浏览器接受 HTTP 响应</strong></p> <ul><li>浏览器接收到来自服务器的响应资源后，会对资源进行分析。</li> <li>首先查看响应头，根据不同状态码做不同的事（比如重定向）。</li> <li>如果响应资源进行了压缩（比如 gzip），还需要进行解压。</li> <li>然后，对响应资源做缓存。</li> <li>接下来，根据响应资源里的 MIME 类型去解析响应内容。</li></ul> <p><strong>释放 TCP 连接</strong></p> <ul><li>TCP 四次挥手释放连接。详见 <a href="/note-pages/network/o252om/#tcp-连接的释放"><strong>TCP 连接的释放</strong></a>。</li></ul> <p><strong>渲染页面</strong></p> <ul><li>后端不做考察。</li></ul> <h3 id="arp-协议的工作过程"><a href="#arp-协议的工作过程" class="header-anchor">#</a> ARP 协议的工作过程</h3> <p>无论网络层使用什么协议， 在实际网络的链路上传送数据帧时， 最终必须使用硬件地址。 因此需要一种方法来完成 IP 地址到 MAC 地址的映射， 即 <strong>地址解析协议（Address Resolution Protocol, ARP）</strong>。</p> <p>ARP 工作在网络层， 其工作原理如下： 主机 A 欲向本局域网上的某台主机 B 发送 IP 数据报时，先在其 <strong>ARP 高速缓存</strong> 中查看有无主机 B 的 IP 地址。</p> <ul><li>如果有， 就可查出其对应的硬件地址，再将此硬件地址写入 MAC 帧， 然后通过局域网将该 MAC 帧发往此硬件地址。</li> <li>如果没有，就通过使用目的 MAC 地址为 FF-FF-FF-FF-FF-FF 的帧来封装并广播 ARP 请求分组（广播发送），使同一个局域网里的所有主机都收到此 ARP 请求。 主机 B 收到该 ARP 请求后， 向主机 A 发出 ARP 响应分组（单播发送）， 分组中包含主机 B 的 IP 与 MAC 地址的映射关系， 主机 A 收到 ARP 响应分组后就将此映射写入 ARP 缓存， 然后按查询到的硬件地址发送 MAC 帧。</li></ul> <h3 id="tcp-和-udp-的区别"><a href="#tcp-和-udp-的区别" class="header-anchor">#</a> TCP 和 UDP 的区别</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">美团到店</span></div><p>UDP 和 TCP 都是互联网协议栈中传输层协议，其在数据传输方面有以下区别：</p> <p><strong>连接方式：</strong></p> <ul><li>TCP 是一种 <strong>面向连接</strong> 的协议，传输前需要建立连接，传输结束后需要释放连接；</li> <li>UDP 是一种 <strong>无连接</strong> 的协议，传输数据前不需要建立连接。</li></ul> <p><strong>可靠传输：</strong></p> <ul><li>TCP 提供 <strong>可靠交付的服务</strong>，保证传送的数据无差错、不丢失、不重复且有序。</li> <li>UDP 使用最大努力交付，即 <strong>不保证可靠交付</strong>。</li></ul> <p><strong>传输速度：</strong></p> <ul><li>TCP 由于需要进行连接建立、确认等操作，传输速度相对较慢。</li> <li>UDP 是无连接的，传输速度较快，但数据可能会丢失或者顺序错乱。</li></ul> <p><strong>传输单位：</strong></p> <ul><li>TCP 是 <strong>面向字节流</strong> 的，没有数据报大小限制，数据按照字节序列发送。</li> <li>UDP 是 <strong>面向报文</strong> 的，每个 UDP 数据报都有固定的大小限制。最大传输单元为 65535 字节。</li></ul> <p><strong>适用场景：</strong></p> <ul><li>TCP 适用于要求数据可靠传输、传输数据量较大的场景，如文件传输、电子邮件等。</li> <li>UDP 适用于实时性要求高、数据量较小的场景，如音视频传输、游戏等。</li></ul> <p>综上，TCP 适合要求数据可靠传输的场景，UDP 适合要求实时性较高的场景。</p> <h3 id="tcp-三次握手"><a href="#tcp-三次握手" class="header-anchor">#</a> TCP 三次握手</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">美团</span></div><ul><li><strong>第一步</strong>：客户机的 TCP 首先向服务器的 TCP 发送连接请求报文段。这个特殊报文段的首部中的 <strong>同步位 SYN 置 1</strong>，同时选择一个 <strong>初始序号 seq = x</strong>。 TCP 规定， SYN 报文段不能携带数据，但要消耗掉一个序号。这时，TCP 客户进程进入 <strong><u>SYN-SENT（同步已发送）</u></strong> 状态。</li> <li><strong>第二步</strong>：服务器的 TCP 收到连接请求报文段后，如同意建立连接，则向客户机发回确认，并为该 TCP 连接分配缓存和变量。在确认报文段中，<strong>把 SYN 位和 ACK 位都置 1，确认号是 ack = x + 1</strong>。同时为自己选择一个 <strong>初始序号 seq = y</strong>。注意，确认报文段不能携带数据，但也要消耗掉一个序号。这时， TCP 服务器进程进入 <strong><u>SYN-RCVD（同步收到）</u></strong> 状态。</li> <li><strong>第三步</strong>：当客户机收到确认报文段后，还要向服务器给出确认，并为该 TCP 连接分配缓存和变量。确认报文段的 <strong>ACK 位置 1，确认号 ack = y + 1，序号 seq =x + 1</strong>。该报文段可以携带数据，若不携带数据则不消耗序号。这时，TCP 客户进程进入 <strong><u>ESTABLISHED（已建立连接）</u></strong> 状态。</li></ul> <h3 id="两次握手为什么不行"><a href="#两次握手为什么不行" class="header-anchor">#</a> 两次握手为什么不行</h3> <ul><li><strong>三次握手才可以阻止重复历史连接的初始化（首要原因）</strong>：在两次握手的情况下，被动发起方没有中间状态给主动发起方来阻止历史连接，导致被动发起方可能建立一个历史连接，造成资源浪费。</li> <li><strong>三次握手才可以同步双方的初始序列号</strong>：在两次握手的情况下，只保证了发起方的初始序列号能被对方成功接收，没办法保证双方的初始序列号都能被确认接收。</li> <li><strong>三次握手才可以避免资源浪费</strong>：在两次握手的情况下，如果客户端的 SYN 阻塞了，重复发送多次 SYN 报文，服务器在收到请求后就会建立多个冗余的无效链接，造成不必要的资源浪费。</li></ul> <h3 id="tcp-四次挥手"><a href="#tcp-四次挥手" class="header-anchor">#</a> TCP 四次挥手</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">美团</span></div><ul><li><strong>第一步</strong>：客户机发送一个 <strong>FIN</strong>（结束）报文段给服务器。这个报文段表明客户机已经发送完数据，请求关闭连接，并指定一个 <strong>序号 seq = u</strong>。此时，客户机进入 <strong><u>FIN-WAIT-1（等待对方 ACK）</u></strong> 状态。</li> <li><strong>第二步</strong>：服务器收到 FIN 报文段后，发送一个确认 <strong>ACK</strong> 报文段作为回应，<strong>确认号 ack = u + 1</strong>，同时指定一个 <strong>序号 seq = v</strong>。这个报文段表明服务器已经收到关闭请求，并进入 <strong><u>CLOSE-WAIT（等待自己关闭）</u></strong> 状态。</li> <li><strong>第三步</strong>：服务器发送一个 <strong>FIN-ACK</strong> 报文段给客户机，请求关闭连接，同时指定一个 <strong>序号 seq = w</strong>。此时，服务器进入 <strong><u>LAST-ACK（等待最后 ACK）</u></strong> 状态。</li> <li><strong>第四步</strong>：客户机收到 FIN 报文段后，发送一个确认 <strong>ACK</strong> 报文段作为回应，<strong>确认号 ack = w + 1</strong>。此时，客户机进入 <strong><u>TIME-WAIT（等待一段时间）</u></strong> 状态。在这个状态下，客户机等待 <strong>2MSL</strong>，确保服务器收到了确认，防止可能的重传。完成等待后，客户机离开 TIME-WAIT 状态，完成四次挥手过程。</li></ul> <h3 id="第四次挥手为什么要等待-2msl"><a href="#第四次挥手为什么要等待-2msl" class="header-anchor">#</a> 第四次挥手为什么要等待 2MSL</h3> <ul><li><strong>确保服务器收到了确认，防止可能的重传</strong>：如果 ACK 丢失，服务器会超时重传 FIN-ACK，然后客户机再次确认，最终双方正常关闭。如果客户端不等待 2MSL，ACK 丢失后服务器无法正常关闭连接。</li> <li><strong>确保通信双方的滞留报文都失效</strong>：最坏情况下，ACK 经历了 1 MSL 才到达服务器，在 ACK 到达前一瞬间，服务端重传了 FIN 并发生了滞留，需要等待 1 MSL 才可让其失效。</li></ul> <h3 id="tcp-如何实现可靠传输"><a href="#tcp-如何实现可靠传输" class="header-anchor">#</a> TCP 如何实现可靠传输</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">美团到店</span><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">阿里云计算平台</span></div><p>TCP 使用了 <strong>校验、序号、确认和重传</strong> 等机制实现可靠传输。</p> <ul><li><strong>校验</strong>：TCP 校验机制与 <a href="/note-pages/network/o252om/#udp-校验">UDP 校验</a> 一样。发送方按二进制反码计算出 TCP 报文每 16 位字的和，将此和的二进制反码写入校验和字段，并发送给接收方。接收方同样按二进制反码求 TCP 报文每 16 位字的和。当无差错时其结果应为全 1，否则就表明有差错出现。</li> <li><strong>序号</strong>：TCP 首部的序号字段用来保证数据能有序提交给应用层，TCP 把数据视为一个无结构但有序的字节流，序号建立在传送的字节流之上，而不建立在报文段之上。</li> <li><strong>确认</strong>：TCP 首部的确认号是期望收到对方的下一个报文段的数据的第一个字节的序号。发送方缓存区会继续存储那些已发送但未收到确认的报文段，以便在需要时重传。</li> <li><strong>重传</strong>：有两种事件会导致 TCP 对报文段进行重传： <a href="/note-pages/network/o252om/#重传">超时</a> 和 <a href="/note-pages/network/o252om/#重传">冗余 ACK</a>。</li></ul> <h3 id="tcp-流量控制"><a href="#tcp-流量控制" class="header-anchor">#</a> TCP 流量控制</h3> <p>TCP 提供一种基于 <strong>滑动窗口协议</strong> 的流量控制机制。</p> <p>在通信过程中，接收方根据自己接收缓存的大小，动态地调整发送方的发送窗口大小，这称为 <strong>接收窗口 rwnd</strong>。即调整 TCP 报文段首部中的 “窗口” 字段值，来限制发送方向网络注入报文的速率。</p> <h3 id="tcp-拥塞控制"><a href="#tcp-拥塞控制" class="header-anchor">#</a> TCP 拥塞控制</h3> <p>因特网建议标准定义了进行拥塞控制的 4 种算法：慢开始、拥塞避免、快重传和快恢复。</p> <p><img src="/note-pages/assets/img/image-20221120234254876.e1173893.png" alt="image-20221120234254876"></p> <ul><li><strong>慢开始</strong>：开始发送 TCP 报文段时，令拥塞窗口 cwnd = 1，即一个最大报文段长度 MSS。每收到一个对新报文段的确认后，将 cwnd 加倍（指数级增长）。</li> <li><strong>拥塞避免</strong>：每经过一个往返时延 RTT 就把发送方的拥塞窗口 cwnd 加 1（线性增长），使拥塞窗口 cwnd 按线性规律缓慢增长。</li> <li><strong>快重传</strong>：当发送方连续收到三个重复的 ACK 报文时，直接重传对方尚未收到的报文段，不必等待那个报文段设置的重传计时器超时。</li> <li><strong>快恢复</strong>：当发送方连续收到三个冗余 ACK (即重复确认） 时， 执行 “乘法减小” 算法， 把慢开始门限 ssthresh 设置为此时发送方 cwnd 的一半。</li></ul> <h3 id="http-报文格式"><a href="#http-报文格式" class="header-anchor">#</a> HTTP 报文格式</h3> <p>HTTP 请求由 <strong>请求行、请求头部、空行和请求体</strong> 四个部分组成。</p> <ul><li><strong>请求行</strong>：包括 <a href="/note-pages/http/xbo9wy/#请求方法"><strong>请求方法</strong></a>、访问的资源 URL、协议版本。</li> <li><strong>请求头</strong>：格式为 <code>属性名:属性值</code>，服务端根据请求头获取客户端的信息，主要有 Cookie、Host、Connection、Accept-Language、Accept-Encoding、User-Agent。</li> <li><strong>请求体</strong>：用户的请求数据。</li></ul> <p><strong>请求报文示例</strong>：</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/xxx</span> <span class="token http-version property">HTTP/1.1</span></span> 								请求行
+<span class="token header"><span class="token header-name keyword">Accept</span><span class="token punctuation">:</span><span class="token header-value">image/gif.image/jpeg						请求头</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Language</span><span class="token punctuation">:</span><span class="token header-value">zh-cn</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span><span class="token header-value">Keep-Alive</span></span>
+<span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span><span class="token header-value">localhost</span></span>
+<span class="token header"><span class="token header-name keyword">User-Agent</span><span class="token punctuation">:</span><span class="token header-value">Mozila/4.0(compatible;MSIE5.01;Window NT5.0)</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Encoding</span><span class="token punctuation">:</span><span class="token header-value">gzip,deflate
+												空行</span></span>
+username=dabin 									请求体
+</code></pre></div><p>HTTP 响应同样由四个部分组成，分别是：<strong>状态行、响应头、空行和响应体</strong>。</p> <ul><li><strong>状态行</strong>：协议版本、状态码及状态描述。</li> <li><strong>响应头</strong>：响应头字段主要有 Connection、Content-Type、Content-Encoding、Content-Length、Set-Cookie、Last-Modified、Cache-Control、Expires。</li> <li><strong>响应体</strong>：服务器返回给客户端的内容。</li></ul> <p><strong>响应报文示例</strong>：</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">200</span> <span class="token reason-phrase string">OK									状态行</span></span>
+<span class="token header"><span class="token header-name keyword">Server</span><span class="token punctuation">:</span><span class="token header-value">Apache Tomcat/5.0.12						响应头</span></span>
+<span class="token header"><span class="token header-name keyword">Date</span><span class="token punctuation">:</span><span class="token header-value">Mon,6Oct2003 13:23:42 GMT</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Length</span><span class="token punctuation">:</span><span class="token header-value">112
+												空行</span></span>
+&lt;html&gt;											响应体
+    &lt;body&gt;响应体&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h3 id="get-和-post-的区别"><a href="#get-和-post-的区别" class="header-anchor">#</a> GET 和 POST 的区别</h3> <ul><li>GET 请求参数通过 URL 传递，POST 的参数放在请求体中。</li> <li>GET 请求参数会被完整保留在浏览器历史记录里，而 POST 中的参数不会被保留。</li> <li>GET 产生一个 TCP 数据包，POST 产生两个 TCP 数据包。对于 GET，浏览器把请求头和请求体一并发送出去；而对于 POST，浏览器先发送请求头，服务器响应 100 continue，浏览器再发送请求体。</li> <li>GET 请求会被浏览器主动缓存，而 POST 不会，除非手动设置。</li></ul> <h3 id="http-状态码"><a href="#http-状态码" class="header-anchor">#</a> HTTP 状态码</h3> <table><thead><tr><th style="text-align:center;">状态码</th> <th>描述</th></tr></thead> <tbody><tr><td style="text-align:center;">1XX</td> <td>服务器收到请求，需要请求者继续执行操作</td></tr> <tr><td style="text-align:center;">2XX</td> <td>请求正常处理完毕</td></tr> <tr><td style="text-align:center;">3XX</td> <td>重定向，需要进一步操作已完成请求</td></tr> <tr><td style="text-align:center;">4XX</td> <td>客户端错误，服务器无法处理请求</td></tr> <tr><td style="text-align:center;">5XX</td> <td>服务器处理请求出错</td></tr></tbody></table> <h3 id="http-短连接和长连接"><a href="#http-短连接和长连接" class="header-anchor">#</a> HTTP 短连接和长连接</h3> <p><strong>HTTP 短连接</strong>：浏览器和服务器每进行一次 HTTP 操作，就建立一次 TCP 连接，任务结束就中断连接。HTTP1. 0 默认使用的是短连接。</p> <p><strong>HTTP 长连接</strong>：指的是 <strong>复用 TCP 连接</strong>。多个 HTTP 请求可以复用同一个 TCP 连接，这就节省了 TCP 连接建立和断开的消耗。</p> <p>通过在头部（请求和响应头）设置 <strong>Connection</strong> 字段指定为 <strong>keep-alive</strong>，HTTP/1.0 协议支持，但是是默认关闭的，从 HTTP/1.1 以后，连接默认都是长连接。</p> <h3 id="http-协议版本"><a href="#http-协议版本" class="header-anchor">#</a> HTTP 协议版本</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">百度</span></div><div id="http-2-0-与-http-1-1-的区别" class="anchor">HTTP/2.0 与 HTTP/1.1 的区别</div><p>HTTP/2.0 相比 HTTP/1.1 支持的特性：</p> <ul><li><strong>二进制格式</strong>：HTTP/1.1 基于 <strong>文本格式</strong> 传输；HTTP/2.0 基于 <strong>二进制格式</strong> 传输，解析更高效。</li> <li><strong>多路复用</strong>：在一个连接里，允许同时发送多个请求或响应，<strong>并且这些请求或响应能够并行的传输而不被阻塞</strong>，避免 HTTP/1.1 出现的 “队头堵塞” 问题。</li> <li><strong>头部压缩</strong>：HTTP/1.1 的 header 带有大量信息，而且每次都要重复发送；HTTP/2.0 <strong>把 header 从数据中分离</strong>，并封装成头帧和数据帧，使用特定算法压缩头帧，有效减少头信息大小。HTTP/2.0 在客户端和服务器端记录了之前发送的键值对，<strong>对于相同的数据，不会重复发送</strong>。比如请求 a 发送了所有的头信息字段，请求 b 则只需要发送差异数据，这样可以减少冗余数据，降低开销。</li> <li><strong>服务端推送</strong>：HTTP/2.0 允许服务器向客户端推送资源，无需客户端发送请求到服务器获取。</li></ul> <div id="http-3-0-与-http-2-0-的区别" class="anchor">HTTP/3.0 与 HTTP/2.0 的区别</div><p>HTTP/3.0 基于 UDP 协议，即 <strong>QUIC</strong> （Quick UDP Internet Connections）。</p> <p>HTTP/3.0 相比 HTTP/2.0 支持的特性：</p> <ul><li><strong>队头阻塞问题的解决更为彻底</strong>：理论上，HTTP/2.0 不同的流之间相互独立，不会相互影响，但在实际传输方面，数据还是要一帧一帧的发送和接收，一旦某一个流的数据有丢包，则同样会阻塞在它之后传输的流数据传输。而基于 UDP 的 QUIC 协议则可以更为彻底地解决这样的问题，让不同的流之间真正的实现相互独立传输，互不干扰。</li> <li><strong>切换网络时的连接保持</strong>：基于 TCP 的协议，由于切换网络之后，IP 会改变，因而之前的连接不能继续保持。而基于 UDP 的 QUIC 协议，则可以内建与 TCP 中不同的连接标识方法，从而在网络完成切换之后，恢复之前与服务器的连接。</li></ul> <h3 id="https-与-http-的区别"><a href="#https-与-http-的区别" class="header-anchor">#</a> HTTPS 与 HTTP 的区别</h3> <ul><li>HTTP 是超文本传输协议，信息是明文传输，存在安全风险的问题。HTTPS <strong>在 TCP 和 HTTP 层之间加入了 SSL/TLS 安全协议</strong>，使得报文能够加密传输。</li> <li>HTTP 连接建立相对简单， TCP 三次握手之后便可进行 HTTP 的报文传输。HTTPS <strong>在 TCP 三次握手之后，还需进行 SSL/TLS 握手</strong>，才可进入加密报文传输。</li> <li>两者的默认端口不一样，HTTP 默认端口号是 80，<strong>HTTPS 默认端口号是 443。</strong></li> <li><strong>HTTPS 协议需要向 CA（证书权威机构）申请数字证书</strong>，来保证服务器的身份是可信的。</li></ul> <h3 id="什么是数字证书"><a href="#什么是数字证书" class="header-anchor">#</a> 什么是数字证书</h3> <p>数字证书认证机构（CA）使用自己的私钥对服务器的公钥和服务器信息进行 <a href="/note-pages/http/3djudn/#摘要算法与数字签名"><strong>数字签名</strong></a>，然后将这个签名和公钥一起打包成 <a href="/note-pages/http/3djudn/#数字证书"><strong>数字证书</strong></a>。<strong>数字证书可以包含服务器信息、公钥和数字签名等信息。</strong></p> <p>当客户端连接服务器时，服务器会将数字证书发送给客户端，客户端会使用 CA 的公钥来解密数字签名，以验证数字证书的合法性。如果数字证书是合法的，客户端就可以信任公钥，并使用该公钥进行通信。</p> <h3 id="tls-握手协议"><a href="#tls-握手协议" class="header-anchor">#</a> TLS 握手协议</h3> <div id="1、clienthello" class="anchor">1、ClientHello</div><p>首先，由客户端向服务器发起加密通信请求，即 ClientHello 请求。</p> <p>在这一步，客户端主要向服务器发送以下信息：</p> <ul><li>客户端支持的 TLS 协议版本，如 TLS 1.2 版本。</li> <li>客户端生产的随机数（Client Random），后面用于生成 “会话秘钥” 条件之一。</li> <li>客户端支持的密码套件列表，如 RSA 加密算法。</li></ul> <div id="2、severhello" class="anchor">2、SeverHello</div><p>服务器收到客户端请求后，向客户端发出响应，即 SeverHello。服务器回应的内容有如下内容：</p> <ul><li>确认 TLS 协议版本，如果浏览器不支持，则关闭加密通信。</li> <li>服务器生产的随机数（Server Random），后面用于生成 “会话秘钥” 条件之一。</li> <li>确认的密码套件列表，如 RSA 加密算法。</li> <li><strong>服务器的数字证书。</strong></li></ul> <div id="3、客户端回应" class="anchor">3、客户端回应</div><p>客户端收到服务器回应后，首先通过浏览器或者操作系统中的 CA 公钥确认服务器的数字证书的真实性。</p> <p>如果验证通过，客户端会 <strong>从数字证书中取出服务器的公钥</strong>，使用它加密报文，向服务器发送如下信息：</p> <ul><li>一个随机数（pre-master key）。该随机数会被服务器公钥加密。</li> <li>加密通信算法改变通知，表示随后的信息都将用 “会话秘钥” 加密通信。</li> <li>客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供服务端校验。</li></ul> <p><strong>服务器和客户端有了这三个随机数（Client Random、Server Random、pre-master key），接着就用双方协商的加密算法，各自生成本次通信的 “会话秘钥” 。</strong></p> <div id="4、服务器的最后回应" class="anchor">4、服务器的最后回应</div><p>服务器收到客户端的第三个随机数（pre-master key）之后，通过协商的加密算法，计算出本次通信的 “会话秘钥” 。</p> <p>然后，向客户端发送最后的信息：</p> <ul><li>加密通信算法改变通知，表示随后的信息都将用 “会话秘钥” 加密通信。</li> <li>服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供客户端校验。</li></ul> <p>至此，整个 TLS 的握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的 HTTP 协议，只不过用 “会话秘钥” 加密内容。</p> <h3 id="dns-域名解析过程"><a href="#dns-域名解析过程" class="header-anchor">#</a> DNS 域名解析过程</h3> <p>当客户端需要域名解析时， 通过本机的 DNS 客户端构造一个 DNS 请求报文，以 UDP 数据报方式发往本地域名服务器。</p> <p>域名解析有两种方式：递归查询和递归与迭代相结合的査询。</p> <p><img src="/note-pages/assets/img/image-20221121001329829.b51a550d.png" alt="image-20221121001329829"></p> <h2 id="操作系统"><a href="#操作系统" class="header-anchor">#</a> 操作系统</h2> <h3 id="进程间的通信方式"><a href="#进程间的通信方式" class="header-anchor">#</a> 进程间的通信方式</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">淘天</span></div><ul><li><strong>管道（共享文件）</strong>：管道的本质就是内核在内存中开辟了一个缓冲区，这个缓冲区与管道文件相关联，对管道文件的操作，被内核转换成对这块缓冲区的操作。</li> <li><strong>消息队列（消息传递）</strong>：消息队列的本质就是存放在内存中的消息的链表，而消息本质上是用户自定义的数据结构。如果进程从消息队列中读取了某个消息，这个消息就会被从消息队列中删除。</li> <li><strong>共享内存（共享存储）</strong>：共享内存就是允许不相干的进程将同一段物理内存连接到它们各自的地址空间中，使得这些进程可以访问同一个物理内存，这个物理内存就成为共享内存。</li> <li><strong>信号量和 PV 操作</strong>：进程的同步与互斥其实是一种对进程通信的保护机制，并不是用来传输进程之间真正通信的内容的，但是由于它们会传输信号量，因此被纳入进程通信的范畴，称为低级通信。</li> <li><strong>信号</strong>：通过发送指定信号来通知进程某个异步事件的发送，以迫使进程执行信号处理程序。信号处理完毕后，被中断进程将恢复执行。</li> <li><strong>套接字（Socket）</strong>：Socket 的本质其实是一个编程接口（API），是应用层与 TCP/IP 协议族通信的中间软件抽象层，它对 TCP/IP 进行了封装，把复杂的 TCP/IP 协议族隐藏在 Socket 接口后面。</li></ul> <h3 id="进程、线程与协程的区别"><a href="#进程、线程与协程的区别" class="header-anchor">#</a> 进程、线程与协程的区别</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">美团到店</span><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">腾讯PCG</span></div><style>
+                        .table-column-x-x-container-q16vz304 table th:nth-of-type(1) {
+                            width: 10.81081081081081%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-q16vz304 table th:nth-of-type(2) {
+                            width: 29.72972972972973%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-q16vz304 table th:nth-of-type(3) {
+                            width: 29.72972972972973%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-q16vz304 table th:nth-of-type(4) {
+                            width: 29.72972972972973%;
+                            word-wrap: break-word;
+                        }
+                    </style><div class="table-column-x-x-container-q16vz304"><table><thead><tr><th style="text-align:center;"></th> <th>进程</th> <th>线程</th> <th>协程（用户态线程）</th></tr></thead> <tbody><tr><td style="text-align:center;">根本区别</td> <td>操作系统进行 <strong>资源分配的最小单元</strong></td> <td>操作系统进行 <strong>CPU 调度的最小单元</strong></td> <td>用户程序进行 <strong>任务调度的最小单元</strong></td></tr> <tr><td style="text-align:center;">拥有资源</td> <td>每个进程 <strong>有自己的内存和资源</strong></td> <td><strong>共享</strong> 进程的内存和资源</td> <td><strong>共享</strong> 进程的内存和资源</td></tr> <tr><td style="text-align:center;">开销不同</td> <td>进程的 <strong>创建、销毁和切换的开销</strong> 都远大于线程</td> <td>中</td> <td>低</td></tr> <tr><td style="text-align:center;">切换时机</td> <td>根据操作系统自己的切换策略，用户不感知</td> <td>操作系统根据自己的切换策略决定，用户不感知</td> <td>用户（的程序）决定</td></tr> <tr><td style="text-align:center;">切换效率</td> <td>低，陷入内核态</td> <td>中，陷入内核态</td> <td>高，不会陷入内核态</td></tr> <tr><td style="text-align:center;">从属关系</td> <td>进程中包含线程</td> <td>线程中包含协程</td> <td>协程是一个函数</td></tr> <tr><td style="text-align:center;">影响范围</td> <td>子进程无法影响父进程</td> <td>子线程可以影响父线程</td> <td>子协程可以影响父协程</td></tr></tbody></table></div><h3 id="进程的调度策略"><a href="#进程的调度策略" class="header-anchor">#</a> 进程的调度策略</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">大疆</span></div><ul><li><strong>先来先服务（First-Come, First-Served，FCFS）</strong>：按照进程到达顺序进行调度。一旦一个进程开始执行，它会一直运行直到完成或阻塞。</li> <li><strong>最短作业优先（Shortest Job Next，SJN）</strong>： 选择估计运行时间最短的进程进行执行。这可以最小化平均等待时间，但需要对进程的运行时间有准确的预测。</li> <li><strong>最高响应比优先（Highest Response Ratio Next，HRRN）</strong>：选择响应比最高的进程执行，综合考虑进程等待时间和预测的执行时间，以最大程度地减少长作业的等待时间。<strong>响应比 = 1 + 等待时间 / 预测执行时间</strong></li> <li><strong>最高优先级优先（Highest Priority First，HPF）</strong>： 每个进程都有一个优先级，操作系统选择优先级最高的进程执行。这可以保证高优先级任务被及时处理，但可能导致低优先级任务饥饿。</li> <li><strong>时间片轮转（Round Robin，RR）</strong>：每个进程被分配一个固定的时间片，时间片用完之后，系统切换到下一个进程。这可以实现公平调度，但可能导致上下文切换开销过大。</li> <li><strong>多级反馈队列（Multilevel Feedback Queue，MLFQ）</strong>： 将进程分为多个优先级队列，每个队列具有不同的时间片大小。当一个进程在一个队列中用完时间片后，它可以降低优先级并进入下一个队列。</li></ul> <h3 id="select、poll-和-epoll-的区别"><a href="#select、poll-和-epoll-的区别" class="header-anchor">#</a> select、poll 和 epoll 的区别</h3> <div class="tag-group"><span class="el-tag el-tag--primary el-tag--medium el-tag--plain">腾讯PCG</span></div><style>
+                        .table-column-x-x-container-6ii9e5bo table th:nth-of-type(1) {
+                            width: 16.666666666666664%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-6ii9e5bo table th:nth-of-type(2) {
+                            width: 27.77777777777778%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-6ii9e5bo table th:nth-of-type(3) {
+                            width: 27.77777777777778%;
+                            word-wrap: break-word;
+                        }
+                    
+                        .table-column-x-x-container-6ii9e5bo table th:nth-of-type(4) {
+                            width: 27.77777777777778%;
+                            word-wrap: break-word;
+                        }
+                    </style><div class="table-column-x-x-container-6ii9e5bo"><div style="font-size:14px;"><table><thead><tr><th>系统调用</th> <th>select</th> <th>poll</th> <th>epoll</th></tr></thead> <tbody><tr><td>事件集合</td> <td>通过 3 个参数传入感兴趣的 <strong>可读、可写及异常</strong> 等事件，内核通过对这些参数的修改来反馈其中的就绪事件。这使得用户每次调用 select 都要重置这 3 个参数。</td> <td>只需 <strong>1 个事件集</strong> 参数，通过 pollfd.events 传入感兴趣的事件，内核通过修改 pollfd.revents 反馈其中就绪的事件。</td> <td>内核通过 <strong>事件表</strong> 直接管理用户注册的事件。因此，每次调用 epoll_wait <strong>无须反复传入感兴趣的事件</strong>。epoll_wait 系统调用的参数 events 仅用来反馈就绪的事件。</td></tr> <tr><td>索引就绪文件描述符的时间复杂度</td> <td><strong>O(n)</strong></td> <td><strong>O(n)</strong></td> <td><strong>O(1)</strong></td></tr> <tr><td>最大支持文件描述符数</td> <td>受 fd_set 大小限制，32 位系统最多监听 <strong>1024</strong> 个 fd，64 位最多监听 2048 个。</td> <td>65535</td> <td>65535</td></tr> <tr><td>工作模式</td> <td>LT</td> <td>LT</td> <td>支持 ET 高效模式</td></tr> <tr><td>内核实现</td> <td>通过 <strong>轮询</strong> 来检测就绪事件，时间复杂度为 <strong>O(n)</strong></td> <td>通过 <strong>轮询</strong> 来检测就绪事件，时间复杂度为 <strong>O(n)</strong></td> <td>通过 <strong>回调</strong> 来检测就绪事件，时间复杂度为 O(1)</td></tr></tbody></table></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/note-pages/interview/Java.html">
+        Java
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#计算机网络" class="right-sidebar-item-level2">
+          计算机网络
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#网络分层结构" class="right-sidebar-item-level3">
+          网络分层结构
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#在浏览器输入-url-回车之后发生了什么" class="right-sidebar-item-level3">
+          在浏览器输入 URL 回车之后发生了什么
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#arp-协议的工作过程" class="right-sidebar-item-level3">
+          ARP 协议的工作过程
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#tcp-和-udp-的区别" class="right-sidebar-item-level3">
+          TCP 和 UDP 的区别
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#tcp-三次握手" class="right-sidebar-item-level3">
+          TCP 三次握手
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#两次握手为什么不行" class="right-sidebar-item-level3">
+          两次握手为什么不行
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#tcp-四次挥手" class="right-sidebar-item-level3">
+          TCP 四次挥手
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#第四次挥手为什么要等待-2msl" class="right-sidebar-item-level3">
+          第四次挥手为什么要等待 2MSL
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#tcp-如何实现可靠传输" class="right-sidebar-item-level3">
+          TCP 如何实现可靠传输
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#tcp-流量控制" class="right-sidebar-item-level3">
+          TCP 流量控制
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#tcp-拥塞控制" class="right-sidebar-item-level3">
+          TCP 拥塞控制
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#http-报文格式" class="right-sidebar-item-level3">
+          HTTP 报文格式
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#get-和-post-的区别" class="right-sidebar-item-level3">
+          GET 和 POST 的区别
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#http-状态码" class="right-sidebar-item-level3">
+          HTTP 状态码
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#http-短连接和长连接" class="right-sidebar-item-level3">
+          HTTP 短连接和长连接
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#http-协议版本" class="right-sidebar-item-level3">
+          HTTP 协议版本
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#https-与-http-的区别" class="right-sidebar-item-level3">
+          HTTPS 与 HTTP 的区别
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#什么是数字证书" class="right-sidebar-item-level3">
+          什么是数字证书
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#tls-握手协议" class="right-sidebar-item-level3">
+          TLS 握手协议
+        </a></li><li id="tab-item20" class="right-sidebar-item"><a href="#dns-域名解析过程" class="right-sidebar-item-level3">
+          DNS 域名解析过程
+        </a></li><li id="tab-item21" class="right-sidebar-item"><a href="#操作系统" class="right-sidebar-item-level2">
+          操作系统
+        </a></li><li id="tab-item22" class="right-sidebar-item"><a href="#进程间的通信方式" class="right-sidebar-item-level3">
+          进程间的通信方式
+        </a></li><li id="tab-item23" class="right-sidebar-item"><a href="#进程、线程与协程的区别" class="right-sidebar-item-level3">
+          进程、线程与协程的区别
+        </a></li><li id="tab-item24" class="right-sidebar-item"><a href="#进程的调度策略" class="right-sidebar-item-level3">
+          进程的调度策略
+        </a></li><li id="tab-item25" class="right-sidebar-item"><a href="#select、poll-和-epoll-的区别" class="right-sidebar-item-level3">
+          select、poll 和 epoll 的区别
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/67.22efede4.js" defer></script>
+  </body>
+</html>

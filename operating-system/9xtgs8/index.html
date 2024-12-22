@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第2章 进程与线程 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/26.fd4195d5.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/operating-system/knuk3x/" class="sidebar-link">第1章 操作系统概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/operating-system/knuk3x/#_1-1-操作系统的基本概念" class="sidebar-link">1.1 操作系统的基本概念</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/knuk3x/#_1-2-操作系统的发展与分类" class="sidebar-link">1.2 操作系统的发展与分类</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/knuk3x/#_1-3-操作系统的运行机制与体系结构" class="sidebar-link">1.3 操作系统的运行机制与体系结构</a></li></ul></li><li><a href="/note-pages/operating-system/9xtgs8/" aria-current="page" class="active sidebar-link">第2章 进程与线程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/operating-system/9xtgs8/#_2-1-进程与线程" class="sidebar-link">2.1 进程与线程</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/9xtgs8/#_2-2-处理机的调度" class="sidebar-link">2.2 处理机的调度</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/9xtgs8/#_2-3-进程的同步与互斥" class="sidebar-link">2.3 进程的同步与互斥</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/9xtgs8/#_2-4-死锁" class="sidebar-link">2.4 死锁</a></li></ul></li><li><a href="/note-pages/operating-system/owchkr/" class="sidebar-link">第3章 内存管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/operating-system/owchkr/#_3-1-内存管理相关概念" class="sidebar-link">3.1 内存管理相关概念</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/owchkr/#_3-2-虚拟内存" class="sidebar-link">3.2 虚拟内存</a></li></ul></li><li><a href="/note-pages/operating-system/vfjnsa/" class="sidebar-link">第4章 文件管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/operating-system/vfjnsa/#_4-1-文件系统" class="sidebar-link">4.1 文件系统</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/vfjnsa/#_4-2-磁盘管理" class="sidebar-link">4.2 磁盘管理</a></li></ul></li><li><a href="/note-pages/operating-system/05-输入输出管理.html" class="sidebar-link">第5章 输入输出管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/operating-system/05-输入输出管理.html#_5-1-i-o-管理概述" class="sidebar-link">5.1 I/O 管理概述</a></li><li class="sidebar-sub-header"><a href="/note-pages/operating-system/05-输入输出管理.html#_5-2-i-o-核心子系统" class="sidebar-link">5.2 I/O 核心子系统</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第2章-进程与线程"><a href="#第2章-进程与线程" class="header-anchor">#</a> 第2章 进程与线程</h1> <h2 id="_2-1-进程与线程"><a href="#_2-1-进程与线程" class="header-anchor">#</a> 2.1 进程与线程</h2> <h3 id="进程的定义、组成、组织、特征"><a href="#进程的定义、组成、组织、特征" class="header-anchor">#</a> 进程的定义、组成、组织、特征</h3> <p>系统为每个运行的程序配置一个数据结构，称为 <strong>进程控制块（PCB）</strong>，用来描述进程的各种信息（如程序代码存放位置）。</p> <div id="进程的定义" class="anchor">进程的定义</div><p><strong>程序段、数据段、PCB</strong> 三部分组成了进程实体（进程映像）。一般的，我们把进程实体简称为进程。例如，所谓创建进程，实质上是创建进程实体中的 PCB；而撤销进程，实质上是撤销进程实体中的 PCB。</p> <blockquote><p><strong>注意</strong>：PCB 是进程存在的唯一标志。</p></blockquote> <p><strong>定义</strong>：进程是进程实体的运行过程，是系统进行 <strong>资源分配和调度</strong> 的一个独立单位。</p> <div id="进程的组成" class="anchor">进程的组成</div><ul><li><strong>PCB</strong>：进程描述信息、进程控制和管理信息、资源分配清单、处理机相关信息。</li> <li><strong>程序段</strong>：存放要执行的代码。</li> <li><strong>数据段</strong>：存放程序运行过程中处理的各种数据。</li></ul> <div id="进程的组织" class="anchor">进程的组织</div><ul><li><strong>链接方式</strong>：按照进程状态将 PCB 分为多个 <strong>队列</strong>，操作系统持有指向各个队列的指针。</li> <li><strong>索引方式</strong>：根据进程状态的不同建立多个 <strong>索引表</strong>，操作系统持有指向各个索引表的指针。</li></ul> <div id="进程的特征" class="anchor">进程的特征</div><ul><li><strong>动态性</strong>：<strong>最基本的特征</strong>。进程是程序的一次执行过程，是动态地产生、变化和消亡的。</li> <li><strong>并发性</strong>：内存中有多个进程实体，各进程可并发执行。</li> <li><strong>独立性</strong>：进程是能独立运行、独立获得资源、独立接受调度的基本单位。</li> <li><strong>异步性</strong>：各进程按各自独立的、不可预知的速度向前推进，操作系统要提供 “进程同步机制“ 来解决异步问题。</li> <li><strong>结构性</strong>：每个进程都会配置一个 PCB。结构上看，进程由程序段、数据段、PCB 组成。</li></ul> <h3 id="进程的状态与转换"><a href="#进程的状态与转换" class="header-anchor">#</a> 进程的状态与转换</h3> <p>三种基本状态：</p> <ul><li><strong>运行态</strong>（Running）：占有 CPU，并在 CPU 上运行。</li> <li><strong>就绪态</strong>（Ready）：已经具备运行条件，但由于没有空闲 CPU，而暂时不能运行。</li> <li><strong>阻塞态</strong>（Waiting/Blocked，又称等待态）：因等待某一事件而暂时不能运行。</li></ul> <p>另外两种状态：</p> <ul><li><strong>创建态</strong>（New）：进程正在被创建，操作系统为进程分配资源、初始化 PCB。</li> <li><strong>终止态</strong>（Terminated）：进程正在从系统中撤销，操作系统会回收进程拥有得资源、撤销 PCB。</li></ul> <p>进程的状态转换：</p> <p><img src="/note-pages/assets/img/image-20240118123420827.1eb113d5.png" alt="image-20240118123420827"></p> <h3 id="进程控制"><a href="#进程控制" class="header-anchor">#</a> 进程控制</h3> <p>通过 <strong>原语</strong> 实现进程控制。原语的 <strong>特点</strong> 是执行期间 <strong>不允许中断</strong>，只能一气呵成。</p> <p>这种不可被中断的操作即 <strong>原子操作</strong>。</p> <blockquote><p>原语采用 “<strong>关中断</strong> 指令” 和 “<strong>开中断</strong> 指令” 实现。在关中断和开中断之间收到的中断信号会被忽略。</p></blockquote> <ul><li><strong>创建原语</strong>：<strong>申请空白 PCB</strong> → 为新进程 <strong>分配所需资源</strong> → <strong>初始化 PCB</strong> → 将 PCB 插入 <strong>就绪队列</strong>。</li> <li><strong>撤销原语</strong>：从 PCB 集合中找到终止进程的 PCB → 若进程正在运行，立即 <strong>剥夺 CPU</strong>，将 CPU 分配给其他进程 → 终止其所有子进程 → 将该进程拥有的所有 <strong>资源归还</strong> 给父进程或操作系统 → <strong>删除 PCB</strong>。</li> <li><strong>阻塞原语</strong>：找到要阻塞的进程对应的 PCB → <strong>保护进程运行现场</strong> → 将 <strong>PCB 状态</strong> 信息设置为 <strong>“阻塞态”</strong>，暂时停止进程运行 → 将 PCB 插入相应事件的 <strong>等待队列</strong>。</li> <li><strong>唤醒原语</strong>：在事件等待队列中找到 PCB → 将 PCB <strong>从等待队列移除</strong>，设置进程为就绪态 → 将 PCB 插入 <strong>就绪队列</strong>，等待被调度。</li> <li><strong>切换原语</strong>：将运行环境信息存入 PCB → PCB 移入相应队列 → 选择另一个进程执行，并更新其 PCB → 根据 PCB 恢复新进程所需的运行环境。</li></ul> <h3 id="进程通信"><a href="#进程通信" class="header-anchor">#</a> 进程通信</h3> <p>顾名思义，进程通信就是指进程之间的信息交换。</p> <p>为了保证安全，一个进程不能直接访问另一个进程的地址空间。但是进程之间的信息交换又是必须实现的。为了保证进程间的安全通信，操作系统提供了一些方法。</p> <div id="共享存储" class="anchor">共享存储</div><p><strong>基于数据结构的共享</strong>：比如共享空间里只能放一个长度为10的数组。这种共享方式速度慢、限制多，是一种低级通信方式。</p> <p><strong>基于存储区的共享</strong>：在内存中画出一块共享存储区，数据的形式、存放位置都由进程控制，而不是操作系统。相比之下，这种共享方式速度更快，是一种高级通信方式。</p> <p>两个进程对共享空间的访问必须是互斥的。</p> <div id="管道通信" class="anchor">管道通信</div><p>“管道”是指用于连接读写进程的一个共享文件，又名 pipe 文件。其实就是在内存中开辟一个大小固定的缓冲区。</p> <p>管道只能采用 <strong>半双工通信</strong>，某一时间段内只能实现单向的传输。如果要实现双向同时通信，则需要设置两个管道。</p> <p>各进程要 <strong>互斥</strong> 地访问管道。</p> <p>数据以字符流的形式写入管道，<strong>当管道写满时，写进程的 wite() 系统调用将被阻塞</strong>，等待读进程将数据取走。当读进程将数据全部取走后，<strong>管道变空，此时读进程的 read(）系统调用将被阻塞</strong>。如果没写满，就不允许读。如果没读空，就不允许写。</p> <p>数据一旦被读出，就从管道中被抛弃，这就意味着 <strong>读进程最多只能有一个</strong>，否则可能会有读错数据的情况。</p> <div id="消息传递" class="anchor">消息传递</div><p>进程间的数据交换以 <strong>格式化的消息</strong>（Message）为单位。进程通过操作系统提供的 “发送消息/接收消息” 两个 <strong>原语</strong> 进行数据交换。</p> <h3 id="线程概念和多线程模型"><a href="#线程概念和多线程模型" class="header-anchor">#</a> 线程概念和多线程模型</h3> <p>有的进程可能需要 “同时” 做很多事，而传统的进程只能串行地执行一系列程序。为此，引入了 “线程”，来增加并发度。</p> <p><strong>线程是处理机调度的单位。</strong></p> <p>多 CPU 计算机中，各个线程可占用不同的 CPU。</p> <p>每个线程都有一个线程 ID、线程控制块（TCB）。线程有就绪、阻塞、运行三种基本状态。</p> <p>线程几乎不拥有系统资源，同一进程的不同线程间共享进程的资源。由于共享内存地址空间，同一进程中的线程间通信甚至无需系统干预。</p> <p>同一进程中的线程切换，不会引起进程切换；不同进程中的线程切换，会引起进程切换。切换同进程内的线程，系统开销很小；切换进程，系统开销较大。</p> <div id="线程的实现方式" class="anchor">线程的实现方式</div><ul><li><strong>用户级线程</strong>：由应用程序通过线程库实现。所有的 <strong>线程管理工作</strong> 由 <strong>应用程序负责</strong> （包括线程切换）。用户级线程中，<strong>线程切换在用户态下即可完成</strong>，无需操作系统干预。</li> <li><strong>内核级线程</strong>：<strong>线程管理工作</strong> 由 <strong>操作系统内核</strong> 完成。线程调度、切换等工作由内核负责，因此 <strong>内核级线程的切换</strong> 必然需要在 <strong>核心态</strong> 下才能完成。</li></ul> <div id="多线程模型" class="anchor">多线程模型</div><p>在同时支持用户级线程和内核级线程的系统中，由几个用户级线程映射到几个内核级线程的问题引出了 “多线程模型” 问题。</p> <p>多对一模型：</p> <ul><li>优：进程管理开销小效率高。</li> <li>缺：一个线程阻塞会导致整个进程都被阻塞（并发度低）。</li></ul> <p>一对一模型：</p> <ul><li>优：进程管理开销大。</li> <li>缺：各个线程可分配到多核处理机并行执行，并发度高。</li></ul> <p>多对多模型：集二者之所长。</p> <h2 id="_2-2-处理机的调度"><a href="#_2-2-处理机的调度" class="header-anchor">#</a> 2.2 处理机的调度</h2> <h3 id="处理机调度的概念、层次"><a href="#处理机调度的概念、层次" class="header-anchor">#</a> 处理机调度的概念、层次</h3> <p>处理机调度，就是从就绪队列中按照一定地算法选择一个进程并将处理机分配给它运行，以实现进程的并发执行。</p> <div id="高级调度" class="anchor">高级调度</div><p><strong>高级调度（作业调度）</strong>：按一定的原则从外存上处于 <strong>后备队列的作业</strong> 中挑选一个（或多个）作业，给他们分配内存等必要资源，并建立相应的进程（建立PCB)，以使它（们）获得竞争处理机的权利。</p> <p><strong>高级调度是辅存（外存）与内存之间的调度</strong>。每个作业只调入一次，调出一次。<strong>作业调入时会建立相应的 PCB，作业调出时才撤销 PCB</strong>。高级调度主要是指调入的问题，因为只有调入的时机需要操作系统来确定，但调出的时机必然是作业运行结束才调出。</p> <div id="中级调度" class="anchor">中级调度</div><blockquote><p>引入了虚拟存储技术之后，可将暂时不能运行的进程调至外存等待。等它重新具备了运行条件且内存又稍有空闲时，再重新调入内存。</p> <p>这么做的目的是为了 <strong>提高内存利用率</strong> 和 <strong>系统吞吐量</strong>。</p> <p>暂时调到外存等待的进程状态为 <strong>挂起状态</strong>。值得注意的是，<strong>PCB</strong> 并不会一起调到外存，而是会 <strong>常驻内存</strong>。PCB 中会记录进程数据在外存中的存放位置、进程状态等信息，操作系统通过内存中的 PCB 来保持对各个进程的监控、管理。<strong>被挂起的进程 PCB 会被放到挂起队列中。</strong></p></blockquote> <p><strong>中级调度（内存调度）</strong>：就是要决定将哪个 <strong>处于挂起状态的进程</strong> 重新调入内存。</p> <p>一个进程可能会被多次调出、调入内存，因此中级调度发生的频率要比高级调度更高。</p> <div id="低级调度" class="anchor">低级调度</div><p><strong>低级调度（进程调度）</strong>：其主要任务是按照某种方法和策略从 <strong>就绪队列</strong> 中选取一个 <strong>进程</strong>，将处理机分配给它。</p> <p>进程调度是操作系统中 <strong>最基本的一种调度</strong>，在一般的操作系统中都必须配置进程调度。</p> <p>进程调度的 <strong>频率很高</strong>，一般几十毫秒一次。</p> <h3 id="进程调度的时机、方式、切换与过程"><a href="#进程调度的时机、方式、切换与过程" class="header-anchor">#</a> 进程调度的时机、方式、切换与过程</h3> <p>进程调度的时机：</p> <ul><li>当前运行的进程 <strong>主动</strong> 放弃处理机：进程正常终止、运行过程中发生异常而终止、进程主动请求阻塞（如等待 I/O）。</li> <li>当前运行的进程 <strong>被动</strong> 放弃处理机：分给进程的时间片用完、有更紧急的事需要处理（如 I/O 中断）、有更高优先级的进程进入就绪队列。</li></ul> <p>进程调度的方式：</p> <ul><li><strong>非剥夺调度方式</strong>：又称非抢占方式。即，只允许进程主动放弃处理机。在运行过程中即便有更紧迫的任务到达，当前进程依然会继续使用处理机，直到该进程终止或主动要求进入阻塞态。</li> <li><strong>剥夺调度方式</strong>：又称抢占方式。当一个进程正在处理机上执行时，如果有一个更重要或更紧迫的进程需要使用处理机，则立即暂停正在执行的进程，将处理机分配给更重要紧迫的那个进程。</li></ul> <p>切换与过程：狭义的进程调度指的是从就绪队列中选中一个要运行的进程。进程切换是指一个进程让出处理机，由另一个进程占用处理机的过程。进程切换的过程主要完成了：</p> <ul><li>对原来运行进程各种数据的保存</li> <li>对新的进程各种数据的恢复</li></ul> <p>进程切换是有代价的，因此如果过于频繁的进行进程调度、切换，必然会使整个系统的效率降低，使系统大部分时间都花在了进程切换上，而真正用于执行进程的时间减少。</p> <h3 id="调度算法的评价指标"><a href="#调度算法的评价指标" class="header-anchor">#</a> 调度算法的评价指标</h3> <p><strong>CPU 利用率</strong>：指 CPU “忙碌” 的时间占总时间的比例。</p> <p><strong>系统吞吐量</strong>：单位时间内完成作业的数量。</p> <p><strong>周转时间</strong>：是指从 <strong>作业被提交给系统</strong> 开始，到 <strong>作业完成</strong> 为止的这段时间间隔。它包括四个部分：作业 <strong>在外存后备队列上等待</strong> 作业调度（高级调度）的时间、进程 <strong>在就绪队列上等待</strong> 进程调度（低级调度）的时间、进程 <strong>在 CPU 上执行</strong> 的时间、进程 <strong>等待 I/O 操作</strong> 的时间。</p> <ul><li>周转时间 = 作业完成时间 - 作业提交时间</li> <li>平均周转时间 = 各作业周转时间之和 / 作业数</li> <li><strong>带权周转时间 = 作业周转时间 / 作业实际运行的时间</strong></li> <li>平均带权周转时间 = 各作业带权周转时间之和 / 作业数</li></ul> <p><strong>等待时间</strong>：指进程/作业处于 <strong>等待处理机</strong> 状态时间之和。</p> <p>对于进程来说，等待时间就是指进程建立后等待被服务的时间之和，在等待 I/O 完成的期间其实进程也是在被服务的，所以不计入等待时间。</p> <p>对于作业来说，不仅要考虑建立进程后的等待时间，还要加上作业在外存后备队列中等待的时间。</p> <p><strong>响应时间</strong>：指从用户提交请求到首次产生响应所用的时间。</p> <h3 id="作业-进程调度算法"><a href="#作业-进程调度算法" class="header-anchor">#</a> 作业/进程调度算法</h3> <div id="先来先服务（fcfs--first-come-first-server）" class="anchor">先来先服务（FCFS, First Come First Server）</div><p>算法规则：按照作业/进程 <strong>到达的先后顺序</strong> 进行服务。</p> <p>是否可抢占：<strong>非抢占式</strong> 的算法。</p> <p>优缺点：</p> <ul><li>优点：公平、算法实现简单。</li> <li>缺点：排在长作业（进程）后面的短作业需要等待很长时间，带权周转时间大，对短作业来说用户体验不好。即，<strong>对长作业有利，对短作业不利。</strong></li></ul> <p>是否会导致饥饿：不会。</p> <div id="短作业优先（sjf--shortest-job-first）" class="anchor">短作业优先（SJF, Shortest Job First）</div><p>算法规则：最短的作业/进程优先得到服务（所谓“最短”，是指要求服务时间最短）。</p> <p>是否可抢占：<strong>非抢占式</strong> 的算法。</p> <p>优缺点：</p> <ul><li>优点：“最短的” 平均等待时间、平均周转时间。</li> <li>缺点：不公平。<strong>对短作业有利，对长作业不利</strong>。<strong>可能产生饥饿现象</strong>。作业进程的运行时间是由用户提供的，并不一定真实，不一定能做到真正的短作业优先</li></ul> <p>是否会导致饥饿：会。</p> <div id="高响应比优先（hrrn--highest-response-ratio-next）" class="anchor">高响应比优先（HRRN, Highest Response Ratio Next）</div><p>算法规则：调度时先计算各个作业进程的响应比，选择 <strong>响应比最高</strong> 的作业/进程为其服务。</p> <section><div class="vuepress-eqn"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>响应比</mtext><mo>=</mo><mfrac><mrow><mtext>等待时间</mtext><mo>+</mo><mtext>要求服务时间</mtext></mrow><mtext>要求服务时间</mtext></mfrac><mo>=</mo><mfrac><mtext>等待时间</mtext><mtext>要求服务时间</mtext></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
+\text{响应比}= \frac{\text{等待时间}+\text{要求服务时间}}{\text{要求服务时间}}= \frac{\text{等待时间}}{\text{要求服务时间}}+1
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord cjk_fallback">响应比</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">要求服务时间</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">等待时间</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord text"><span class="mord cjk_fallback">要求服务时间</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">要求服务时间</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">等待时间</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></div></section><p>是否可抢占：<strong>非抢占式</strong> 的算法。</p> <p>优缺点：<strong>综合考虑了等待时间和运行时间（要求服务时间）</strong>。对于长作业来说，随着等待时间越来越久，其响应比也会越来越大，从而避免了长作业饥饿的问题。</p> <p>是否会导致饥饿：不会。</p> <div id="时间片轮转调度算法（rr，round-robin）" class="anchor">时间片轮转调度算法（RR，Round-Robin）</div><p>算法规则：按照各进程到达就绪队列的顺序，轮流让各个进程执行一个 <strong>时间片</strong>。若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队。</p> <p>是否可抢占：若进程未能在时间片内运行完，将被强行剥夺处理机使用权，因此时间片轮转调度算法属于 <strong>抢占式</strong> 的算法。由时钟装置发出 <strong>时钟中断</strong> 来通知 CPU 时间片已到。</p> <p>优缺点：</p> <ul><li>优点：公平；响应快，适用于分时操作系统。</li> <li>缺点：由于高频率的进程切换，因此有一定开销；不区分任务的紧急程度。</li></ul> <p>是否会导致饥饿：不会。</p> <div id="优先级调度算法" class="anchor">优先级调度算法</div><p>算法规则：调度时选择 <strong>优先级最高</strong> 的作业/进程。</p> <p>是否可抢占：抢占式、非抢占式都有。区别在于：非抢占式只需在进程主动放弃处理机时进行调度即可，而抢占式还需在就绪队列变化时，检查是否会发生抢占。</p> <p>优缺点：</p> <ul><li>优点：适用于实时操作系统。可灵活地调整对各种作业进程的偏好程度。</li> <li>缺点：如果源源不断地有高优先级进程到来，则可能导致饥饿。</li></ul> <p>是否会导致饥饿：会。</p> <div id="多级反馈队列调度算法" class="anchor">多级反馈队列调度算法</div><p>算法规则：</p> <ul><li>设置多级就绪队列，各级队列优先级从高到低，时间片从小到大。</li> <li>新进程到达时先进入第 1 级队列，按 FCFS 原则排队等待被分配时间片，若用完时间片进程还未结束，则进程进入下一级队列队尾。如果此时已经是在最下级的队列，则重新放回该队列队尾。</li> <li>只有第 <span class="vuepress-eq"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></span> 级队列为空时，才会为 <span class="vuepress-eq"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span> 级队头的进程分配时间片。</li></ul> <p>是否可抢占：<strong>抢占式</strong> 的算法。在 <span class="vuepress-eq"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></span> 级队列的进程运行过程中，若更上级的队列（<span class="vuepress-eq"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \sim k - 1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span>级）中进入了一个新进程，则由于新进程处于优先级更高的队列中，新进程抢占处理机，原来运行的进程放回 <span class="vuepress-eq"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></span> 级队列队尾。</p> <p>优缺点：对各类型进程相对公平（CFS 的优点）：每个新到达的进程都可以很快就得到响应（RR 的优点）；短进程只用较少的时间就可完成（SPF 的优点）；不必实现估计进程的运行时间（避免用户作假）可灵活地调整对各类进程的偏好程度，比如 CPU 密集型进程、I/O 密集型进程（拓展：可以将因/O 而阻塞的进程重新放回原队列，这样/O 型进程就可以保持较高优先级）。</p> <p>是否会导致饥饿：会。</p> <h2 id="_2-3-进程的同步与互斥"><a href="#_2-3-进程的同步与互斥" class="header-anchor">#</a> 2.3 进程的同步与互斥</h2> <h3 id="进程的同步与互斥"><a href="#进程的同步与互斥" class="header-anchor">#</a> 进程的同步与互斥</h3> <div id="进程同步" class="anchor">进程同步</div><p><strong>同步</strong> 亦称 <strong>直接制约关系</strong>，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上 <strong>协调</strong> 它们的 <strong>工作次序</strong> 而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</p> <div id="进程互斥" class="anchor">进程互斥</div><p>我们把 <strong>一个时间段内只允许一个进程使用</strong> 的资源称为 <strong>临界资源</strong>。许多物理设备（比如摄像头、打印机）都属于临界资源。此外还有许多变量、数据、内存缓冲区等都属于临界资源。</p> <p>对临界资源的访问，必须互斥地进行。</p> <p><strong>互斥</strong>，亦称 <strong>间接制约关系</strong>。进程互斥指 <strong>当一个进程访问某临界资源时，另一个想要访问该临界资源的进程必须等待</strong>。当前访问临界资源的进程访问结束，释放该资源之后，另一个进程才能去访问临界资源。</p> <p>对临界资源的互斥访问，可以在逻辑上分为如下四个部分：</p> <ul><li>进入区：负责检查是否可进入临界区，如果可进入，则应设置正在访问临界资源的标志（上锁），以阻止其他进程同时进入临界区。</li> <li>临界区：访问临界区资源的那段 代码。</li> <li>退出区：负责解除正在访问临界资源的标志。</li> <li>剩余区：做其他处理。</li></ul> <blockquote><p><strong>注意：临界区是访问临界资源的代码段。进入区和退出区是负责实现互斥的代码段。</strong></p></blockquote> <p>为了实现对临界资源的互斥访问，同时保证系统整体性能，需要遵循以下原则：</p> <ul><li>空闲让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区；</li> <li>忙则等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待；</li> <li>有限等待。对请求访问的进程，应保证能在有限时间内进入临界区（保证不会饥饿）；</li> <li>让权等待。当进程不能进入临界区时，应立即释放处理机，防止进程忙等待。</li></ul> <h3 id="进程互斥的软件实现方法"><a href="#进程互斥的软件实现方法" class="header-anchor">#</a> 进程互斥的软件实现方法</h3> <div id="单标志法" class="anchor">单标志法</div><p>算法思想：两个进程在 <strong>访问完临界区后</strong> 会把使用临界区的权限转交给另一个进程。也就是说 <strong>每个进程进入临界区的权限只能被另一个进程赋予</strong>。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P0 进程:</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>turn <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+turn <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P1 进程:</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>turn <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>主要问题：违背 “空闲让进” 原则。</p> <div id="双标志先检查" class="anchor">双标志先检查</div><p>算法思想：设置一个布尔型数组 <code>flag[]</code>，数组中各个元素用来 <strong>标记各进程想进入临界区的意愿</strong>，比如 <code>flag[0] = true</code> 意味着 0 号进程 P0 现在想要进入临界区。每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有，则把自身对应的标志 <code>flag[i]</code> 设为 <code>true</code>，之后开始访问临界区。</p> <div class="language-c extra-class"><pre class="language-c"><code>bool flag<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P0 进程:</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P1 进程:</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>主要问题：违反 “忙则等待” 原则。</p> <p>原因在于，“检查” 和“上锁” 两个处理不是一气呵成的。<strong>“检查” 后、“上锁” 前可能发生进程切换。</strong></p> <div id="双标志后检查" class="anchor">双标志后检查</div><p>算法思想：双标志先检查法的改版。前一个算法的问题是先 “检查”后“上锁”，但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到 <strong>先 “上锁” 后 “检查”</strong> 的方法，来避免上述问题。</p> <div class="language-c extra-class"><pre class="language-c"><code>bool flag<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P0 进程:</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P1 进程:</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>主要问题：违背了 “空闲让进” 和 “有限等待” 原则。两个进程都争着想进入临界区，但是谁也不让谁，最后谁都无法进入临界区。</p> <div id="peterson-算法" class="anchor">Peterson 算法</div><p>算法思想：双标志后检查法中，两个进程都争着想进入临界区，但是谁也不让谁，最后谁都无法进入临界区。Gary L.Peterson 想到了一种方法，<strong>如果双方都争着想进入临界区，那可以让进程尝试 “孔融让梨”，主动让对方先使用临界区。</strong></p> <div class="language-c extra-class"><pre class="language-c"><code>bool flag<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token keyword">int</span> turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P0 进程:</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 谁先谦让谁使用</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// P1 进程:</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> true<span class="token punctuation">;</span>
+turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区 ...</span>
+flag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>Peterson 算法用软件方法解决了进程互斥问题，遵循了空闲让进、忙则等待、有限等待三个原则，但是依然 <strong>未遵循让权等待的原则</strong>。</p> <h3 id="进程互斥的硬件实现方法"><a href="#进程互斥的硬件实现方法" class="header-anchor">#</a> 进程互斥的硬件实现方法</h3> <div id="中断屏蔽" class="anchor">中断屏蔽</div><div class="language- extra-class"><pre class="language-text"><code>关中断：
+临界区：
+开中断；
+</code></pre></div><div id="testandset-指令" class="anchor">TestAndSet 指令</div><p>TestAndSet 指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。</p> <p>以下是用 C 语言描述的逻辑。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// 布尔型共享变量 lock 表示当前临界区是否被加锁</span>
+<span class="token comment">// true 表示已加锁，false 表示未加锁</span>
+
+bool <span class="token function">TestAndSet</span><span class="token punctuation">(</span>bool <span class="token operator">*</span>lock<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	bool old <span class="token operator">=</span> <span class="token operator">*</span>lock<span class="token punctuation">;</span>
+	<span class="token operator">*</span>lock<span class="token operator">=</span> true<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> old<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">)</span><span class="token punctuation">)</span>；
+<span class="token comment">// 临界区 ... </span>
+lock <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>主要问题：不满足 “让权等待” 原则。</p> <div id="swap-指令" class="anchor">Swap 指令</div><p>Swp 指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。以下是用 C 语言描述的逻辑。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">void</span> <span class="token function">Swap</span><span class="token punctuation">(</span>bool <span class="token operator">*</span>a<span class="token punctuation">,</span> bool <span class="token operator">*</span>b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    bool temp<span class="token punctuation">;</span>
+    temp <span class="token operator">=</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>
+    <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+    <span class="token operator">*</span>b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>以下是使用 Swap 指令实现互斥的算法逻辑， <code>lock</code> 表示当前临界区是否被加锁。</p> <div class="language-c extra-class"><pre class="language-c"><code>bool old <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>old <span class="token operator">==</span> true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Swap</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">,</span> <span class="token operator">&amp;</span>old<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 临界区 ...</span>
+lock <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token comment">// 剩余区 ...</span>
+</code></pre></div><p>主要问题：不满足 “让权等待” 原则。</p> <h3 id="信号量机制"><a href="#信号量机制" class="header-anchor">#</a> 信号量机制</h3> <p>用户进程可以通过使用操作系统提供的 <strong>一对原语</strong> 来对 <strong>信号量</strong> 进行操作，从而很方便的实现了进程互斥、进程同步。</p> <p><strong>信号量</strong> 其实就是一个 <strong>变量</strong>，可以用一个信号量 <strong>来表示系统中某种资源的数量</strong>。</p> <blockquote><p>原语是一种特殊的程序段，其执行只能一气呵成，不可被中断。原语是由关中断/开中断指令实现的。软件解决方案的主要问题是由 “进入区的各种操作无法一气呵成”，因此如果能把进入区、退出区的操作都用 “原语” 实现，使这些操作能 “一气呵成” 就能避免问题。</p></blockquote> <p><strong>一对原语</strong>：<code>wait(S)</code> 原语和 <code>signal(S)</code> 原语，可以把原语理解为我们自己写的函数，函数名分别为 wait 和 signal，括号里的信号量 <code>S</code> 其实就是函数调用时传入的一个参数。</p> <p>wait、signal 原语常简称为 P、V 操作（来自荷兰语 proberen 和 verhogen）。因此，做题的时候常把 <code>wait(S)</code>、<code>signal(S)</code> 两个操作分别写为 <code>P(S)</code>、<code>V(S)</code>。</p> <div id="整型信号量" class="anchor">整型信号量</div><p>使用一个整数型的变量作为信号量，<strong>表示系统中某种资源的数量</strong>。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> S <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 					<span class="token comment">// 初始型整型信号量 s，表示当前系统中可用的打印机资源数</span>
+
+<span class="token keyword">void</span> <span class="token function">wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> S<span class="token punctuation">)</span> <span class="token punctuation">{</span>			<span class="token comment">// wait 原语，相当于“进入区”</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>S <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">// 循环检查，是否当前资源已经不够了</span>
+    S<span class="token operator">--</span><span class="token punctuation">;</span>					<span class="token comment">// 如果资源数够，则占用一个资源</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token keyword">int</span> S<span class="token punctuation">)</span><span class="token punctuation">{</span>			<span class="token comment">// signal 原语，相当于“退出区”</span>
+    S<span class="token operator">++</span><span class="token punctuation">;</span>					<span class="token comment">// 使用完资源后，在退出区释放资源</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">// 进程 P0</span>
+<span class="token comment">// ...</span>
+<span class="token function">wait</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 进入区，申请资源</span>
+<span class="token comment">// 使用打印机资源...			// 临界区，访问资源</span>
+<span class="token function">signal</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 退出区，释放资源</span>
+<span class="token comment">// ...</span>
+</code></pre></div><div class="language-C extra-class"><pre class="language-c"><code><span class="token comment">// 进程 P1</span>
+<span class="token comment">// ...</span>
+<span class="token function">wait</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 进入区，申请资源</span>
+<span class="token comment">// 使用打印机资源...			// 临界区，访问资源</span>
+<span class="token function">signal</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 退出区，释放资源</span>
+<span class="token comment">// ...</span>
+</code></pre></div><div class="language-C extra-class"><pre class="language-c"><code><span class="token comment">// 进程 Pn</span>
+<span class="token comment">// ...</span>
+<span class="token function">wait</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 进入区，申请资源</span>
+<span class="token comment">// 使用打印机资源...			// 临界区，访问资源</span>
+<span class="token function">signal</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>					<span class="token comment">// 退出区，释放资源</span>
+<span class="token comment">// ...</span>
+</code></pre></div><p>存在的问题：不满足 “让权等待原则，会发生“忙等”。</p> <div id="记录型信号量" class="anchor">记录型信号量</div><p>整型信号量的缺陷是存在 “忙等” 问题，因此人们又提出了 “记录型信号量”，即使用记录型数据结构表示的信号量。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/* 记录型信号量的定义 */</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> value<span class="token punctuation">;</span>                 <span class="token comment">// 剩余资源数</span>
+    <span class="token keyword">struct</span> <span class="token class-name">process</span> <span class="token operator">*</span>L<span class="token punctuation">;</span>         <span class="token comment">// 等待队列</span>
+<span class="token punctuation">}</span> Semaphore<span class="token punctuation">;</span>
+
+<span class="token comment">/* 某进程需要使用资源时，通过wait原语申请 */</span>
+<span class="token keyword">void</span> <span class="token function">wait</span><span class="token punctuation">(</span>Semaphore S<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    S<span class="token punctuation">.</span>value<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>S<span class="token punctuation">.</span>value <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">block</span><span class="token punctuation">(</span>S<span class="token punctuation">.</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果剩余资源数不够，使用 <code>block</code> 原语使进程从运行态进入阻塞态，并把挂到信号量 <code>S</code> 的等待队列（即阻塞队列）中。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/* 进程使用完资源后，通过 signal 原语释放 */</span>
+<span class="token keyword">void</span> <span class="token function">signal</span><span class="token punctuation">(</span>Semaphore S<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    S<span class="token punctuation">.</span>value<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>S<span class="token punctuation">.</span>value <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>			<span class="token comment">// 依然有进程在等待该类资源</span>
+        <span class="token function">wakeup</span><span class="token punctuation">(</span>S<span class="token punctuation">.</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>释放资源后， 若还有别的进程在等待这种资源，则使用 <code>wakeup</code> 原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态。</p> <h3 id="信号量机制实现进程互斥、同步、前驱关系"><a href="#信号量机制实现进程互斥、同步、前驱关系" class="header-anchor">#</a> 信号量机制实现进程互斥、同步、前驱关系</h3> <div id="信号量机制实现进程互斥" class="anchor">信号量机制实现进程互斥</div><p>信号量 <code>mutex</code> 表示 “进入临界区的名额”。</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/*记录型信号量的定义*/</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> value<span class="token punctuation">;</span>                <span class="token comment">// 剩余资源数</span>
+    <span class="token keyword">struct</span> <span class="token class-name">process</span> <span class="token operator">*</span>L<span class="token punctuation">;</span>        <span class="token comment">// 等待队列</span>
+<span class="token punctuation">}</span> Semaphore<span class="token punctuation">;</span>
+
+<span class="token comment">/* 信号量机制实现互斥 */</span>
+Semaphore mutex <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token function">P1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// 使用临界区前加锁</span>
+    <span class="token comment">// 临界区代码段</span>
+    <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// 使用临界区后解锁</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">P2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 临界区代码段</span>
+    <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div id="信号量机制实现进程同步" class="anchor">信号量机制实现进程同步</div><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/* 信号量机制实现同步 */</span>
+Semaphore S <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token function">P1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 代码 1;</span>
+    <span class="token comment">// 代码 2; </span>
+    <span class="token function">V</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 代码 3;</span>
+<span class="token punctuation">}</span>
+    
+<span class="token comment">// P2 的执行需要依赖一种信号量资源 S，而这种资源只能由 P1 释放，</span>
+<span class="token comment">// 因此保证必须 P1 后再 P2</span>
+<span class="token function">P2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">P</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 代码 4;</span>
+    <span class="token comment">// 代码 5; </span>
+    <span class="token comment">// 代码 6;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div id="信号量机制实现前驱关系" class="anchor">信号量机制实现前驱关系</div><p>其实每一对前驱关系都是一个进程同步问题（需要保证一前一后的操作）。</p> <h3 id="进程同步与互斥经典问题"><a href="#进程同步与互斥经典问题" class="header-anchor">#</a> 进程同步与互斥经典问题</h3> <div id="生产者-消费者问题" class="anchor">生产者-消费者问题</div><p>问题描述：系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。</p> <p>生产者、消费者共享一个初始为空、大小为 n 的缓冲区。</p> <p>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待（同步关系：缓冲区满要等待消费者取走产品）。</p> <p>只有缓冲区不空时，消费者才能从中取出产品，否则必须等待（同步关系：缓冲区空要等待生产者放入产品）。</p> <p>缓冲区是临界资源，各进程必须互斥访问（互斥关系）。</p> <div class="language-c extra-class"><pre class="language-c"><code>semaphore mutex <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token comment">// 互斥信号量，用于实现对缓冲区的互斥访问</span>
+semaphore empty <span class="token operator">=</span> n<span class="token punctuation">;</span> 	<span class="token comment">// 同步信号量，表示空闲缓冲区的数量</span>
+semaphore full <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token comment">// 同步信号量，表示产品的数量</span>
+
+<span class="token function">producer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// produce a product;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>empty<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// put the product into buffer;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>full<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">consumer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>full<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">p</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// get a product from buffer;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>empty<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// use the product;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>实现互斥的 P 操作一定要在实现同步的 P 操作之后。</strong></p> <p>V 操作不会导致进程阻塞，因此两个 V 操作顺序可以交换。</p> <div id="吸烟者问题" class="anchor">吸烟者问题</div><p>问题描述：假设一个系统有三个抽烟者和一个供应者，抽烟者不停卷烟并抽掉，需要三种材料：烟草、纸和胶水。三个抽烟者中，第一个有烟草，第二个有纸，第三个供胶水。供应者无限提供三种材料，每次将两种材料放桌子上，拥有另一种材料的抽烟者就卷烟抽烟，并告诉供应者我完成了，供应者又放另外两种材料，让他们轮流吸烟。</p> <p>桌子可以看成容量为 1 的缓冲区，互斥访问（mutex）。</p> <p>有组合一，抽烟者 1 可以抽烟（同步关系 offer1 = 0）；有组合二，吸烟者 2 可以抽烟（同步关系 offer2 = 0）；有组合三，吸烟者 3 可以抽烟（同步关系 offer3 = 0）。</p> <p>完成信号后，放下一个组合（同步关系 plate = 1）。</p> <div class="language-c extra-class"><pre class="language-c"><code>semaphore offer1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+semaphore offer2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+semaphore offer3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+semaphore plate  <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+semaphore mutex  <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token function">provider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// group1 be put into the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>offer1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// group2 be put into the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>offer2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// group3 be put into the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>offer3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">smoker1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>offer1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// take group1 from the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">smoker2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>offer2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// take group2 from the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">smoker3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>offer1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// take group3 from the plate;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>plate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div id="读者-写者问题" class="anchor">读者-写者问题</div><p>问题描述：有读者和写者两组并发进程，共享一个文件，允许多个读者进程同时访问共享数据，只允许一个写者进程访问共享数据，读者进程和写者进程不能同时访问共享数据。</p> <div class="language-c extra-class"><pre class="language-c"><code>semaphore rw <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 		<span class="token comment">// 用于实现文件的互斥访问，表示当前是否有进程在访问共享文件</span>
+<span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 			<span class="token comment">// 记录当前有多少个读进程在访问文件</span>
+semaphore mutex <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token comment">// 用于实现对 count 的互斥访问</span>
+semaphore w <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 		<span class="token comment">// 用于实现写优先</span>
+
+<span class="token function">writer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>rw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// write;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>rw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">reader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token function">P</span><span class="token punctuation">(</span>rw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// read;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        count<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token function">V</span><span class="token punctuation">(</span>rw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div id="哲学家进餐问题" class="anchor">哲学家进餐问题</div><p>问题描述：圆桌上 5 名哲学家，每两个哲学家之间摆一根筷子，桌子中间为米饭，哲学家思考不影响他人，哲学家饥饿时才试图拿起筷子（一根一根拿，只能拿自己左右手的筷子），如果筷子在别人手里，就等待，同时拿起两根筷子才能进餐，进餐完毕，放下筷子思考。</p> <p>5 个哲学家进程，哲学家和相邻的两个哲学家对中间的筷子的访问是互斥的。</p> <p>如果每个哲学家拿了一根筷子，大家都吃不了饭，造成死锁，如何解决。</p> <p>定义互斥信号量 <code>chopstick[5] = {1,1,1,1,1}</code>，哲学家编号 0、1、2、3、4，第 <code>i</code> 哲学家左边的筷子是 <code>i</code>。</p> <div class="language-c extra-class"><pre class="language-c"><code>semaphore chopstick<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+semaphore mutex <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token comment">// 互斥取筷子</span>
+<span class="token function">Pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>chopstick<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			<span class="token comment">// 拿左</span>
+        <span class="token function">P</span><span class="token punctuation">(</span>chopstick<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token comment">// 拿右</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// eat hotpot;</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>chopstick<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			<span class="token comment">// 放左</span>
+        <span class="token function">V</span><span class="token punctuation">(</span>chopstick<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 	<span class="token comment">// 放右</span>
+        think<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如何预防死锁：</p> <ul><li>允许最多四个哲学家同时进餐；</li> <li>令奇数号哲学家先拿左边筷子，偶数号先拿右边筷子。</li></ul> <h3 id="管程"><a href="#管程" class="header-anchor">#</a> 管程</h3> <p>指的是管理共享变量以及对共享变量的操作过程，让它们支持并发。</p> <h2 id="_2-4-死锁"><a href="#_2-4-死锁" class="header-anchor">#</a> 2.4 死锁</h2> <h3 id="死锁的概念"><a href="#死锁的概念" class="header-anchor">#</a> 死锁的概念</h3> <p><strong>死锁</strong>：各进程互相等待对方手里的资源，导致各进程都阻塞，无法向前推进的现象。</p> <div style="color:red;"><div id="死锁产生的必要条件" class="anchor">死锁产生的必要条件</div></div><ul><li><strong>互斥</strong>：只有对必须互斥使用的资源的争抢才会导致死锁。</li> <li><strong>不可剥夺</strong>：进程获得的资源在未使用完之前，不能由其他进程强行夺走，只能主动释放。</li> <li><strong>请求并保持</strong>：进程已保持了至少一个资源，但又提出了新的资源请求，而该资源又被其他进程占有，此时请求进程被阻塞，但又对自己己有的资源保持不放。</li> <li><strong>循环等待</strong>：存在进程资源的循环等待链，链中的每一个进程已经获得的资源同时被下一个进程所请求。</li></ul> <p>死锁的处理策略：预防、避免、检测和解除。</p> <h3 id="预防死锁"><a href="#预防死锁" class="header-anchor">#</a> 预防死锁</h3> <div id="破坏互斥条件" class="anchor">破坏互斥条件</div><p>如果把只能互斥使用的资源改造为允许共享使用，则系统不会进入死锁状态。</p> <p><strong>缺点</strong>：很多时候都无法破坏互斥条件。</p> <div id="破坏不可剥夺条件" class="anchor">破坏不可剥夺条件</div><ul><li>方案一：当某个进程请求新的资源得不到满足时，它必须立即释放保持的所有资源，待以后需要时再重新申请。也就是说，即使某些资源尚未使用完，也需要主动释放从而破坏了不可剥夺条件。</li> <li>方案二：当某个进程需要的资源被其他进程所占有的时候，可以由操作系统协助，将想要的资源强行剥夺，这种方式一般需要考虑各进程的优先级。</li></ul> <p><strong>缺点</strong>：</p> <ul><li>实现起来比较复杂。</li> <li>释放己获得的资源可能造成前一阶段工作的失效。因此这种方法一般只适用于易保存和恢复状态的资源，如CPU。</li> <li>反复地申请和释放资源会增加系统开销，降低系统吞吐量。</li> <li>若采用方案一，意味着只要暂时得不到某个资源，之前获得的那些资源就都需要放弃，以后再重新申请。如果一直发生这样的情况，就会导致进程饥饿。</li></ul> <div id="破坏请求并保持条件" class="anchor">破坏请求并保持条件</div><p>可采用 <strong>静态分配方法</strong>，即进程在运行前一次申请完它所需要的全部资源，在它的资源未满足前，不让它投入运行。一旦投入运行后，这些资源就一直归它所有，该进程就不会再请求别的任何资源了。</p> <p><strong>缺点</strong>：有些资源可能只需要用很短的时间，因此如果进程的整个运行期间都一直保持着所有资源，就会造成严重的资源浪费，<strong>资源利用率极低</strong>。另外，该策略也有可能 <strong>导致某些进程饥饿</strong>。</p> <div id="破坏循环等待条件" class="anchor">破坏循环等待条件</div><p>可采用 <strong>顺序资源分配法</strong>。首先给系统中的资源编号，规定每个进程必须按编号递增的顺序请求资源，同类资源（即编号相同的资源）一次申请完。</p> <p><strong>缺点</strong>：</p> <ul><li>不方便增加新的设备，因为可能需要重新分配所有的编号；</li> <li>进程实际使用资源的顺序可能和编号递增顺序不一致，会导致资源浪费；</li> <li>必须按规定次序申请资源，用户编程麻烦。</li></ul> <h3 id="避免死锁"><a href="#避免死锁" class="header-anchor">#</a> 避免死锁</h3> <div id="安全序列" class="anchor">安全序列</div><p><strong>安全序列</strong>：就是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。<strong>只要能找出一个安全序列，系统就是安全状态</strong>。当然，安全序列可能有多个。</p> <p>如果分配了资源之后，系统中找不出任何一个安全序列，系统就进入了不安全状态。这就意味着之后可能所有进程都无法顺利的执行下去。当然，如果有进程提前归还了一些资源，那系统也有可能重新回到安全状态，不过我们在分配资源之前总是要考虑到最坏的情况。</p> <p>如果系统处于 <strong>安全状态</strong>，就 <strong>一定不会</strong> 发生死锁。如果系统进入 <strong>不安全状态</strong>，就 <strong>可能</strong> 发生死锁（处于不安全状态未必就是发生了死锁，但发生死锁时一定是在不安全状态）。</p> <p>因此可以 <strong>在资源分配之前预先判断这次分配是否会导致系统进入不安全状态</strong>，以此决定是否答应资源分配请求。这就是 <strong>“银行家算法”</strong> 的核心思想。</p> <div id="银行家算法" class="anchor">银行家算法</div><p><strong>核心思想</strong>：在进程提出资源申请时，先预判此次分配是否会导致系统进入不安全状态。如果会进入不安全状态，就暂时不答应这次请求，让该进程先阻塞等待。</p> <p>假定操作系统中的 4 个进程 P1、P2、P3、P4 和 3 类资源 R1、R2、R3（资源数量分别为 9、3、6），在 t0 时刻的资源分配情况如表 2-1：</p> <p><img src="/note-pages/assets/img/1358881-20191125171934215-167814328.c4fa6b2f.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172027066-647382599.b2a69344.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172232493-1843282166.06a52ad3.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172314635-1423969714.21e267f2.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172354117-21808820.aad52246.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172427092-1250011632.d9bc252e.png" alt="img"></p> <p><img src="/note-pages/assets/img/1358881-20191125172453218-639569059.634c946a.png" alt="img"></p> <h3 id="死锁的检测和解除"><a href="#死锁的检测和解除" class="header-anchor">#</a> 死锁的检测和解除</h3> <div id="死锁的检测" class="anchor">死锁的检测</div><p>如果系统中剩余的可用资源数足够满足进程的需求，那么这个进程暂时是不会阻塞的，可以顺利地执行下去。如果这个进程执行结束了把资源归还系统，就可能使某些正在等待资源的进程被激活，并顺利地执行下去。相应的，这些被激活的进程执行完了之后又会归还一些资源，这样可能又会激活另外一些阻塞的进程...</p> <p>如果按上述过程分析，最终能消除所有边，就称这个图是 <strong>可完全简化的</strong>。此时一定没有发生死锁（相当于能找到一个安全序列）。</p> <p>如果最终不能消除所有边，那么此时就是发生了死锁。最终还连着边的那些进程就是处于死锁状态的进程。</p> <p><strong>检测死锁的算法：</strong></p> <ul><li>第一步：在资源分配图中，找出既不阻塞又不是孤点的进程 P（即找出一条有向边与它相连，且该有向边对应资源的申请数量小于等于系统中己有空闲资源数量。消去它所有的请求边和分配变，使之称为孤立的结点。</li> <li>第二步：进程 P 所释放的资源，可以唤醒某些因等待这些资源而阻塞的进程，原来的阻塞进程可能变为非阻塞进程。</li></ul> <p>根据第一步中的方法进行一系列简化后，若能消去途中所有的边，则称该图是 <strong>可完全简化的</strong>。</p> <div style="color:red;"><p><strong>死锁定理：如果某时刻系统的资源分配图是不可完全简化的，那么此时系统死锁。</strong></p></div><div id="死锁的解除" class="anchor">死锁的解除</div><p>一旦检测出死锁的发生，就应该立即解除死锁。</p> <p><strong>解除死锁的主要方法有：</strong></p> <ul><li><strong>资源剥夺法</strong>。挂起（暂时放到外存上）某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。但是应防止被挂起的进程长时间得不到资源而饥饿。</li> <li><strong>撤销进程法</strong>（或称终止进程法）。强制撤销部分、甚至全部死锁进程，并剥夺这些进程的资源。这种方式的优点是实现简单，但所付出的代价可能会很大。因为有些进程可能已经运行了很长时间，己经接近结束了，一旦被终止可谓功亏一篑，以后还得从头再来。</li> <li><strong>进程回退法</strong>。让一个或多个死锁进程回退到足以避免死锁的地步。这就要求系统要记录进程的历史信息，设置还原点。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/operating-system/knuk3x/" class="prev">
+        第1章 操作系统概述
+      </a></span> <span class="next"><a href="/note-pages/operating-system/owchkr/">
+        第3章 内存管理
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_2-1-进程与线程" class="right-sidebar-item-level2">
+          2.1 进程与线程
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#进程的定义、组成、组织、特征" class="right-sidebar-item-level3">
+          进程的定义、组成、组织、特征
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#进程的状态与转换" class="right-sidebar-item-level3">
+          进程的状态与转换
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#进程控制" class="right-sidebar-item-level3">
+          进程控制
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#进程通信" class="right-sidebar-item-level3">
+          进程通信
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#线程概念和多线程模型" class="right-sidebar-item-level3">
+          线程概念和多线程模型
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#_2-2-处理机的调度" class="right-sidebar-item-level2">
+          2.2 处理机的调度
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#处理机调度的概念、层次" class="right-sidebar-item-level3">
+          处理机调度的概念、层次
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#进程调度的时机、方式、切换与过程" class="right-sidebar-item-level3">
+          进程调度的时机、方式、切换与过程
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#调度算法的评价指标" class="right-sidebar-item-level3">
+          调度算法的评价指标
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#作业-进程调度算法" class="right-sidebar-item-level3">
+          作业/进程调度算法
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#_2-3-进程的同步与互斥" class="right-sidebar-item-level2">
+          2.3 进程的同步与互斥
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#进程的同步与互斥" class="right-sidebar-item-level3">
+          进程的同步与互斥
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#进程互斥的软件实现方法" class="right-sidebar-item-level3">
+          进程互斥的软件实现方法
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#进程互斥的硬件实现方法" class="right-sidebar-item-level3">
+          进程互斥的硬件实现方法
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#信号量机制" class="right-sidebar-item-level3">
+          信号量机制
+        </a></li><li id="tab-item16" class="right-sidebar-item"><a href="#信号量机制实现进程互斥、同步、前驱关系" class="right-sidebar-item-level3">
+          信号量机制实现进程互斥、同步、前驱关系
+        </a></li><li id="tab-item17" class="right-sidebar-item"><a href="#进程同步与互斥经典问题" class="right-sidebar-item-level3">
+          进程同步与互斥经典问题
+        </a></li><li id="tab-item18" class="right-sidebar-item"><a href="#管程" class="right-sidebar-item-level3">
+          管程
+        </a></li><li id="tab-item19" class="right-sidebar-item"><a href="#_2-4-死锁" class="right-sidebar-item-level2">
+          2.4 死锁
+        </a></li><li id="tab-item20" class="right-sidebar-item"><a href="#死锁的概念" class="right-sidebar-item-level3">
+          死锁的概念
+        </a></li><li id="tab-item21" class="right-sidebar-item"><a href="#预防死锁" class="right-sidebar-item-level3">
+          预防死锁
+        </a></li><li id="tab-item22" class="right-sidebar-item"><a href="#避免死锁" class="right-sidebar-item-level3">
+          避免死锁
+        </a></li><li id="tab-item23" class="right-sidebar-item"><a href="#死锁的检测和解除" class="right-sidebar-item-level3">
+          死锁的检测和解除
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/26.fd4195d5.js" defer></script>
+  </body>
+</html>

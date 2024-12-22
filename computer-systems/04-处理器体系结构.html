@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第4章 处理器体系结构 | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/18.086ed162.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/30.c6ee0ead.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link router-link-active">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link router-link-active">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/computer-systems/5de00e/" class="sidebar-link">第1章 计算机系统漫游</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-1-信息就是位-上下文" class="sidebar-link">1.1 信息就是位+上下文</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-2-程序被其他程序翻译成不同的格式" class="sidebar-link">1.2 程序被其他程序翻译成不同的格式</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-3-处理器读并解释储存在内存中的指令" class="sidebar-link">1.3 处理器读并解释储存在内存中的指令</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-4-高速缓存至关重要" class="sidebar-link">1.4 高速缓存至关重要</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-5-存储设备形成层次结构" class="sidebar-link">1.5 存储设备形成层次结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-6-操作系统管理硬件" class="sidebar-link">1.6 操作系统管理硬件</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-7-系统之间利用网络通信" class="sidebar-link">1.7 系统之间利用网络通信</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00e/#_1-8-重要主题" class="sidebar-link">1.8 重要主题</a></li></ul></li><li><a href="/note-pages/computer-systems/5de00f/" class="sidebar-link">第2章 信息的表示和处理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00f/#_2-1-信息存储" class="sidebar-link">2.1 信息存储</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00f/#_2-2-整数表示" class="sidebar-link">2.2 整数表示</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00f/#_2-3-整数运算" class="sidebar-link">2.3 整数运算</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00f/#_2-4-浮点数表示" class="sidebar-link">2.4 浮点数表示</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/5de00f/#_2-5-浮点数运算" class="sidebar-link">2.5 浮点数运算</a></li></ul></li><li><a href="/note-pages/computer-systems/03-程序的机器级表示.html" class="sidebar-link">第3章 程序的机器级表示</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-1-程序编码" class="sidebar-link">3.1 程序编码</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-2-访问信息" class="sidebar-link">3.2 访问信息</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-3-算术和逻辑操作" class="sidebar-link">3.3 算术和逻辑操作</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-4-控制" class="sidebar-link">3.4 控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-5-过程" class="sidebar-link">3.5 过程</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-6-数组分配和访问" class="sidebar-link">3.6 数组分配和访问</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/03-程序的机器级表示.html#_3-7-异质的数据结构" class="sidebar-link">3.7 异质的数据结构</a></li></ul></li><li><a href="/note-pages/computer-systems/04-处理器体系结构.html" class="active sidebar-link">第4章 处理器体系结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/04-处理器体系结构.html#_4-1-指令集结构" class="sidebar-link">4.1 指令集结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/04-处理器体系结构.html#_4-2-计算机组成" class="sidebar-link">4.2 计算机组成</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/04-处理器体系结构.html#_4-3-寄存器传送语言" class="sidebar-link">4.3 寄存器传送语言</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/04-处理器体系结构.html#_4-4-中央处理器设计规范" class="sidebar-link">4.4 中央处理器设计规范</a></li></ul></li><li><a href="/note-pages/computer-systems/05-优化程序性能.html" class="sidebar-link">第5章 优化程序性能</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-1-编译器的局限性" class="sidebar-link">5.1 编译器的局限性</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-2-程序性能的度量" class="sidebar-link">5.2 程序性能的度量</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-3-高级语言层次优化性能" class="sidebar-link">5.3 高级语言层次优化性能</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-4-理解现代处理器" class="sidebar-link">5.4 理解现代处理器</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-5-循环展开" class="sidebar-link">5.5 循环展开</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-6-提高并行性" class="sidebar-link">5.6 提高并行性</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-7-理解存储器性能" class="sidebar-link">5.7 理解存储器性能</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/05-优化程序性能.html#_5-8-加速比" class="sidebar-link">5.8 加速比</a></li></ul></li><li><a href="/note-pages/computer-systems/06-存储器层次结构.html" class="sidebar-link">第6章 存储器层次结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/06-存储器层次结构.html#_6-1-存储技术" class="sidebar-link">6.1 存储技术</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/06-存储器层次结构.html#_6-2-局部性" class="sidebar-link">6.2 局部性</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/06-存储器层次结构.html#_6-3-存储器层次结构" class="sidebar-link">6.3 存储器层次结构</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/06-存储器层次结构.html#_6-4-高速缓存存储器" class="sidebar-link">6.4 高速缓存存储器</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/06-存储器层次结构.html#_6-5-编写高速缓存友好的代码" class="sidebar-link">6.5 编写高速缓存友好的代码</a></li></ul></li><li><a href="/note-pages/computer-systems/07-链接.html" class="sidebar-link">第7章 链接</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-1-编译器驱动程序" class="sidebar-link">7.1 编译器驱动程序</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-2-静态链接" class="sidebar-link">7.2 静态链接</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-3-目标文件" class="sidebar-link">7.3 目标文件</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-4-可重定位目标文件" class="sidebar-link">7.4 可重定位目标文件</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-5-符号和符号表" class="sidebar-link">7.5 符号和符号表</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-6-符号解析" class="sidebar-link">7.6 符号解析</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-7-重定位" class="sidebar-link">7.7 重定位</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-8-加载可执行目标文件" class="sidebar-link">7.8 加载可执行目标文件</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/07-链接.html#_7-9-小结" class="sidebar-link">7.9 小结</a></li></ul></li><li><a href="/note-pages/computer-systems/08-异常控制流.html" class="sidebar-link">第8章 异常控制流</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-1-异常" class="sidebar-link">8.1 异常</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-2-进程" class="sidebar-link">8.2 进程</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-3-系统调用错误处理" class="sidebar-link">8.3 系统调用错误处理</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-4-进程控制" class="sidebar-link">8.4 进程控制</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-5-信号" class="sidebar-link">8.5 信号</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-6-非本地跳转" class="sidebar-link">8.6 非本地跳转</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/08-异常控制流.html#_8-7-操作进程的工具" class="sidebar-link">8.7 操作进程的工具</a></li></ul></li><li><a href="/note-pages/computer-systems/09-虚拟存储器.html" class="sidebar-link">第9章 虚拟存储器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-1-物理和虚拟寻址" class="sidebar-link">9.1 物理和虚拟寻址</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-2-地址空间" class="sidebar-link">9.2 地址空间</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-3-虚拟存储器作为缓存的工具" class="sidebar-link">9.3 虚拟存储器作为缓存的工具</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-4-虚拟存储器作为存储器管理的工具" class="sidebar-link">9.4 虚拟存储器作为存储器管理的工具</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-5-虚拟存储器作为存储器保护的工具" class="sidebar-link">9.5 虚拟存储器作为存储器保护的工具</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-6-地址翻译" class="sidebar-link">9.6 地址翻译</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-7-案例研究" class="sidebar-link">9.7 案例研究</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-8-存储器映射" class="sidebar-link">9.8 存储器映射</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-9-动态存储器分配" class="sidebar-link">9.9 动态存储器分配</a></li><li class="sidebar-sub-header"><a href="/note-pages/computer-systems/09-虚拟存储器.html#_9-10-垃圾收集" class="sidebar-link">9.10 垃圾收集</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第4章-处理器体系结构"><a href="#第4章-处理器体系结构" class="header-anchor">#</a> 第4章 处理器体系结构</h1> <h2 id="_4-1-指令集结构"><a href="#_4-1-指令集结构" class="header-anchor">#</a> 4.1 指令集结构</h2> <p>指令集结构（ISA, Instruction Set Architecture）是微处理器的接口，包含了与该微处理器进行交互所需要的信息，但并不涉及微处理器自身如何设计和实现的细节。</p> <p>ISA 包括：</p> <ul><li>微处理器的指令集</li> <li>程序员可直接访问的寄存器的细节</li> <li>访问内存所需的信息</li> <li>微处理器如何响应中断</li></ul> <h3 id="编译与汇编"><a href="#编译与汇编" class="header-anchor">#</a> 编译与汇编</h3> <p><img src="/note-pages/assets/img/image-20220610163551253.697cbab3.png" alt="image-20220610163551253"></p> <p>同一高级语言源代码可以经过编译在不同的微处理器和操作系统或者计算平台上运行。</p> <p>每一种汇编语言对应一种微处理器，不需要针对不同平台的汇编器。</p> <h3 id="指令格式"><a href="#指令格式" class="header-anchor">#</a> 指令格式</h3> <p>指令代码（Instruction Code）：汇编语言指令转换成对应的机器代码，以二进制数值的形式表现。</p> <p>位的不同分组代表着指令的不同部分。某一组可能代表要执行的操作（操作码），而其它的组则选取操作的操作数。</p> <p><img src="/note-pages/assets/img/image-20220610164511459.c16a2ffd.png" alt="image-20220610164511459"></p> <h3 id="指令集结构设计"><a href="#指令集结构设计" class="header-anchor">#</a> 指令集结构设计</h3> <p>设计指令集结构并没有万能公式可言。相同的需求可能会产生不同的 ISA 设计。在设计ISA规范时，必须在性能、大小和成本限制间有个评估折衷。</p> <p><strong>完整性问题</strong>：该指令集是否有足够的指令可以让程序完成它必须的任务？</p> <p><strong>正交性问题</strong>：如果指令不重叠或者不执行同样的操作，那么它们就是正交的。在最小的指令集中为程序员提供必需的操作。</p> <p><strong>寄存器组</strong>：设计者可以通过指定寄存器用途等方式优化 ISA。</p> <p><strong>要考虑的其它问题</strong>：</p> <ul><li>处理器必须向下兼容其它的微处理器吗？</li> <li>微处理器将处理何种类型和大小的数据？</li> <li>需要中断吗？中断向量</li> <li>需要条件指令吗？标志（flags）</li></ul> <h2 id="_4-2-计算机组成"><a href="#_4-2-计算机组成" class="header-anchor">#</a> 4.2 计算机组成</h2> <h3 id="冯-诺依曼结构"><a href="#冯-诺依曼结构" class="header-anchor">#</a> 冯-诺依曼结构</h3> <p>计算机由五大部件组成：运算器、控制器、存储器、输入设备、输出设备</p> <p><strong>冯·诺依曼计算机硬件框图</strong>：</p> <p><img src="/note-pages/assets/img/image-20220610171647096.96654cf9.png" alt="image-20220610171647096"></p> <p><strong>基本工作原理</strong>：</p> <p>运算器（ALU）与控制器（CU）共同构成 CPU 的核心部分。</p> <p>存储器分为主存和辅存（缓存 cache）。</p> <p>输入输出设备通过向 CPU 发送请求获得读写数据的权限以及相应的数据。</p> <h3 id="总线与子系统"><a href="#总线与子系统" class="header-anchor">#</a> 总线与子系统</h3> <p><strong>总线（BUS）</strong>：一组传递数据的导线，是连接各个部件的信息传输线，是各个部件共享的传输介质。</p> <p>总线优势：较少的连接数量、较少的空间、更低的功耗、较少的引脚。</p> <p>总线分类：</p> <ul><li>片内总线：芯片内部的总线</li> <li>系统总线：计算机各部件之间的信息传输线</li></ul> <p><strong>三个主要的子系统</strong>：</p> <ul><li>中央处理单元（CPU）：执行多种操作并控制整个计算机，微处理器（Microprocessor）通常作为微机的CPU。</li> <li>存储器：用来存储 CPU 正在执行的程序和数据。</li> <li>输入输出系统：允许 CPU 与输入输出设备交互。比如个人计算机的键盘和显示器，或者微波炉的面板和数字显示等。</li></ul> <h3 id="指令周期"><a href="#指令周期" class="header-anchor">#</a> 指令周期</h3> <p>指令周期（Instruction Cycle）是微处理器完成一条指令处理的过程。包括取指（Fetch），译码（Decode），执行（Execute）三个阶段。</p> <h3 id="中央处理器组成"><a href="#中央处理器组成" class="header-anchor">#</a> 中央处理器组成</h3> <p>CPU 控制整个计算机，内部有三大部分：</p> <ul><li>寄存器部分（Register Section）</li> <li>算术/逻辑单元（Arithmetic/Logic Unit，也叫ALU）</li> <li>控制单元（Control Unit）</li></ul> <p>CPU 的重要组成部分：</p> <ul><li>程序计数器（Program Counter, PC）：用来存放下一条要提取（执行）的指令的地址。</li> <li>指令寄存器（Instruction Register, IR）：用来存储从系统数据总线上读取到的指令。</li> <li>算术逻辑单元：执行大部分的算术和逻辑运算，如加、与等操作。从 CPU 的寄存器部分取得操作数，运算结果再存回到寄存器部分。由于必须在一个时钟周期内完成操作，只采用组合逻辑构造而成。</li> <li>控制单元：同 CPU 控制整个计算机一样，控制单元控制着 CPU。</li></ul> <h2 id="_4-3-寄存器传送语言"><a href="#_4-3-寄存器传送语言" class="header-anchor">#</a> 4.3 寄存器传送语言</h2> <h3 id="微操作和寄存器传送语言"><a href="#微操作和寄存器传送语言" class="header-anchor">#</a> 微操作和寄存器传送语言</h3> <p>微操作（micro operation--μop）：大部分时序数字系统的基础，是更简单的行为。</p> <ul><li>数据从一个寄存器、存储器单元或者I/O设备到另一个的传送</li> <li>修改已存储的值</li> <li>执行算术或逻辑运算</li></ul> <p>确定时序数字系统：确定正确的微操作传送及其条件，以保证微操作按正确的顺序执行。</p> <p><strong>微操作的格式</strong></p> <p>考虑有两个1位寄存器 X 和 Y 的一个数字系统，拷贝寄存器 Y 的内容到寄存器 X 中的微操作：X←Y。</p> <p>两种实现：（a）由直接连接实现；（b）通过总线连接实现。</p> <p><img src="/note-pages/assets/img/image-20220610191442411.709e21c1.png" alt="image-20220610191442411"></p> <p><strong>传送发生的条件</strong></p> <p>假定传送应发生在输入控制 α 为高电平时，则传送过程可以写为 <code>IF α THEN X←Y</code></p> <p>表示微操作和它们发生的条件：<code>条件: 微操作</code>。当条件满足时，执行微操作规定的数据传送。</p> <p>具有控制信号的数据传送 <code>α: X←Y</code> 的实现：（a）直接通路；（b）总线。</p> <p><img src="/note-pages/assets/img/image-20220610192523993.aab5baea.png" alt="image-20220610192523993"></p> <p><strong>提高系统性能的一种方法： 同时执行两个或多个微操作</strong></p> <p>如果某系统在 α=1 时执行 X←Y 和 Y←Z 的传送，可以表示成：<code>α: X ← Y,Y ← Z</code> 或者 <code>α: Y ← Z, X ← Y</code></p> <p><img src="/note-pages/assets/img/image-20220610192857012.37cf912c.png" alt="image-20220610192857012"></p> <p>同时拷贝相同的数据到多个目的地：<code>α: X ← Y, Z ← Y</code></p> <p><img src="/note-pages/assets/img/image-20220610193006934.5c3096ae.png" alt="image-20220610193006934"></p> <p>数字系统不能同时往同一寄存器中写入两个不同的值。</p> <p><strong>传送常量的有效条件和微操作</strong></p> <p><code>α: X ← 0</code> <code>β: X ← 1</code></p> <p>实现这两个传送的三种不同方法：</p> <ul><li>通过两个传送通路装载数据来设置 X 的值（多路选择器）</li> <li>装载数据与 a 完全相同，但它的数据直接由信号 β 产生（用 β 作为数据输入）</li> <li>为简化硬件可使用寄存器的清除输入功能（用 CLR 信号）</li></ul> <p><img src="/note-pages/assets/img/image-20220610193346366.0d5efc3d.png" alt="image-20220610193346366"></p> <p><strong>寄存器之间的多位数据传送</strong></p> <p>同样大小寄存器对应位之间传送数据：例如 α: X ← Y</p> <p>访问一个寄存器的某一位或位组：例如 X<sub>3</sub></p> <p>表示位组：例如 γ: X(3-0) ← X(2-0), X<sub>3</sub> 或 γ: X(3-0) ← X(2-0,3)</p> <p><strong>执行数据的算术运算、 逻辑运算和移位运算的微操作</strong></p> <p>常见算术运算和逻辑运算的微操作：</p> <table><thead><tr><th>操 作</th> <th>示 例</th></tr></thead> <tbody><tr><td>Add</td> <td>X←X + Y</td></tr> <tr><td>Subtract</td> <td>X←X – Y 或 X←X + Y’+ 1</td></tr> <tr><td>Increment</td> <td>X←X + 1</td></tr> <tr><td>Decrement</td> <td>X←X - 1</td></tr> <tr><td>And</td> <td>X←X ∧ Y 或 X←XY</td></tr> <tr><td>OR</td> <td>X←X ∨ Y</td></tr> <tr><td>XOR</td> <td>X←X ⊕ Y</td></tr> <tr><td>NOT</td> <td>X←/X 或 X←X’</td></tr></tbody></table> <p>移位微操作：</p> <ul><li>线性移位：每一位的值依次向左（或右）移位，空位补入 0 值。</li> <li>循环移位：将在线性移位中被丢弃的位循环回来，替代补入的 0 值。</li> <li>算术移位：用于带符号数的移位。符号位在移位操作中保持不变，工作原理与线性移位相似。</li> <li>十进制移位：与线性移位很相似，但它移动 1 个数字或 4 位，而不是移动 1 位。</li></ul> <table><thead><tr><th>操 作</th> <th>示 例</th></tr></thead> <tbody><tr><td>线性左移</td> <td>shl(X)</td></tr> <tr><td>线性右移</td> <td>shr(X)</td></tr> <tr><td>循环左移</td> <td>cil(X)</td></tr> <tr><td>循环右移</td> <td>cir(X)</td></tr> <tr><td>算术左移</td> <td>ashl(X)</td></tr> <tr><td>算术右移</td> <td>ashr(X)</td></tr> <tr><td>十进制左移</td> <td>dshl(X)</td></tr> <tr><td>十进制右移</td> <td>dshr(X)</td></tr></tbody></table> <p><strong>寄存器与存储器之间的数据传送</strong></p> <p>例如：M[55]←AC 和 AC←M[55]</p> <p>寄存器 AC 与存储器中 55 号单元之间的数据传送。</p> <h3 id="描述数字系统"><a href="#描述数字系统" class="header-anchor">#</a> 描述数字系统</h3> <p><strong>数字元件表示</strong></p> <p>D触发器：<code>LD: Q ← D</code></p> <p><img src="/note-pages/assets/img/image-20220610195746144.84ad9ac6.png" alt="image-20220610195746144"></p> <p>有同步清零输入端的 D 触发器：<code>LD: Q ← D</code> <code>CLR: Q ← 0</code></p> <p>// TODO</p> <h2 id="_4-4-中央处理器设计规范"><a href="#_4-4-中央处理器设计规范" class="header-anchor">#</a> 4.4 中央处理器设计规范</h2> <h3 id="设计-cpu-的两种方法"><a href="#设计-cpu-的两种方法" class="header-anchor">#</a> 设计 CPU 的两种方法</h3> <ul><li>硬布线逻辑控制（hardwired control）</li> <li>微序列控制器（micro sequencer）</li></ul> <h3 id="设计-cpu-的步骤"><a href="#设计-cpu-的步骤" class="header-anchor">#</a> 设计 CPU 的步骤</h3> <ul><li>确定它的用途，使 CPU 的处理能力和它所执行的任务匹配</li> <li>设计指令集结构</li> <li>设计状态图：列出在每个状态中执行的微操作，从一个状态转移到另外一个状态的条件</li></ul> <h3 id="cpu-执行的操作序列"><a href="#cpu-执行的操作序列" class="header-anchor">#</a> CPU 执行的操作序列</h3> <ul><li>取指令周期：从存储器中取出一条指令，然后转到译码周期。</li> <li>译码周期：对该指令进行译码，即确定取到的是哪一种指令，然后转移到这种指令对应的执行周期。</li> <li>执行周期：执行该指令，然后转移到取指令周期去取下一条指令。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/computer-systems/03-程序的机器级表示.html" class="prev">
+        第3章 程序的机器级表示
+      </a></span> <span class="next"><a href="/note-pages/computer-systems/05-优化程序性能.html">
+        第5章 优化程序性能
+      </a>
+      →
+    </span></p></div> </main> <aside items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#_4-1-指令集结构" class="right-sidebar-item-level2">
+          4.1 指令集结构
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#编译与汇编" class="right-sidebar-item-level3">
+          编译与汇编
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#指令格式" class="right-sidebar-item-level3">
+          指令格式
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#指令集结构设计" class="right-sidebar-item-level3">
+          指令集结构设计
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#_4-2-计算机组成" class="right-sidebar-item-level2">
+          4.2 计算机组成
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#冯-诺依曼结构" class="right-sidebar-item-level3">
+          冯-诺依曼结构
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#总线与子系统" class="right-sidebar-item-level3">
+          总线与子系统
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#指令周期" class="right-sidebar-item-level3">
+          指令周期
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#中央处理器组成" class="right-sidebar-item-level3">
+          中央处理器组成
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#_4-3-寄存器传送语言" class="right-sidebar-item-level2">
+          4.3 寄存器传送语言
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#微操作和寄存器传送语言" class="right-sidebar-item-level3">
+          微操作和寄存器传送语言
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#描述数字系统" class="right-sidebar-item-level3">
+          描述数字系统
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#_4-4-中央处理器设计规范" class="right-sidebar-item-level2">
+          4.4 中央处理器设计规范
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#设计-cpu-的两种方法" class="right-sidebar-item-level3">
+          设计 CPU 的两种方法
+        </a></li><li id="tab-item14" class="right-sidebar-item"><a href="#设计-cpu-的步骤" class="right-sidebar-item-level3">
+          设计 CPU 的步骤
+        </a></li><li id="tab-item15" class="right-sidebar-item"><a href="#cpu-执行的操作序列" class="right-sidebar-item-level3">
+          CPU 执行的操作序列
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/18.086ed162.js" defer></script>
+  </body>
+</html>

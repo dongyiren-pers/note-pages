@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HTTP 与 HTTPS | 后端技术栈笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/note-pages//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css">
+    <meta name="description" content="BackEnd Notes">
+    
+    <link rel="preload" href="/note-pages/assets/css/0.styles.167a34c7.css" as="style"><link rel="preload" href="/note-pages/assets/js/app.05dcbd87.js" as="script"><link rel="preload" href="/note-pages/assets/js/3.4a2f67fd.js" as="script"><link rel="preload" href="/note-pages/assets/js/2.ab82720e.js" as="script"><link rel="preload" href="/note-pages/assets/js/30.c6ee0ead.js" as="script"><link rel="prefetch" href="/note-pages/assets/js/10.e11a80d9.js"><link rel="prefetch" href="/note-pages/assets/js/100.489cf69a.js"><link rel="prefetch" href="/note-pages/assets/js/101.560e37ea.js"><link rel="prefetch" href="/note-pages/assets/js/102.baaa4f6a.js"><link rel="prefetch" href="/note-pages/assets/js/103.262b6423.js"><link rel="prefetch" href="/note-pages/assets/js/104.ac33d7ce.js"><link rel="prefetch" href="/note-pages/assets/js/105.5e6ce18f.js"><link rel="prefetch" href="/note-pages/assets/js/106.a69322ef.js"><link rel="prefetch" href="/note-pages/assets/js/107.6cdb78ee.js"><link rel="prefetch" href="/note-pages/assets/js/108.1d720289.js"><link rel="prefetch" href="/note-pages/assets/js/109.58f7297c.js"><link rel="prefetch" href="/note-pages/assets/js/11.241a46da.js"><link rel="prefetch" href="/note-pages/assets/js/110.9cef761d.js"><link rel="prefetch" href="/note-pages/assets/js/111.c782138c.js"><link rel="prefetch" href="/note-pages/assets/js/112.40cb3b1a.js"><link rel="prefetch" href="/note-pages/assets/js/113.c367e40a.js"><link rel="prefetch" href="/note-pages/assets/js/114.a4a75db5.js"><link rel="prefetch" href="/note-pages/assets/js/115.a73cd469.js"><link rel="prefetch" href="/note-pages/assets/js/116.ad853155.js"><link rel="prefetch" href="/note-pages/assets/js/117.a82b2649.js"><link rel="prefetch" href="/note-pages/assets/js/118.8f896dd0.js"><link rel="prefetch" href="/note-pages/assets/js/119.374482b1.js"><link rel="prefetch" href="/note-pages/assets/js/12.ebe220d5.js"><link rel="prefetch" href="/note-pages/assets/js/120.89698284.js"><link rel="prefetch" href="/note-pages/assets/js/121.cbe50685.js"><link rel="prefetch" href="/note-pages/assets/js/122.7de2ac51.js"><link rel="prefetch" href="/note-pages/assets/js/123.a2d16009.js"><link rel="prefetch" href="/note-pages/assets/js/124.e1ba7cbe.js"><link rel="prefetch" href="/note-pages/assets/js/125.4e1e6d6a.js"><link rel="prefetch" href="/note-pages/assets/js/126.3db22af3.js"><link rel="prefetch" href="/note-pages/assets/js/127.937f4ffc.js"><link rel="prefetch" href="/note-pages/assets/js/128.0bad2e20.js"><link rel="prefetch" href="/note-pages/assets/js/129.75a99d25.js"><link rel="prefetch" href="/note-pages/assets/js/13.5ee7bef5.js"><link rel="prefetch" href="/note-pages/assets/js/130.599b6d3d.js"><link rel="prefetch" href="/note-pages/assets/js/131.687214bf.js"><link rel="prefetch" href="/note-pages/assets/js/132.8295c067.js"><link rel="prefetch" href="/note-pages/assets/js/133.854d61c0.js"><link rel="prefetch" href="/note-pages/assets/js/134.f3fc20e1.js"><link rel="prefetch" href="/note-pages/assets/js/135.2a5a690d.js"><link rel="prefetch" href="/note-pages/assets/js/136.6ba30378.js"><link rel="prefetch" href="/note-pages/assets/js/137.80d7c511.js"><link rel="prefetch" href="/note-pages/assets/js/138.0a25898e.js"><link rel="prefetch" href="/note-pages/assets/js/139.fb3c377f.js"><link rel="prefetch" href="/note-pages/assets/js/14.a561f8b3.js"><link rel="prefetch" href="/note-pages/assets/js/140.cbfdbe32.js"><link rel="prefetch" href="/note-pages/assets/js/141.c09f054f.js"><link rel="prefetch" href="/note-pages/assets/js/142.723bd973.js"><link rel="prefetch" href="/note-pages/assets/js/143.b31785f9.js"><link rel="prefetch" href="/note-pages/assets/js/144.69d3d121.js"><link rel="prefetch" href="/note-pages/assets/js/145.c4ee6aa0.js"><link rel="prefetch" href="/note-pages/assets/js/146.7f836a1c.js"><link rel="prefetch" href="/note-pages/assets/js/147.d4a57976.js"><link rel="prefetch" href="/note-pages/assets/js/148.b15e75eb.js"><link rel="prefetch" href="/note-pages/assets/js/149.94085ddc.js"><link rel="prefetch" href="/note-pages/assets/js/15.4ed118f1.js"><link rel="prefetch" href="/note-pages/assets/js/150.6751d41b.js"><link rel="prefetch" href="/note-pages/assets/js/151.bd60e322.js"><link rel="prefetch" href="/note-pages/assets/js/152.15caf78f.js"><link rel="prefetch" href="/note-pages/assets/js/153.131128fc.js"><link rel="prefetch" href="/note-pages/assets/js/154.b8ee2e7d.js"><link rel="prefetch" href="/note-pages/assets/js/155.8fa1e2e0.js"><link rel="prefetch" href="/note-pages/assets/js/156.25e2a796.js"><link rel="prefetch" href="/note-pages/assets/js/157.7137c9c3.js"><link rel="prefetch" href="/note-pages/assets/js/158.fdc18c40.js"><link rel="prefetch" href="/note-pages/assets/js/159.0dadb745.js"><link rel="prefetch" href="/note-pages/assets/js/16.818fc8bf.js"><link rel="prefetch" href="/note-pages/assets/js/160.05f7541c.js"><link rel="prefetch" href="/note-pages/assets/js/161.2a8c62a2.js"><link rel="prefetch" href="/note-pages/assets/js/162.5b9983b7.js"><link rel="prefetch" href="/note-pages/assets/js/163.b51a5538.js"><link rel="prefetch" href="/note-pages/assets/js/164.06c9f20a.js"><link rel="prefetch" href="/note-pages/assets/js/165.c25063f4.js"><link rel="prefetch" href="/note-pages/assets/js/166.6c570da5.js"><link rel="prefetch" href="/note-pages/assets/js/167.12fb6fb6.js"><link rel="prefetch" href="/note-pages/assets/js/168.d7dd27bc.js"><link rel="prefetch" href="/note-pages/assets/js/169.27f575fe.js"><link rel="prefetch" href="/note-pages/assets/js/17.9daf0c47.js"><link rel="prefetch" href="/note-pages/assets/js/170.ba4295ef.js"><link rel="prefetch" href="/note-pages/assets/js/171.3fb54078.js"><link rel="prefetch" href="/note-pages/assets/js/18.086ed162.js"><link rel="prefetch" href="/note-pages/assets/js/19.adca670c.js"><link rel="prefetch" href="/note-pages/assets/js/20.2e9ff004.js"><link rel="prefetch" href="/note-pages/assets/js/21.07830947.js"><link rel="prefetch" href="/note-pages/assets/js/22.609929cb.js"><link rel="prefetch" href="/note-pages/assets/js/23.d83b832f.js"><link rel="prefetch" href="/note-pages/assets/js/24.592e8014.js"><link rel="prefetch" href="/note-pages/assets/js/25.9d28bb6f.js"><link rel="prefetch" href="/note-pages/assets/js/26.fd4195d5.js"><link rel="prefetch" href="/note-pages/assets/js/27.ca60e875.js"><link rel="prefetch" href="/note-pages/assets/js/28.c2cd75e6.js"><link rel="prefetch" href="/note-pages/assets/js/29.4213d132.js"><link rel="prefetch" href="/note-pages/assets/js/31.eea6a542.js"><link rel="prefetch" href="/note-pages/assets/js/32.1ffdceaf.js"><link rel="prefetch" href="/note-pages/assets/js/33.0425748b.js"><link rel="prefetch" href="/note-pages/assets/js/34.5dd0d81d.js"><link rel="prefetch" href="/note-pages/assets/js/35.773df14e.js"><link rel="prefetch" href="/note-pages/assets/js/36.5db32ea2.js"><link rel="prefetch" href="/note-pages/assets/js/37.1106162c.js"><link rel="prefetch" href="/note-pages/assets/js/38.793ba7d0.js"><link rel="prefetch" href="/note-pages/assets/js/39.488fb9a5.js"><link rel="prefetch" href="/note-pages/assets/js/4.550e6883.js"><link rel="prefetch" href="/note-pages/assets/js/40.9c05b0ae.js"><link rel="prefetch" href="/note-pages/assets/js/41.ae198526.js"><link rel="prefetch" href="/note-pages/assets/js/42.d815456e.js"><link rel="prefetch" href="/note-pages/assets/js/43.1808aff8.js"><link rel="prefetch" href="/note-pages/assets/js/44.c26d9bde.js"><link rel="prefetch" href="/note-pages/assets/js/45.fae5f755.js"><link rel="prefetch" href="/note-pages/assets/js/46.703057c9.js"><link rel="prefetch" href="/note-pages/assets/js/47.ed3a23ce.js"><link rel="prefetch" href="/note-pages/assets/js/48.c5a46ee8.js"><link rel="prefetch" href="/note-pages/assets/js/49.b04c1681.js"><link rel="prefetch" href="/note-pages/assets/js/5.869d288f.js"><link rel="prefetch" href="/note-pages/assets/js/50.249fc2a7.js"><link rel="prefetch" href="/note-pages/assets/js/51.cab74632.js"><link rel="prefetch" href="/note-pages/assets/js/52.e2f231b3.js"><link rel="prefetch" href="/note-pages/assets/js/53.6241e308.js"><link rel="prefetch" href="/note-pages/assets/js/54.7d29c5c0.js"><link rel="prefetch" href="/note-pages/assets/js/55.a9050f95.js"><link rel="prefetch" href="/note-pages/assets/js/56.75828a09.js"><link rel="prefetch" href="/note-pages/assets/js/57.b3f75d67.js"><link rel="prefetch" href="/note-pages/assets/js/58.0cf3bd1c.js"><link rel="prefetch" href="/note-pages/assets/js/59.19f18f1f.js"><link rel="prefetch" href="/note-pages/assets/js/6.d879438f.js"><link rel="prefetch" href="/note-pages/assets/js/60.61940d92.js"><link rel="prefetch" href="/note-pages/assets/js/61.bc890bb0.js"><link rel="prefetch" href="/note-pages/assets/js/62.f487437c.js"><link rel="prefetch" href="/note-pages/assets/js/63.4a91369b.js"><link rel="prefetch" href="/note-pages/assets/js/64.1b0770e4.js"><link rel="prefetch" href="/note-pages/assets/js/65.b56e2b22.js"><link rel="prefetch" href="/note-pages/assets/js/66.dd49594c.js"><link rel="prefetch" href="/note-pages/assets/js/67.22efede4.js"><link rel="prefetch" href="/note-pages/assets/js/68.0d22a8a4.js"><link rel="prefetch" href="/note-pages/assets/js/69.aec9bfeb.js"><link rel="prefetch" href="/note-pages/assets/js/7.e3626849.js"><link rel="prefetch" href="/note-pages/assets/js/70.0c53c20d.js"><link rel="prefetch" href="/note-pages/assets/js/71.6d6db7d6.js"><link rel="prefetch" href="/note-pages/assets/js/72.fdcfb985.js"><link rel="prefetch" href="/note-pages/assets/js/73.a390b48d.js"><link rel="prefetch" href="/note-pages/assets/js/74.e817987f.js"><link rel="prefetch" href="/note-pages/assets/js/75.f144cf4f.js"><link rel="prefetch" href="/note-pages/assets/js/76.7be2f5f1.js"><link rel="prefetch" href="/note-pages/assets/js/77.6568d596.js"><link rel="prefetch" href="/note-pages/assets/js/78.4ff63ca8.js"><link rel="prefetch" href="/note-pages/assets/js/79.daaf791e.js"><link rel="prefetch" href="/note-pages/assets/js/8.f9f716a1.js"><link rel="prefetch" href="/note-pages/assets/js/80.a0605696.js"><link rel="prefetch" href="/note-pages/assets/js/81.ecb125f5.js"><link rel="prefetch" href="/note-pages/assets/js/82.b64b1c42.js"><link rel="prefetch" href="/note-pages/assets/js/83.d13b7f19.js"><link rel="prefetch" href="/note-pages/assets/js/84.c584da75.js"><link rel="prefetch" href="/note-pages/assets/js/85.7992353f.js"><link rel="prefetch" href="/note-pages/assets/js/86.17ad6399.js"><link rel="prefetch" href="/note-pages/assets/js/87.289f9f2f.js"><link rel="prefetch" href="/note-pages/assets/js/88.3496d6e2.js"><link rel="prefetch" href="/note-pages/assets/js/89.0d0c778d.js"><link rel="prefetch" href="/note-pages/assets/js/9.3209071f.js"><link rel="prefetch" href="/note-pages/assets/js/90.245b9fda.js"><link rel="prefetch" href="/note-pages/assets/js/91.806af5f2.js"><link rel="prefetch" href="/note-pages/assets/js/92.8a10f401.js"><link rel="prefetch" href="/note-pages/assets/js/93.ea90ae18.js"><link rel="prefetch" href="/note-pages/assets/js/94.98cc66ef.js"><link rel="prefetch" href="/note-pages/assets/js/95.836e96c5.js"><link rel="prefetch" href="/note-pages/assets/js/96.d4dd3eee.js"><link rel="prefetch" href="/note-pages/assets/js/97.e4275cb9.js"><link rel="prefetch" href="/note-pages/assets/js/98.0e320d92.js"><link rel="prefetch" href="/note-pages/assets/js/99.e6f77650.js">
+    <link rel="stylesheet" href="/note-pages/assets/css/0.styles.167a34c7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-pages/" class="home-link router-link-active"><!----> <span class="site-name">后端技术栈笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link router-link-active">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-pages/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础知识" class="dropdown-title"><span class="title">基础知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="基础知识" class="mobile-dropdown-title"><span class="title">基础知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/algorithm/5e022a/" class="nav-link">
+  算法
+</a></li></ul></li><li class="dropdown-item"><h4>
+          计算机网络
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/network/a918ca/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-subitem"><a href="/note-pages/http/" class="nav-link router-link-active">
+  HTTP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/tcp-ip/" class="nav-link">
+  TCP/IP
+</a></li><li class="dropdown-subitem"><a href="/note-pages/socket/" class="nav-link">
+  Socket
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作系统
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/operating-system/knuk3x/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/linux/" class="nav-link">
+  Linux
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/database-system/fyl5c1/" class="nav-link">
+  数据库系统
+</a></li><li class="dropdown-subitem"><a href="/note-pages/computer-systems/" class="nav-link">
+  计算机系统
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="编程语言" class="dropdown-title"><span class="title">编程语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="编程语言" class="mobile-dropdown-title"><span class="title">编程语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/java/5ddf72/" class="nav-link">
+  Java基础
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-collection/" class="nav-link">
+  Java集合
+</a></li><li class="dropdown-subitem"><a href="/note-pages/java-concurrency/" class="nav-link">
+  Java并发
+</a></li><li class="dropdown-subitem"><a href="/note-pages/jvm/" class="nav-link">
+  JVM
+</a></li></ul></li><li class="dropdown-item"><h4>
+          C/C++
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/cpp/" class="nav-link">
+  C++基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Go
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/go/" class="nav-link">
+  Go基础
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/assembly/" class="nav-link">
+  Assembly
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发框架" class="dropdown-title"><span class="title">开发框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发框架" class="mobile-dropdown-title"><span class="title">开发框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/spring/" class="nav-link">
+  Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/mysql/1dh29a/" class="nav-link">
+  MySQL
+</a></li><li class="dropdown-subitem"><a href="/note-pages/redis/" class="nav-link">
+  Redis
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="架构设计" class="dropdown-title"><span class="title">架构设计</span> <span class="arrow down"></span></button> <button type="button" aria-label="架构设计" class="mobile-dropdown-title"><span class="title">架构设计</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分布式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/distributed-system/01-理论基础/" class="nav-link">
+  分布式系统
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/micro-service-in-action/" class="nav-link">
+  微服务实战
+</a></li></ul></li><li class="dropdown-item"><h4>
+          消息队列
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-subitem"><a href="/note-pages/rocket-mq/" class="nav-link">
+  RocketMQ
+</a></li></ul></li><li class="dropdown-item"><h4>
+          注册中心
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/note-pages/zookeeper/" class="nav-link">
+  ZooKeeper
+</a></li><li class="dropdown-subitem"><a href="/note-pages/eureka/" class="nav-link">
+  Eureka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发工具" class="mobile-dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/docker/34kd5q/" class="nav-link">
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="理论方法" class="dropdown-title"><span class="title">理论方法</span> <span class="arrow down"></span></button> <button type="button" aria-label="理论方法" class="mobile-dropdown-title"><span class="title">理论方法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-pages/design-pattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/note-pages/software-engineering/n4r1lx/" class="nav-link">
+  软件工程
+</a></li></ul></div></div><div class="nav-item"><a href="/note-pages/interview/f05h67/" class="nav-link">
+  面试通关
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note-pages/http/xbo9wy/" class="sidebar-link">HTTP 基本概念</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/http/xbo9wy/#http-是什么" class="sidebar-link">HTTP 是什么</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/xbo9wy/#http-报文格式" class="sidebar-link">HTTP 报文格式</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/xbo9wy/#http-常见的状态码" class="sidebar-link">HTTP 常见的状态码</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/xbo9wy/#http-常见字段" class="sidebar-link">HTTP 常见字段</a></li></ul></li><li><a href="/note-pages/http/02-HTTP缓存技术.html" class="sidebar-link">HTTP 缓存技术</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/http/02-HTTP缓存技术.html#强制缓存" class="sidebar-link">强制缓存</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/02-HTTP缓存技术.html#协商缓存" class="sidebar-link">协商缓存</a></li></ul></li><li><a href="/note-pages/http/3djudn/" aria-current="page" class="active sidebar-link">HTTP 与 HTTPS</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-pages/http/3djudn/#http-与-https-的区别" class="sidebar-link">HTTP 与 HTTPS 的区别</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/3djudn/#http-风险与-https-解决方案" class="sidebar-link">HTTP 风险与 HTTPS 解决方案</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/3djudn/#https-连接的建立" class="sidebar-link">HTTPS 连接的建立</a></li><li class="sidebar-sub-header"><a href="/note-pages/http/3djudn/#hsts" class="sidebar-link">HSTS</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="http-与-https"><a href="#http-与-https" class="header-anchor">#</a> HTTP 与 HTTPS</h1> <h2 id="http-与-https-的区别"><a href="#http-与-https-的区别" class="header-anchor">#</a> HTTP 与 HTTPS 的区别</h2> <ul><li>HTTP 是超文本传输协议，信息是明文传输，存在安全风险的问题。<strong>HTTPS 则解决 HTTP 不安全的缺陷，在 TCP 和 HTTP 网络层之间加入了 SSL/TLS 安全协议，使得报文能够加密传输。</strong></li> <li>HTTP 连接建立相对简单， TCP 三次握手之后便可进行 HTTP 的报文传输。而 <strong>HTTPS 在 TCP 三次握手之后，还需进行 SSL/TLS 的握手过程，才可进入加密报文传输。</strong></li> <li>两者的默认端口不一样，HTTP 默认端口号是 80，<strong>HTTPS 默认端口号是 443。</strong></li> <li><strong>HTTPS 协议需要向 CA（证书权威机构）申请数字证书</strong>，来保证服务器的身份是可信的。</li></ul> <h2 id="http-风险与-https-解决方案"><a href="#http-风险与-https-解决方案" class="header-anchor">#</a> HTTP 风险与 HTTPS 解决方案</h2> <h3 id="http-的风险"><a href="#http-的风险" class="header-anchor">#</a> HTTP 的风险</h3> <p>由于HTTP是明文传输的，因此存在以下三个安全风险：</p> <ul><li>窃听风险：通信链路上的内容可以被获取；</li> <li>篡改风险：通信内容可以被篡改，例如植入垃圾广告等；</li> <li>冒充风险：攻击者可以冒充合法网站进行欺骗。</li></ul> <h3 id="https-的解决方案"><a href="#https-的解决方案" class="header-anchor">#</a> HTTPS 的解决方案</h3> <ul><li><strong>混合加密</strong> 实现信息的 <strong>机密性</strong>，解决了窃听的风险。</li> <li><strong>摘要算法</strong> 实现 <strong>完整性</strong>，它能够为数据生成独一无二的指，指纹用于校验数据的完整性，解决了篡改的风险。</li> <li>将服务器公钥放入到 <strong>数字证书</strong> 中，解决了冒充的风险。</li></ul> <h3 id="混合加密"><a href="#混合加密" class="header-anchor">#</a> 混合加密</h3> <p>HTTPS 采用的是 <strong>对称加密</strong> 和 <strong>非对称加密</strong> 结合的 <strong>混合加密</strong> 方式：</p> <ul><li>在通信建立前采用 <strong>非对称加密</strong> 的方式交换 <strong>会话秘钥</strong>，后续就不再使用非对称加密。</li> <li>在通信过程中全部使用 <strong>对称加密</strong> 的 <strong>会话秘钥</strong> 的方式加密明文数据。</li></ul> <h3 id="摘要算法与数字签名"><a href="#摘要算法与数字签名" class="header-anchor">#</a> 摘要算法与数字签名</h3> <p>在计算机领域，为了确保数据传输过程中不被篡改，通常需要对数据进行一种唯一的数字指纹计算，即哈希值。在接收方收到数据后，会再次计算哈希值，并与发送方传输的哈希值进行比较。如果两者相同，说明数据未被篡改；如果不同，则说明数据已被篡改。</p> <p>然而，哈希算法并不能保证数据的完整性，因为缺少对客户端收到的消息是否来源于服务端的证明。例如，一个攻击者可以替换消息并同时替换对应的哈希值。</p> <p>为了避免这种情况，计算机使用 <strong>非对称加密算法</strong>，该算法需要使用两个密钥，一个是公钥，一个是私钥。公钥可以公开给所有人，私钥必须由密钥持有人管理并保密。</p> <p>非对称加密算法有两种用途：</p> <ul><li><strong>公钥加密、私钥解密</strong>，目的是确保数据传输的安全性；</li> <li><strong>私钥加密、公钥解密</strong>，目的是保证消息不被冒充。</li></ul> <p>私钥加密的内容通常是哈希值，而不是实际的传输内容。</p> <p><strong>数字签名算法的核心思想是</strong>：发送方使用自己的私钥对摘要进行加密，并将加密后的摘要（数字签名）与原始内容一起发送给接收方。接收方使用发送方的公钥对数字签名进行解密，得到原始内容的哈希值，并计算接收到的内容的哈希值，如果两者一致，则说明信息的完整性未被篡改，同时也能够证明信息的来源确实是发送方。</p> <p><img src="/note-pages/assets/img/image-20230402002458510.drawio.36cd3821.png" alt="image-20230402002458510.drawio"></p> <p>引入数字签名算法后，数据的完整性和真实性都得到了保证。客户端收到消息后，可以使用公钥解密签名并验证消息的哈希值，以确认消息的完整性和来源。只有持有相应私钥的人才能对数据进行数字签名，确保数据的真实性。</p> <p>因此，数字签名算法通常用于确认数据的来源和完整性，而非对数据进行加密。</p> <h3 id="数字证书"><a href="#数字证书" class="header-anchor">#</a> 数字证书</h3> <p>哈希算法和数字签名可以确保消息的完整性和来源可靠性，但是仍然存在身份验证的问题。因为即使消息来源可靠，<strong>公钥本身可能被伪造</strong>，导致消息被篡改或者被冒充。</p> <p>为了解决这个问题，<strong>数字证书认证机构（CA）</strong> 可以通过注册和签名公钥来验证公钥的身份。CA 使用自己的私钥对服务器的公钥和服务器信息进行数字签名，然后将这个签名和公钥一起打包成数字证书。<strong>数字证书可以包含服务器信息、公钥和数字签名等信息。</strong></p> <p>当客户端连接服务器时，服务器会将数字证书发送给客户端，客户端会使用 CA 的公钥来解密数字签名，以验证数字证书的合法性。如果数字证书是合法的，客户端就可以信任公钥，并使用该公钥进行通信。</p> <p>数字证书的工作流程：</p> <p><img src="/note-pages/assets/img/image-20230402010537735.drawio.7d0ba0cb.png" alt="image-20230402010537735.drawio"></p> <h2 id="https-连接的建立"><a href="#https-连接的建立" class="header-anchor">#</a> HTTPS 连接的建立</h2> <h3 id="tls-握手协议"><a href="#tls-握手协议" class="header-anchor">#</a> TLS 握手协议</h3> <div id="1、clienthello" class="anchor">1、ClientHello</div><p>首先，由客户端向服务器发起加密通信请求，即 ClientHello 请求。</p> <p>在这一步，客户端主要向服务器发送以下信息：</p> <ul><li>客户端支持的 TLS 协议版本，如 TLS 1.2 版本。</li> <li>客户端生产的 <strong>随机数</strong>（Client Random），后面用于生成 “会话秘钥” 条件之一。</li> <li>客户端支持的密码套件列表，如 RSA 加密算法。</li></ul> <div id="2、severhello" class="anchor">2、SeverHello</div><p>服务器收到客户端请求后，向客户端发出响应，即 SeverHello。服务器回应的内容有如下内容：</p> <ul><li>确认 TLS 协议版本，如果浏览器不支持，则关闭加密通信。</li> <li>服务器生产的 <strong>随机数</strong>（Server Random），后面用于生成 “会话秘钥” 条件之一。</li> <li>确认的密码套件列表，如 RSA 加密算法。</li> <li><strong>服务器的数字证书。</strong></li></ul> <div id="3、客户端回应" class="anchor">3、客户端回应</div><p>客户端收到服务器回应后，首先通过浏览器或者操作系统中的 CA 公钥确认服务器的数字证书的真实性。</p> <p>如果验证通过，客户端会 <strong>从数字证书中取出服务器的公钥</strong>，使用它加密报文，向服务器发送如下信息：</p> <ul><li>一个 <strong>随机数</strong>（pre-master key）。该随机数会被服务器公钥加密。</li> <li>加密通信算法改变通知，表示随后的信息都将用 “会话秘钥” 加密通信。</li> <li>客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供服务端校验。</li></ul> <p><strong>服务器和客户端有了这三个随机数（Client Random、Server Random、pre-master key），接着就用双方协商的加密算法，各自生成本次通信的 “会话秘钥” 。</strong></p> <div id="4、服务器的最后回应" class="anchor">4、服务器的最后回应</div><p>服务器收到客户端的第三个随机数（pre-master key）之后，通过协商的加密算法，计算出本次通信的 “会话秘钥” 。</p> <p>然后，向客户端发送最后的信息：</p> <ul><li>加密通信算法改变通知，表示随后的信息都将用 “会话秘钥” 加密通信。</li> <li>服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供客户端校验。</li></ul> <p>至此，整个 TLS 的握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的 HTTP 协议，只不过用 “会话秘钥” 加密内容。</p> <h3 id="数字证书签发和校验流程"><a href="#数字证书签发和校验流程" class="header-anchor">#</a> 数字证书签发和校验流程</h3> <p><img src="/note-pages/assets/img/image-20230402102032950.drawio.0b6615d9.png" alt="image-20230402102032950.drawio"></p> <p>CA 签发证书的过程，如上图左边部分：</p> <ul><li>首先 CA 会把持有者的公钥、用途、颁发者、有效时间等信息打成一个包，然后对这些信息进行 Hash 计算，得到一个 Hash 值；</li> <li>然后 CA 会使用自己的私钥将该 Hash 值加密，生成 Certificate Signature，即 CA 对证书做了签名；</li> <li>最后将 Certificate Signature 添加在文件证书上，形成数字证书；</li></ul> <p>客户端校验服务端的数字证书的过程，如上图右边部分：</p> <ul><li>首先客户端会使用同样的 Hash 算法获取该证书的 Hash 值 A；</li> <li>通常浏览器和操作系统中集成了 CA 的公钥信息，浏览器收到证书后可以使用 CA 的公钥解密 Certificate Signature 内容，得到一个 Hash 值 B；</li> <li>最后比较 A 和 B，如果值相同，则为可信赖的证书，否则认为证书不可信。</li></ul> <h3 id="tls-记录协议"><a href="#tls-记录协议" class="header-anchor">#</a> TLS 记录协议</h3> <p>TLS 记录协议主要负责消息（HTTP 数据）的压缩、加密及数据的认证，过程如下图：</p> <div style="text-align:center;"><img src="/note-pages/assets/img/image-20230402130402293.drawio.e7087ba3.png" alt="image-20230402130402293.drawio" style="zoom:50%;"></div><p>具体过程如下：</p> <ul><li>首先，消息被分割成多个较短的片段，然后分别对每个片段进行压缩。</li> <li>接下来，经过压缩的片段会被加上 <strong>消息认证码</strong>（MAC 值，这个是通过哈希算法生成的），这是为了保证完整性，并进行数据的认证。通过附加消息认证码的 MAC 值，可以识别出篡改。与此同时，为了防止重放攻击，在计算消息认证码时，还加上了片段的编码。</li> <li>再接下来，经过压缩的片段再加上消息认证码会一起通过 <strong>对称密钥</strong> 进行加密。</li> <li>最后，经过加密的数据再加上由数据类型、版本号、压缩后的长度组成的报头就是最终的报文数据。</li></ul> <p>记录协议完成后，最终的报文数据将传递到传输控制协议 （TCP） 层进行传输。</p> <h2 id="hsts"><a href="#hsts" class="header-anchor">#</a> HSTS</h2> <h3 id="重定向的问题"><a href="#重定向的问题" class="header-anchor">#</a> 重定向的问题</h3> <p>有不少网站只通过 HTTPS 对外提供服务，但用户在访问某个网站的时候，在浏览器里却往往直接输入网站域名，而不是完整的 URL，不过浏览器依然能正确的使用 HTTPS 发起请求。这背后多亏了服务器和浏览器的协作，如下图所示。</p> <p><img src="/note-pages/assets/img/image-20230911092656831.4c24e8f8.png" alt="image-20230911092656831"></p> <p>简单来讲就是，浏览器向网站发起一次 HTTP 请求，在得到一个重定向响应后，发起一次 HTTPS 请求并得到最终的响应内容。所有的这一切对用户而言是完全透明的，所以在用户看来，在浏览器里直接输入域名却依然可以用 HTTPS 协议和网站进行安全的通信，是个不错的用户体验。</p> <p>一切看上去都是那么的完美，但其实不然，<strong>由于在建立起 HTTPS 连接之前存在一次明文的 HTTP 请求和重定向，使得攻击者可以以中间人的方式劫持这次请求，从而进行后续的攻击</strong>，例如窃听数据、篡改请求和响应、跳转到钓鱼网站等。</p> <p>以劫持请求并跳转到钓鱼网站为例，其大致做法如下图所示：</p> <p><img src="/note-pages/assets/img/image-20230911093108924.6d9b5f49.png" alt="image-20230911093108924"></p> <p>这个攻击的精妙之处在于，攻击者直接劫持了 HTTP 请求，并返回了内容给浏览器，根本不给浏览器同真实网站建立 HTTPS 连接的机会，因此浏览器会误以为真实网站通过 HTTP 对外提供服务，自然也就不会向用户报告当前的连接不安全。于是乎攻击者几乎可以神不知鬼不觉的对请求和响应动手脚。</p> <h3 id="通过-hsts-强制使用-https"><a href="#通过-hsts-强制使用-https" class="header-anchor">#</a> 通过 HSTS 强制使用 HTTPS</h3> <p>HSTS 的全称是 HTTP Strict-Transport-Security，它是一个 Web 安全策略机制。</p> <p>HSTS 最为核心的是一个 HTTP 响应头（HTTP Response Header）。正是它可以让浏览器得知，在接下来的一段时间内，当前域名只能通过 HTTPS 进行访问，并且在浏览器发现当前连接不安全的情况下，强制拒绝用户的后续访问要求。</p> <p>HSTS Header 的语法如下：</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token header"><span class="token header-name keyword">Strict-Transport-Security</span><span class="token punctuation">:</span> <span class="token header-value hsts languages-hsts">&lt;max-age=&gt;[; includeSubDomains][; preload]</span></span>
+</code></pre></div><p>其中：</p> <ul><li>max-age 是必选参数，是一个以秒为单位的数值，它代表着 HSTS Header 的过期时间，通常设置为 1 年，即 31536000 秒。</li> <li>includeSubDomains 是可选参数，如果包含它，则意味着当前域名及其子域名均开启 HSTS 保护。</li> <li>preload 是可选参数，只有当你申请将自己的域名加入到浏览器内置列表的时候才需要使用到它。</li></ul> <p>只要在服务器返回给浏览器的响应头中，增加 Strict-Transport-Security 这个 HTTP Header（下文简称 HSTS Header），例如：</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token header"><span class="token header-name keyword">Strict-Transport-Security</span><span class="token punctuation">:</span> <span class="token header-value hsts languages-hsts">max-age=31536000; includeSubDomains</span></span>
+</code></pre></div><p>就可以告诉浏览器，在接下来的 31536000 秒（1 年）内，对于当前域名及其子域名的后续通信应该强制性的只使用 HTTPS，直到超过有效期为止。</p> <p>完整的流程如下图所示：</p> <p><img src="/note-pages/assets/img/image-20230911093749392.c12ba11b.png" alt="image-20230911093749392"></p> <p>细心的你可能发现了，HSTS 存在一个比较薄弱的环节，那就是浏览器没有当前网站的 HSTS 信息的时候，或者第一次访问网站的时候，依然需要一次明文的 HTTP 请求和重定向才能切换到 HTTPS，以及刷新 HSTS 信息。而就是这么一瞬间却给攻击者留下了可乘之机，使得他们可以把这一次的 HTTP 请求劫持下来，继续中间人攻击。</p> <p>针对上面的攻击，HSTS 也有应对办法，那就是在浏览器里内置一个列表，只要是在这个列表里的域名，无论何时、何种情况，浏览器都只使用 HTTPS 发起连接。这个列表由 Google Chromium 维护，FireFox、Safari、IE 等主流浏览器均在使用。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-pages/http/02-HTTP缓存技术.html" class="prev">
+        HTTP 缓存技术
+      </a></span> <!----></p></div> </main> <aside items="[object Object],[object Object],[object Object]" class="right-sidebar"><div style="margin-left:20px; margin-bottom: 10px; text-align: center; font-size:16px;font-weight:bold;">此页内容</div> <div class="right-sidebar-wrap"><ul class="right-sidebar-links"><li id="tab-item0" class="right-sidebar-item active"><a href="#http-与-https-的区别" class="right-sidebar-item-level2">
+          HTTP 与 HTTPS 的区别
+        </a></li><li id="tab-item1" class="right-sidebar-item"><a href="#http-风险与-https-解决方案" class="right-sidebar-item-level2">
+          HTTP 风险与 HTTPS 解决方案
+        </a></li><li id="tab-item2" class="right-sidebar-item"><a href="#http-的风险" class="right-sidebar-item-level3">
+          HTTP 的风险
+        </a></li><li id="tab-item3" class="right-sidebar-item"><a href="#https-的解决方案" class="right-sidebar-item-level3">
+          HTTPS 的解决方案
+        </a></li><li id="tab-item4" class="right-sidebar-item"><a href="#混合加密" class="right-sidebar-item-level3">
+          混合加密
+        </a></li><li id="tab-item5" class="right-sidebar-item"><a href="#摘要算法与数字签名" class="right-sidebar-item-level3">
+          摘要算法与数字签名
+        </a></li><li id="tab-item6" class="right-sidebar-item"><a href="#数字证书" class="right-sidebar-item-level3">
+          数字证书
+        </a></li><li id="tab-item7" class="right-sidebar-item"><a href="#https-连接的建立" class="right-sidebar-item-level2">
+          HTTPS 连接的建立
+        </a></li><li id="tab-item8" class="right-sidebar-item"><a href="#tls-握手协议" class="right-sidebar-item-level3">
+          TLS 握手协议
+        </a></li><li id="tab-item9" class="right-sidebar-item"><a href="#数字证书签发和校验流程" class="right-sidebar-item-level3">
+          数字证书签发和校验流程
+        </a></li><li id="tab-item10" class="right-sidebar-item"><a href="#tls-记录协议" class="right-sidebar-item-level3">
+          TLS 记录协议
+        </a></li><li id="tab-item11" class="right-sidebar-item"><a href="#hsts" class="right-sidebar-item-level2">
+          HSTS
+        </a></li><li id="tab-item12" class="right-sidebar-item"><a href="#重定向的问题" class="right-sidebar-item-level3">
+          重定向的问题
+        </a></li><li id="tab-item13" class="right-sidebar-item"><a href="#通过-hsts-强制使用-https" class="right-sidebar-item-level3">
+          通过 HSTS 强制使用 HTTPS
+        </a></li></ul></div></aside></div><div class="global-ui"></div></div>
+    <script src="/note-pages/assets/js/app.05dcbd87.js" defer></script><script src="/note-pages/assets/js/3.4a2f67fd.js" defer></script><script src="/note-pages/assets/js/2.ab82720e.js" defer></script><script src="/note-pages/assets/js/30.c6ee0ead.js" defer></script>
+  </body>
+</html>
